@@ -1,0 +1,13 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+include "tarski_out.zf".
+
+#16_11_uniqueness
+assert forall (A B C R X Y : point). R!=A => B!=C => out A X R => cong A X B C => out A Y R => cong A Y B C => X=Y.
+
+#is_len_cong
+assert forall (A B C D : point) (l : point->point->prop). len A B l => len C D l => cong A B C D.
+
+goal forall (A B C : point) (l : point->point->prop).  out A B C => len A B l => len A C l => B=C.

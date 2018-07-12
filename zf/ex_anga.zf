@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#conga_refl
+assert forall (A B C : point). A!=B => C!=B => congA A B C A B C.
+
+goal forall (A B C : point). acute A B C => (exists (a : point->point->point->prop). q_congA_acute a && a A B C).

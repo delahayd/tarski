@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (A B C P : point). out B A C => out B P A => inAngle P A B C.

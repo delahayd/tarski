@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#111_16
+assert forall (A B C A1 B1 C1 : point). per A B C => A!=B => C!=B => per A1 B1 C1 => A1!=B1 => C1!=B1 => congA A B C A1 B1 C1.
+
+#conga_distinct
+assert forall (A B C D E F : point). congA A B C D E F => congA A B C D E F && A!=B && C!=B && D!=E && F!=E.
+
+goal forall (A B C : point). acute A B C => ~per A B C.

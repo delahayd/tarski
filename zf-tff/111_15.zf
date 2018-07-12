@@ -1,0 +1,21 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_side.zf".
+
+#angle_construction_1
+assert forall (A B C A1 B1 P : point). ~col A B C => ~col A1 B1 P => (exists (C1 : point). congA A B C A1 B1 C1 && os A1 B1 C1 P).
+
+#conga_or_out_ts
+assert forall (A B C C1 : point). congA A B C A B C1 => out B C C1 || ts A B C C1.
+
+#conga_sym
+assert forall (A B C A1 B1 C1 : point). congA A B C A1 B1 C1 => congA A1 B1 C1 A B C.
+
+#conga_trans
+assert forall (A B C A1 B1 C1 A2 B2 C2 : point). congA A B C A1 B1 C1 => congA A1 B1 C1 A2 B2 C2 => congA A B C A2 B2 C2.
+
+#one_side_transitivity
+assert forall (P Q A B C : point). os P Q A B => os P Q B C => os P Q A C.
+
+goal forall (A B C D E P : point). ~col A B C => ~ col D E P => (exists (F : point). congA A B C D E F && os E D F P && (forall (F1 F2 : point). ((congA A B C D E F1 && os E D F1 P ) && (congA A B C D E F2 && os E D F2 P)) => out E F1 F2)).

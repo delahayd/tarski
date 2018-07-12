@@ -1,0 +1,14 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+val O : point.
+val E : point.
+val E1 : point.
+assert ~col O E E1.
+
+#16_21
+assert forall (A B C D P Q : point). ~col A B C => C!=D => col A B P => col A B Q => col C D P => col C D Q => P=Q.
+
+goal forall (A A1 : point). proj A A1 O E1 E E1 => col O E A => col O E A1 => A=O.

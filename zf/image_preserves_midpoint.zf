@@ -1,0 +1,17 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#110_4_spec
+assert forall (A B P P1 : point). reflectL P P1 A B => reflectL P1 P A B.
+
+#110_10_spec
+assert forall (A B P Q P1 Q1 : point). A!=B => reflectL P1 P A B => reflectL Q1 Q A B => cong P Q P1 Q1.
+
+#cong_transitivity
+assert forall (A B C D E F : point). cong A B C D => cong C D E F => cong A B E F. 
+
+#image_preserves_bet
+assert forall (A B C A1 B1 C1 X Y : point). X!=Y => reflectL A A1 X Y => reflectL B B1 X Y => reflectL C C1 X Y => bet A B C => bet A1 B1 C1.
+
+goal forall (A B C A1 B1 C1 X Y : point). X!=Y => reflectL A A1 X Y => reflectL B B1 X Y => reflectL C C1 X Y => midpoint A B C => midpoint A1 B1 C1.

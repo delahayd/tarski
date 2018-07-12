@@ -1,0 +1,12 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+include "tarski_cong.zf".
+include "tarski_prop_out_lines.zf".
+
+#cong_preserves_bet
+assert forall (B A1 A0 E D1 D0 : point). bet B A1 A0 => cong B A1 E D1 => cong B A0 E D0 => out E D1 D0 => bet E D1 D0.
+
+goal forall (B A A0 E D D0 : point). out B A A0 => out E D D0 => cong B A E D => cong B A0 E D0 => cong A A0 D D0.

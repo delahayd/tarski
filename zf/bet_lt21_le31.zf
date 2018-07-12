@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#bet_lt21_le32
+assert forall (O E E1 A B C : point). bet A B C => ltP O E E1 B A => leP O E E1 C B.
+
+#leP_trans
+assert forall (O E E1 A B C : point). leP O E E1 A B => leP O E E1 B C => leP O E E1 A C.
+
+goal forall (O E E1 A B C : point). bet A B C => ltP O E E1 B A => leP O E E1 C A.

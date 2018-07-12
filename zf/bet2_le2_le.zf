@@ -1,0 +1,16 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+include "tarski_prop_cong.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+include "tarski_bet_le.zf".
+
+#le_left_comm
+assert forall (A B C D : point). le A B C D => le B A C D.
+
+#le_right_comm
+assert forall (A B C D : point). le A B C D => le A B D C.
+
+goal forall (O o A B a b : point). bet a o b => bet A O B => le o a O A => le o b O B => le a b A B.

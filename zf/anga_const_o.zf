@@ -1,0 +1,14 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#anga_is_ang
+assert forall (a : point->point->point->prop). q_congA_acute a => q_congA a.
+
+#anga_not_flat
+assert forall (a : point->point->point->prop). q_congA_acute a => q_congA_nFlat a.
+
+#out_null_anga
+assert forall (A B C : point) (a : point->point->point->prop). q_congA_acute a => a A B C => out B A C => q_congA_null_acute a.
+
+goal forall (A B P : point) (a : point->point->point->prop). ~col A B P => ~q_congA_null_acute a => q_congA_acute a => (exists (C : point). a A B C && os A B C P).

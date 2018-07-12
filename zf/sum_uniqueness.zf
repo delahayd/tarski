@@ -1,0 +1,21 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_par.zf".
+val O : point.
+val E : point.
+val E1 : point.
+assert ~col O E E1.
+
+#sum_to_sump
+assert forall (O E E1 A B C : point). sum O E E1 A B C => sump O E E1 A B C.
+
+#par_trans
+assert forall (A1 A2 B1 B2 C1 C2 : point). par A1 A2 B1 B2 => par B1 B2 C1 C2 => par A1 A2 C1 C2.
+
+#project_col_project
+assert forall (A B C P P1 X Y : point). A!=C => col A B C => proj P P1 A B X Y => proj P P1 A C X Y.
+
+goal forall (A B C1 C2 : point). sum O E E1 A B C1 => sum O E E1 A B C2 => C1=C2.

@@ -1,0 +1,51 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_perp.zf".
+#16_21
+assert forall (A B C D P Q : point). ~col A B C => C!=D => col A B P => col A B Q => col C D P => col C D Q => P=Q.
+
+#18_9
+assert forall (A B C : point). per A B C => col A B C => (A=B || C=B).
+#19_2
+assert forall (A B P Q : point). ts A B P Q => ts A B Q P.
+
+#19_8_2
+assert forall (P Q A B C : point). ts P Q A C => os P Q A B => ts P Q B C.
+
+#19_9_bis
+assert forall (P Q A B : point). os P Q A B => ~ts P Q A B.
+
+#112_6
+assert forall (A B C D : point). par_strict A B C D => os A B C D.
+
+#112_9
+assert forall (A1 A2 B1 B2 C1 C2 : point). perp A1 A2 C1 C2 => perp B1 B2 C1 C2 =>perp A1 A2 B1 B2.
+
+#one_side_symmetry
+assert forall (P Q A B : point). os P Q A B => os P Q B A.
+
+#per_col_eq
+assert forall (A B C : point). per A B C => col A B C => B!=C => A=B.
+
+#per_col
+assert forall (A B C D : point). B!=C => per A B C =>  col B C D => per A B D.
+
+#per_not_col
+assert forall (A B C : point). A!=B => B!=C => per A B C => ~col A B C.
+
+#perp_not_col
+assert forall (A B P : point). perp A B P A => ~col A B P.
+
+#perp_col
+assert forall (A B C D E : point). A!=E => perp A B C D => col A B E => perp A E C D.
+
+#perp_distinct
+assert forall (A B C D : point). perp A B C D => A!=B && C!=D.
+
+#perp_in_perp_bis
+assert forall (A B C D X : point). perp_at X A B C D => perp X B C D || perp A X C D.
+
+goal forall (O A B C B1 C1 : point). col O A C => A!=C1 => bet A B1 C1 => O!=A => O!=B1 => O!=C1 => per O B1 B => per O C1 C => col A B C => col O A C1 => bet A B C.

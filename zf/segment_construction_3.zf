@@ -1,0 +1,6 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_prop_out_lines.zf".
+
+goal forall (A B X Y : point). A!=B => X!=Y => (exists (C : point). out A B C && cong A C X Y).

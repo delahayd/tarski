@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#all_coplanar
+assert forall (A B C D : point). coplanar A B C D.
+
+#grid_exchange_axes
+assert forall (O E S U1 U2 : point). cs O E S U1 U2 => cs O E S U2 U1.
+
+goal forall (O E S U1 U2 P X Y : point). cd O E S U1 U2 P X Y => cd O E S U2 U1 P X Y.

@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (A B C D E F : point). bet D E F => A!=B => B!=C => A!=C => D!=E => E!=F => triSumA A B C D E F.

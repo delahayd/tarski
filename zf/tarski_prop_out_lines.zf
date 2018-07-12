@@ -1,0 +1,78 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#15_1
+assert forall (A B C D : point). A!=B => bet A B C => bet A B D => bet A C D || bet A D C.
+
+#15_3
+assert forall (A B C D : point). bet A B D => bet A C D => bet A B C || bet A C B.
+
+#14_3
+assert forall (A B C A1 B1 C1 : point). bet A B C => bet A1 B1 C1 => cong A C A1 C1 => cong B C B1 C1 => cong A B A1 B1.
+
+#14_19
+assert forall (A B C C1 : point). bet A C B => cong A C A C1 => cong B C B C1 => C=C1.
+
+
+#between_cong
+assert forall (A B C : point). bet A C B => cong A C A B => C=B.
+
+#16_11_existence
+assert forall (A B C R : point). R!=A => B!=C => (exists (X : point). out A X R && cong A X B C).
+
+#16_6
+assert forall (P A B : point). out P A B => out P B A.
+
+
+#not_col_distincts
+assert forall (A B C : point). ~col A B C => ~col A B C && A!=B && B!=C && A!=C.
+
+#col_transitivity_1
+assert forall (P Q A B : point). P!=Q => col P Q A => col P Q B => col P A B.
+
+#col_transitivity_2
+assert forall (P Q A B : point). P!=Q => col P Q A => col P Q B => col Q A B.
+
+#lower_dim_ex
+assert exists (A B C : point). ~(bet A B C || bet B C A || bet C A B).
+
+#Col_dec
+assert forall (A B C : point). col A B C || ~col A B C.
+
+#le_transitivity
+assert forall (A B C D E F : point). le A B C D => le C D E F => le A B E F.
+
+#16_2
+assert forall (A B C P : point). A!=P => B!=P => C!=P => bet A P C => (bet B P C <=> out P A B).
+
+#16_13_1
+assert forall (P A B : point). out P A B => le P A P B => bet P A B.
+
+#15_6
+assert forall (A B C D A1 B1 C1 D1 : point). le A B C D => cong A B A1 B1 => cong C D C1 D1 => le A1 B1 C1 D1.
+
+
+#16_7
+assert forall (P A B C : point). out P A B => out P B C => out P A C.
+
+#15_5_1
+assert forall (A B C D : point). le A B C D => (exists (x : point). bet A B x && cong A x C D).
+
+#15_12_a
+assert forall (A B C : point). bet A B C => le A B A C && le B C A C.
+
+#15_5_2
+assert forall (A B C D : point). (exists (x : point). bet A B x && cong A x C D)=> le A B C D.
+
+#bet_out_out_bet
+assert forall (A B C A1 C1 : point). bet A B C => out B A A1 => out B C C1 => bet A1 B C1.
+
+#bet_out
+assert forall (A B C : point). B!=A => bet A B C => out A B C.
+
+#not_bet_and_out
+assert forall (A B C : point). ~(bet A B C && out B A C).
+
+#between_equality
+assert forall (A B C : point). bet A B C => bet B A C => A=B.

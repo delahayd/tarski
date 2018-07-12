@@ -1,0 +1,9 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_bet.zf".
+include "tarski_bet_le.zf".
+include "tarski_cong.zf".
+
+
+goal forall (A B C : point). col A B C => le A B A C => le B C A C => bet A B C.

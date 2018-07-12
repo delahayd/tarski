@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#all_coplanar
+assert forall (A B C D : point). coplanar A B C D.
+
+goal forall (O E S U1 U2 P : point). cs O E S U1 U2 => (exists (X Y : point). cd O E S U1 U2 P X Y).

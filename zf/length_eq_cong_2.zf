@@ -1,0 +1,6 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+
+goal forall (O E E1 A B C D AB : point). length O E E1 A B AB => cong A B C D => length O E E1 C D AB.

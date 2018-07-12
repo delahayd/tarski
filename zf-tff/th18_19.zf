@@ -1,0 +1,15 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+
+#nlea_lta
+assert forall (A B C D E F : point). ~leA A B C D E F => A!=B => B!=C => D!=E => E!=F => ltA D E F A B C.
+
+#not_and_lt
+assert forall (A B C D : point). ~(lt A B C D && lt C D A B).
+
+#th18_18
+assert forall (A B C D E F : point). cong A B D E => cong A C D F => ltA F D E C A B => lt E F B C.
+
+goal forall (A B C D E F : point). A!=B => A!=C => cong A B D E => cong A C D F => lt E F B C => ltA F D E C A B.

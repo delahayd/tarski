@@ -1,0 +1,10 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#diff_A_O
+assert forall (O E E1 A : point). ~col O E E1 => col O E A => diff O E E1 A O A.
+
+goal forall (O E E1 X : point). ~col O E E1 => bet O X E || bet O E X => leP O E E1 O X.

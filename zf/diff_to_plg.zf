@@ -1,0 +1,27 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+val O : point.
+val E : point.
+val E1 : point.
+
+#diff_ar2
+assert forall (O E E1 A B AMB : point). diff O E E1 A B AMB => ar2 O E E1 A B AMB.
+
+#diff_sum
+assert forall (O E E1 A B S : point). diff O E E1 S A B => sum O E E1 A B S.
+
+#opp_midpoint
+assert forall (O E E1 A MA : point). opp O E E1 A MA => midpoint O A MA.
+
+#sum_O_B_eq
+assert forall (B C : point). sum O E E1 O B C => B=C.
+
+#sum_cong
+assert forall (A B C : point). sum O E E1 A B C => (A!=O || B!=O) => parallelogram_flat O A B C.
+
+goal forall (O E E1 A B dBA : point). A!=O || B!=O => diff O E E1 B A dBA => parallelogram_flat O A B dBA.

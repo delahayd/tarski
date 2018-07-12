@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#diff_sum
+assert forall (O E E1 A B S : point). diff O E E1 S A B => sum O E E1 A B S.
+
+goal forall (O E E1 A AB : point). ar2 O E E1 A AB O => (exists (B : point). sum O E E1 A B AB).

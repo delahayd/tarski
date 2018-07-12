@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_par.zf".
+
+goal forall (O E E1 A : point). ~col O E E1 => col O E A => A!=O => (exists (IA : point). prod O E E1 IA A E).

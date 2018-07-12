@@ -1,0 +1,18 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#construction_uniqueness
+assert forall (Q A B C X Y : point). Q!=A => bet Q A X => cong A X B C => bet Q A Y => cong A Y B C => X=Y.
+
+#outer_transitivity_between2
+assert forall (A B C D : point). bet A B C => bet B C D => B!=C => bet A C D.
+
+#between_exchange2
+assert forall (A B C D : point). bet A B D => bet B C D => bet A C D.
+
+#outer_transitivity_between
+assert forall (A B C D : point). bet A B C=> bet B C D => B!=C => bet A B D.
+
+#between_exchange4
+assert forall (A B C D : point). bet A B C => bet A C D => bet A B D.

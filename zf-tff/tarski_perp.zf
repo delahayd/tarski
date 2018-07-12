@@ -1,0 +1,54 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#18_2
+assert forall (A B C : point). per A B C => per C B A.
+
+#18_5
+assert forall (A B : point). per A B B.
+
+#perp_in_per
+assert forall (A B C : point). perp_at B A B B C => per A B C.
+
+#perp_in_comm
+assert forall (A B C D X : point). perp_at X A B C D => perp_at X B A D C.
+
+#perp_in_left_comm
+assert forall (A B C D X : point). perp_at X A B C D => perp_at X B A C D.
+
+#perp_in_perp
+assert forall (A B C D X : point). perp_at X A B C D => perp A B C D.
+
+#perp_in_right_comm
+assert forall (A B C D X : point). perp_at X A B C D => perp_at X A B D C.
+
+#perp_in_sym
+assert forall (A B C D X : point). perp_at X A B C D => perp_at X C D A B.
+
+#per_perp_in
+assert forall (A B C : point). A!=B => B!=C => per A B C => perp_at B A B B C.
+
+#per_perp
+assert forall (A B C : point). A!=B => B!=C => per A B C => perp A B B C.
+
+#perp_comm
+assert forall (A B C D : point). perp A B C D => perp B A D C.
+
+#perp_left_comm
+assert forall (A B C D : point). perp A B C D => perp B A C D.
+
+#perp_per_1
+assert forall (A B C : point). perp A B C A => per B A C.
+
+#perp_per_2
+assert forall (A B C : point). perp A B A C => per B A C.
+
+#perp_perp_in
+#assert forall (A B C : point). perp A B C A => perp_at A A B C A.
+
+#perp_right_comm
+assert forall (A B C D : point). perp A B C D => perp A B D C.
+
+#perp_sym
+assert forall (A B C D : point). perp A B C D => perp C D A B.

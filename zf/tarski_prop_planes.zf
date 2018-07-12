@@ -1,0 +1,225 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#13_17
+assert forall (A B C A1 B1 P : point). bet A B C => bet A1 B1 C => bet A P A1 => (exists (Q : point). bet P Q C && bet B Q B1).
+
+#15_1
+assert forall (A B C D : point). A!=B => bet A B C => bet A B D => bet A C D || bet A D C.
+
+#15_2
+assert forall (A B C D : point). A!=B => bet A B C => bet A B D => bet B C D || bet B D C.
+
+#15_3
+assert forall (A B C D : point). bet A B D => bet A C D => bet A B C || bet A C B
+
+#16_4_2
+assert forall (A B P : point). (col A P B && ~bet A P B) => out P A B.
+
+#16_6
+assert forall (P A B : point). out P A B => out P B A.
+
+#16_7
+assert forall (P A B C : point). out P A B => out P B C => out P A C.
+
+#16_21
+assert forall (A B C D P Q : point). ~col A B C => C!=D => col A B P => col A B Q => col C D P => col C D Q => P=Q.
+
+#17_2
+assert forall (M A B : point). midpoint M A B => midpoint M B A.
+
+#17_3
+assert forall (M A : point). midpoint M A A => M=A.
+
+#17_3_2
+assert forall (A : point). midpoint A A A.
+
+#17_13 
+assert forall (A P Q P1 Q1 : point). midpoint A P1 P => midpoint A Q1 Q => cong P Q P1 Q1.
+
+#17_15
+assert forall (P Q R P1 Q1 R1 A : point). midpoint A P P1 => midpoint A Q Q1 => midpoint A R R1 => bet P Q R => bet P1 Q1 R1.
+
+#17_17
+assert forall (P P1 A B : point). midpoint A P P1 => midpoint B P P1 => A=B.
+
+#17_20
+assert forall (M A B : point). col A M B => cong M A M B => A=B || midpoint M A B.
+
+#18_2
+assert forall (A B C : point). per A B C => per C B A.
+
+#18_6
+assert forall (A B C A1 : point). per A B C => per A1 B C => bet A C A1 => B=C.
+
+#18_18_existence
+assert forall (A B C : point). ~col A B C => (exists (X : point). col A B X && perp A B C X).
+
+#18_24
+assert forall (A B P Q R T : point). perp P A A B => perp Q B A B => col A B T => bet P T Q => bet B R Q => cong A P B R => (exists (X : point). midpoint X A B && midpoint X P R).
+
+#19_2
+assert forall (A B P Q : point). ts A B P Q => ts A B Q P.
+
+#19_3
+assert forall (P Q A C M R B : point). ts P Q A C => col M P Q => midpoint M A C => col R P Q => out R A B => ts P Q B C.
+
+#19_4_1
+assert forall (P Q A C R S M : point). ts P Q AC => col R P Q => perp P Q A R => col S P Q => perp P Q C S => midpoint M R S => (forall (U C1 : point). midpoint M U C1 => (out R U A <=> out S C C1)).
+
+#19_4_1_aux
+assert forall (P Q A C R S M : point). le S C R A => ts P Q A C => col R P Q => perp P Q A R => col S P Q => perp P Q C S => midpoint M R S => (forall (U C1 : point). midpoint M U C1 => (out R U A <=> out S C C1)).
+
+#19_4_2
+assert forall (P Q A C R S U V : point). ts P Q A C => col R P Q => perp P Q A R => col S P Q => perp P Q C S => out R U A => out S V C => ts P Q U V.
+
+#19_4_2_aux
+assert forall (P Q A C R S U V : point). le S C R A => ts P Q A C => col R P Q => perp P Q A R => col S P Q => perp P Q C S => out R U A => out S V C => ts P Q U V.
+
+#19_5
+assert forall (P Q A C R B : point). ts P Q A C => col R P Q => out R A B => ts P Q B C.
+
+#19_8_1
+assert forall (P Q A B C : point). ts P Q A C => ts P Q B C => os P Q A B.
+
+#19_8_2
+assert forall (P Q A B C : point). ts P Q A C => os P Q A B => ts P Q B C.
+
+#19_9
+assert forall (P Q A B : point). ts P Q A B => ~os P Q A B.
+
+#19_9_bis
+assert forall (P Q A B : point). os P Q A B => ~ts P Q A B.
+
+#19_10
+assert forall (P Q A : point). P!=Q => ~col A P Q => (exists (C : point). ts P Q A C).
+
+#bet_dec
+assert forall (A B C : point). bet A B C || ~bet A B C.
+
+#bet_out
+assert forall (A B C : point). B!=A => bet A B C => out A B C.
+
+#between_equality
+assert forall (A B C : point). bet A B C => bet B A C => A=B.
+
+#between_exchange3
+assert forall (A B C D : point). bet A B C => bet A C D => bet B C D.
+
+#between_exchange4
+assert forall (A B C D : point). bet A B C => bet A C D => bet A B D.
+
+#between_symmetry
+assert forall (A B C : point). bet A B C => bet C B A.
+
+#between_trivial
+assert forall (A B : point). bet A B B.
+
+#col13
+assert forall (A B C D A1 B1 C1 D1 : point). ifsc A B C D A1 B1 C1 D1 => cong B D B1 D1.
+
+#Col_dec
+assert forall (A B C : point). col A B C || ~col A B C.
+
+#col_one_side_out
+assert forall (A B X Y : point). col A X Y => os A B X Y => out A X Y.
+
+#col_preserves_two_sides
+assert forall (A B C D X Y : point). C!=D => col A B C => col A B D => ts A B X Y => ts C D X Y.
+
+#col_two_sides
+assert forall (A B C P Q : point). col A B C => A!=C => ts A B P Q => ts A C P Q.
+
+#col_two_sides_bet
+assert forall (A B X Y : point). col A X Y => ts A B X Y => bet X A Y.
+
+#cong_symmetry
+assert forall (A B C D : point). cong A B C D => cong C D A B.
+
+#diff_bet_ex3
+assert forall (A B C : point). bet A B C =>(exists (D : point). A!=D && B!=D && C!=D && col A B D).
+
+#diff_col_ex
+assert forall (A B : point). exists (C : point). A!=C && B!=C && col A B C.
+
+#five_segment_with_def
+assert forall (A B C D A1 B1 C1 D1 : point). ofsc A B C D A1 B1 C1 D1 => A!=B => cong C D C1 D1.
+
+#invert_one_side
+assert forall (A B P Q : point). os A B P Q => os B A P Q.
+
+#invert_two_sides
+assert forall (A B P Q : point). ts A B P Q => ts B A P Q.
+
+#is_midpoint_id
+assert forall (A B : point). midpoint A A B => A=B.
+
+#le_cases
+assert forall (A B C D : point). le A B C D || le C D A B.
+
+#mid_two_sides
+assert forall (A B M X Y : point). midpoint M A B => ~col A B X => midpoint M X Y => ts A B X Y.
+
+#midpoint_bet
+assert forall (A B C : point). midpoint B A C => bet A B C.
+
+#midpoint_existence
+assert forall (A B : point). (exists (X : point). midpoint X A B).
+
+#not_two_sides_id
+assert forall (A P Q : point). ~ts P Q A A.
+
+#one_side_not_col123
+assert forall (A B X Y : point). os A B X Y => ~col A B X.
+
+#one_side_reflexivity
+assert forall (P Q A : point). ~col A P Q => os P Q A A. 
+
+#one_side_symmetry
+assert forall (P Q A B : point). os P Q A B => os P Q B A.
+
+#one_side_transitivity
+assert forall (P Q A B C : point). os P Q A B => os P Q B C => os P Q A C.
+
+#outer_transitivity_between
+assert forall (A B C D : point). bet A B C=> bet B C D => B!=C => bet A B D.
+
+#outer_transitivity_between2
+assert forall (A B C D : point). bet A B C => bet B C D => B!=C => bet A C D.
+
+#out_one_side
+assert forall (A B X Y : point). (~col A B X || ~col A B Y) => out A X Y => os A B X Y.
+
+#out_out_two_sides
+assert forall (A B X Y U V I : point). A!=B => ts A B X Y => col I A B => col I X Y => out I X U => col I Y V => ts A B U V.
+
+#out_trivial
+assert forall (P A : point). A!=P => out P A A.
+
+#perp_col
+assert forall (A B C D E : point). A!=E => perp A B C D => col A B E => perp A E C D.
+
+#perp_col2
+assert forall (A B C D X Y : point). perp A B X Y => C!=D => col A B C => col A B D => perp C D X Y.
+
+#perp_distinct
+assert forall (A B C D : point). perp A B C D => A!=B && C!=D.
+
+#point_construction_different
+assert forall (A B : point). (exists (C : point). bet A B C && B!=C).
+
+#sym_preserve_diff
+assert forall (A B M A1 B1 : point). A!=B => midpoint M A A1 => midpoint M B B1 => A1!=B1.
+
+#symmetric_point_uniqueness
+assert forall (A P P1 P2 : point). midpoint P A P1 => midpoint P A P2 => P1=P2.
+
+#ts_distincts
+assert forall (A B P Q : point). ts A B P Q => A!=B && A!=P && A!=Q && B!=P && B!=Q && P!=Q.
+
+#ts2_ex_bet2
+assert forall (A B C D : point). ts A C B D => ts B D A C => (exists (X : point). bet A X C && bet B X D).
+
+#two_sides_not_col
+assert forall (A B X Y : point). ts A B X Y => ~col A B X.

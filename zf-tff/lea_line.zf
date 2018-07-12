@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#bet_conga_bet
+assert forall (A B C A1 B1 C1 : point). bet A B C => congA A B C A1 B1 C1 => bet A1 B1 C1.
+
+#bet_in_angle_bet
+assert forall (A B C P : point). bet A B P => inAngle P A B C => bet A B C.
+
+goal forall (A B C P : point). bet  A B P => leA A B P A B C => bet  A B C.

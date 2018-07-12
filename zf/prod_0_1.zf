@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_par.zf".
+
+#pj_trivial
+assert forall (A B C : point). pj A B C C.
+
+goal forall (O E E1 A : point). ~col O E E1 => col O E A => prod O E E1 O A O.

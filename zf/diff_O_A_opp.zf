@@ -1,0 +1,21 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#diff_ar2
+assert forall (O E E1 A B AMB : point). diff O E E1 A B AMB => ar2 O E E1 A B AMB.
+
+#sum_ar2
+assert forall (O E E1 A B C : point). sum O E E1 A B C => ar2 O E E1 A B C.
+
+val O:point.
+val E:point.
+val E1:point.
+
+#sum_O_B
+assert forall (B : point). col O E B => sum O E E1 O B B.
+
+#sum_uniqueness
+assert forall (A B C1 C2 : point). sum O E E1 A B C1 => sum O E E1 A B C2 => C1=C2.
+
+goal forall (O E E1 A mA : point). diff O E E1 O A mA => opp O E E1 A mA.

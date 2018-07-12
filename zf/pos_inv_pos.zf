@@ -1,0 +1,52 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+
+val O : point.
+val E : point.
+val E1 : point.
+
+#diff_A_O
+assert forall (O E E1 A : point). ~col O E E1 => col O E A => diff O E E1 A O A.
+
+#diff_uniqueness
+assert forall (O E E1 A B D1 D2 : point). diff O E E1 A B D1 => diff O E E1 A B D2 => D1=D2.
+
+#neg_not_pos
+assert forall (O E A : point). ng O E A => ~ps O E A.
+
+#opp_comm
+assert forall (X Y : point). opp O E E1 X Y => opp O E E1 Y X.
+
+#opp_pos_neg
+assert forall (O E E1 A MA : point). ps O E A => opp O E E1 A MA => ng O E MA.
+
+#opp_prod
+assert forall (O E E1 ME X MX : point). opp O E E1 E ME => opp O E E1 X MX => prod O E E1 X ME MX.
+
+#pos_null_neg
+assert forall (O E E1 A MA : point). opp O E E1 A MA => ps O E A || O=A || ps O E MA.
+
+#prod_0_1
+assert forall (O E E1 A : point). ~col O E E1 => col O E A => prod O E E1 O A O.
+
+#prod_1_1
+assert forall (O E E1 A : point). ~col O E E1 => col O E A => prod O E E1 E A A.
+
+#prod_assoc1
+assert forall (O E E1 A B C AB BC ABC : point). prod O E E1 A B AB => prod O E E1 B C BC => (prod O E E1 A BC ABC => prod O E E1 AB C ABC).
+
+#prod_comm
+assert forall (O E E1 A B C : point). prod O E E1 A B C => prod O E E1 B A C.
+
+#prod_pos_pos
+assert forall (O E E1 A B AB : point). ps O E A => ps O E B => prod O E E1 A B AB => ps O E AB.
+
+#prod_uniqueness
+assert forall (A B C1 C2 : point). prod O E E1 A B C1 => prod O E E1 A B C2 => C1=C2.
+
+goal forall (O E E1 A IA : point). O!=A => leP O E E1 O A => prod O E E1 A IA E => leP O E E1 O IA.

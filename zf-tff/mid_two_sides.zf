@@ -1,0 +1,9 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_bet.zf".
+include"tarski_prop_bet.zf".
+
+goal forall (A B M X Y : point). midpoint M A B => ~col A B X => midpoint M X Y => ts A B X Y.

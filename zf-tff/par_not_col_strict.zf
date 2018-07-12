@@ -1,0 +1,13 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#all_coplanar
+assert forall (A B C D : point). coplanar A B C D.
+
+#col13
+assert forall (A B C D A1 B1 C1 D1 : point). ifsc A B C D A1 B1 C1 D1 => cong B D B1 D1.
+
+goal forall (A B C D P : point). par A B C D => col C D P => ~col A B P => par_strict A B C D.

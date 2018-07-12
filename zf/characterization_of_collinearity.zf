@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (O E E1 S U1 U2 A AX AY B BX BY C CX CY AXMBX AYMBY BXMCX BYMCY XProd YProd : point). cd O E S U1 U2 A AX AY => cd O E S U1 U2 B BX BY => cd O E S U1 U2 C CX CY => diff O E E1 AX BX AXMBX => diff O E E1 AY BY AYMBY => diff O E E1 BX CX BXMCX => diff O E E1 BY CY BYMCY => prod O E E1 AXMBX BYMCY XProd => prod O E E1 AYMBY BXMCX YProd => (col A B C <=> XProd=YProd).

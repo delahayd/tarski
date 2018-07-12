@@ -1,0 +1,6 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_perp.zf".
+
+goal forall ( A B C D : point). perp A B C D || perp B A C D ||perp A B D C || perp B A D C || perp C D A B || perp C D B A || perp D C A B || perp D C B A => perp A B C D.

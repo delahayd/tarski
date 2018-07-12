@@ -1,0 +1,7 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+goal exists (O E E1 S U1 U2 : point). ~col O E E1 && cs O E S U1 U2.

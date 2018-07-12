@@ -1,0 +1,17 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#111_31_2
+assert forall (A B C D E F : point). A!=B => C!=B => D!=E => F!=E => bet D E F =>leA A B C D E F.
+
+#bet_conga_bet
+assert forall (A B C A1 B1 C1 : point). bet A B C => congA A B C A1 B1 C1 => bet A1 B1 C1.
+
+#lea_asym
+assert forall (A B C D E F : point). leA A B C D E F => leA D E F A B C => congA A B C D E F.
+
+#lea_distincts
+assert forall (A B C D E F : point). leA A B C D E F => A!=B && C!=B && D!=E && F!=E.
+
+goal forall (A B C D E F : point). bet A B C => leA A B C D E F => bet D E F.

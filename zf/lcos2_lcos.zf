@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#113_6_bis
+assert forall (lp l1 l2 : point->point->prop) (a : point->point->point->prop).lcos lp l1 a => lcos lp l2 a => eqL l1 l2.
+
+#lcos_lg_anga
+assert forall (lp l : point->point->prop) (a : point->point->point->prop).lcos lp l a => lcos lp l a && q_cong l && q_cong lp && q_congA_acute a.
+
+goal forall (l1 l2 : point->point->prop) (a b c : point->point->point->prop). eq_lcos2 l1 a c l2 b c => eq_lcos l1 a l2 b.

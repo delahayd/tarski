@@ -1,0 +1,18 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_perp.zf".
+
+#anga_sym
+assert forall (A B C : point) (a : point->point->point->prop). q_congA_acute a => a A B C => a C B A.
+
+#lcos_lg_anga
+assert forall (lp l : point->point->prop) (a : point->point->point->prop).lcos lp l a => lcos lp l a && q_cong l && q_cong lp && q_congA_acute a.
+
+#lcos_per
+assert forall (A B C : point) (lp l : point->point->prop) (a : point->point->point->prop). q_congA_acute a =>q_cong l => q_cong lp => lcos lp l a => l A C => lp A B => a A B C => per A B C.
+
+#per_per_col
+assert forall (A B C X : point). per A X C => X!=C => per B X C => col A B X.
+
+goal forall (O A B  P : point) (lp la lb : point->point->prop) (a b : point->point->point->prop). lcos lp la a => lcos lp lb b => la O A => lb O B => lp O P => a A O P => b B O P => col A B P.

@@ -1,0 +1,12 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#length_id_2
+assert forall (O E E1 A : point). O!=E => length O E E1 A A O.
+
+goal forall (O E A : point). O!=E => ~(forall (E1 B C AB BC AC : point). bet A B C => length O E E1 A B AB => length O E E1 B C BC => length O E E1 A C AC => sum O E E1 AB BC AC).

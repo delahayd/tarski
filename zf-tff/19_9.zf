@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#19_8_2
+assert forall (P Q A B C : point). ts P Q A C => os P Q A B => ts P Q B C.
+
+#not_two_sides_id
+assert forall (A P Q : point). ~ts P Q A A.
+
+goal forall (P Q A B : point). ts P Q A B => ~os P Q A B.

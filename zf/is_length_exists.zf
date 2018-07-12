@@ -1,0 +1,10 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#length_id_2
+assert forall (O E E1 A : point). O!=E => length O E E1 A A O.
+
+goal forall (O E E1 X Y : point). ~col O E E1 => (exists (XY : point). is_length O E E1 X Y XY).

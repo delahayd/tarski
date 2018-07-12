@@ -1,0 +1,13 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+include "tarski_out.zf".
+
+#conga_distinct
+assert forall (A B C D E F : point). congA A B C D E F => congA A B C D E F && A!=B && C!=B && D!=E && F!=E.
+
+#out_conga
+assert forall (A B C A1 B1 C1 A0 C0 A2 C2 : point). congA A B C A1 B1 C1 => out B A A0 => out B C C0 => out B1 A1 A2 => out B1 C1 C2 => congA A0 B C0 A2 B1 C2.
+
+goal forall (A B C P P1 : point). ~out B A C => congA P B A P B C => congA P1 B A P1 B C => col B P P1.

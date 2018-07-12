@@ -1,0 +1,14 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#acute_col_out
+assert forall (A B C : point). acute A B C => col A B C => out B A C.
+
+#anga_acute
+assert forall (A B C : point) (a : point->point->point->prop). q_congA_acute a => a A B C => acute A B C.
+
+#out_conga_out
+assert forall (A B C D E F : point). out B A C => congA A B C D E F => out E D F.
+
+goal forall (A B C : point) ( a : point->point->point->prop). q_congA_acute a => ~q_congA_null_acute a => a A B C => ~col A B C.

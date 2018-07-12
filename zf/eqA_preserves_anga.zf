@@ -1,0 +1,21 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_conga.zf".
+
+#acute_lea_acute
+assert forall (A B C D E F : point). acute D E F => leA A B C D E F => acute A B C.
+
+#eqA_preserves_ang
+assert forall (a b : point->point->point->prop). q_congA a => eqA a b => q_congA b.
+
+#in_angle_trivial_2
+assert forall (A B C : point). A!=B => C!=B => inAngle C A B C.
+
+#is_ang_conga
+assert forall (A B C A1 B1 C1 : point) (a : point->point->point->prop). ang A B C a => ang A1 B1 C1 a => congA A B C A1 B1 C1.
+
+#is_ang_conga_is_ang
+assert forall (A B C A1 B1 C1 : point) (a : point->point->point->prop). ang A B C a => congA A B C A1 B1 C1 => ang A1 B1 C1 a.
+
+goal forall (a b : point->point->point->prop). q_congA_acute a => q_congA b => eqA a b => q_congA_acute b.

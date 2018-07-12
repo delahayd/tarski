@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#112_22_a
+assert forall (A B C D P : point). out P A C => os P A B D => par A B C D => congA B A P D C P.
+
+#112_22_b
+assert forall (A B C D P : point). out P A C => os P A B D => congA B A P D C P => par A B C D.
+
+goal forall (A B C D P : point). out P A C => os P A B D => (congA B A P D C P <=> par A B C D).

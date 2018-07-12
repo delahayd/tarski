@@ -1,0 +1,17 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_bet.zf".
+
+#16_21
+assert forall (A B C D P Q : point). ~col A B C => C!=D => col A B P => col A B Q => col C D P => col C D Q => P=Q.
+
+#outer_transitivity_between
+assert forall (A B C D : point). bet A B C=> bet B C D => B!=C => bet A B D.
+
+#outer_transitivity_between2
+assert forall (A B C D : point). bet A B C => bet B C D => B!=C => bet A C D.
+
+goal forall (A B X Y U V I : point). A!=B => ts A B X Y => col I A B => col I X Y => out I X U => col I Y V => ts A B U V.

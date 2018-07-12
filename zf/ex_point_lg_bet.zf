@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (A M : point) (l : point->point->prop). q_cong l => (exists (B : point). l M B && bet A M B).

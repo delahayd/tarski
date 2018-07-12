@@ -1,0 +1,23 @@
+# $Id$
+# ||
+val point : type.
+val bet : point -> point -> point -> prop.
+val cong : point -> point -> point -> point -> prop.
+val PA : point.
+val PB : point.
+val PC : point.
+
+assert forall (A B : point). cong A B B A.
+assert forall (A B C D E F : point).cong A B C D => cong A B E F => cong C D E F.
+assert forall (A B C : point). cong A B C C => A = B.
+assert forall (A B C D : point). exists (E :point). bet A B E && cong B E C D.
+assert forall (A B C D A1 B1 C1 D1 : point). cong A B A1 B1 => cong B C B1 C1 => cong A D A1 D1 => cong B D B1 D1 => bet A B C => bet A1 B1 C1 => A!=B => cong C D C1 D1.
+assert forall (A B : point). bet A B A => A=B.
+assert forall (A B C P Q : point). bet A P C => bet B Q C =>(exists (X : point). bet P X B && bet Q X A).
+
+assert  ~(bet PA PB PC || bet PB PC PA || bet PC PA PB).
+assert forall (A B C P Q : point). cong A P A Q => cong B P B Q => cong C P C Q => P!=Q => bet A B C || bet B C A || bet C A B.
+assert forall (A B C D T : point). exists (X Y : point). bet A D T => bet B D C => A!=D => bet A B X && bet A C Y && bet X T Y.
+
+assert forall (A B : point). A=B || A!=B.
+

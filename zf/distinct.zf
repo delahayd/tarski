@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (P Q R : point). P!=Q => (R!=P || R!=Q).

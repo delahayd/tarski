@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#out_is_len_eq
+assert forall (A B C : point) (l : point->point->prop).  out A B C => len A B l => len A C l => B=C.
+
+goal forall (A B C : point) (l : point->point->prop). q_cong l => out A B C => l A B => l A C => B=C.

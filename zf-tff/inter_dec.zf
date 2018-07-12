@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal decidability_of_intersection.

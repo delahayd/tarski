@@ -1,0 +1,31 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_conga.zf".
+include "tarski_perp.zf".
+
+#111_18_1
+assert forall (A B C D : point). bet C B D => B!=C => B!=D => A!=B => per A B C => congA A B C A B D.
+
+#acute_obtuse_lta
+assert forall (A B C D E F : point). acute A B C => obtuse D E F => ltA A B C D E F.
+
+#angle_partition
+assert forall (A B C : point). A!=B => B!=C => acute A B C || per A B C || obtuse A B C.
+
+#bet_acute_obtuse
+assert forall (A B C A1 : point). bet A B A1 => A1!=B => acute A B C => obtuse A1 B C.
+
+#bet_obtuse_acute
+assert forall (A B C A1 : point). bet A B A1 => A1!=B => obtuse A B C => acute A1 B C.
+
+#conga_preserves_lta
+assert forall (A B C D E F A1 B1 C1 D1 E1 F1 : point). congA A B C A1 B1 C1 => congA D E F D1 E1 F1 => ltA A B C D E F => ltA A1 B1 C1 D1 E1 F1.
+
+#lta_diff
+assert forall (A B C D E F : point). ltA A B C D E F => ltA A B C D E F && A!=B && C!=B && D!=E && F!=E.
+
+#lta_trans
+assert forall (A B C A1 B1 C1 A2 B2 C2 : point). ltA A B C A1 B1 C1 => ltA A1 B1 C1 A2 B2 C2 => ltA A B C A2 B2 C2.
+
+goal forall (A B C A1 : point). bet A B A1 => B!=A1 => (acute A B C <=> ltA A B C A1 B C).

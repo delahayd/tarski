@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#diff_opp
+assert forall (O E E1 A B AmB BmA : point). diff O E E1 A B AmB => diff O E E1 B A BmA => opp O E E1 AmB BmA.
+
+#opp_prod
+assert forall (O E E1 ME X MX : point). opp O E E1 E ME => opp O E E1 X MX => prod O E E1 X ME MX.
+
+goal forall (O E E1 A B AMB BMA ME : point). opp O E E1 E ME => diff O E E1 A B AMB => diff O E E1 B A BMA => prod O E E1 AMB ME BMA.

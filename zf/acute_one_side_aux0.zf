@@ -1,0 +1,25 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_perp.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#111_31_2
+assert forall (A B C D E F : point). A!=B => C!=B => D!=E => F!=E => bet D E F =>leA A B C D E F.
+
+#acute_per_lta
+assert forall (A B C D E F : point). acute A B C => D!=E => E!=F => per D E F => ltA A B C D E F.
+
+#lea_nlta
+assert forall (A B C D E F : point). leA A B C D E F => ~ltA D E F A B C.
+
+#out_one_side
+assert forall (A B X Y : point). (~col A B X || ~col A B Y) => out A X Y => os A B X Y.
+
+#per_not_col
+assert forall (A B C : point). A!=B => B!=C => per A B C => ~col A B C.
+
+goal forall (P A O B : point). col A O P => acute A O P => perp O A B O =>os O B A P.

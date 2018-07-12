@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#perp_out_acute
+assert forall (A B C C1 : point). out B A C1 => perp A B C C1 => acute A B C.
+
+goal forall (A B C C1 : point). perp A B C C1 => col A B C1 => (acute A B C <=> out B A C1).

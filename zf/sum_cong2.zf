@@ -1,0 +1,13 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+val O : point.
+val E : point.
+val E1 : point.
+assert ~col O E E1.
+
+#sum_cong
+assert forall (A B C : point). sum O E E1 A B C => (A!=O || B!=O) => parallelogram_flat O A B C.
+
+goal forall (A B C : point). sum O E E1 A B C => (A!=O || B!=O) => (cong O A B C && cong O B A C).

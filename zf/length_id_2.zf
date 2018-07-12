@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#col_trivial_3
+assert forall (A B : point). col A B A.
+
+#cong_trivial_identity
+assert forall (A B : point). cong A A B B.
+
+goal forall (O E E1 A : point). O!=E => length O E E1 A A O.

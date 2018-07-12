@@ -1,0 +1,36 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+val O : point.
+val E : point.
+val E1 : point.
+
+#diff_ar2
+assert forall (O E E1 A B AMB : point). diff O E E1 A B AMB => ar2 O E E1 A B AMB.
+
+#diff_uniqueness
+assert forall (O E E1 A B D1 D2 : point). diff O E E1 A B D1 => diff O E E1 A B D2 => D1=D2.
+
+#distr_1_diff
+assert forall (O E E1 A B C BMC AB AC ABMC : point). diff O E E1 B C BMC => prod O E E1 A B AB => prod O E E1 A C AC => prod O E E1 A BMC ABMC => diff O E E1 AB AC ABMC.
+
+#distr_r
+assert forall (O E E1 A B C D AC BC DC : point). sum O E E1 A B D => prod O E E1 A C AC => prod O E E1 B C BC => (prod O E E1 D C DC => sum O E E1 AC BC DC).
+
+#prod_comm
+assert forall (O E E1 A B C : point). prod O E E1 A B C => prod O E E1 B A C.
+
+#prod_uniqueness
+assert forall (A B C1 C2 : point). prod O E E1 A B C1 => prod O E E1 A B C2 => C1=C2.
+
+#sum_diff_diff_b
+assert forall (O E E1 A B C dBA dCB dCA : point). diff O E E1 B A dBA => diff O E E1 C B dCB => sum O E E1 dCB dBA dCA => diff O E E1 C A dCA.
+
+#sum_uniqueness
+assert forall (A B C1 C2 : point). sum O E E1 A B C1 => sum O E E1 A B C2 => C1=C2.
+
+
+goal forall (O E E1 A B A2 B2 A2MB2 APB AMB F : point). prod O E E1 A A A2 => prod O E E1 B B B2 => diff O E E1 A2 B2 A2MB2 => sum O E E1 A B APB => diff O E E1 A B AMB => prod O E E1 APB AMB F => A2MB2=F.

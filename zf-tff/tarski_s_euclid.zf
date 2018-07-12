@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (A B C D T : point). bet A D T => bet B D C => A!=D => (exists (X Y : point). bet A B X && bet A C Y && bet X T Y).

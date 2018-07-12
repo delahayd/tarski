@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#double_null_null
+assert forall (O E E1 A : point). sum O E E1 A A O => A=O.
+
+goal forall (O E E1 A C : point). sum O E E1 A A C => A!=O => C!=O.

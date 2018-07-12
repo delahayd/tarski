@@ -1,0 +1,6 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+
+goal forall (A0 B0 C0 A1 B1 C1 A2 B2 C2 : point). cong_3 A0 B0 C0 A1 B1 C1 => cong_3 A1 B1 C1 A2 B2 C2 => cong_3 A0 B0 C0 A2 B2 C2.

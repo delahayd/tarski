@@ -1,0 +1,15 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+
+#out_out_one_side
+assert forall (A B X Y Z : point). os A B X Y => out A Y Z => os A B X Z.
+
+#one_side_symmetry
+assert forall (P Q A B : point). os P Q A B => os P Q B A.
+
+#16_6
+assert forall (P A B : point). out P A B => out P B A.
+
+goal forall (A B X Y : point). (~col A B X || ~col A B Y) => out A X Y => os A B X Y.

@@ -1,0 +1,72 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_perp.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_conga.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+include "tarski_out.zf".
+include "tarski_side.zf".
+
+#18_8
+assert forall (A B : point). per A B A => A=B.
+
+#19_8_2
+assert forall (P Q A B C : point). ts P Q A C => os P Q A B => ts P Q B C.
+
+
+#110_15
+assert forall (A B C P : point). col A B C => ~col A B P => (exists (Q : point). perp A B Q C && os A B P Q).
+
+#111_13
+assert  forall (A B C D E F A1 D1 : point). congA A B C D E F => bet A B A1 => A1!=B => bet D E D1 => D1!=E => congA A1 B C D1 E F.
+
+#111_16
+assert forall (A B C A1 B1 C1 : point). per A B C => A!=B => C!=B => per A1 B1 C1 => A1!=B1 => C1!=B1 => congA A B C A1 B1 C1.
+
+#col_one_side
+assert forall (A B C P Q : point). col A B C => A!=C => os A B P Q => os A C P Q.
+
+#col_in_angle_out
+assert  forall (A B C P : point). col B A P => ~bet A B C => inAngle P A B C => out B A P.
+
+#conga_distinct
+assert forall (A B C D E F : point). congA A B C D E F => congA A B C D E F && A!=B && C!=B && D!=E && F!=E.
+
+#conga_preserves_in_angle
+assert forall (A B C I A1 B1 C1 I1 : point). congA A B C A1 B1 C1 => congA A B I A1 B1 I1 => inAngle I A B C => os A1 B1 I1 C1 => inAngle I1 A1 B1 C1.
+
+#col_one_side_out
+assert forall (A B X Y : point). col A X Y => os A B X Y => out A X Y.
+
+#conga_preserves_lta
+assert forall (A B C D E F A1 B1 C1 D1 E1 F1 : point). congA A B C A1 B1 C1 => congA D E F D1 E1 F1 => ltA A B C D E F => ltA A1 B1 C1 D1 E1 F1.
+
+#conga_trans
+assert forall (A B C A1 B1 C1 A2 B2 C2 : point). congA A B C A1 B1 C1 => congA A1 B1 C1 A2 B2 C2 => congA A B C A2 B2 C2.
+
+#one_side_transitivity
+assert forall (P Q A B C : point). os P Q A B => os P Q B C => os P Q A C.
+
+#out_conga
+assert forall (A B C A1 B1 C1 A0 C0 A2 C2 : point). congA A B C A1 B1 C1 => out B A A0 => out B C C0 => out B1 A1 A2 => out B1 C1 C2 => congA A0 B C0 A2 B1 C2.
+
+
+#out_one_side
+assert forall (A B X Y : point). (~col A B X || ~col A B Y) => out A X Y => os A B X Y.
+
+#per_not_col
+assert forall (A B C : point). A!=B => B!=C => per A B C => ~col A B C.
+
+#perp_col
+assert forall (A B C D E : point). A!=E => perp A B C D => col A B E => perp A E C D.
+
+#perp_distinct
+assert forall (A B C D : point). perp A B C D => A!=B && C!=D.
+
+#perp_not_col
+assert forall (A B P : point). perp A B P A => ~col A B P.
+
+goal forall (A B C P : point). B!=C => bet A B C => acute A B P => obtuse C B P.

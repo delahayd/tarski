@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (A B P P1 Y : point). reflectL_at Y P P1 A B => col P P1 Y.

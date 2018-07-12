@@ -1,0 +1,7 @@
+ #$Id$
+
+include "tarski_def.zf".
+
+goal forall (O E E1 S U1 U2 A AX AY B BX BY C CX CY BXMAX CXMAX AB AC IAC T : point). cd O E S U1 U2 A AX AY => cd O E S U1 U2 B BX BY => cd O E S U1 U2 C CX CY => ~col O E E1 => col O E AX => col O E BX => col O E CX => col O E BXMAX => col O E CXMAX => col O E T => col O E AB => col O E AC => col O E IAC => diff O E E1 BX AX BXMAX => diff O E E1 CX AX CXMAX => length O E E1 A B AB => length O E E1 A C AC => prod O E E1 T AC AB => prod O E E1 IAC AC E => bet A B C => A != B => A != C => B != C => prod O E E1 T CXMAX BXMAX.
+
+

@@ -1,0 +1,20 @@
+# $Id$
+
+include "tarski_def.zf".
+
+val O : point.
+val E : point.
+val E1 : point.
+
+#sum_ar2
+assert forall (O E E1 A B C : point). sum O E E1 A B C => ar2 O E E1 A B C.
+
+#sum22_permut
+assert forall (O E E1 A B C D S : point). sum22 O E E1 A B C D S => sum22 O E E1 D A B C S.
+
+#sum_comm
+assert forall (A B C : point). sum O E E1 A B C => sum O E E1 B A C.
+
+#sum_uniqueness
+assert forall (A B C1 C2 : point). sum O E E1 A B C1 => sum O E E1 A B C2 => C1=C2.
+goal forall (O E E1 A B C D AB CD BC AD S : point). sum O E E1 A B AB => sum O E E1 C D CD => sum O E E1 B C BC => sum O E E1 A D AD => sum O E E1 AB CD S => sum O E E1 BC AD S.

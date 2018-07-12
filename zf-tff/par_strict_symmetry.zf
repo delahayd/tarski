@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#coplanar_perm_16
+assert forall (A B C D : point). coplanar A B C D => coplanar C D A B.
+
+goal forall (A B C D : point). par_strict A B C D => par_strict C D A B.

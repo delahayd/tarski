@@ -1,0 +1,17 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_par.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#16_21
+assert forall (A B C D P Q : point). ~col A B C => C!=D => col A B P => col A B Q => col C D P => col C D Q => P=Q.
+
+#prod_0_1
+assert forall (O E E1 A : point). ~col O E E1 => col O E A => prod O E E1 O A O.
+
+#prod_O_1_eq
+assert forall (O E E1 B C : point). prod O E E1 O B C => C=O.
+
+goal forall (O E E1 B C O1 A1 B1 C1 : point). par_strict O E O1 E1 => ar1 O E O B C => ar1 O1 E1 A1 B1 C1 => pj O O1 E E1 => pj O O1 O A1 => pj O O1 B B1 => pj O O1 C C1 => prod O E E1 O B C => prod O1 E1 E A1 B1 C1.

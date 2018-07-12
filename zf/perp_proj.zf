@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_prop_orthogonality.zf".
+include "tarski_perp.zf".
+
+goal forall (A B C D : point). perp A B C D => ~col A C D => (exists (X : point). col A B X && perp A X C D).

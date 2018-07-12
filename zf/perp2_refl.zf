@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_perp.zf".
+
+goal forall (A B P : point). A!=B => perp2 A B A B P.

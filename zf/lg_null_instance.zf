@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (A : point) (l : point->point->prop). q_cong_null l => l A A.

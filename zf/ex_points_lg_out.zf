@@ -1,0 +1,9 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+
+#16_6
+assert forall (P A B : point). out P A B => out P B A.
+
+goal forall (A P : point) (l : point->point->prop). A!=P => q_cong l => ~q_cong_null l => (exists (B : point). l A B  && out A B P).

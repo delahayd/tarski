@@ -1,0 +1,14 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#18_7
+assert forall (A B C : point). per A B C => per A C B => B=C.
+
+#per_col
+assert forall (A B C D : point). B!=C => per A B C =>  col B C D => per A B D.
+
+
+goal forall (A B C D B1 : point). B!=C => B1!=C => C!=D => col B C D => per A B C => per A B1 C => B=B1 || ~col B1 C D.

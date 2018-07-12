@@ -1,0 +1,75 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+include "tarski_out.zf".
+
+val O : point.
+val E : point.
+val E1 : point.
+
+#15_2
+assert forall (A B C D : point). A!=B => bet A B C => bet A B D => bet B C D || bet B D C.
+
+#15_3
+assert forall (A B C D : point). bet A B D => bet A C D => bet A B C || bet A C B.
+
+#114_36_a
+assert forall (O E E1 A B C : point). sum O E E1 A B C => out O A B => bet O A C.
+
+#col_pos_or_neg
+assert forall (O E X : point). O!=E => O!=X => col O E X => ps O E X || ng O E X.
+
+#diff_A_O
+assert forall (O E E1 A : point). ~col O E E1 => col O E A => diff O E E1 A O A.
+
+#diff_O_A_opp
+assert forall (O E E1 A mA : point). diff O E E1 O A mA => opp O E E1 A mA.
+
+#diff_ar2
+assert forall (O E E1 A B AMB : point). diff O E E1 A B AMB => ar2 O E E1 A B AMB.
+
+#diff_null_eq
+assert forall (O E E1 A B : point). diff O E E1 A B O => A=B.
+
+#diff_sum
+assert forall (O E E1 A B S : point). diff O E E1 S A B => sum O E E1 A B S.
+
+#diff_uniqueness
+assert forall (O E E1 A B D1 D2 : point). diff O E E1 A B D1 => diff O E E1 A B D2 => D1=D2.
+
+#ltP_neg
+assert forall (O E E1 A : point). ltP O E E1 A O => ng O E A.
+
+#ltP_neq
+assert forall (O E E1 A B : point). ltP O E E1 A B => A!=B.
+
+#neg_not_pos
+assert forall (O E A : point). ng O E A => ~ps O E A.
+
+#not_pos_and_neg
+assert forall (O E A : point). ~(ps O E A && ng O E A).
+
+#O_not_positive
+assert forall (O E : point). ~ps O E O.
+
+#opp_neg_pos
+assert forall (O E E1 A MA : point). ng O E A => opp O E E1 A MA => ps O E MA.
+
+#ps_le
+assert forall (O E E1 X : point). ~col O E E1 => bet O X E || bet O E X => leP O E E1 O X.
+
+#sum_A_O
+assert forall (A : point). col O E A => sum O E E1 A O A.
+
+#sum_cong
+assert forall (A B C : point). sum O E E1 A B C => (A!=O || B!=O) => parallelogram_flat O A B C.
+
+
+#sum_uniqueness
+assert forall (A B C1 C2 : point). sum O E E1 A B C1 => sum O E E1 A B C2 => C1=C2.
+
+goal forall (O E E1 A B C : point). bet A B C => ltP O E E1 A B => leP O E E1 B C.

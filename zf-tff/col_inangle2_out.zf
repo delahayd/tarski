@@ -1,0 +1,29 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_out.zf".
+include "tarski_side.zf".
+
+#16_7
+assert forall (P A B C : point). out P A B => out P B C => out P A C. 
+
+#col_in_angle_out
+assert  forall (A B C P : point). col B A P => ~bet A B C => inAngle P A B C => out B A P.
+
+#col_one_side_out
+assert forall (A B X Y : point). col A X Y => os A B X Y => out A X Y.
+
+#in_angle_one_side
+assert forall (A B C P : point). ~col A B C => ~col B A P => inAngle P A B C => os A B P C.
+
+#one_side_transitivity
+assert forall (P Q A B C : point). os P Q A B => os P Q B C => os P Q A C.
+
+#out_in_angle_out
+assert forall (A B C P : point). out B A C => inAngle P A B C => out B A P.
+
+#not_bet_out
+assert forall (A B C : point). col A B C => ~bet A B C => out B A C.
+
+
+goal forall (A B C P Q : point). ~bet A B C => inAngle P A B C => inAngle Q A B C =>col B P Q => out B P Q.

@@ -1,0 +1,19 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#bet_out
+assert forall (A B C : point). B!=A => bet A B C => out A B C.
+
+#ts_distincts
+assert forall (A B P Q : point). ts A B P Q => A!=B && A!=P && A!=Q && B!=P && B!=Q && P!=Q.
+
+#ts2_ex_bet2
+assert forall (A B C D : point). ts A C B D => ts B D A C => (exists (X : point). bet A X C && bet B X D). 
+
+#two_sides_not_col
+assert forall (A B X Y : point). ts A B X Y => ~col A B X.
+
+goal forall (A B C P : point). ts A C B P => ts B P A C => inAngle P A B C.

@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (O E X : point). O!=E => O!=X => col O E X => ps O E X || ng O E X.

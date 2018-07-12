@@ -1,0 +1,19 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_out.zf".
+include "tarski_bet.zf".
+
+#16_7
+assert forall (P A B C : point). out P A B => out P B C => out P A C.
+
+#114_36_a
+assert forall (O E E1 A B C : point). sum O E E1 A B C => out O A B => bet O A C.
+
+#diff_sum
+assert forall (O E E1 A B S : point). diff O E E1 S A B => sum O E E1 A B S.
+
+#ltP_pos
+assert forall (O E E1 A : point). ltP O E E1 O A => ps O E A.
+
+goal forall (O E E1 AB CD : point). leP O E E1 AB CD => leP O E E1 O AB => leP O E E1 O CD => bet O AB CD.

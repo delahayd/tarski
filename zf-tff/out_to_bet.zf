@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (A B C A1 B1 C1 : point). col A1 B1 C1 => (out B A C <=> out B1 A1 C1) => bet A B C => bet A1 B1 C1.

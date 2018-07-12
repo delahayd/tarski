@@ -1,0 +1,51 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#15_5_1
+assert forall (A B C D : point). le A B C D => (exists (x : point). bet A B x && cong A x C D).
+
+#15_5_2
+assert forall (A B C D : point). (exists (x : point). bet A B x && cong A x C D)=>le A B C D.
+
+#between_cong
+assert forall (A B C : point). bet A C B => cong A C A B => C=B.
+
+#between_equality
+assert forall (A B C : point). bet A B C => bet B A C => A=B.
+
+#15_6
+assert forall (A B C D A1 B1 C1 D1 : point). le A B C D => cong A B A1 B1 => cong C D C1 D1 => le A1 B1 C1 D1.
+
+#le_anti_symmetry
+assert forall (A B C D : point). le A B C D => le C D A B => cong A B C D.
+
+#le_transitivity
+assert forall (A B C D E F : point). le A B C D => le C D E F => le A B E F.
+
+#le1221
+assert forall (A B : point). le A B B A.
+
+#15_2
+assert forall (A B C D : point). A!=B => bet A B C => bet A B D => bet B C D || bet B D C.
+
+#le_comm
+assert forall (A B C D : point). le A B C D => le B A D C.
+
+#bet_le1213
+assert forall (A B C : point). bet A B C => le A B A C.
+
+#15_12_a
+assert forall (A B C : point). bet A B C => le A B A C && le B C A C.
+
+#le_cases
+assert forall (A B C D : point). le A B C D || le C D A B.
+
+#Cong_dec
+assert forall (A B C D : point). cong A B C D || ~cong A B C D.
+
+#cong_le
+assert forall (A B C D : point). cong A B C D => le A B C D.
+
+#le_zero
+assert forall (A B C : point). le A B C C => A=B.

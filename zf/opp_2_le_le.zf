@@ -1,0 +1,24 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+val O : point.
+val E : point.
+val E1 : point.
+#compatibility_of_sum_with_order
+assert forall (O E E1 A B C APC BPC : point). leP O E E1 A B => sum O E E1 A C APC => sum O E E1 B C BPC => leP O E E1 APC BPC.
+
+#sum_A_O
+assert forall (A : point). col O E A => sum O E E1 A O A.
+
+#sum_O_B
+assert forall (B : point). col O E B => sum O E E1 O B B.
+
+#sum_assoc_2
+assert forall (O E E1 A B C AB BC ABC : point). sum O E E1 A B AB => sum O E E1 B C BC => sum O E E1 AB C ABC => sum O E E1 A BC ABC.
+
+#sum_comm
+assert forall (A B C : point). sum O E E1 A B C => sum O E E1 B A C.
+
+goal forall (O E E1 A MA B MB : point). opp O E E1 A MA => opp O E E1 B MB => leP O E E1 A B => leP O E E1 MB MA.

@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#18_14_2_1b_bis
+assert forall (A B C D X : point). perp A B C D => col X A B => col X C D => perp_at X A B C D.
+
+goal forall (X A B C D : point). perp A B C D => (forall (Y : point). col Y A B => col Y C D => X=Y) => perp_at X A B C D.

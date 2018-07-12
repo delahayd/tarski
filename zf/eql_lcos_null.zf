@@ -1,0 +1,24 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_cong.zf".
+
+#14_18
+assert forall (A B C C1 : point). A!=B => col A B C => cong A C A C1 => cong B C B C1 => C=C1.
+
+#17_3
+assert forall (M A : point). midpoint M A A => M=A.
+
+#anga_conga
+assert forall (A B C A1 B1 C1 : point) (a : point->point->point->prop). q_congA_acute a => a A B C => a A1 B1 C1 => congA A B C A1 B1 C1.
+
+#eq_conga_out
+assert forall (A B D E F : point). congA A B A D E F => out E D F.
+
+#lg_cong
+assert forall (A B C D : point) (l : point->point->prop). q_cong l => l A B => l C D => cong A B C D.
+
+
+goal forall (lp l : point->point->prop) (a : point->point->point->prop). lcos l lp a => eqL l lp => q_congA_null_acute a.

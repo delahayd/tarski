@@ -1,0 +1,29 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+val O : point.
+val E : point.
+val E1 : point.
+
+#pj_uniqueness
+assert forall (O E E1 A A1 A2 : point). ~col O E E1 => col O E A => col O E1 A1 => col O E1 A2 => pj E E1 A A1 => pj E E1 A A2 => A1=A2.
+
+#proj_preserves_sum
+assert forall (O E E1 A B C A1 B1 C1 : point). sum O E E1 A B C => ar1 O E1 A1 B1 C1 => pj E E1 A A1 => pj E E1 B B1 => pj E E1 C C1 => sum O E1 E A1 B1 C1.
+
+#prod_uniqueness
+assert forall (A B C1 C2 : point). prod O E E1 A B C1 => prod O E E1 A B C2 => C1=C2.
+
+#sum_O_O
+assert sum O E E1 O O O.
+
+#sum_x_axis_unit_change
+assert forall (O E E1 U A B C : point). sum O E E1 A B C => col O E U => U!=O => sum O U E1 A B C.
+
+#sum_y_axis_change
+assert forall (O E E1 E2 A B C : point). sum O E E1 A B C => ~col O E E2 => sum O E E2 A B C.
+
+goal forall (O E E1 A B C D AB AC AD : point). sum O E E1 B C D => prod O E E1 A B AB =>prod O E E1 A C AC => (prod O E E1 A D AD => sum O E E1 AB AC AD).

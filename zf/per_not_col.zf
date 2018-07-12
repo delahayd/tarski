@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include"tarski_prop_orthogonality.zf".
+
+goal forall (A B C : point). A!=B => B!=C => per A B C => ~col A B C.

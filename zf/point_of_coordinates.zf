@@ -1,0 +1,39 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_perp.zf".
+include "tarski_cong.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#14_13
+assert forall (A B C A1 B1 C1 : point). col A B C => cong_3 A B C A1 B1 C1 => col A1 B1 C1.
+
+#16_21
+assert forall (A B C D P Q : point). ~col A B C => C!=D => col A B P => col A B Q => col C D P => col C D Q => P=Q.
+
+#112_9
+assert forall (A1 A2 B1 B2 C1 C2 : point). perp A1 A2 C1 C2 => perp B1 B2 C1 C2 =>perp A1 A2 B1 B2.
+
+#all_coplanar
+assert forall (A B C D : point). coplanar A B C D.
+
+#coord_exchange_axes
+assert forall (O E S U1 U2 P X Y : point). cd O E S U1 U2 P X Y => cd O E S U2 U1 P X Y.
+
+#grid_exchange_axes
+assert forall (O E S U1 U2 : point). cs O E S U1 U2 => cs O E S U2 U1.
+
+#perp_col0
+assert forall (A B C D X Y : point). perp A B C D => X!=Y => col A B X => col A B Y => perp C D X Y.
+
+#perp_not_col
+assert forall (A B P : point). perp A B P A => ~col A B P.
+
+#point_of_coordinates_on_an_axis
+assert forall (O E S U1 U2 X : point). cs O E S U1 U2 => col O E X => O!=X => (exists (P : point). cd O E S U1 U2 P X O).
+
+#point_of_coordiantes_origin
+assert forall (O E S U1 U2 : point). cs O E S U1 U2 => cd O E S U1 U2 S O O.
+
+goal forall (O E S U1 U2 X Y : point). cs O E S U1 U2 => col O E X => col O E Y => (exists (P : point). cd O E S U1 U2 P X Y).

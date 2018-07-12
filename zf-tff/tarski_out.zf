@@ -1,0 +1,12 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#bet_out
+assert forall (A B C : point). B!=A => bet A B C => out A B C.
+
+#out_trivial
+assert forall (P A : point). A!=P => out P A A.
+
+#16_6
+assert forall (P A B : point). out P A B => out P B A.

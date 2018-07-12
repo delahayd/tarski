@@ -1,0 +1,20 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+val O : point.
+val E : point.
+val E1 : point.
+
+#cong_sum
+assert forall (A B C : point). O!=C || B!=A => ar2 O E E1 A B C => cong O A B C => cong O B A C => sum O E E1 A B C.
+
+#opp0
+assert opp O E E1 O O.
+
+#opp_comm
+assert forall (X Y : point). opp O E E1 X Y => opp O E E1 Y X.
+
+goal forall (O E E1 A B : point). ar2 O E E1 O A B => midpoint O A B => opp O E E1 A B.

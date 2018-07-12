@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#le_transitivity
+assert forall (A B C D E F : point). le A B C D => le C D E F => le A B E F.
+
+#le1221
+assert forall (A B : point). le A B B A.
+
+goal forall (A B C D : point). le A B C D => le A B D C.

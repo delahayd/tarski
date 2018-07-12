@@ -1,0 +1,18 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_perp.zf".
+
+#14_13
+assert forall (A B C A1 B1 C1 : point). col A B C => cong_3 A B C A1 B1 C1 => col A1 B1 C1.
+
+#all_coplanar
+assert forall (A B C D : point). coplanar A B C D.
+
+#perp_col0
+assert forall (A B C D X Y : point). perp A B C D => X!=Y => col A B X => col A B Y => perp C D X Y.
+
+goal forall (O E S U1 U2 X : point). cs O E S U1 U2 => col O E X => O!=X => (exists (P : point). cd O E S U1 U2 P X O).

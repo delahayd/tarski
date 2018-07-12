@@ -1,0 +1,6 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+
+goal forall (l1 l2 : point->point->prop). q_cong l1 => q_cong l2 => (exists (A B : point). l1 A B && l2 A B) => eqL l1 l2.

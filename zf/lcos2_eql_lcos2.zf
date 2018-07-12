@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#lcos_lg_anga
+assert forall (lp l : point->point->prop) (a : point->point->point->prop).lcos lp l a => lcos lp l a && q_cong l && q_cong lp && q_congA_acute a.
+
+goal forall (lla llb la lb : point->point->prop) (a b : point->point->point->prop). lcos2 lla llb a b => eqL lla llb => eqL la lb => lcos2 lb llb a b.

@@ -1,0 +1,13 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#playfair_implies_par_trans
+assert (forall (A1 A2 B1 B2 C1 C2 P : point). par A1 A2 B1 B2 => col P B1 B2 => par A1 A2 C1 C2 => col P C1 C2 => col C1 B1 B2 && col C2 B1 B2) => (forall (A1 A2 B1 B2 C1 C2 : point). par A1 A2 B1 B2 => par B1 B2 C1 C2 => par A1 A2 C1 C2).
+
+
+#parallel_uniqueness
+assert forall (A1 A2 B1 B2 C1 C2 P : point). par A1 A2 B1 B2 => col P B1 B2 => par A1 A2 C1 C2 => col P C1 C2 => col C1 B1 B2 && col C2 B1 B2.
+
+
+goal forall (A1 A2 B1 B2 C1 C2 : point). par A1 A2 B1 B2 => par B1 B2 C1 C2 => par A1 A2 C1 C2.

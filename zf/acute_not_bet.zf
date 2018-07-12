@@ -1,0 +1,16 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+
+#bet_conga_bet
+assert forall (A B C A1 B1 C1 : point). bet A B C => congA A B C A1 B1 C1 => bet A1 B1 C1.
+
+#conga_distinct
+assert forall (A B C D E F : point). congA A B C D E F => congA A B C D E F && A!=B && C!=B && D!=E && F!=E.
+
+#conga_line
+assert forall (A B C A1 B1 C1 : point). A!=B => B!=C => A1 !=B1 => B1!=C1 => bet A B C => bet A1 B1 C1 => congA A B C A1 B1 C1.
+
+goal forall (A B C : point). acute A B C => ~bet A B C.

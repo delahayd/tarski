@@ -1,0 +1,77 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#16_21
+assert forall (A B C D P Q : point). ~col A B C => C!=D => col A B P => col A B Q => col C D P => col C D Q => P=Q.
+
+#113_11
+assert forall (A B C A1 B1 C1 O : point). ~col O A A1 => B!=O => C!=O => col O A B => col O B C => B1!=O => C1!=O => col O A1 B1 => col O B1 C1 => par B C1 C B1 => par C A1 A C1 => par A B1 B A1.
+
+#113_14
+assert forall (A B C A1 B1 C1 O O1 : point). par_strict O A O1 A1 => col O A B => col O B C => col O A C => col O1 A1 B1 => col O1 B1 C1 => col O1 A1 C1 => par A C1 A1 C => par B C1 B1 C => par A B1 A1 B.
+
+#113_15_1
+assert forall (A B C A1 B1 C1 O : point). ~col A B C => ~par O B A C => par_strict A B A1 B1 => par_strict A C A1 C1 => col O A A1 => col O B B1 => col O C C1 => par B C B1 C1.
+
+#113_15_2_aux
+assert forall (A B C A1 B1 C1 O : point). ~col A B C => ~par O A B C => par O B A C => par_strict A B A1 B1 => par_strict A C A1 C1 => col O A A1 => col O B B1 => col O C C1 => par B C B1 C1.
+
+#113_15_2
+assert forall (A B C A1 B1 C1 O : point). ~col A B C => par O B A C => par_strict A B A1 B1 => par_strict A C A1 C1 => col O A A1 => col O B B1 => col O C C1 => par B C B1 C1.
+
+#113_15
+assert forall (A B C A1 B1 C1 O : point). ~col A B C => ~par O A B C => par_strict A B A1 B1 => par_strict A C A1 C1 => col O A A1 => col O B B1 => col O C C1 => par B C B1 C1.
+
+#113_15_par
+assert forall (A B C A1 B1 C1 : point). ~col A B C => par_strict A B A1 B1 => par_strict A C A1 C1 => par A A1 B B1 => par A A1 C C1 => par B C B1 C1.
+
+#113_18_2
+assert forall (A B C A1 B1 C O : point). ~col A B C => par_strict A B A1 B1 => par_strict A C A1 C1 => (par_strict B C B1 C1 && col O A A1 && col O B B1 && col O C C1).
+
+#113_18_3
+assert forall (A B C A1 B1 C1 : point). ~col A B C => par_strict A B A1 B1 => par_strict A C A1 C1 => (par_strict B C B1 C1 && par A A1 B B1) => par C C1 A A1 && par C C1 B B1.
+
+#113_19_aux
+assert forall (A B C D A1 B1 C1 D1 O : point). ~col O A B => A!=A1 => A!=C => O!=A => O!=A1 => O!=C => O!=C1 => O!=B => O!=B1 => O!=D => O!=D1 => col O A C => col O A A1 => col O A1 C1 => col O B D => col O B B1 => col O B1 D1 =>~par A B C D => par A B A1 B1 => par A D A1 D1 => par B C B1 C1 => par C D C1 D1.
+
+#113_19_par_aux
+assert forall (A B C D A1 B1 C1 D1 X Y : point). X!=A => X!=A1 => X!=C => X!=C1 => Y!=B => Y!=B1 => Y!=D => Y!=D1 => col X A C => col X A A1 => col X A1 C1 => col Y B D => col Y B B1 => col Y B1 D1 => A!=C => B!=D => A!=A1 => par_strict X A Y B => ~par A B C D => par A B A1 B1 => par A D A1 D1 => par B C B1 C1 => par C D C1 D1.
+
+###################################"A"########################
+
+#all_coplanar
+assert forall (A B C D : point). coplanar A B C D.
+
+##########################"C"#############################
+
+#col13
+assert forall (X Y A B C : point). X!=Y => col X Y A => col X Y B => col X Y C => col A B C.
+
+#col_par_par_col
+assert forall (A B C A1 B1 C1 : point). col A B C => par A B A1 B1 => par B C B1 C1 => col A1 B1 C1.
+
+#########################"N"##############################
+
+#not_par_inter_exists
+assert forall (A1 B1 A2 B2 : point). ~par A1 B1 A2 B2 => (exists (X : point). col X A1 B1 && col X A2 B2).
+
+#########################"P"##############################
+
+#parallel_existence
+assert forall (A B P : point). A!=B => (exists (C D : point). C!=D && par A B C D && col P C D).
+
+#par_col_par_2
+assert forall (A B C D P : point). A!=P => col A B P => par A B C D => par A P C D.
+
+#par_distincts
+assert forall (A B C D : point). par A B C D => (par A B C D && A!=B && C!=D).
+
+#par_not_col
+assert forall (A B C D X : point). par_strict A B C D => col X A B => ~col X C D.
+
+#par_not_par
+assert forall (A B C D P Q : point). par A B C D => ~par A B P Q => ~par C D P Q.
+
+#par_trans
+assert forall (A1 A2 B1 B2 C1 C2 : point). par A1 A2 B1 B2 => par B1 B2 C1 C2 => par A1 A2 C1 C2.

@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#17_15
+assert forall (P Q R P1 Q1 R1 A : point). midpoint A P P1 => midpoint A Q Q1 => midpoint A R R1 => bet P Q R => bet P1 Q1 R1.
+
+#17_16
+assert forall (P Q R S P1 Q1 S1 R1 A : point). midpoint A P P1 => midpoint A Q Q1 => midpoint A R R1 => midpoint A S S1 => cong P Q R S => cong P1 Q1 R1 S1.
+
+goal forall (A B C D E F Z : point). midpoint Z A D => midpoint Z B E => midpoint Z C F => midpoint B A C => midpoint E D F.

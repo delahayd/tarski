@@ -1,0 +1,10 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+include "tarski_prop_cong.zf".
+
+#111_3_bis
+assert forall (A B C D E F : point). (exists (A1 C1 D1 F1 : point). out B A1 A && out B C1 C && out E D1 D && out E F1 F && cong_3 A1 B C1 D1 E F1) => congA A B C D E F.
+
+goal forall (A B C D E F : point). (A!=B && C!=B && D!=E && F!=E && (forall (A1 C1 D1 F1 : point). out B A1 A && out B C1 C && out E D1 D && out E F1 F && cong B A1 E D1 && cong B C1 E F1 => cong A1 C1 D1 F1)) => congA A B C D E F.

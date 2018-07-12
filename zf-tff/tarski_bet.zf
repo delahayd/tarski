@@ -1,0 +1,30 @@
+# $Id$
+
+include "tarski_def.zf".
+#prolong A B x C D
+#val x : point.
+#assert forall (A B C D : point). bet A B x && cong B x C D.
+
+#between_equality
+assert forall (A B C : point). bet A B C => bet B A C => A=B.
+
+#between_symmetry
+assert forall (A B C : point). bet A B C => bet C B A.
+
+#bet_col
+assert forall (A B C : point). bet A B C => col A B C.
+
+#between_trivial
+assert forall (A B : point). bet A B B.
+
+#between_trivial2
+assert forall (A B : point). bet A A B.
+
+#between_inner_transitivity
+assert forall (A B C D : point). bet A B D => bet B C D => bet A B C.
+
+#between_exchange3
+assert forall (A B C D : point). bet A B C => bet A C D => bet B C D.
+
+#midpoint_bet
+assert forall (A B C : point). midpoint B A C => bet A B C.

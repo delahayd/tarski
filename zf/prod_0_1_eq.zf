@@ -1,0 +1,12 @@
+# $Id$
+
+include "tarski_def.zf".
+
+val O : point.
+val E : point.
+val E1 : point.
+
+#prod_uniqueness
+assert forall (A B C1 C2 : point). prod O E E1 A B C1 => prod O E E1 A B C2 => C1=C2.
+
+goal forall (O E E1 B C : point). prod O E E1 O B C => C=O.

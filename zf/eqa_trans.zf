@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (a1 a2 a3 : point->point->point->prop). eqA a1 a2 => eqA a2 a3 => eqA a1 a3.

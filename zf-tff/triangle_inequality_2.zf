@@ -1,0 +1,13 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+include "tarski_prop_cong.zf".
+
+#15_6
+assert forall (A B C D A1 B1 C1 D1 : point). le A B C D => cong A B A1 B1 => cong C D C1 D1 => le A1 B1 C1 D1.
+
+#triangle_inequality
+assert forall (A B C D : point). bet A B D => cong B C B D => le A C A D. 
+
+goal forall (A B C A1 B1 C1 : point). bet A1 B1 C1 => cong A B A1 B1 => cong B C B1 C1 => le A C A1 C1.

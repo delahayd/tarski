@@ -1,0 +1,46 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_perp.zf".
+
+#14_13
+assert forall (A B C A1 B1 C1 : point). col A B C => cong_3 A B C A1 B1 C1 => col A1 B1 C1.
+
+#14_14
+assert forall (A B C A1 B1 : point). col A B C => cong A B A1 B1 => (exists (C1 : point). cong_3 A B C A1 B1 C1).
+
+#16_11_existence
+assert forall (A B C R : point). R!=A => B!=C => (exists (X : point). out A X R && cong A X B C).
+
+#18_14_2_1b
+assert forall (X A B C D Y : point). perp_at X A B C D => col Y A B => col Y C D => X=Y.
+
+#18_18_existence
+assert forall (A B C : point). ~col A B C => (exists (X : point). col A B X && perp A B C X).
+
+#19_19
+assert forall (X Y A B P : point). X!=Y => col X Y P => col A B P => (os X Y A B <=> (out P A B && ~col X Y A)).
+
+#110_12
+assert forall (A B C A1 B1 C1 : point). per A B C => per A1 B1 C1 => cong A B A1 B1 => cong B C B1 C1 => cong A C A1 C1.
+
+#110_15
+assert forall (A B C P : point). col A B C => ~col A B P => (exists (Q : point). perp A B Q C && os A B P Q).
+
+#cong_symmetry
+assert forall (A B C D : point). cong A B C D => cong C D A B.
+
+#one_side_symmetry
+assert forall (P Q A B : point). os P Q A B => os P Q B A.
+
+#one_side_transitivity
+assert forall (P Q A B C : point). os P Q A B => os P Q B C => os P Q A C.
+
+#perp_col
+assert forall (A B C D E : point). A!=E => perp A B C D => col A B E => perp A E C D.
+
+#perp_distinct
+assert forall (A B C D : point). perp A B C D => A!=B && C!=D.
+
+goal forall (A B C A1 B1 P : point). ~col A B C => ~col A1 B1 P => cong A B A1 B1 => (exists (C1 : point). cong_3 A B C A1 B1 C1 && os A1 B1 P C1).

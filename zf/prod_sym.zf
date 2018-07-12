@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#prod_comm
+assert forall (O E E1 A B C : point). prod O E E1 A B C => prod O E E1 B A C.
+
+goal forall (O E E1 A B C : point). prod O E E1 A B C => prod O E E1 B A C.

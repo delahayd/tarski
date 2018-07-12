@@ -1,0 +1,12 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_conga.zf".
+
+#111_29_a
+assert forall (A B C D E F : point). leA A B C D E F => (exists (Q : point). inAngle C A B Q && congA A B Q D E F).
+
+#111_29_b
+assert forall (A B C D E F : point). (exists (Q : point). inAngle C A B Q && congA A B Q D E F) => leA A B C D E F.
+
+goal forall (A B C D E F : point). leA A B C D E F => leA A B C F E D.

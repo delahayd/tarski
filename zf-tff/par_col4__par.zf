@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#par_symmetry
+assert forall (A B C D : point). par A B C D => par C D A B.
+
+#par_col2_par
+assert forall (A B C D E F : point). E!=F => par A B C D => col C D E => col C D F => par A B E F.
+
+goal forall (A B C D E F G H : point). E!=F => G!=H => par A B C D => col A B E => col A B F => col C D G => col C D H => par E F G H.

@@ -1,0 +1,22 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_side.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+
+#19_8_2
+assert forall (P Q A B C : point). ts P Q A C => os P Q A B => ts P Q B C.
+
+#angle_construction_1
+assert forall (A B C A1 B1 P : point). ~col A B C => ~col A1 B1 P => (exists (C1 : point). congA A B C A1 B1 C1 && os A1 B1 C1 P).
+
+#col13
+assert forall (X Y A B C : point). X!=Y => col X Y A => col X Y B => col X Y C => col A B C.
+
+#symmetric_point_construction
+assert forall (P A : point). exists (P1 : point). midpoint A P P1.
+
+goal forall (A B C A1 B1 P : point). ~col A B C => ~col A1 B1 P => (exists (C1 : point). congA A B C A1 B1 C1 && ts A1 B1 C1 P).

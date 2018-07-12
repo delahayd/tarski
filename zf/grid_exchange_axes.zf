@@ -1,0 +1,6 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_perp.zf".
+
+goal forall (O E S U1 U2 : point). cs O E S U1 U2 => cs O E S U2 U1.

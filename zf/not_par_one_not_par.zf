@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#par_trans
+assert forall (A1 A2 B1 B2 C1 C2 : point). par A1 A2 B1 B2 => par B1 B2 C1 C2 => par A1 A2 C1 C2.
+
+#not_par_inter
+assert forall (A B A1 B1 X Y : point). ~par A B A1 B1 => (exists (P : point). col P X Y && (col P A B || col P A1 B1 )).
+
+goal forall (A B A1 B1 X Y : point). ~par A B A1 B1 => ~par A B X Y || ~par A1 B1 X Y.

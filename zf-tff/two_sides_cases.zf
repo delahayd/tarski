@@ -1,0 +1,16 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#19_9
+assert forall (P Q A B : point). ts P Q A B => ~os P Q A B.
+
+#19_31
+assert forall (A X Y Z : point). os A X Y Z => os A Z Y X => ts A Y X Z.
+
+#one_or_two_sides
+assert forall (A B X Y : point). ~col X A B => ~col Y A B => ts A B X Y || os A B X Y.
+
+goal forall (O P A B : point). ~col O A B => os O P A B => ts O A P B ||ts O B P A.

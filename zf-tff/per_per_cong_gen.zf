@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#per_per_cong
+assert forall (A B X Y : point). A!=B => per A B X => per A B Y => cong B X B Y => X=Y || reflectL X Y A B.
+
+goal forall (A B X Y : point). A!=B => per A B X => per A B Y => cong B X B Y => X=Y || reflect X Y A B.

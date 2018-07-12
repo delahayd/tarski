@@ -1,0 +1,44 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_perp.zf".
+include "tarski_conga.zf".
+include "tarski_side.zf".
+include "tarski_par.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+
+#18_18_uniqueness
+assert forall (A B C X Y : point). ~col A B C => col A B X => perp A B C X => col A B Y => perp A B C Y => X=Y.
+
+#111_16
+assert forall (A B C A1 B1 C1 : point). per A B C => A!=B => C!=B => per A1 B1 C1 => A1!=B1 => C1!=B1 => congA A B C A1 B1 C1.
+
+#111_17
+assert forall (A B C A1 B1 C1 : point). per A B C => congA A B C A1 B1 C1 => per A1 B1 C1.
+
+#111_24
+assert forall (P A B C : point). inAngle P A B C => inAngle P C B A.
+
+#conga_distinct
+assert forall (A B C D E F : point). congA A B C D E F => congA A B C D E F && A!=B && C!=B && D!=E && F!=E.
+
+#in_angle_one_side
+assert forall (A B C P : point). ~col A B C => ~col B A P => inAngle P A B C => os A B P C.
+
+#one_side_transitivity
+assert forall (P Q A B C : point). os P Q A B => os P Q B C => os P Q A C.
+
+#perp_col
+assert forall (A B C D E : point). A!=E => perp A B C D => col A B E => perp A E C D.
+
+#perp_distinct
+assert forall (A B C D : point). perp A B C D => A!=B && C!=D.
+
+#perp_not_col
+assert forall (A B P : point). perp A B P A => ~col A B P.
+
+#per_not_col
+assert forall (A B C : point). A!=B => B!=C => per A B C => ~col A B C.
+
+goal forall (A B C C1 : point). acute A B C => perp A B C C1 => col A B C1 => out B A C1.

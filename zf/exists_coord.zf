@@ -1,0 +1,6 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+
+goal forall (O E S U P : point). S!=U => cong O E S U => (exists (PX X : point). projp P PX S U && cong_3 O E X S U PX).

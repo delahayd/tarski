@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (A B P : point). (exists (P1 : point). reflect P1 P1 A B). 

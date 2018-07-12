@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#diff_uniqueness
+assert forall (O E E1 A B D1 D2 : point). diff O E E1 A B D1 => diff O E E1 A B D2 => D1=D2.
+
+goal forall (O E E1 A : point). ltP O E E1 O A => ps O E A.

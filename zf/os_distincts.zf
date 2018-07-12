@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (A B X Y : point). os A B X Y => A!=B && A!=X && A!=Y && B!=X && B!=Y.

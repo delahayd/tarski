@@ -1,0 +1,15 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_out.zf".
+
+#111_21_b
+assert forall (A B C A1 B1 C1 : point). out B A C => out B1 A1 C1 => congA A B C A1 B1 C1.
+
+#acute_distincts
+assert forall (A B C : point). acute A B C => A!=B && C!=B.
+
+#conga_refl
+assert forall (A B C : point). A!=B => C!=B => congA A B C A B C.
+
+goal forall (A B : point) (a : point->point->point->prop). A!=B => q_congA_null_acute a => a A B A.

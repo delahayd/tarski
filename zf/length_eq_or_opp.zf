@@ -1,0 +1,25 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#116_9_1
+assert forall (O E E1 X Y XY XMY : point). col O E X => col O E Y => is_length O E E1 X Y XY => leP O E E1 Y X => diff O E E1 X Y XMY => XY=XMY.
+
+#col_2_le_or_ge
+assert forall (O E E1 A B : point). ~col O E E1 => col O E A => col O E B => leP O E E1 A B || leP O E E1 B A.
+
+#diff_ar2
+assert forall (O E E1 A B AMB : point). diff O E E1 A B AMB => ar2 O E E1 A B AMB.
+
+#diff_exists
+assert forall (O E E1 A B : point). ~col O E E1 => col O E A => col O E B => (exists (D : point). diff O E E1 A B D).
+
+#diff_opp
+assert forall (O E E1 A B AmB BmA : point). diff O E E1 A B AmB => diff O E E1 B A BmA => opp O E E1 AmB BmA.
+
+#length_sym
+assert forall (O E E1 A B AB : point).length O E E1 A B AB => length O E E1 B A AB.
+
+goal forall (O E E1 A B L1 L2 : point). length O E E1 A B L1 => diff O E E1 A B L2 => L1=L2 || opp O E E1 L1 L2.

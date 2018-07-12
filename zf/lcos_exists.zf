@@ -1,0 +1,40 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_conga.zf".
+include "tarski_perp.zf".
+include "tarski_out.zf".
+
+#acute_lea_acute
+assert forall (A B C D E F : point). acute D E F => leA A B C D E F => acute A B C.
+
+#acute_not_per
+assert forall (A B C : point). acute A B C => ~per A B C.
+
+#acute_sym
+assert forall (A B C : point). acute A B C => acute C B A.
+
+#anga_col_null
+assert forall (A B C : point) (a : point->point->point->prop). q_congA_acute a => a A B C => col A B C => out B A C && q_congA_null_acute a.
+
+#anga_out-anga
+assert forall (A B C A1 C1 : point) (a : point->point->point->prop). q_congA_acute a => a A B C => out B A A1 => out B C C1 => a A1 B C1.
+
+#anga_sym
+assert forall (A B C : point) (a : point->point->point->prop). q_congA_acute a => a A B C => a C B A.
+
+#conga_distinct
+assert forall (A B C D E F : point). congA A B C D E F => congA A B C D E F && A!=B && C!=B && D!=E && F!=E.
+
+#in_angle_trivial_2
+assert forall (A B C : point). A!=B => C!=B => inAngle C A B C.
+
+#perp_acute_out
+assert forall (A B C C1 : point). acute A B C => perp A B C C1 => col A B C1 => out B A C1.
+
+#perp_col
+assert forall (A B C D E : point). A!=E => perp A B C D => col A B E => perp A E C D.
+
+goal forall (l : point->point->prop) (a : point->point->point->prop). q_congA_acute a => q_cong l => ~q_cong_null l => (exists (lp : point->point->prop). lcos lp l a).

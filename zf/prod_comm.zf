@@ -1,0 +1,32 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_par.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+val O : point.
+val E : point.
+val E1 : point.
+
+#113_11
+assert forall (A B C A1 B1 C1 O : point). ~col O A A1 => B!=O => C!=O => col O A B => col O B C => B1!=O => C1!=O => col O A1 B1 => col O B1 C1 => par B C1 C B1 => par C A1 A C1 => par A B1 B A1.
+
+#par_col_par
+assert forall (A B C D D1 : point). C!=D1 => par A B C D => col C D D1 => par A B C D1.
+
+#par_trans
+assert forall (A1 A2 B1 B2 C1 C2 : point). par A1 A2 B1 B2 => par B1 B2 C1 C2 => par A1 A2 C1 C2.
+
+#prod_0_1
+assert forall (O E E1 A : point). ~col O E E1 => col O E A => prod O E E1 O A O.
+
+#prod_0_r
+assert forall (O E E1 A : point). ~col O E E1 => col O E A => prod O E E1 A O O.
+
+#prod_null
+assert forall (O E E1 A B : point). prod O E E1 A B O => A=O || B=O.
+
+#prod_uniqueness
+assert forall (A B C1 C2 : point). prod O E E1 A B C1 => prod O E E1 A B C2 => C1=C2.
+
+goal forall (O E E1 A B C : point). prod O E E1 A B C => prod O E E1 B A C.

@@ -1,0 +1,9 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_perp.zf".
+
+#112_9
+assert forall (A1 A2 B1 B2 C1 C2 : point). perp A1 A2 C1 C2 => perp B1 B2 C1 C2 =>perp A1 A2 B1 B2.
+
+goal forall (A B C D O : point). perp2 A B C D O => par A B C D.

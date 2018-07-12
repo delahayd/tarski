@@ -1,0 +1,12 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+
+#le_cases
+assert forall (A B C D : point). le A B C D || le C D A B.
+
+#Cong_dec
+assert forall (A B C D : point). cong A B C D || ~cong A B C D.
+
+goal forall (A B C D : point). lt A B C D || gt A B C D || cong A B C D.

@@ -1,0 +1,61 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+include "tarski_prop_cong.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_out.zf".
+include "tarski_le.zf".
+
+#111_21_b
+assert forall (A B C A1 B1 C1 : point). out B A C => out B1 A1 C1 => congA A B C A1 B1 C1.
+
+#111_31_1
+assert forall (A B C D E F : point). out B A C => D!=E => F!=E => leA A B C D E F.
+
+#111_31_1
+assert forall (A B C D E F : point). out B A C => D!=E => F!=E => leA A B C D E F.
+
+#cong2_lt_lt
+assert forall (A B C D A1 B1 C1 D1 : point). lt A B C D => cong A B A1 B1 =>cong C D C1 D1 => lt A1 B1 C1 D1.
+
+#conga_line
+assert forall (A B C A1 B1 C1 : point). A!=B => B!=C => A1 !=B1 => B1!=C1 => bet A B C => bet A1 B1 C1 => congA A B C A1 B1 C1.
+
+#lea123456_lta_lta
+assert forall (A B C D E F G H I : point). leA A B C D E F => ltA D E F G H I => ltA A B C G H I.
+
+#lea456789_lta_lta
+assert forall (A B C D E F G H I : point). ltA A B C D E F => leA D E F G H I => ltA A B C G H I.
+
+#lt_comm
+assert forall (A B C D : point). lt A B C D => lt B A D C.
+
+#lta_comm
+assert forall (A B C D E F : point). ltA A B C D E F => ltA C B A F E D.
+
+#lta_diff
+assert forall (A B C D E F : point). ltA A B C D E F => ltA A B C D E F && A!=B && C!=B && D!=E && F!=E.
+
+#nlta
+assert forall (A B C : point). ~ltA A B C A B C.
+
+#not_bet_out
+assert forall (A B C : point). col A B C => ~bet A B C => out B A C.
+
+#out_cong_cong
+assert forall (B A A0 E D D0 : point). out B A A0 => out E D D0 => cong B A E D => cong B A0 E D0 => cong A A0 D D0.
+
+#th18_18_aux
+assert forall (A B C D E F : point). cong A B D E => cong A C D F => ltA F D E C A B => ~col A B C => ~col D E F => le D F D E => lt E F B C.
+
+#triangle_strict_inequality
+assert forall (A B C D : point). bet A B D => cong B C B D => ~bet A B C => lt A C A D.
+
+#triangle_strict_reverse_inequality
+assert forall (A B C D : point). out A B D => cong A C A D => ~out A B C => lt B C B D.
+
+goal forall (A B C D E F : point). cong A B D E => cong A C D F => ltA F D E C A B => lt E F B C.

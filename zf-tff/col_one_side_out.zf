@@ -1,0 +1,13 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#19_9
+assert forall (P Q A B : point). ts P Q A B => ~os P Q A B.
+
+#between_symmetry
+assert forall (A B C : point). bet A B C => bet C B A.
+
+goal forall (A B X Y : point). col A X Y => os A B X Y => out A X Y.

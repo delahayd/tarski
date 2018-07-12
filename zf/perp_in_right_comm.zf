@@ -1,0 +1,12 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#perp_in_sym
+assert forall (A B C D X : point). perp_at X A B C D => perp_at X C D A B.
+
+#perp_in_left_comm
+assert forall (A B C D X : point). perp_at X A B C D => perp_at X B A C D.
+
+
+goal forall (A B C D X : point). perp_at X A B C D => perp_at X A B D C.

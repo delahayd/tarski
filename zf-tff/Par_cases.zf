@@ -1,0 +1,6 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_par.zf".
+
+goal forall (A B C D : point). par A B C D || par B A C D || par A B D C || par B A D C || par C D A B || par C D B A || par D C A B || par D C B A => par A B C D.

@@ -1,0 +1,17 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#all_eqa
+assert forall (A B C : point) (a1 a2 : point->point->point->prop). ang A B C a1 => ang A B C a2 => eqA a1 a2.
+
+#conga_line
+assert forall (A B C A1 B1 C1 : point). A!=B => B!=C => A1 !=B1 => B1!=C1 => bet A B C => bet A1 B1 C1 => congA A B C A1 B1 C1.
+
+#is_ang_conga_is_ang
+assert forall (A B C A1 B1 C1 : point) (a : point->point->point->prop). ang A B C a => congA A B C A1 B1 C1 => ang A1 B1 C1 a.
+
+#is_ang_distinct
+assert forall (A B C : point) (a : point->point->point->prop). ang A B C a => A!=B && C!=B.
+
+goal forall (A B C A1 B1 C1 : point) (a1 a2 : point->point->point->prop). bet A B C => bet A1 B1 C1 => ang A B C a1 => ang A1 B1 C1 a2 => eqA a1 a2.

@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#obtuse_not_acute
+assert forall (A B C : point). obtuse A B C => ~acute A B C.
+
+goal forall (A B C : point). acute A B C => ~obtuse A B C.

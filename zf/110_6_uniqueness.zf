@@ -1,0 +1,17 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#17_2
+assert forall (M A B : point). midpoint M A B => midpoint M B A.
+
+#110_2_uniqueness
+assert forall (A B P P1 P2 : point). reflect P1 P A B => reflect P2 P A B => P1=P2. 
+
+#110_4
+assert forall (A B P P1 : point). reflect P P1 A B => reflect P1 P A B.
+
+#symmetric_point_uniqueness
+assert forall (A P P1 P2 : point). midpoint P A P1 => midpoint P A P2 => P1=P2.
+
+goal forall (A B P P1 P2 : point). reflect P P1 A B => reflect P P2 A B => P1=P2.

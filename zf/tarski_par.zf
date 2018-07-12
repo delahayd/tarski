@@ -1,0 +1,39 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#col_par
+assert forall (A B C : point). A!=B => B!=C => col A B C => par A B B C.
+
+#par_reflexivity
+assert forall (A B : point). A!=B => par A B A B.
+
+#par_strict_irreflexivity
+assert forall (A B : point). ~par_strict A B A B.
+
+#par_strict_symmetry
+assert forall (A B C D : point). par_strict A B C D => par_strict C D A B.
+
+#par_strict_comm
+assert forall (A B C D : point). par_strict A B C D => par_strict B A D C.
+
+#par_strict_right_comm
+assert forall (A B C D : point). par_strict A B C D => par_strict A B D C.
+
+#par_strict_left_comm
+assert forall (A B C D : point). par_strict A B C D => par_strict B A C D.
+
+#par_symmetry
+assert forall (A B C D : point). par A B C D => par C D A B.
+
+#par_comm
+assert forall (A B C D : point). par A B C D => par B A D C.
+
+#par_right_comm
+assert forall (A B C D : point). par A B C D => par A B D C.
+
+#par_left_comm
+assert forall (A B C D : point). par A B C D => par B A C D.
+
+#par_strict_par
+assert forall (A B C D : point). par_strict A B C D => par A B C D.

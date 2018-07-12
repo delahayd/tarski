@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (P A : point). exists (P1 : point). midpoint A P P1.

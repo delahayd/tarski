@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (lp l : point->point->prop) (a b c : point->point->point->prop). lcos3 lp l a b c <=> (exists (lab : point->point->prop). lcos2 lab l a b && lcos lp lab c).

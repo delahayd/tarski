@@ -1,0 +1,41 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+include "tarski_out.zf".
+include "tarski_prop_cong.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+val O : point.
+val E : point.
+val E1 : point.
+
+
+#114_36_a
+assert forall (O E E1 A B C : point). sum O E E1 A B C => out O A B => bet O A C.
+
+#16_7
+assert forall (P A B C : point). out P A B => out P B C => out P A C.
+
+#16_11_uniqueness
+assert forall (A B C R X Y : point). R!=A => B!=C => out A X R => cong A X B C => out A Y R => cong A Y B C => X=Y.
+
+#diff_sum
+assert forall (O E E1 A B S : point). diff O E E1 S A B => sum O E E1 A B S.
+
+#sum_A_O
+assert forall (A : point). col O E A => sum O E E1 A O A.
+
+#sum_uniqueness
+assert forall (A B C1 C2 : point). sum O E E1 A B C1 => sum O E E1 A B C2 => C1=C2.
+
+#sum_O_B
+assert forall (B : point). col O E B => sum O E E1 O B B.
+
+
+#sum_exists
+assert forall (A B : point). col O E A => col O E B => (exists (C : point). sum O E E1 A B C).
+
+
+goal forall (O E E1 A B C AB BC AC : point). (A!=B || C!=B || A!=C) => O!=E => bet A B C => length O E E1 A B AB => length O E E1 B C BC => length O E E1 A C AC => sum O E E1 AB BC AC.

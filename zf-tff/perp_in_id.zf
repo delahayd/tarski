@@ -1,0 +1,15 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_prop_orthogonality.zf".
+include "tarski_perp.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#18_16_1
+assert forall (A B C U X : point). A!=B => col A B X => col A B U => U!=X=> perp A B C X => ~col A B C && per C X U.
+
+#18_18_uniqueness
+assert forall (A B C X Y : point). ~col A B C => col A B X => perp A B C X => col A B Y => perp A B C Y => X=Y.
+
+goal forall (A B C X : point). perp_at X A B C A => X=A.

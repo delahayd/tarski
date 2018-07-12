@@ -1,0 +1,27 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_par.zf".
+include "tarski_cong.zf".
+
+#change_grid_sum_0
+assert forall (O E E1 A B C O1 A1 B1 C1 : point). par_strict O E O1 E1 => ar1 O E A B C => ar1 O1 E1 A1 B1 C1 => pj O O1 A A1 => pj O O1 B B1 => pj O O1 C C1 => pj O O1 E E1 =>sum O E E1 A B C => A=O => sum O1 E1 E A1 B1 C1.
+
+#cong_sum
+val O:point.
+val E:point.
+val E1:point.
+assert forall (A B C : point). O!=C || B!=A => ar2 O E E1 A B C => cong O A B C => cong O B A C => sum O E E1 A B C.
+
+#par_trans
+assert forall (A1 A2 B1 B2 C1 C2 : point). par A1 A2 B1 B2 => par B1 B2 C1 C2 => par A1 A2 C1 C2.
+
+#sum_comm
+assert forall (A B C : point). sum O E E1 A B C => sum O E E1 B A C.
+
+#sum_cong
+assert forall (A B C : point). sum O E E1 A B C => (A!=O || B!=O) => parallelogram_flat O A B C.
+
+goal forall (O E E1 A B C O1 A1 B1 C1 : point). par_strict O E O1 E1 => ar1 O E A B C => ar1 O1 E1 A1 B1 C1 => pj O O1 A A1 => pj O O1 B B1 => pj O O1 C C1 => pj O O1 E E1 => sum O E E1 A B C => sum O1 E1 E A1 B1 C1.

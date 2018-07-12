@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#115_7
+assert forall (O E E1 A B C H AB AC AH AC2 : point). O!=E => per A C B => perp_at H C H A B => length O E E1 A B AB => length O E E1 A C AC => length O E E1 A H AH => (prod O E E1 AC AC AC2 <=> prod O E E1 AB AH AC2).
+
+goal forall (O E E1 A B C H AB AC AH AC2 : point). O!=E => per A C B => perp_at H C H A B => length O E E1 A B AB => length O E E1 A C AC => length O E E1 A H AH => prod O E E1 AB AH AC2 => prod O E E1 AC AC AC2.

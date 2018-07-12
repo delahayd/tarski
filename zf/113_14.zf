@@ -1,0 +1,20 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_par.zf".
+
+#16_21
+assert forall (A B C D P Q : point). ~col A B C => C!=D => col A B P => col A B Q => col C D P => col C D Q => P=Q.
+
+#17_17
+assert forall (P P1 A B : point). midpoint A P P1 => midpoint B P P1 => A=B.
+
+#all_coplanar
+assert forall (A B C D : point). coplanar A B C D.
+
+#symmetric_point_uniqueness
+assert forall (A P P1 P2 : point). midpoint P A P1 => midpoint P A P2 => P1=P2.
+
+goal forall (A B C A1 B1 C1 O O1 : point). par_strict O A O1 A1 => col O A B => col O B C => col O A C => col O1 A1 B1 => col O1 B1 C1 => col O1 A1 C1 => par A C1 A1 C => par B C1 B1 C => par A B1 A1 B.

@@ -1,0 +1,125 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_perp.zf".
+include "tarski_conga.zf".
+include "tarski_prop_bet.zf".
+include "tarski_bet.zf".
+include "tarski_out.zf".
+
+#16_21
+assert forall (A B C D P Q : point). ~col A B C => C!=D => col A B P => col A B Q => col C D P => col C D Q => P=Q.
+
+#111_13
+assert forall (A B C D E F A1 D1 : point). congA A B C D E F => bet A B A1 => A1!=B => bet D E D1 => D1!=E => congA A1 B C D1 E F. 
+
+#113_10_aux1
+assert forall (O A B P Q : point) (la lb lp lq : point->point->prop). col O A B => col O P Q => perp O P P A => perp O Q Q B => q_cong la => q_cong lb => q_cong lp => q_cong lq => la O A => lb O B => lp O P => lq O Q => (exists (a : point->point->point->prop). q_congA_acute a && lcos lp la a && lcos lq lb a).
+
+
+#113_10_aux2
+assert forall (O A B : point) (la lb lla llb : point->point->prop). col O A B => q_cong la => q_cong lb => q_cong lla => q_cong llb => la O A => lla O A => lb O B => llb O B => A!=O => B!=O => (exists (a : point->point->point->prop). q_congA_acute a && lcos lla la a && lcos llb lb a).
+
+#113_10_aux3
+assert forall (A B C A1 B1 C1 O : point). ~col O A A1 => B!=O => C!=O => col O A B => col O B C => B1!=O => C1!=O => col O A1 B1 => col O B1 C1 => perp2 B C1 C B1 O => perp2 C A1 A C1 O => bet A O B => bet A1 O B1.
+
+#113_10_aux5
+assert forall (A B C A1 B1 C1 O : point). ~col O A A1 => B!=O => C!=O => col O A B => col O B C => B1!=O => C1!=O => col O A1 B1 => col O B1 C1 => perp2 B C1 C B1 O => perp2 C A1 A C1 O => out O A B => out O A1 B1.
+
+#acute_trivial
+assert forall (A B : point). A!=B => acute A B A.
+
+#anga_conga_anga
+assert forall (A B C A1 C1 : point) (a : point->point->point->prop). q_congA_acute a => a A B C => out B A A1 => out B C C1 => a A1 B C1.
+
+#anga_exists
+assert forall (A B C : point). A!=B => C!=B => acute A B C => (exists (a : point->point->point->prop). q_congA_acute a && a A B C). 
+
+#anga_sym
+assert forall (A B C : point) (a : point->point->point->prop). q_congA_acute a => a A B C => a C B A.
+
+#ex_point_lg_out
+assert forall (A P : point) (l : point->point->prop). A!=P => q_cong l => ~q_cong_null l => (exists (B : point). l A B  && out A B P).
+
+#lcos_eq_sym
+assert forall (la lb : point->point->prop) (a b : point->point->point->prop). eq_lcos la a lb b => eq_lcos lb b la a.
+
+#lcos_exists
+assert forall (l : point->point->prop) (a : point->point->point->prop). q_congA_acute a => q_cong l => ~q_cong_null l => (exists (lp : point->point->prop). lcos lp l a).
+
+#lcos_lg_anga
+assert forall (lp l : point->point->prop) (a : point->point->point->prop).lcos lp l a => lcos lp l a && q_cong l && q_cong lp && q_congA_acute a.
+
+#lcos_per
+assert forall (A B C : point) (lp l : point->point->prop) (a : point->point->point->prop). q_congA_acute a =>q_cong l => q_cong lp => lcos lp l a => l A C => lp A B => a A B C => per A B C.
+
+#lcos_eq_lcos2_eq
+assert  forall (la lb : point->point->prop) (a b c : point->point->point->prop). q_congA_acute c => eq_lcos la a lb b => eq_lcos2 la a c lb b c.
+
+#lcos2_eq_lcos3
+assert forall (la lb : point->point->prop) (a b c d e : point->point->point->prop). q_congA_acute e => eq_lcos2 la a b lb c d => eq_lcos3 la a b e lb c d e.
+
+
+#lcos2_comm
+assert forall (lp l : point->point->prop) (a b : point->point->point->prop). lcos2 lp l a b => lcos2 lp l a b.
+
+#lcos2_eql_lcos2
+assert forall (lla llb la lb : point->point->prop) (a b : point->point->point->prop). lcos2 lla llb a b => eqL lla llb => eqL la lb => lcos2 lb llb a b.
+
+#lcos_eq_lcos3_eq
+assert forall (la lb : point->point->prop) (a b c d : point->point->point->prop). q_congA_acute c => q_congA_acute d => eq_lcos la a lb b => eq_lcos3 la a c d lb b c d.
+
+#lcos2_lcos
+assert forall (l1 l2 : point->point->prop) (a b c : point->point->point->prop). eq_lcos2 l1 a c l2 b c => eq_lcos l1 a l2 b.
+
+#lcos2_uniqueness
+assert forall (l l1 l2 : point->point->prop) (a b : point->point->point->prop). lcos2 l1 l a b => lcos2 l2 l a b => eqL l1 l2.
+
+#lcos3_eq_sym
+assert forall (l1 l2 : point->point->prop) (a b c d e f : point->point->point->prop). eq_lcos3 l1 a b c l2 d e f => eq_lcos3 l2 d e f l1 a b c.
+
+#lcos3_eq_trans
+assert forall (l1 l2 l3 : point->point->prop) (a b c d e f g h i : point->point->point->prop). eq_lcos3 l1 a b c l2 d e f => eq_lcos3 l2 d e f l3 g h i => eq_lcos3 l1 a b c l3 g h i.
+
+#lcos3_lcos2
+assert forall (l1 l2 : point->point->prop) (a b c d n : point->point->point->prop). eq_lcos3 l1 a b n l2 c d n => eq_lcos2 l1 a b l2 c d.
+
+#lcos3_permut1
+assert forall (lp l : point->point->prop) (a b c : point->point->point->prop). lcos3 lp l a b c => lcos3 lp l a c b.
+
+#lcos3_permut2
+assert forall (lp l : point->point->prop) (a b c : point->point->point->prop). lcos3 lp l a b c => lcos3 lp l c b a.
+
+#lg_cong
+assert forall (A B C D : point) (l : point->point->prop). q_cong l => l A B => l C D => cong A B C D.
+
+#lg_sym
+assert forall (A B : point) (l : point->point->prop). q_cong l => l A B => l B A.
+
+#per_per_perp
+assert forall (A B X Y : point). A!=B => X!=Y => (B!=X || B!=Y) => per A B X => per A B Y => perp A B X Y.
+
+#perp2_perp_in
+assert forall (A B C D O : point). perp2 A B C D O => ~col O A B && ~col O C D => (exists (P Q : point). col A B P && col C D Q && col O P Q && perp_at P O P A B && perp_at Q O Q C D).
+
+#perp_acute
+assert forall (A B C P : point). col A C P => perp_at P B P A C => acute A B P.
+
+#perp_col
+assert forall (A B C D E : point). A!=E => perp A B C D => col A B E => perp A E C D.
+
+#perp_in_perp_bis
+assert forall (A B C D X : point). perp_at X A B C D => perp X B C D || perp A X C D.
+
+#perp_not_eq_1
+assert forall (A B C D : point). perp A B C D => A!=B.
+
+#perp_not_eq2
+assert forall (A B C D : point). perp A B C D => C!=D.
+
+#or_bet_out
+assert forall (A B C : point). bet A B C || out B A C || ~col A B C. 
+
+goal forall (A B C A1 B1 C1 O : point). ~col O A A1 => B!=O => C!=O => col O A B => col O B C => B1!=O => C1!=O => col O A1 B1 => col O B1 C1 => perp2 B C1 C B1 O => perp2 C A1 A C1 O => perp2 A B1 B A1 O.

@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (A B C D E P : point). C!=E => col C D E => perp_at P A B C D => perp_at P A B C E.

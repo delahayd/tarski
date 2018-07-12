@@ -1,0 +1,19 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+
+#15_6
+assert forall (A B C D A1 B1 C1 D1 : point). le A B C D => cong A B A1 B1 => cong C D C1 D1 => le A1 B1 C1 D1.
+
+#le_transitivity
+assert forall (A B C D E F : point). le A B C D => le C D E F => le A B E F.
+
+#leP_bet
+assert forall (O E E1 AB CD : point). leP O E E1 AB CD => leP O E E1 O AB => leP O E E1 O CD => bet O AB CD.
+
+
+
+goal forall (O E E1 A B C D AB CD : point). length O E E1 A B AB => length O E E1 C D CD => leP O E E1 AB CD => le A B C D.

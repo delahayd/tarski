@@ -1,0 +1,25 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#diff_A_O
+assert forall (O E E1 A : point). ~col O E E1 => col O E A => diff O E E1 A O A.
+
+#diff_uniqueness
+assert forall (O E E1 A B D1 D2 : point). diff O E E1 A B D1 => diff O E E1 A B D2 => D1=D2.
+
+#leP_refl
+assert forall (O E E1 A : point). leP O E E1 A A.
+
+#prod_0_1_eq
+assert forall (O E E1 B C : point). prod O E E1 O B C => C=O.
+
+#prod_O_r_eq
+assert forall (O E E1 A C : point). prod O E E1 A O C => C=O.
+
+#prod_pos_pos
+assert forall (O E E1 A B AB : point). ps O E A => ps O E B => prod O E E1 A B AB => ps O E AB.
+
+goal forall (O E E1 A B AB : point). leP O E E1 O A => leP O E E1 O B => prod O E E1 A B AB =>leP O E E1 O AB.

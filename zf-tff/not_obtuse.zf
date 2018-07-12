@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal ~hypothesis_of_obtuse_saccheri_quadrilaterals.

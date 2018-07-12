@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+
+#16_16_1
+assert forall (P Q S X : point). P!=Q => S!=P => col S P Q => col X P Q => col X P S.
+
+goal forall (P Q A B : point). P!=Q => col P Q A => col P Q B => col P A B. 

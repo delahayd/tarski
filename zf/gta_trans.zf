@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#lta_trans
+assert forall (A B C A1 B1 C1 A2 B2 C2 : point). ltA A B C A1 B1 C1 => ltA A1 B1 C1 A2 B2 C2 => ltA A B C A2 B2 C2.
+
+goal forall (A B C A1 B1 C1 A2 B2 C2 : point). gtA A B C A1 B1 C1 => gtA A1 B1 C1 A2 B2 C2 => gtA A B C A2 B2 C2.

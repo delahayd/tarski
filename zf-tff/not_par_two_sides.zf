@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (A B C D I : point). C!=D => col A B I => col C D I => ~col A B C => (exists (X Y : point). col C D X && col C D Y && ts A B X Y).

@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (O E E1 A B : point). leP O E E1 A B => leP O E E1 B A => A=B.

@@ -1,0 +1,12 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_conga.zf".
+
+#angle_construction_2
+assert forall (A B C A1 B1 P : point). A!=B => A!=C => B!=C => A1!=B1 => ~col A1 B1 P => (exists (C1 : point). congA A B C A1 B1 C1 && (os A1 B1 C1 P || col A1 B1 C1)).
+
+#not_col_exists
+assert forall (A B : point). A!=B => (exists (C : point). ~col A B C).
+
+goal forall (A B C A1 B1 C1 : point). A!=B => C!=B => A1!=B1 => (exists (C1 : point). congA A B C A1 B1 C1).

@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal exists (A B C : point). ~(bet A B C || bet B C A || bet C A B).

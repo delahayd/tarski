@@ -1,0 +1,49 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_perp.zf".
+include "tarski_cong.zf".
+
+#17_2
+assert forall (M A B : point). midpoint M A B => midpoint M B A.
+
+#18_18_existence
+assert forall (A B C : point). ~col A B C => (exists (X : point). col A B X && perp A B C X).
+
+#112_9
+assert forall (A1 A2 B1 B2 C1 C2 : point). perp A1 A2 C1 C2 => perp B1 B2 C1 C2 =>perp A1 A2 B1 B2.
+
+#between_symmetry
+assert forall (A B C : point). bet A B C => bet C B A.
+
+#Col_dec
+assert forall (A B C : point). col A B C || ~col A B C.
+
+#is_midpoint_id
+assert forall (A B : point). midpoint A A B => A=B.
+
+#mid_preserves_col
+assert forall (A B C M A1 B1 C1 : point). col A B C => midpoint M A A1 => midpoint M B B1 => midpoint M C C1 => col A1 B1 C1. 
+
+
+#per_col
+assert forall (A B C D : point). B!=C => per A B C =>  col B C D => per A B D.
+
+#perp_col
+assert forall (A B C D E : point). A!=E => perp A B C D => col A B E => perp A E C D.
+
+#perp_distinct
+assert forall (A B C D : point). perp A B C D => A!=B && C!=D.
+
+#perp_in_perp_bis
+assert forall (A B C D X : point). perp_at X A B C D => perp X B C D || perp A X C D.
+
+#symmetric_point_uniqueness
+assert forall (A P P1 P2 : point). midpoint P A P1 => midpoint P A P2 => P1=P2.
+
+#symmetry_preserves_midpoint
+assert forall (A B C D E F Z : point). midpoint Z A D => midpoint Z B E => midpoint Z C F => midpoint B A C => midpoint E D F.
+
+goal forall (A B C D P : point). A!=B => midpoint P A C => midpoint P B D => par A B C D.

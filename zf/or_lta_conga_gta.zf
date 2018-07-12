@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#conga_sym
+assert forall (A B C A1 B1 C1 : point). congA A B C A1 B1 C1 => congA A1 B1 C1 A B C.
+
+#lea_total
+assert forall (A B C D E F : point). A!=B => B!=C => D!=E => E!=F => leA A B C D E F || leA D E F A B C.
+
+goal forall (A B C D E F : point). A!=B => C!=B => D!=E =>F!=E => ltA A B C D E F || gtA A B C D E F || congA A B C D E F.

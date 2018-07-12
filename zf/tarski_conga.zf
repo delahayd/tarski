@@ -1,0 +1,29 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#conga_refl
+assert forall (A B C : point). A!=B => C!=B => congA A B C A B C.
+
+#conga_sym
+assert forall (A B C A1 B1 C1 : point). congA A B C A1 B1 C1 => congA A1 B1 C1 A B C.
+
+#cong3_conga
+assert forall (A B C A1 B1 C1 : point). A!=B => C!=B => cong_3 A B C A1 B1 C1 => congA A B C A1 B1 C1.
+
+
+#conga_pseudo_refl
+assert forall (A B C : point). A!=B => C!=B => congA A B C C B A.
+
+#conga_trivial_1
+assert forall (A B C D : point). A!=B => C!=D => congA A B A C D C.
+
+#conga_right_comm
+assert forall (A B C D E F : point). congA A B C D E F => congA A B C F E D.
+
+#conga_left_comm
+assert forall (A B C D E F : point). congA A B C D E F => congA C B A D E F.
+
+#conga_comm
+assert forall (A B C D E F : point). congA A B C D E F => congA C B A F E D.
+

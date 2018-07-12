@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (A Q B C : point). A!=Q => (exists (X : point). (bet Q A X || bet Q X A) && cong Q X B C).

@@ -1,0 +1,6 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_par.zf".
+
+goal forall (A B C D : point). par_strict A B C D => par_strict A B C D && par_strict B A C D && par_strict A B D C && par_strict B A D C && par_strict C D A B && par_strict C D B A && par_strict D C A B && par_strict D C B A.

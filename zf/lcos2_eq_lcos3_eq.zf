@@ -1,0 +1,20 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#lcos_lg_not_null
+assert forall (lp l : point->point->prop) (a : point->point->point->prop). lcos l lp a => ~q_cong_null l && ~q_cong_null lp.
+
+#lcos_lg_anga
+assert forall (lp l : point->point->prop) (a : point->point->point->prop).lcos lp l a => lcos lp l a && q_cong l && q_cong lp && q_congA_acute a.
+
+#lcos2_lg_anga
+assert forall (lp l : point->point->prop) (a b : point->point->point->prop). lcos2 lp l a b => lcos2 lp l a b && q_cong lp && q_cong l && q_congA_acute a && q_congA_acute b.
+
+#lcos2_lg_not_null
+assert forall (lp l : point->point->prop) (a b : point->point->point->prop). lcos2 lp l a b => ~q_cong_null l && ~q_cong_null lp.
+
+#lcos3_lcos_2_1
+assert forall (lp l : point->point->prop) (a b c : point->point->point->prop). lcos3 lp l a b c <=> (exists (lab : point->point->prop). lcos2 lab l a b && lcos lp lab c).
+
+goal forall (la lb : point->point->prop) (a b c d e : point->point->point->prop). q_congA_acute e => eq_lcos2 la a b lb c d => eq_lcos3 la a b e lb c d e.

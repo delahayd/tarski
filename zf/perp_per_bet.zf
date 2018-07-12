@@ -1,0 +1,10 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#111_47
+assert forall (A B C H : point). per A C B => perp_at H C H A B => bet A H B && A!=H && B!=H.
+
+goal forall (A B C P : point). ~col A B C => col A P C => per A B C => perp_at P P B A C => bet A P C.

@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#sum4_permut
+assert forall (O E E1 A B C D S : point). sum4 O E E1 A B C D S => sum4 O E E1 D A B C S.
+
+goal forall (O E E1 A B C D S : point). sum22 O E E1 A B C D S => sum22 O E E1 D A B C S.

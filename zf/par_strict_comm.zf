@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#par_strict_right_comm
+assert forall (A B C D : point). par_strict A B C D => par_strict A B D C.
+
+#par_strict_left_comm
+assert forall (A B C D : point). par_strict A B C D => par_strict B A C D.
+
+goal forall (A B C D : point). par_strict A B C D => par_strict B A D C.

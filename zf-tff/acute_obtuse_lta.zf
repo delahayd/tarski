@@ -1,0 +1,14 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#lta_distincts
+assert forall (A B C D E F : point). ltA A B C D E F => A!=B && C!=B && D!=E && F!=E.
+
+#lta_trans
+assert forall (A B C A1 B1 C1 A2 B2 C2 : point). ltA A B C A1 B1 C1 => ltA A1 B1 C1 A2 B2 C2 => ltA A B C A2 B2 C2.
+
+#obtuse_per_lta
+assert forall (A B C D E F : point). obtuse A B C => D!=E => E!=F => per D E F => ltA D E F A B C.
+
+goal forall (A B C D E F : point). acute A B C => obtuse D E F => ltA A B C D E F.

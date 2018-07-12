@@ -1,0 +1,15 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_cong.zf".
+include "tarski_perp.zf".
+
+#perp_col
+assert forall (A B C D E : point). A!=E => perp A B C D => col A B E => perp A E C D.
+
+#perp_perp_col
+assert forall (X Y Z A B : point). perp X Y A B => perp X Z A B => col X Y Z.
+
+goal forall (A B M P X : point). cong A X B X => midpoint M A B => perp A B P M => col M P X.

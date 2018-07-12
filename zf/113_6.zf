@@ -1,0 +1,34 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_conga.zf".
+include "tarski_perp.zf".
+include "tarski_cong.zf".
+
+#111_16
+assert forall (A B C A1 B1 C1 : point). per A B C => A!=B => C!=B => per A1 B1 C1 => A1!=B1 => C1!=B1 => congA A B C A1 B1 C1.
+
+#18_9
+assert forall (A B C : point). per A B C => col A B C => (A=B || C=B).
+
+#conga_distinct
+assert forall (A B C D E F : point). congA A B C D E F => congA A B C D E F && A!=B && C!=B && D!=E && F!=E.
+
+#eq_conga_out
+assert forall (A B D E F : point). congA A B A D E F => out E D F.
+
+#ex_eql
+assert forall (l1 l2 : point->point->prop). (exists (A B : point). len A B l1 && len A B l2) => eqL l1 l2.
+
+#is_anga_conga
+assert forall (A B C A1 B1 C1 : point) (a : point->point->point->prop). ang_acute A B C a => ang_acute A1 B1 C1 a => congA A B C A1 B1 C1.
+
+#is_len_cong
+assert forall (A B C D : point) (l : point->point->prop). len A B l => len C D l => cong A B C D.
+
+#is_len_cong_is_len
+assert forall (A B C D : point) (l : point->point->prop). len A B l => cong A B C D => len C D l.
+
+goal forall (lc ld l : point->point->prop) (a : point->point->point->prop). lcos lc l a => lcos ld l a => eqL lc ld.

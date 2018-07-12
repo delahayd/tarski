@@ -1,0 +1,34 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_par.zf".
+val O:point.
+val E:point.
+val E1:point.
+#par_trans
+assert forall (A1 A2 B1 B2 C1 C2 : point). par A1 A2 B1 B2 => par B1 B2 C1 C2 => par A1 A2 C1 C2.
+
+#sum_A_O_eq
+assert forall (A C : point). sum O E E1 A O C => A=C.
+
+#sum_A_O
+assert forall (A : point). col O E A => sum O E E1 A O A.
+
+#sum_O_B_eq
+assert forall (B C : point). sum O E E1 O B C => B=C.
+
+#sum_O_B
+assert forall (B : point). col O E B => sum O E E1 O B B.
+
+#sum_B_null
+assert forall (A B : point). sum O E E1 A B A => B=O.
+
+#sum_cong
+assert forall (A B C : point). sum O E E1 A B C => (A!=O || B!=O) => parallelogram_flat O A B C.
+
+#sum_plg
+assert forall (A B C : point). sum O E E1 A B C => (A!=O) || (B!=O) => (exists (A1 C1 : point). plg O B C1 A1 && plg C1 A1 A C).
+
+goal forall (O E E1 U A B C : point). sum O E E1 A B C => col O E U => U!=O => sum O U E1 A B C.

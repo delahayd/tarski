@@ -1,0 +1,24 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_perp.zf".
+include "tarski_conga.zf".
+
+#110_15
+assert forall (A B C P : point). col A B C => ~col A B P => (exists (Q : point). perp A B Q C && os A B P Q).
+
+#col_in_angle
+assert forall (A B C P : point). A!=B => C!=B => P!=B => out B A P || out B C P => inAngle P A B C.
+
+#out_conga_out
+assert forall (A B C D E F : point). out B A C => congA A B C D E F => out E D F.
+
+#perp_not_col
+assert forall (A B P : point). perp A B P A => ~col A B P.
+
+#perp_not_eq2
+assert forall (A B C D : point). perp A B C D => C!=D.
+
+goal forall (A B C : point). out B A C => acute A B C.

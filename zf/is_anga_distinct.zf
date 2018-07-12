@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (A B C : point) (a : point->point->point->prop). ang_acute A B C a => A!=B && C!=B.

@@ -1,0 +1,18 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+#111_24
+assert forall (P A B C : point). inAngle P A B C => inAngle P C B A.
+
+#inangle_distincts
+assert forall (A B C P : point). inAngle P A B C => A!=B && C!=B && P!=B.
+
+#in_angle_reverse
+assert forall (A B A1 C D : point). A1!=B => bet A B A1 => inAngle C A B D => inAngle D A1 B C.
+
+#in_angle_trans
+assert forall (A B C D E : point). inAngle C A B D => inAngle D A B E => inAngle C A B E.
+
+goal forall (A B C D E : point). inAngle C A B D => inAngle D A B E => inAngle D C B E.

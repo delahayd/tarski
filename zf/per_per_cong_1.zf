@@ -1,0 +1,17 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#17_20
+assert forall (M A B : point). col A M B => cong M A M B => A=B || midpoint M A B.
+
+#18_2
+assert forall (A B C : point). per A B C => per C B A.
+
+#col_permutation_5
+assert forall (A B C : point). col A B C => col A C B.
+
+#per_per_col
+assert forall (A B C X : point). per A X C => X!=C => per B X C => col A B X.
+
+goal forall (A B X Y : point). A!=B => per A B X => per A B Y => cong B X B Y => X=Y || midpoint B X Y.

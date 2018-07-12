@@ -1,0 +1,14 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_perp.zf".
+
+#111_17
+assert forall (A B C A1 B1 C1 : point). per A B C => congA A B C A1 B1 C1 => per A1 B1 C1.
+
+#conga_sym
+assert forall (A B C A1 B1 C1 : point). congA A B C A1 B1 C1 => congA A1 B1 C1 A B C.
+
+goal forall (A B C : point). A!=B => B!=C => acute A B C || per A B C || obtuse A B C.

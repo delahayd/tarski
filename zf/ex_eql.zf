@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#is_len_cong
+assert forall (A B C D : point) (l : point->point->prop). len A B l => len C D l => cong A B C D.
+
+#is_len_cong_is_len
+assert forall (A B C D : point) (l : point->point->prop). len A B l => cong A B C D => len C D l.
+
+goal forall (l1 l2 : point->point->prop). (exists (A B : point). len A B l1 && len A B l2) => eqL l1 l2.

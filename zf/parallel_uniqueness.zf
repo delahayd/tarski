@@ -1,0 +1,13 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#tarski_s_euclid
+assert forall (A B C D T : point). bet A D T => bet B D C => A!=D => (exists (X Y : point). bet A B X && bet A C Y && bet X T Y).
+
+
+#tarski_s_euclid_implies_playfair
+assert (forall (A B C D T : point). bet A D T => bet B D C => A!=D => (exists (X Y : point). bet A B X && bet A C Y && bet X T Y)) => (forall (A1 A2 B1 B2 C1 C2 P : point). par A1 A2 B1 B2 => col P B1 B2 => par A1 A2 C1 C2 => col P C1 C2 => col C1 B1 B2 && col C2 B1 B2).
+
+
+goal forall (A1 A2 B1 B2 C1 C2 P : point). par A1 A2 B1 B2 => col P B1 B2 => par A1 A2 C1 C2 => col P C1 C2 => col C1 B1 B2 && col C2 B1 B2.

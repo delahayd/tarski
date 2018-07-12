@@ -1,0 +1,31 @@
+#$Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_perp.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+
+#19_8_1
+assert forall (P Q A B C : point). ts P Q A C => ts P Q B C => os P Q A B.
+
+#acute_one_side_aux0
+assert forall (P A O B : point). col A O P => acute A O P => perp O A B O =>os O B A P.
+
+#acute_one_side_aux
+assert forall (P A O B : point). os O A P B => acute A O P => perp O A B O => os O B A P.
+
+#col_one_side
+assert forall (A B C P Q : point). col A B C => A!=C => os A B P Q => os A C P Q.
+
+#one_or_two_sides
+assert forall (A B X Y : point). ~col X A B => ~col Y A B => ts A B X Y || os A B X Y.
+
+#per_not_col
+assert forall (A B C : point). A!=B => B!=C => per A B C => ~col A B C.
+
+#perp_col
+assert forall (A B C D E : point). A!=E => perp A B C D => col A B E => perp A E C D.
+
+goal forall (P A O B : point). acute A O P => perp O A O B => os O B A P.

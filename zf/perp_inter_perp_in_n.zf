@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (A B C D : point). perp A B C D => (exists (P : point). col A B P && col C D P && perp_at P A B C D).

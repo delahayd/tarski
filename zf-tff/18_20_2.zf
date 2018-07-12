@@ -1,0 +1,6 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_prop_orthogonality.zf".
+
+goal forall (A B C C1 D P : point). per A B C => midpoint P C1 D => midpoint A C1 C => midpoint B D C => B!=C => A!=P.

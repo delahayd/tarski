@@ -1,0 +1,10 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+val O : point.
+val E : point.
+val E1 : point.
+assert ~col O E E1.
+goal ~par O E E E1 && ~par O E O E1 && ~par O E1 E E1 && O!=E && O!=E1 && E!=E1.

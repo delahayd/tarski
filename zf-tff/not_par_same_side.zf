@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_side.zf".
+
+#not_par_two_sides
+assert forall (A B C D I : point). C!=D => col A B I => col C D I => ~col A B C => (exists (X Y : point). col C D X && col C D Y && ts A B X Y).
+
+goal forall (A B C D I P : point). C!=D => col A B I => col C D I => ~col A B C => ~ col A B P => (exists (Q : point). col C D Q && os A B P Q).

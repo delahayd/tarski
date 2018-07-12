@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (A B C D : point). bet A B D => bet B C D => bet A B C.

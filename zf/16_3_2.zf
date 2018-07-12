@@ -1,0 +1,10 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_prop_bet.zf".
+include "tarski_bet.zf".
+
+#15_2
+assert forall (A B C D : point). A!=B => bet A B C => bet A B D => bet B C D || bet B D C.
+
+goal forall (A B P : point). (A!=P && B!=P && (exists (C: point). C!=P && bet A P C && bet B P C)) => out P A B.

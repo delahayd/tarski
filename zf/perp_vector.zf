@@ -1,0 +1,9 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_perp.zf".
+
+#perp_exists
+assert  forall (O A B : point). A!=B => (exists (X : point). perp O X A B).
+
+goal forall (A B : point). A!=B => (exists (X Y : point). perp A B X Y).

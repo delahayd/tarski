@@ -1,0 +1,46 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#111_31_1
+assert forall (A B C D E F : point). out B A C => D!=E => F!=E => leA A B C D E F.
+
+#111_31_2
+assert forall (A B C D E F : point). A!=B => C!=B => D!=E => F!=E => bet D E F =>leA A B C D E F.
+
+#lta_lea
+assert forall (A B C D E F : point). ltA A B C D E F => leA A B C D E F.
+
+#lea_acute_obtuse
+assert forall (A B C D E F : point). acute A B C => obtuse D E F => leA A B C D E F.
+
+#lea_comm
+assert forall (A B C D E F : point). leA A B C D E F => leA C B A F E D.
+
+#lea_right_comm
+assert forall (A B C D E F : point). leA A B C D E F => leA A B C F E D.
+
+#lea_left_comm
+assert forall (A B C D E F : point). leA A B C D E F => leA C B A D E F.
+
+#lea_asym
+assert forall (A B C D E F : point). leA A B C D E F => leA D E F A B C => congA A B C D E F.
+
+#lea121345
+assert forall (A B C D E : point). A!=B => C!=D => D!=E => leA A B A C D E.
+
+#inangle_lea
+assert forall (A B C P : point). inAngle P A B C => leA A B P A B C.
+
+#conga_lea
+assert forall (A B C D E F : point). congA A B C D E F => leA A B C D E F.
+
+#conga_lea456123
+assert forall (A B C D E F : point). congA A B C D E F => leA D E F A B C.
+
+#lea_refl
+assert forall (A B C : point). A!=B => C!=B => leA A B C A B C.
+
+
+
+

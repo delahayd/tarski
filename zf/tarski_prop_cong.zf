@@ -1,0 +1,9 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#12_11
+assert forall (A B C A1 B1 : point). bet A B C => cong A B A1 B1 => (exists (C1 : point). cong_3 A B C A1 B1 C1).
+
+#five_segment_with_def
+assert forall (A B C D A1 B1 C1 D1 : point). ofsc A B C D A1 B1 C1 D1 => A!=B => cong C D C1 D1.

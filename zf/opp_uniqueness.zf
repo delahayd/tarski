@@ -1,0 +1,21 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_cong.zf".
+val O : point.
+val E : point.
+val E1 : point.
+assert ~col O E E1.
+
+#par_distincts
+assert forall (A B C D : point). par A B C D => (par A B C D && A!=B && C!=D).
+
+#sum_comm
+assert forall (A B C : point). sum O E E1 A B C => sum O E E1 B A C.
+
+#sum_plg
+assert forall (A B C : point). sum O E E1 A B C => (A!=O) || (B!=O) => (exists (A1 C1 : point). plg O B C1 A1 && plg C1 A1 A C).
+
+goal forall (A MA1 MA2 : point). opp O E E1 A MA1 => opp O E E1 A MA2 => MA1=MA2.

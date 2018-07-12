@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#14_13
+assert forall (A B C A1 B1 C1 : point). col A B C => cong_3 A B C A1 B1 C1 => col A1 B1 C1.
+
+#col_cong_3_cong_3_eq
+assert forall (A B C A1 B1 C1 C2 : point). A!=B => col A B C => cong_3 A B C A1 B1 C1 => cong_3 A B C A1 B1 C2 => C1=C2.
+
+goal forall (O E E1 S U1 U2 A AX AY B BX BY C CX CY : point). cd O E S U1 U2 A AX AY => cd O E S U1 U2 B BX BY => cd O E S U1 U2 C CX CY => col A B C.

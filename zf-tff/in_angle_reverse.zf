@@ -1,0 +1,50 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_side.zf".
+include "tarski_out.zf".
+
+#15_2
+assert forall (A B C D : point). A!=B => bet A B C => bet A B D => bet B C D || bet B D C.
+
+#19_8_1
+assert forall (P Q A B C : point). ts P Q A C => ts P Q B C => os P Q A B.
+
+#19_8_2
+assert forall (P Q A B C : point). ts P Q A C => os P Q A B => ts P Q B C.
+
+#111_24
+assert forall (P A B C : point). inAngle P A B C => inAngle P C B A.
+
+#111_25
+assert forall (P A B C A1 C1 P1 : point). inAngle P A B C => out B A1 A => out B C1 C => out B P P1 => inAngle P1 A1 B C1.
+
+#bet_in_angle_bet
+assert forall (A B C P : point). bet A B P => inAngle P A B C => bet A B C.
+
+#col_in_angle
+assert forall (A B C P : point). A!=B => C!=B => P!=B => out B A P || out B C P => inAngle P A B C.
+
+#inangle_distincts
+assert forall (A B C P : point). inAngle P A B C => A!=B && C!=B && P!=B.
+
+#in_angle_one_side
+assert forall (A B C P : point). ~col A B C => ~col B A P => inAngle P A B C => os A B P C.
+
+#in_angle_trivial_2
+assert forall (A B C : point). A!=B => C!=B => inAngle C A B C.
+
+#in_angle_two_sides
+assert forall (A B C P : point). ~col B A P => ~col B C P => inAngle P A B C => ts P B A C.
+
+#out_in_angle
+assert forall (A B C P : point). out B A C => out B P A => inAngle P A B C.
+
+#out_one_side
+assert forall (A B X Y : point). (~col A B X || ~col A B Y) => out A X Y => os A B X Y.
+
+goal forall (A B A1 C D : point). A1!=B => bet A B A1 => inAngle C A B D => inAngle D A1 B C.

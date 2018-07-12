@@ -1,0 +1,10 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#all_eql
+assert forall (A B : point) (l1 l2 : point->point->prop). len A B l1 => len A B l2 => eqL l1 l2.
+
+goal forall (lp  l : point->point->prop) (a : point->point->point->prop). lcos lp l a => q_congA_null_acute a => eqL l lp.

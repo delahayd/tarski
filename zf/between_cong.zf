@@ -1,0 +1,10 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+include "tarski_prop_cong.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+
+
+goal forall (A B C : point). bet A C B => cong A C A B => C=B.

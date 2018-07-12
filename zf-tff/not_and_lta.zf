@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#lea_asym
+assert forall (A B C D E F : point). leA A B C D E F => leA D E F A B C => congA A B C D E F.
+
+goal forall (A B C D E F : point). ~(ltA A B C D E F && ltA D E F A B C).

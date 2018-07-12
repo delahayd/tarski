@@ -1,0 +1,38 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+val O : point.
+val E : point.
+val E1 : point.
+#diff_sum
+assert forall (O E E1 A B S : point). diff O E E1 S A B => sum O E E1 A B S.
+
+#diff_O_A
+assert forall (O E E1 A mA : point). ~col O E E1 => opp O E E1 A mA => diff O E E1 O A mA.
+
+#distr_1
+assert forall (O E E1 A B C D AB AC AD : point). sum O E E1 B C D => prod O E E1 A B AB =>prod O E E1 A C AC => (prod O E E1 A D AD => sum O E E1 AB AC AD).
+
+#opp_uniqueness
+assert forall (A MA1 MA2 : point). opp O E E1 A MA1 => opp O E E1 A MA2 => MA1=MA2.
+
+#prod_uniqueness
+assert forall (A B C1 C2 : point). prod O E E1 A B C1 => prod O E E1 A B C2 => C1=C2.
+
+#prod_0_1
+assert forall (O E E1 A : point). ~col O E E1 => col O E A => prod O E E1 O A O.
+
+#prod_0_r
+assert forall (O E E1 A : point). ~col O E E1 => col O E A => prod O E E1 A O O.
+
+#sum_opp
+assert forall (O E E1 X MX : point). sum O E E1 X MX O => opp O E E1 X MX.
+
+#sum_uniqueness
+assert forall (A B C1 C2 : point). sum O E E1 A B C1 => sum O E E1 A B C2 => C1=C2.
+
+
+
+goal forall (O E E1 ME X MX : point). opp O E E1 E ME => opp O E E1 X MX => prod O E E1 X ME MX.

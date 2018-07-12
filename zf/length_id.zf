@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#length_id_1
+assert forall (O E E1 A B : point). length O E E1 A B O => A=B.
+
+#length_id_2
+assert forall (O E E1 A : point). O!=E => length O E E1 A A O.
+
+goal forall (O E E1 A B : point).  (A=B && O!=E)<=>length O E E1 A B O.

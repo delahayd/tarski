@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal exists (X Y : point). X!=Y.

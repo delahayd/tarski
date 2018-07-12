@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#col_preserves_two_sides
+assert forall (A B C D X Y : point). C!=D => col A B C => col A B D => ts A B X Y => ts C D X Y.
+
+goal forall (A B C D X Y : point). C!=D => col A B C => col A B D => os A B X Y => os C D X Y.

@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (A B : point) (la lb : point->point->prop). len A A la => len B B lb => eqL la lb.

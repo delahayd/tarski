@@ -1,0 +1,56 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+val O : point.
+val E : point.
+val E1 : point.
+
+#18_9
+assert forall (A B C : point). per A B C => col A B C => (A=B || C=B).
+
+#18_14_2_1b_bis
+assert forall (A B C D X : point). perp A B C D => col X A B => col X C D => perp_at X A B C D.
+
+#18_18_existence
+assert forall (A B C : point). ~col A B C => (exists (X : point). col A B X && perp A B C X).
+
+#111_47
+assert forall (A B C H : point). per A C B => perp_at H C H A B => bet A H B && A!=H && B!=H.
+
+#115_7_1
+assert  forall (O E E1 A B C H AB AC AH AC2 : point). O!=E => per A C B => perp_at H C H A B => length O E E1 A B AB => length O E E1 A C AC => length O E E1 A H AH => prod O E E1 AC AC AC2 => prod O E E1 AB AH AC2.
+
+#Col_dec
+assert forall (A B C : point). col A B C || ~col A B C.
+
+#distr_1
+assert forall (O E E1 A B C D AB AC AD : point). sum O E E1 B C D => prod O E E1 A B AB =>prod O E E1 A C AC => (prod O E E1 A D AD => sum O E E1 AB AC AD).
+
+#length_id_2
+assert forall (O E E1 A : point). O!=E => length O E E1 A A O.
+
+#length_sym
+assert forall (O E E1 A B AB : point).length O E E1 A B AB => length O E E1 B A AB.
+
+#length_uniqueness
+assert forall (O E E1 A B AB AB1 : point). length O E E1 A B AB => length O E E1 A B AB1 => AB=AB1.
+
+#prod_0_1
+assert forall (O E E1 A : point). ~col O E E1 => col O E A => prod O E E1 O A O.
+
+#prod_uniqueness
+assert forall (A B C1 C2 : point). prod O E E1 A B C1 => prod O E E1 A B C2 => C1=C2.
+
+#sum_A_O
+assert forall (A : point). col O E A => sum O E E1 A O A.
+
+#sum_O_B
+assert forall (B : point). col O E B => sum O E E1 O B B.
+
+#triangular_equality_bis
+assert  forall (O E E1 A B C AB BC AC : point). (A!=B || C!=B || A!=C) => O!=E => bet A B C => length O E E1 A B AB => length O E E1 B C BC => length O E E1 A C AC => sum O E E1 AB BC AC.
+
+goal forall (O E E1 A B C AC BC AB AC2 BC2 AB2 : point). O!=E => per A C B => length O E E1 A B AB => length O E E1 B C BC => length O E E1 A C AC => prod O E E1 AC AC AC2 => prod O E E1 AB AB AB2 => prod O E E1 BC BC BC2 => sum O E E1 AC2 BC2 AB2.

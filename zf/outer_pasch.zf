@@ -1,0 +1,24 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#16_21
+assert forall (A B C D P Q : point). ~col A B C => C!=D => col A B P => col A B Q => col C D P => col C D Q => P=Q.
+
+#16_4_2
+assert forall (A B P : point). (col A P B && ~bet A P B) => out P A B.
+
+#19_5
+assert forall (P Q A C R B : point). ts P Q A C => col R P Q => out R A B => ts P Q B C.
+
+#bet_dec
+assert forall (A B C : point). bet A B C || ~bet A B C.
+
+#Col_dec
+assert forall (A B C : point). col A B C || ~col A B C.
+
+goal forall (A B C P Q : point). bet A C P => bet B Q C => (exists (X : point). bet A X B && bet P Q X).

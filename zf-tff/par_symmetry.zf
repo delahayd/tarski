@@ -1,0 +1,12 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+
+#col_transitivity_1
+assert forall (P Q A B : point). P!=Q => col P Q A => col P Q B => col P A B.
+
+#par_strict_symmetry
+assert forall (A B C D : point). par_strict A B C D => par_strict C D A B.
+
+goal forall (A B C D : point). par A B C D => par C D A B.

@@ -1,0 +1,15 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_out.zf".
+include "tarski_prop_bet.zf".
+
+#111_25
+assert forall (P A B C A1 C1 P1 : point). inAngle P A B C => out B A1 A => out B C1 C => out B P P1 => inAngle P1 A1 B C1.
+
+#bet_in_angle_bet
+assert forall (A B C P : point). bet A B P => inAngle P A B C => bet A B C.
+
+#in_angle_line
+assert forall (A B C P : point). P!=B => A!=B => C!=B => bet A B C => inAngle P A B C.
+goal forall (A B C D E : point). inAngle C A B D => inAngle D A B E => inAngle C A B E.

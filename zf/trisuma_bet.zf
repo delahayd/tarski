@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#112_21_a
+assert forall (A B C D : point). ts A C B D => (par A B C D => congA B A C D C A).
+
+goal forall (A B C D E F : point). triSumA A B C D E F => bet D E F.

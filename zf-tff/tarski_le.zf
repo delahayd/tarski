@@ -1,0 +1,43 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#le_reflexivity
+assert forall (A B : point). le A B A B.
+
+#le_anti_symmetry
+assert forall (A B C D : point). le A B C D => le C D A B => cong A B C D.
+
+#le_trivial
+assert forall (A C D : point). le A A C D.
+
+#le_zero
+assert forall (A B C : point). le A B C C => A=B.
+
+#cong_le
+assert forall (A B C D : point). cong A B C D => le A B C D.
+
+#cong_le3412
+assert forall (A B C : point). bet A B C => le A B A C.
+
+#le1221
+assert forall (A B : point). le A B B A.
+
+#le_left_comm
+assert forall (A B C D : point). le A B C D => le B A C D.
+
+#le_right_comm
+assert forall (A B C D : point). le A B C D => le A B D C.
+
+
+#le_comm
+assert forall (A B C D : point). le A B C D => le B A D C.
+
+#lt_le
+assert forall (A B C D : point). lt A B C D => le A B C D.
+
+#bet_le1213
+assert forall (A B C : point). bet A B C => le A B A C.
+
+#bet_le2313
+assert forall (A B C : point). bet A B C => le B C A C.

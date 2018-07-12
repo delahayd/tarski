@@ -1,0 +1,13 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#ge_left_comm
+assert forall (A B C D : point). ge A B C D => ge B A C D.
+
+#ge_right_comm
+assert forall (A B C D : point). ge A B C D => ge A B D C.
+
+
+
+goal forall (A B C D : point). ge A B C D => ge B A D C.

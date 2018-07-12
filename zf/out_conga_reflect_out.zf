@@ -1,0 +1,44 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_out.zf".
+include "tarski_conga.zf".
+include "tarski_side.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#110_8
+assert forall (A B P : point). reflect P P A B => col P A B.
+
+#110_14
+assert forall (P P1 A B : point). P!=P1 => A!=B => reflect P P1 A B => ts A B P P1.
+
+#111_18_2
+assert forall (A B C D : point). bet C B D => congA A B C A B D => per A B C.
+
+#col_conga_col
+assert forall (A B C D E F : point). col A B C => congA A B C D E F => col D E F.
+
+#conga_distinct
+assert forall (A B C D E F : point). congA A B C D E F => congA A B C D E F && A!=B && C!=B && D!=E && F!=E.
+
+#conga_trans
+assert forall (A B C A1 B1 C1 A2 B2 C2 : point). congA A B C A1 B1 C1 => congA A1 B1 C1 A2 B2 C2 => congA A B C A2 B2 C2.
+
+#is_image_is_image_spec
+assert forall (P P1 A B : point). A!=B => (reflect P1 P A B <=> reflectL P1 P A B ).
+
+#not_bet_out
+assert forall (A B C : point). col A B C => ~bet A B C => out B A C.
+
+#out_conga
+assert forall (A B C A1 B1 C1 A0 C0 A2 C2 : point). congA A B C A1 B1 C1 => out B A A0 => out B C C0 => out B1 A1 A2 => out B1 C1 C2 => congA A0 B C0 A2 B1 C2.
+
+#per_not_col
+assert forall (A B C : point). A!=B => B!=C => per A B C => ~col A B C.
+
+#reflectl_conga
+assert forall (A B P P1 : point). A!=B => B!=P => reflectL P P1 A B => congA A B P A B P1.
+
+
+goal forall (A B C P T T1 : point). ~out B A C => congA P B A P B C => out B A T => reflectL T T1 B P => out B C T1.

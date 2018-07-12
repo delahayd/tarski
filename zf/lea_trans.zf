@@ -1,0 +1,47 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_out.zf".
+include "tarski_col.zf".
+include "tarski_side.zf".
+
+#111_31_1
+assert forall (A B C D E F : point). out B A C => D!=E => F!=E => leA A B C D E F.
+
+#111_31_2
+assert forall (A B C D E F : point). A!=B => C!=B => D!=E => F!=E => bet D E F =>leA A B C D E F.
+
+#angle_construction_1
+assert forall (A B C A1 B1 P : point). ~col A B C => ~col A1 B1 P => (exists (C1 : point). congA A B C A1 B1 C1 && os A1 B1 C1 P).
+
+#conga_preserves_in_angle
+assert forall (A B C I A1 B1 C1 I1 : point). congA A B C A1 B1 C1 => congA A B I A1 B1 I1 => inAngle I A B C => os A1 B1 I1 C1 => inAngle I1 A1 B1 C1.
+
+#bet_conga_bet
+assert forall (A B C A1 B1 C1 : point). bet A B C => congA A B C A1 B1 C1 => bet A1 B1 C1.
+
+#bet_in_angle_bet
+assert forall (A B C P : point). bet A B P => inAngle P A B C => bet A B C.
+
+#conga_sym
+assert forall (A B C A1 B1 C1 : point). congA A B C A1 B1 C1 => congA A1 B1 C1 A B C.
+
+#in_angle_one_side
+assert forall (A B C P : point). ~col A B C => ~col B A P => inAngle P A B C => os A B P C.
+
+#in_angle_out
+assert forall (A B C P : point). out B A C => inAngle P A B C => out B A P.
+
+#in_angle_trans
+assert forall (A B C D E : point). inAngle C A B D => inAngle D A B E => inAngle C A B E.
+
+#one_side_transitivity
+assert forall (P Q A B C : point). os P Q A B => os P Q B C => os P Q A C.
+
+#out_conga_out
+assert forall (A B C D E F : point). out B A C => congA A B C D E F => out E  D F.
+
+#out_in_angle_out
+assert forall (A B C P : point). out B A C => inAngle P A B C => out B A P.
+
+goal forall (A B C A1 B1 C1 A2 B2 C2 : point). leA A B C A1 B1 C1 => leA A1 B1 C1 A2 B2 C2 => leA A B C A2 B2 C2.

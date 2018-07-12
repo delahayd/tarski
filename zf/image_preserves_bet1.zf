@@ -1,0 +1,12 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_midpoint.zf".
+
+#17_15
+assert forall (P Q R P1 Q1 R1 A : point). midpoint A P P1 => midpoint A Q Q1 => midpoint A R R1 => bet P Q R => bet P1 Q1 R1.
+
+#image_preserves_bet
+assert forall (A B C A1 B1 C1 X Y : point). X!=Y => reflectL A A1 X Y => reflectL B B1 X Y => reflectL C C1 X Y => bet A B C => bet A1 B1 C1.
+
+goal forall (X Y A B C A1 B1 C1 : point). bet A B C => reflect A A1 X Y => reflect B B1 X Y => reflect C C1 X Y => bet A1 B1 C1.

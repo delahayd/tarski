@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#sum_comm
+val O : point.
+val E : point.
+val E1 : point.
+assert forall (A B C : point). sum O E E1 A B C => sum O E E1 B A C.
+
+goal forall (O E E1 A : point). ~col O E E1 => col O E A => diff O E E1 A A O.

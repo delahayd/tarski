@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#conga_sym
+assert forall (A B C A1 B1 C1 : point). congA A B C A1 B1 C1 => congA A1 B1 C1 A B C.
+
+goal forall (A B C D E F : point). ~(gtA A B C D E F && congA A B C D E F).

@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+val O : point.
+val E : point.
+val E1 : point.
+assert ~col O E E1.
+goal forall (A B C : point). pj A B C C.

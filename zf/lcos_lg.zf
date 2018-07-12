@@ -1,0 +1,38 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_perp.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_out.zf".
+include "tarski_conga.zf".
+include "tarski_cong.zf".
+
+#111_16
+assert forall (A B C A1 B1 C1 : point). per A B C => A!=B => C!=B => per A1 B1 C1 => A1!=B1 => C1!=B1 => congA A B C A1 B1 C1.
+
+#111_50_2
+assert forall (A B C A1 B1 C1 : point). ~col A B C => congA B C A B1 C1 A1 => congA A B C A1 B1 C1 => cong A B A1 B1 => cong A C A1 C1 && cong B C B1 C1 && congA C A B C1 A1 B1.
+
+#anga_conga
+assert forall (A B C A1 B1 C1 : point) (a : point->point->point->prop). q_congA_acute a => a A B C => a A1 B1 C1 => congA A B C A1 B1 C1.
+
+#conga_distinct
+assert forall (A B C D E F : point). congA A B C D E F => congA A B C D E F && A!=B && C!=B && D!=E && F!=E.
+
+#lg_cong
+assert forall (A B C D : point) (l : point->point->prop). q_cong l => l A B => l C D => cong A B C D.
+
+#lg_cong_lg
+assert  forall (A B C D : point) (l : point->point->prop). q_cong l => l A B => cong A B C D => l C D.
+
+#out_conga_out
+assert forall (A B C D E F : point). out B A C => congA A B C D E F => out E D F.
+
+#perp_not_col
+assert forall (A B P : point). perp A B P A => ~col A B P.
+
+#perp_not_eq2
+assert forall (A B C D : point). perp A B C D => C!=D.
+
+goal forall (A B C : point) (lp l : point->point->prop) (a : point->point->point->prop). lcos lp l a => perp A B B C => a A B C => l A C => lp A B.

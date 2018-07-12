@@ -1,0 +1,179 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#16_21
+assert forall (A B C D P Q : point). ~col A B C => C!=D => col A B P => col A B Q => col C D P => col C D Q => P=Q.
+
+#17_2
+assert forall (M A B : point). midpoint M A B => midpoint M B A.
+
+#17_13 
+assert forall (A P Q P1 Q1 : point). midpoint A P1 P => midpoint A Q1 Q => cong P Q P1 Q1.
+
+#17_17
+assert forall (P P1 A B : point). midpoint A P P1 => midpoint B P P1 => A=B.
+
+#17_20
+assert forall (M A B : point). col A M B => cong M A M B => A=B || midpoint M A B
+
+#19_2
+assert forall (A B P Q : point). ts A B P Q => ts A B Q P.
+
+#19_8_1
+assert forall (P Q A B C : point). ts P Q A C => ts P Q B C => os P Q A B.
+
+#19_8_2
+assert forall (P Q A B C : point). ts P Q A C => os P Q A B => ts P Q B C.
+
+#19_9
+assert forall (P Q A B : point). ts P Q A B => ~os P Q A B.
+
+#111_10
+assert forall (A B C D E F A1 C1 D1 F1 : point). congA A B C D E F => out B A1 A => out B C1 C => out E D1 D => out E F1 F => congA A1 B C1 D1 E F1.
+
+#111_13
+assert forall (A B C D E F A1 D1 : point). congA A B C D E F => bet A B A1 => A1!=B => bet D E D1 => D1!=E => congA A1 B C D1 E F. 
+
+#111_14
+assert forall (A B C A1 C1 : point). bet A B A1 => A!=B => A1!=B => bet C B C1 => B!=C => B!=C1 => congA A B C A1 B1 C1.
+
+#112_17
+assert forall (A B C D P : point). A!=B => midpoint P A C => midpoint P B D => par A B C D.
+
+#112_18_c
+assert forall (A B C D P : point). cong A B C D => cong B C D A => ~col A B C => B!=D => col A P C => col B D P => ts B D A C.
+
+#112_18_d
+assert forall (A B C D P : point). cong A B C D => cong B C D A => ~col A B C => B!=D => col A P C => col B P D => ts A C B D.
+
+#112_20_bis
+assert forall (A B C D : point). par A B C D => cong A B C D => ts B D A C => par B C D A && cong B C D A && ts A C B D.
+
+#112_21_a
+assert forall (A B C D : point). ts A C B D => (par A B C D => congA B A C D C A).
+
+#112_21_b
+assert forall (A B C D : point). ts A C B D => congA B A C D C A => par A B C D.
+
+#112_22_a
+assert forall (A B C D P : point). out P A C => os P A B D => par A B C D => congA B A P D C P.
+
+#112_22_b
+assert forall (A B C D P : point). out P A C => os P A B D => congA B A P D C P => par A B C D.
+
+############################"A"#############################################
+
+#all_coplanar
+assert forall (A B C D : point). coplanar A B C D.
+
+#############################"B"###########################################
+
+#between_symmetry
+assert forall (A B C : point). bet A B C => bet C B A.
+
+
+################################"C"########################################
+
+#col13
+assert forall (A B C D A1 B1 C1 D1 : point). ifsc A B C D A1 B1 C1 D1 => cong B D B1 D1.
+
+#col_one_side
+assert forall (A B C P Q : point). col A B C => A!=C => os A B P Q => os A C P Q.
+
+#col_one_side_out
+assert forall (A B X Y : point). col A X Y => os A B X Y => out A X Y.
+
+#col_not_col_not_par
+assert forall (A B C D : point). (exists (P : point). col A B P && col C D P) => (exists (Q : point). col C D Q && ~col A B Q) => ~par A B C D.
+
+#col_two_sides_bet
+assert forall (A B X Y : point). col A X Y => ts A B X Y => bet X A Y.
+
+#conga_sym
+assert forall (A B C A1 B1 C1 : point). congA A B C A1 B1 C1 => congA A1 B1 C1 A B C.
+
+
+
+##############################"I"#############################################
+
+#inter_dec
+assert forall (A B C D : point). (exists (I : point). col I A B && col I C D) || ~(exists (I : point). col I A B && col I C D).
+
+##############################"M"###########################################
+
+#midpoint_existence
+assert forall (A B : point). (exists (X : point). midpoint X A B).
+
+#mid_two_sides
+assert forall (A B M X Y : point). midpoint M A B => ~col A B X => midpoint M X Y => ts A B X Y.
+
+###############################"N"###########################################
+
+#not_par_inter_exists
+assert forall (A1 B1 A2 B2 : point). ~par A1 B1 A2 B2 => (exists (X : point). col X A1 B1 && col X A2 B2).
+
+#not_par_inter
+assert forall (A B A1 B1 X Y : point). ~par A B A1 B1 => (exists (P : point). col P X Y && (col P A B || col P A1 B1 )).
+
+#not_strict_par1
+assert forall (A B C D X : point). par A B C D => col A B X => col C D X => col A B C.
+
+############################"O"############################################
+
+#one_side_not_col123
+assert forall (A B X Y : point). os A B X Y => ~col A B X.
+
+#one_side_symmetry
+assert forall (P Q A B : point). os P Q A B => os P Q B A.
+
+#out2_conga
+assert forall (A B C A1 C1 : point). out B A1 A => out B C1 C => congA A B C A1 B1 C1.
+
+#out_one_side_1
+assert forall (A B C D X : point). ~col A B C => col A B X => out X C D => os A B C D.
+
+#############################"P"##############################################
+
+#par_col_par_2
+assert forall (A B C D P : point). A!=P => col A B P => par A B C D => par A P C D.
+
+#par_comm
+assert forall (A B C D : point). par A B C D => par B A D C.
+
+#par_distincts
+assert forall (A B C D : point). par A B C D => (par A B C D && A!=B && C!=D).
+
+#par_id
+assert forall (A B C : point). par A B A C => col A B C.
+
+#par_not_col
+assert forall (A B C D X : point). par_strict A B C D => col X A B => ~col X C D.
+#par_not_col_strict
+assert forall (A B C D P : point). par A B C D => col C D P => ~col A B P => par_strict A B C D.
+
+#par_symmetry
+assert forall (A B C D : point). par A B C D => par C D A B.
+
+#par_trans
+assert forall (A1 A2 B1 B2 C1 C2 : point). par A1 A2 B1 B2 => par B1 B2 C1 C2 => par A1 A2 C1 C2.
+
+#par_two_sides_two_sides
+assert forall (A B C D : point). par A B C D => ts B D A C => ts A C B D.
+
+#parallel_uniqueness
+assert forall (A1 A2 B1 B2 C1 C2 P : point). par A1 A2 B1 B2 => col P B1 B2 => par A1 A2 C1 C2 => col P C1 C2 => col C1 B1 B2 && col C2 B1 B2.
+
+#playfair_implies_par_trans
+assert (forall (A1 A2 B1 B2 C1 C2 P : point). par A1 A2 B1 B2 => col P B1 B2 => par A1 A2 C1 C2 => col P C1 C2 => col C1 B1 B2 && col C2 B1 B2) => (forall (A1 A2 B1 B2 C1 C2 : point). par A1 A2 B1 B2 => par B1 B2 C1 C2 => par A1 A2 C1 C2).
+
+
+
+
+##############################"T"###########################################
+
+#tarski_s_euclid
+assert forall (A B C D T : point). bet A D T => bet B D C => A!=D => (exists (X Y : point). bet A B X && bet A C Y && bet X T Y).
+
+#tarski_s_euclid_implies_playfair
+assert (forall (A B C D T : point). bet A D T => bet B D C => A!=D => (exists (X Y : point). bet A B X && bet A C Y && bet X T Y)) => (forall (A1 A2 B1 B2 C1 C2 P : point). par A1 A2 B1 B2 => col P B1 B2 => par A1 A2 C1 C2 => col P C1 C2 => col C1 B1 B2 && col C2 B1 B2)).

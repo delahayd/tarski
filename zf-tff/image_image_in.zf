@@ -1,0 +1,34 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+
+#16_21
+assert forall (A B C D P Q : point). ~col A B C => C!=D => col A B P => col A B Q => col C D P => col C D Q => P=Q.
+
+#17_2
+assert forall (M A B : point). midpoint M A B => midpoint M B A.
+
+#18_16_1
+assert forall (A B C U X : point). A!=B => col A B X => col A B U => U!=X=> perp A B C X => ~col A B C && per C X U.
+
+#is_midpoint_id
+assert forall (A B : point). midpoint A A B => A=B.
+
+#midpoint_bet
+assert forall (A B C : point). midpoint B A C => bet A B C.
+
+#perp_col
+assert forall (A B C D E : point). A!=E => perp A B C D => col A B E => perp A E C D.
+
+#perp_distinct
+assert forall (A B C D : point). perp A B C D => A!=B && C!=D.
+
+#perp_right_comm
+assert forall (A B C D : point). perp A B C D => perp A B D C.
+
+#perp_sym
+assert forall (A B C D : point). perp A B C D => perp C D A B.
+
+
+goal forall (A B P P1 M : point). P!=P1 => reflectL P P1 A B => col A B M => col P M P1 => reflectL_at M P P1 A B.

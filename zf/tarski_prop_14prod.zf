@@ -1,0 +1,171 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#16_21
+assert forall (A B C D P Q : point). ~col A B C => C!=D => col A B P => col A B Q => col C D P => col C D Q => P=Q.
+
+#113_11
+assert forall (A B C A1 B1 C1 O : point). ~col O A A1 => B!=O => C!=O => col O A B => col O B C => B1!=O => C1!=O => col O A1 B1 => col O B1 C1 => par B C1 C B1 => par C A1 A C1 => par A B1 B A1.
+
+#113_15
+assert forall (A B C A1 B1 C1 O : point). ~col A B C => ~par O A B C => par_strict A B A1 B1 => par_strict A C A1 C1 => col O A A1 => col O B B1 => col O C C1 => par B C B1 C1.
+
+#113_19
+assert forall (A B C D A1 B1 C1 D1 O : point). ~col O A B => A!=A1 => A!=C => O!=A => O!=A1 => O!=C => O!=C1 => O!=B => O!=B1 => O!=D => O!=D1 => col O A C => col O A A1 => col O A1 C1 => col O B D => col O B B1 => col O B1 D1 => par A B A1 B1 => par A D A1 D1 => par B C B1 C1 => par C D C1 D1.
+
+#114_31_1
+assert forall (O E E1 A B C D : point). ar2_4 O E E1 A B C D => C!=O => (exists (X : point). prod O E E1 A B X && prod O E E1 C D X) => prod O C E1 A B D.
+
+
+#################################"C"##########################
+
+#col13
+assert forall (X Y A B C : point). X!=Y => col X Y A => col X Y B => col X Y C => col A B C.
+
+#change_grid_prod1
+assert forall (O E E1 B C O1 A1 B1 C1 : point). par_strict O E O1 E1 => ar1 O E E B C => ar1 O1 E1 A1 B1 C1 => pj O O1 E E1 => pj O O1 E A1 => pj O O1 B B1 => pj O O1 C C1 => prod O E E1 E B C => prod O1 E1 E A1 B1 C1.
+
+#change_grid_prod_l_O
+assert forall (O E E1 B C O1 A1 B1 C1 : point). par_strict O E O1 E1 => ar1 O E O B C => ar1 O1 E1 A1 B1 C1 => pj O O1 E E1 => pj O O1 O A1 => pj O O1 B B1 => pj O O1 C C1 => prod O E E1 O B C => prod O1 E1 E A1 B1 C1.
+
+######################"D"#####################@
+
+#diff_A_O
+assert forall (O E E1 A : point). ~col O E E1 => col O E A => diff O E E1 A O A.
+
+#diff_O_A
+assert forall (O E E1 A mA : point). ~col O E E1 => opp O E E1 A mA => diff O E E1 O A mA.
+
+#diff_ar2
+assert forall (O E E1 A B AMB : point). diff O E E1 A B AMB => ar2 O E E1 A B AMB.
+
+#diff_null
+assert forall (O E E1 A : point). ~col O E E1 => col O E A => diff O E E1 A A O.
+
+#diff_null_eq
+assert forall (O E E1 A B : point). diff O E E1 A B O => A=B.
+
+#diff_of_squares
+assert forall (O E E1 A B A2 B2 A2MB2 APB AMP F : point). prod O E E1 A A A2 => prod O E E1 B B B2 => diff O E E1 A2 B2 A2MB2 => sum O E E1 A B APB => diff O E E1 A B AMB => prod O E E1 APB AMB F => A2MB2=F.
+
+#diff_opp
+assert forall (O E E1 A B AmB BmA : point). diff O E E1 A B AmB => diff O E E1 B A BmA => opp O E E1 AmB BmA.
+
+#diff_sum
+assert forall (O E E1 A B S : point). diff O E E1 S A B => sum O E E1 A B S.
+
+#diff_uniqueness
+assert forall (O E E1 A B D1 D2 : point). diff O E E1 A B D1 => diff O E E1 A B D2 => D1=D2.
+
+#distr_1
+assert forall (O E E1 A B C D AB AC AD : point). sum O E E1 B C D => prod O E E1 A B AB =>prod O E E1 A C AC => (prod O E E1 A D AD => sum O E E1 AB AC AD).
+
+#distr_1_diff
+assert forall (O E E1 A B C BMC AB AC ABMC : point). diff O E E1 B C BMC => prod O E E1 A B AB => prod O E E1 A C AC => prod O E E1 A BMC ABMC => diff O E E1 AB AC ABMC.
+
+#distr_r
+assert forall (O E E1 A B C D AC BC DC : point). sum O E E1 A B D => prod O E E1 A C AC => prod O E E1 B C BC => (prod O E E1 D C DC => sum O E E1 AC BC DC).
+
+################################"O"##########################
+
+#opp_prod
+assert forall (O E E1 ME X MX : point). opp O E E1 E ME => opp O E E1 X MX => prod O E E1 X ME MX.
+
+#opp_uniqueness
+assert forall (A MA1 MA2 : point). opp O E E1 A MA1 => opp O E E1 A MA2 => MA1=MA2.
+
+################################"P"##########################
+
+#par_col_par
+assert forall (A B C D D1 : point). C!=D1 => par A B C D => col C D D1 => par A B C D1.
+
+#par_distinct
+assert  forall (A B C D : point). par A B C D => A!=B && C!=D.
+
+#par_distincts
+assert forall (A B C D : point). par A B C D => (par A B C D && A!=B && C!=D).
+
+#par_trans
+assert forall (A1 A2 B1 B2 C1 C2 : point). par A1 A2 B1 B2 => par B1 B2 C1 C2 => par A1 A2 C1 C2.
+
+#par_strict_distinct
+assert forall (A B C D : point). par_strict A B C D => A!=B && C!=D.
+
+#pj_col_project
+assert forall (P P1 A B X Y : point). A!=B => X!=Y => col P1 A B => ~par A B X Y => pj X Y P P1 => proj P P1 A B X Y.
+
+#pj_trivial
+assert forall (A B C : point). pj A B C C.
+
+#pj_uniqueness
+assert forall (O E E1 A A1 A2 : point). ~col O E E1 => col O E A => col O E1 A1 => col O E1 A2 => pj E E1 A A1 => pj E E1 A A2 => A1=A2.
+
+#prod_0_1_eq
+assert forall (O E E1 B C : point). prod O E E1 O B C => C=O.
+
+#prod_0_1
+assert forall (O E E1 A : point). ~col O E E1 => col O E A => prod O E E1 O A O.
+
+#prod_O_r_eq
+assert forall (O E E1 A C : point). prod O E E1 A O C => C=O.
+
+#prod_0_r
+assert forall (O E E1 A : point). ~col O E E1 => col O E A => prod O E E1 A O O.
+
+#prod_1_1_eq
+assert forall (O E E1 A B : point). prod O E E1 A B B => A=E || B=O.
+
+#prod_1_1
+assert forall (O E E1 A : point). ~col O E E1 => col O E A => prod O E E1 E A A.
+
+#prod_comm
+assert forall (O E E1 A B C : point). prod O E E1 A B C => prod O E E1 B A C.
+
+#proj_preserves_sum
+assert forall (O E E1 A B C A1 B1 C1 : point). sum O E E1 A B C => ar1 O E1 A1 B1 C1 => pj E E1 A A1 => pj E E1 B B1 => pj E E1 C C1 => sum O E1 E A1 B1 C1.
+
+#prod_null
+assert forall (O E E1 A B : point). prod O E E1 A B O => A=O || B=O.
+
+#prod_to_prodp
+assert forall (O E E1 A B C : point). prod O E E1 A B C => prodp O E E1 A B C.
+
+#prod_uniqueness
+assert forall (A B C1 C2 : point). prod O E E1 A B C1 => prod O E E1 A B C2 => C1=C2.
+
+#prod_uniquenessA
+assert forall (O E E1 A A1 B C : point). B!=O => prod O E E1 A B C => prod O E E1 A1 B C => A=A1.
+
+#prod_y_axis_change
+assert forall (O E E1 E2 A B C : point). prod O E E1 A B C => ~col O E E2 => prod O E E2 A B C.
+
+#project_pj
+assert forall (P P1 A B X Y : point). proj P P1 A B X Y => pj X Y P P1.
+
+########################"S"################################
+
+#sum_O_O
+assert sum O E E1 O O O.
+
+#sum_diff
+assert forall (O E E1 A B S : point). sum O E E1 A B S => diff O E E1 S A B.
+
+#sum_diff_diff_b
+assert forall (O E E1 A B C dBA dCB dCA : point). diff O E E1 B A dBA => diff O E E1 C B dCB => sum O E E1 dCB dBA dCA => diff O E E1 C A dCA.
+
+#sum_opp
+assert forall (O E E1 X MX : point). sum O E E1 X MX O => opp O E E1 X MX.
+
+#sum_uniqueness
+assert forall (A B C1 C2 : point). sum O E E1 A B C1 => sum O E E1 A B C2 => C1=C2.
+
+#sum_x_axis_unit_change
+assert forall (O E E1 U A B C : point). sum O E E1 A B C => col O E U => U!=O => sum O U E1 A B C.
+
+#sum_y_axis_change
+assert forall (O E E1 E2 A B C : point). sum O E E1 A B C => ~col O E E2 => sum O E E2 A B C.
+
+val O : point.
+val E : point.
+val E1 : point.

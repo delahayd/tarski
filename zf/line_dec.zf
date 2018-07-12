@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (B1 B2 C1 C2 : point). (col C1 B1 B2 && col C2 B1 B2) || ~(col C1 B1 B2 && col C2 B1 B2).

@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#conga_sym
+assert forall (A B C A1 B1 C1 : point). congA A B C A1 B1 C1 => congA A1 B1 C1 A B C.
+
+#conga_trans
+assert forall (A B C A1 B1 C1 A2 B2 C2 : point). congA A B C A1 B1 C1 => congA A1 B1 C1 A2 B2 C2 => congA A B C A2 B2 C2.
+
+goal forall (A B C A1 B1 C1 : point) (a : point->point->point->prop). q_congA a => a A1 B1 C1 => a A B C => congA A B C A1 B1 C1.

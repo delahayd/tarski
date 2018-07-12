@@ -1,0 +1,10 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_prop_orthogonality.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_cong.zf".
+include "tarski_perp.zf".
+
+goal forall (A B M X : point). A!=B => midpoint M A B => cong A X B X => X=M || ~col A B X && perp_at M X M A B.

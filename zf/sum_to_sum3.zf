@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (O E E1 A B AB X S : point). sum O E E1 A B AB => sum O E E1 AB X S => sum3 O E E1 A B X S.

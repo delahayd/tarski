@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#ex_eqa
+assert forall (a1 a2 : point->point->point->prop). (exists (A B C : point). ang A B C a1 && ang A B C a2) => eqA a1 a2.
+
+goal forall (A B C : point) (a1 a2 : point->point->point->prop). ang A B C a1 => ang A B C a2 => eqA a1 a2.

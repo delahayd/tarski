@@ -1,0 +1,7 @@
+# $Id$
+
+ include "tarski_def.zf".
+ include "tarski_col.zf".
+ include "tarski_prop_out_lines.zf".
+
+goal forall (A B C : point). ~col A B C => ~col A B C && A!=B && B!=C && A!=C.

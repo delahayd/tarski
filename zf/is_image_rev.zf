@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#is_image_spec_rev
+assert forall (P P1 A B : point). reflectL P P1 A B => reflectL P P1 B A.
+
+goal forall (P P1 A B : point). reflect P P1 A B => reflect P P1 B A.

@@ -1,0 +1,16 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col_bis.zf".
+include "tarski_col.zf".
+
+#between_symmetry
+assert forall (A B C : point). bet A B C => bet C B A.
+
+#diff_bet_ex3
+assert forall (A B C : point). bet A B C =>(exists (D : point). A!=D && B!=D && C!=D && col A B D).
+
+#diff_col_ex
+assert forall (A B : point). exists (C : point). A!=C && B!=C && col A B C.
+
+goal forall (A B C : point). col A B C => (exists (D : point). A!=D && B!=D && C!=D && col A B D).

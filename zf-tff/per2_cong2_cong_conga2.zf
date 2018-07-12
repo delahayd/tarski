@@ -1,0 +1,17 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#111_16
+assert forall (A B C A1 B1 C1 : point). per A B C => A!=B => C!=B => per A1 B1 C1 => A1!=B1 => C1!=B1 => congA A B C A1 B1 C1.
+
+#111_46
+assert forall (A B C : point). ~col A B C => (per A B C || obtuse A B C) => lt B A A C && lt B C A C.
+
+#111_52
+assert forall (A B C A1 B1 C1 : point). congA A B C A1 B1 C1 => cong A C A1 C1 => cong B C B1 C1 => le B C A C => cong B A B1 A1 && congA B A C B1 A1 C1 && congA B C A B1 C1 A1.
+
+#per_not_col
+assert forall (A B C : point). A!=B => B!=C => per A B C => ~col A B C.
+
+goal forall (A B C A1 B1 C1 : point). A!=B => B!=C => A1!=B1 => B1!=C1 => per A B C => per A1 B1 C1 => cong A C A1 C1 => cong B C B1 C1 => cong B A B1 A1 && congA B A C B1 A1 C1 && congA B C A B1 C1 A1. 

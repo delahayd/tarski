@@ -1,0 +1,16 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#diff_ar2
+assert forall (O E E1 A B AMB : point). diff O E E1 A B AMB => ar2 O E E1 A B AMB.
+
+#diff_null
+assert forall (O E E1 A : point). ~col O E E1 => col O E A => diff O E E1 A A O.
+
+#diff_uniquenessB
+assert forall (O E E1 A B B1 C : point). diff O E E1 A B C => diff O E E1 A B1 C => B=B1.
+
+goal forall (O E E1 A B : point). diff O E E1 A B O => A=B.

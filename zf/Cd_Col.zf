@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (O E S U1 U2 P X Y : point). cd O E S U1 U2 P X Y => col O E X && col O E Y.

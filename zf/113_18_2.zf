@@ -1,0 +1,29 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_par.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#16_21
+assert forall (A B C D P Q : point). ~col A B C => C!=D => col A B P => col A B Q => col C D P => col C D Q => P=Q.
+
+#113_15
+assert forall (A B C A1 B1 C1 O : point). ~col A B C => ~par O A B C => par_strict A B A1 B1 => par_strict A C A1 C1 => col O A A1 => col O B B1 => col O C C1 => par B C B1 C1.
+
+#col_par_par_col
+assert forall (A B C A1 B1 C1 : point). col A B C => par A B A1 B1 => par B C B1 C1 => col A1 B1 C1.
+
+#not_par_inter_exists
+assert forall (A1 B1 A2 B2 : point). ~par A1 B1 A2 B2 => (exists (X : point). col X A1 B1 && col X A2 B2).
+
+#par_col_par_2
+assert forall (A B C D P : point). A!=P => col A B P => par A B C D => par A P C D.
+
+#par_not_par
+assert forall (A B C D P Q : point). par A B C D => ~par A B P Q => ~par C D P Q.
+
+#par_trans
+assert forall (A1 A2 B1 B2 C1 C2 : point). par A1 A2 B1 B2 => par B1 B2 C1 C2 => par A1 A2 C1 C2.
+
+goal forall (A B C A1 B1 C1 O : point). ~col A B C => par_strict A B A1 B1 => par_strict A C A1 C1 => (par_strict B C B1 C1 && col O A A1 && col O B B1 && col O C C1).

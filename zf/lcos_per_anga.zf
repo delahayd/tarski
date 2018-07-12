@@ -1,0 +1,39 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+include "tarski_out.zf".
+include "tarski_conga.zf".
+
+#18_9
+assert forall (A B C : point). per A B C => col A B C => (A=B || C=B).
+
+
+#111_16
+assert forall (A B C A1 B1 C1 : point). per A B C => A!=B => C!=B => per A1 B1 C1 => A1!=B1 => C1!=B1 => congA A B C A1 B1 C1.
+
+#111_46
+assert forall (A B C : point). ~col A B C => (per A B C || obtuse A B C) => lt B A A C && lt B C A C.
+
+#111_52
+assert forall (A B C A1 B1 C1 : point). congA A B C A1 B1 C1 => cong A C A1 C1 => cong B C B1 C1 => le B C A C => cong B A B1 A1 && congA B A C B1 A1 C1 && congA B C A B1 C1 A1.
+
+#anga_conga_anga
+assert forall (A B C A1 C1 : point) (a : point->point->point->prop). q_congA_acute a => a A B C => out B A A1 => out B C C1 => a A1 B C1.
+
+#anga_sym
+assert forall (A B C : point) (a : point->point->point->prop). q_congA_acute a => a A B C => a C B A.
+
+#is_null_all
+assert forall (A B : point) (a : point->point->point->prop). A!=B => q_congA_null_acute a => a A B A.
+
+#lg_cong
+assert forall (A B C D : point) (l : point->point->prop). q_cong l => l A B => l C D => cong A B C D.
+
+#out_null_anga
+assert forall (A B C : point) (a : point->point->point->prop). q_congA_acute a => a A B C => out B A C => q_congA_null_acute a.
+
+#per_not_col
+assert forall (A B C : point). A!=B => B!=C => per A B C => ~col A B C.
+
+goal forall (O A P : point) (lp la : point->point->prop) (a : point->point->point->prop). lcos lp la a => la O A => lp O P => per  A P O => a A O P.

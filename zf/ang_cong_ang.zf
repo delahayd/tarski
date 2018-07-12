@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#is_ang_conga_is_ang
+assert forall (A B C A1 B1 C1 : point) (a : point->point->point->prop). ang A B C a => congA A B C A1 B1 C1 => ang A1 B1 C1 a.
+
+goal forall (A B C A1 B1 C1 : point) (a : point->point->point->prop). q_congA a => a A B C => congA A B C A1 B1 C1 => a A1 B1 C1.

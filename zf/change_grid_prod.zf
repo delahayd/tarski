@@ -1,0 +1,44 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_par.zf".
+val O : point.
+val E : point.
+val E1 : point.
+
+#16_21
+assert forall (A B C D P Q : point). ~col A B C => C!=D => col A B P => col A B Q => col C D P => col C D Q => P=Q.
+
+#change_grid_prod_l_O
+assert forall (O E E1 B C O1 A1 B1 C1 : point). par_strict O E O1 E1 => ar1 O E O B C => ar1 O1 E1 A1 B1 C1 => pj O O1 E E1 => pj O O1 O A1 => pj O O1 B B1 => pj O O1 C C1 => prod O E E1 O B C => prod O1 E1 E A1 B1 C1.
+
+#par_col_par
+assert forall (A B C D D1 : point). C!=D1 => par A B C D => col C D D1 => par A B C D1.
+
+#par_distinct
+assert  forall (A B C D : point). par A B C D => A!=B && C!=D.
+
+#par_distincts
+assert forall (A B C D : point). par A B C D => (par A B C D && A!=B && C!=D).
+
+#par_trans
+assert forall (A1 A2 B1 B2 C1 C2 : point). par A1 A2 B1 B2 => par B1 B2 C1 C2 => par A1 A2 C1 C2.
+
+#change_grid_prod1
+assert forall (O E E1 B C O1 A1 B1 C1 : point). par_strict O E O1 E1 => ar1 O E E B C => ar1 O1 E1 A1 B1 C1 => pj O O1 E E1 => pj O O1 E A1 => pj O O1 B B1 => pj O O1 C C1 => prod O E E1 E B C => prod O1 E1 E A1 B1 C1.
+
+#prod_comm
+assert forall (O E E1 A B C : point). prod O E E1 A B C => prod O E E1 B A C.
+
+#prod_null
+assert forall (O E E1 A B : point). prod O E E1 A B O => A=O || B=O.
+
+#prod_y_axis_change
+assert forall (O E E1 E2 A B C : point). prod O E E1 A B C => ~col O E E2 => prod O E E2 A B C.
+
+#sum_exists
+assert forall (A B : point). col O E A => col O E B => (exists (C : point). sum O E E1 A B C).
+
+goal forall (O E E1 A B C O1 A1 B1 C1 : point). par_strict O E O1 E1 => ar1 O E A B C => ar1 O1 E1 A1 B1 C1 => pj O O1 E E1 => pj O O1 A A1 => pj O O1 B B1 => pj O O1 C C1 => prod O E E1 A B C => prod O1 E1 E A1 B1 C1.

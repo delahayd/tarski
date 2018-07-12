@@ -1,0 +1,112 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_midpoint.zf".
+include "tarski_perp.zf".
+include "tarski_out.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+include "tarski_conga.zf".
+
+val O : point.
+val E : point.
+val E1 : point.
+
+#16_21
+assert forall (A B C D P Q : point). ~col A B C => C!=D => col A B P => col A B Q => col C D P => col C D Q => P=Q.
+
+#17_3
+assert forall (M A : point). midpoint M A A => M=A.
+
+#17_9
+assert forall (P Q A X : point). midpoint A P X => midpoint A Q X => P=Q.
+
+#110_16
+assert forall (A B C A1 B1 P : point). ~col A B C => ~col A1 B1 P => cong A B A1 B1 => (exists (C1 : point). cong_3 A B C A1 B1 C1 && os A1 B1 P C1).
+
+#111_14
+assert forall (A B C A1 C1 : point). bet A B A1 => A!=B => A1!=B => bet C B C1 => B!=C => B!=C1 => congA A B C A1 B C1.
+
+#111_49
+assert forall (A B C A1 B1 C1 : point). congA A B C A1 B1 C1 => cong B A B1 A1 => cong B C B1 C1 => cong A C A1 C1 && (A!=C => congA B A C B1 A1 C1 && congA B C A B1 C1 A1).
+
+#112_9
+assert forall (A1 A2 B1 B2 C1 C2 : point). perp A1 A2 C1 C2 => perp B1 B2 C1 C2 =>perp A1 A2 B1 B2.
+
+#112_21
+assert forall (A B C D : point). ts A C B D => (congA B A C D C A <=> par A B C D). 
+
+#112_22
+assert forall (A B C D P : point). out P A C => os P A B D => (congA B A P D C P <=> par A B C D).
+
+#conga_trans
+assert forall (A B C A1 B1 C1 A2 B2 C2 : point). congA A B C A1 B1 C1 => congA A1 B1 C1 A2 B2 C2 => congA A B C A2 B2 C2.
+
+#cong3_conga
+assert forall (A B C A1 B1 C1 : point). A!=B => C!=B => cong_3 A B C A1 B1 C1 => congA A B C A1 B1 C1.
+
+#cong3_preserves_out
+assert forall (A B C A1 B1 C1 : point). out A B C => cong_3 A B C A1 B1 C1 => out A1 B1 C1.
+
+#diff_sum
+assert forall (O E E1 A B S : point). diff O E E1 S A B => sum O E E1 A B S.
+
+#image_preserves_out
+assert forall (X Y A B C A1 B1 C1 : point). out A B C => reflect A A1 X Y => reflect B B1 X Y => reflect C C1 X Y => out A1 B1 C1.
+
+#length_cong
+assert forall (O E E1 A B AB : point). length O E E1 A B AB => cong A B O AB.
+
+#length_out
+assert forall (O E E1 A B C D AB CD : point). A!=B => C!=D => length O E E1 A B AB => length O E E1 C D CD => out O AB CD.
+
+#length_uniqueness
+assert forall (O E E1 A B AB AB1 : point). length O E E1 A B AB => length O E E1 A B AB1 => AB=AB1.
+
+#not_bet_out
+assert forall (A B C : point). col A B C => ~bet A B C => out B A C. 
+
+#out_conga
+assert forall (A B C A1 B1 C1 A0 C0 A2 C2 : point). congA A B C A1 B1 C1 => out B A A0 => out B C C0 => out B1 A1 A2 => out B1 C1 C2 => congA A0 B C0 A2 B1 C2.
+
+#out_one_side
+assert forall (A B X Y : point). (~col A B X || ~col A B Y) => out A X Y => os A B X Y.
+
+#perp_col
+assert forall (A B C D E : point). A!=E => perp A B C D => col A B E => perp A E C D.
+
+#perp_distinct
+assert forall (A B C D : point). perp A B C D => A!=B && C!=D.
+
+#perp_in_perp_bis
+assert forall (A B C D X : point). perp_at X A B C D => perp X B C D || perp A X C D.
+
+#perp_not_col
+assert forall (A B P : point). perp A B P A => ~col A B P.
+
+#prod_0_r
+assert forall (O E E1 A : point). ~col O E E1 => col O E A => prod O E E1 A O O.
+
+#prod_1_1
+assert forall (O E E1 A : point). ~col O E E1 => col O E A => prod O E E1 E A A.
+
+#prod_comm
+assert forall (O E E1 A B C : point). prod O E E1 A B C => prod O E E1 B A C.
+
+#prod_uniqueness
+assert forall (A B C1 C2 : point). prod O E E1 A B C1 => prod O E E1 A B C2 => C1=C2.
+
+#prod_x_axis_unit_change
+assert forall (O E E1 A B C D U : point). ar2_4 O E E1 A B C D => col O E U => U!=O => (exists (X : point). prod O E E1 A B X && prod O E E1 C D X) => (exists (Y : point). prod O U E1 A B Y && prod O U E1 C D Y).
+
+#project_preserves_out
+assert forall (A B C A1 B1 C1 P Q X Y : point). out A B C => ~par A B X Y => proj A A1 P Q X Y => proj B B1 P Q X Y => proj C C1 P Q X Y => out A1 B1 C1.
+
+#symmetric_point_uniqueness
+assert forall (A P P1 P2 : point). midpoint P A P1 => midpoint P A P2 => P1=P2.
+
+
+goal forall (O E E1 P A B C D A1 B1 C1 D1 AD : point). O!=E => col P A B => col P C D => ~col P A C => pj A C B D => length O E E1 P A A1 => length O E E1 P B B1 => length O E E1 P C C1 => length O E E1 P D D1 => prodg O E E1 A1 D1 AD => prodg O E E1 C1 B1 AD.

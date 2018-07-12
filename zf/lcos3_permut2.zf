@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#lcos3_permut1
+assert forall (lp l : point->point->prop) (a b c : point->point->point->prop). lcos3 lp l a b c => lcos3 lp l a c b.
+
+#lcos3_permut3
+assert forall (lp l : point->point->prop) (a b c : point->point->point->prop). lcos3 lp l a b c => lcos3 lp l b a c.
+
+goal forall (lp l : point->point->prop) (a b c : point->point->point->prop). lcos3 lp l a b c => lcos3 lp l c b a.

@@ -1,0 +1,14 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#anga_is_ang
+assert forall (a : point->point->point->prop). q_congA_acute a => q_congA a.
+
+#eqA_preserves_ang
+assert forall (a b : point->point->point->prop). q_congA a => eqA a b => q_congA b.
+
+#eqA_preserves_anga
+assert forall (a b : point->point->point->prop). q_congA_acute a => q_congA b => eqA a b => q_congA_acute b.
+
+goal forall (l lp : point->point->prop) (a b : point->point->point->prop). lcos lp l a => eqA a b => lcos lp l b.

@@ -1,0 +1,9 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_out.zf".
+
+#16_7
+assert forall (P A B C : point). out P A B => out P B C => out P A C.
+
+goal forall (O E E1 A B AB : point). ps O E A => ps O E B => sum O E E1 A B AB => ps O E AB.

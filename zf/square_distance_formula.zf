@@ -1,0 +1,52 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_perp.zf".
+val O : point.
+val E : point.
+val E1 : point.
+#112_9
+assert forall (A1 A2 B1 B2 C1 C2 : point). perp A1 A2 C1 C2 => perp B1 B2 C1 C2 =>perp A1 A2 B1 B2.
+
+#116_9_2
+assert forall (O E E1 X Y XY XMY XY2 XMY2 : point). col O E X => col O E Y => is_length O E E1 X Y XY => diff O E E1 X Y XMY => prod O E E1 XY XY XY2 => prod O E E1 XMY XMY XMY2 => XY2=XMY2.
+
+#col_cong_3_cong_3_eq
+assert forall (A B C A1 B1 C1 C2 : point). A!=B => col A B C => cong_3 A B C A1 B1 C1 => cong_3 A B C A1 B1 C2 => C1=C2.
+
+#coord_exchange_axes
+assert forall (O E S U1 U2 P X Y : point). cd O E S U1 U2 P X Y => cd O E S U2 U1 P X Y.
+
+#diff_ar2
+assert forall (O E E1 A B AMB : point). diff O E E1 A B AMB => ar2 O E E1 A B AMB.
+
+#grid_exchange_axes
+assert forall (O E S U1 U2 : point). cs O E S U1 U2 => cs O E S U2 U1.
+
+#is_length_exists
+assert forall (O E E1 X Y : point). ~col O E E1 => (exists (XY : point). is_length O E E1 X Y XY).
+
+#length_id_2
+assert forall (O E E1 A : point). O!=E => length O E E1 A A O.
+
+#length_sym
+assert forall (O E E1 A B AB : point).length O E E1 A B AB => length O E E1 B A AB.
+
+#length_uniqueness
+assert forall (O E E1 A B AB AB1 : point). length O E E1 A B AB => length O E E1 A B AB1 => AB=AB1.
+
+#point_of_coordiantes
+assert forall (O E S U1 U2 X Y : point). cs O E S U1 U2 => col O E X => col O E Y => (exists (P : point). cd O E S U1 U2 P X Y).
+
+#square_distance_formula_aux
+assert forall (O E E1 S U1 U2 P PX PY Q QX PXQX : point). cd O E S U1 U2 P PX PY => cd O E S U1 U2 Q QX PY => P!=Q => ~col O E E1 => col O E PX => col O E QX => col O E PY => cs O E S U1 U2 => length O E E1 PX QX PXQX => length O E E1 Q P PXQX.
+
+#sum_comm
+assert forall (A B C : point). sum O E E1 A B C => sum O E E1 B A C.
+
+#sum_uniqueness
+assert forall (A B C1 C2 : point). sum O E E1 A B C1 => sum O E E1 A B C2 => C1=C2.
+
+goal forall (O E E1 S U1 U2 P PX PY Q QX QY PQ PQ2 PXMQX PYMQY PXMQX2 PYMQY2 F : point). cd O E S U1 U2 P PX PY => cd O E S U1 U2 Q QX QY => prod O E E1 PQ PQ PQ2 => diff O E E1 PX QX PXMQX => prod O E E1 PXMQX PXMQX PXMQX2 => prod O E E1 PYMQY PYMQY PYMQY2 => diff O E E1 PY QY PYMQY => sum O E E1 PXMQX2 PYMQY2 F => PQ2=F.

@@ -1,0 +1,25 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#19_2
+assert forall (A B P Q : point). ts A B P Q => ts A B Q P.
+
+#19_8_1
+assert forall (P Q A B C : point). ts P Q A C => ts P Q B C => os P Q A B.
+
+#one_side_symmetry
+assert forall (P Q A B : point). os P Q A B => os P Q B A.
+
+#one_side_transitivity
+assert forall (P Q A B C : point). os P Q A B => os P Q B C => os P Q A C.
+
+#out_out_two_sides
+assert forall (A B X Y U V I : point). A!=B => ts A B X Y => col I A B => col I X Y => out I X U => col I Y V => ts A B U V.
+
+#out_trivial
+assert forall (P A : point). A!=P => out P A A.
+
+goal forall (A B C D C1 P : point). col A B P => os A B C D => out P C C1 => os A B C1 D.

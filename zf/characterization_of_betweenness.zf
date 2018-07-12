@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (O E E1 S U1 U2 A AX AY B BX BY C CX CY BXMAX BYMAY CXMAX CYMAY : point). cd O E S U1 U2 A AX AY => cd O E S U1 U2 B BX BY => cd O E S U1 U2 C CX CY => diff O E E1 BX AX BXMAX => diff O E E1 BY AY BYMAY => diff O E E1 CX AX CXMAX => diff O E E1 CY AY CYMAY => (bet A B C <=> (exists (T : point). O != E && col O E T && leP O E E1 O T && leP O E E1 T E && prod O E E1 T CXMAX BXMAX && prod O E E1 T CYMAY BYMAY)).

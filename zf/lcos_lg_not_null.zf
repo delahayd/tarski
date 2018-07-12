@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (lp l : point->point->prop) (a : point->point->point->prop). lcos l lp a => ~q_cong_null l && ~q_cong_null lp.

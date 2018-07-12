@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (A B C D : point).  cong A B C D => cong A B C D && cong A B D C && cong B A C D && cong B A D C && cong C D A B && cong C D B A && cong D C A B && cong D C B A.

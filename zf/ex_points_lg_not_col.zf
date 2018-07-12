@@ -1,0 +1,7 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+goal forall (P : point) (l : point->point->prop). q_cong l => ~q_cong_null l => (exists (A B : point). l A B && ~col A B P).

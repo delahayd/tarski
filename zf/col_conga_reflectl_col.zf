@@ -1,0 +1,35 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+include "tarski_out.zf".
+include "tarski_conga.zf".
+
+#16_2
+assert forall (A B C P : point). A!=P => B!=P => C!=P => bet A P C => (bet B P C <=> out P A B).
+
+#110_6_uniqueness_spec
+assert forall (A B P P1 P2 : point). reflectL P P1 A B => reflectL P P2 A B => P1=P2.
+
+#111_13
+assert  forall (A B C D E F A1 D1 : point). congA A B C D E F => bet A B A1 => A1!=B => bet D E D1 => D1!=E => congA A1 B C D1 E F.
+
+#col_refl
+assert forall (A B P : point). col P A B => reflectL P P A B.
+
+#conga_distinct
+assert forall (A B C D E F : point). congA A B C D E F => congA A B C D E F && A!=B && C!=B && D!=E && F!=E.
+
+#not_out_bet
+assert forall (A B C : point). col A B C => ~out B A C => bet A B C.
+
+#out_col
+assert forall (A B C : point). out A B C => col A B C.
+
+#out_conga_reflect_out
+assert forall (A B C P T T1 : point). ~out B A C => congA P B A P B C => out B A T => reflectL T T1 B P => out B C T1.
+
+goal forall (A B C P T T1 : point). ~out B A C  => congA P B A P B C => col B A T => reflectL T T1 B P => col B C T1.

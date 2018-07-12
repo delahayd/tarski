@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#110_6_uniqueness
+assert forall (A B P P1 P2 : point). reflect P P1 A B => reflect P P2 A B => P1=P2.
+
+#is_image_is_image_spec
+assert forall (P P1 A B : point). A!=B => (reflect P1 P A B <=> reflectL P1 P A B ).
+
+goal forall (A B P P1 P2 : point). reflectL P P1 A B => reflectL P P2 A B => P1=P2.

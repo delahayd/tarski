@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#sum_uniqueness
+val O:point.
+val E:point.
+val E1:point.
+assert forall (A B C1 C2 : point). sum O E E1 A B C1 => sum O E E1 A B C2 => C1=C2.
+
+goal forall (O E E1 A C : point). sum O E E1 A A C => C!=O => A!=O.

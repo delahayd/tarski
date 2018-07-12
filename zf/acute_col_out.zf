@@ -1,0 +1,10 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+
+#acute_distincts
+assert forall (A B C : point). acute A B C => A!=B && C!=B.
+
+goal forall (A B C : point). acute A B C => col A B C => out B A C.

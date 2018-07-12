@@ -1,0 +1,37 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_side.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_conga.zf".
+include "tarski_out.zf".
+
+#111_41
+assert forall (A B C D : point). ~col A B C => bet A B D => A!=D => ltA A C B C A D && ltA A B C C A D.
+
+#col_one_side
+assert forall (A B C P Q : point). col A B C => A!=C => os A B P Q => os A C P Q.
+
+#col_one_side_out
+assert forall (A B X Y : point). col A X Y => os A B X Y => out A X Y.
+
+#conga_preserves_lta
+assert forall (A B C D E F A1 B1 C1 D1 E1 F1 : point). congA A B C A1 B1 C1 => congA D E F D1 E1 F1 => ltA A B C D E F => ltA A1 B1 C1 D1 E1 F1.
+
+#lta_trans
+assert forall (A B C A1 B1 C1 A2 B2 C2 : point). ltA A B C A1 B1 C1 => ltA A1 B1 C1 A2 B2 C2 => ltA A B C A2 B2 C2.
+
+#one_side_not_col123
+assert forall (A B X Y : point). os A B X Y => ~col A B X.
+
+#os2_inangle
+assert forall (A B C P : point). os B A C P => os B C A P => inAngle P A B C.
+
+#out2_bet
+assert forall (A B C : point). out A B C => out C B A => bet A B C.
+
+#out_conga
+assert forall (A B C A1 B1 C1 A0 C0 A2 C2 : point). congA A B C A1 B1 C1 => out B A A0 => out B C C0 => out B1 A1 A2 => out B1 C1 C2 => congA A0 B C0 A2 B1 C2.
+
+goal forall (A B C D : point). os A B C D => os B C A D => os A C B D => ltA B A C B D C.

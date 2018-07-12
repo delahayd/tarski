@@ -1,0 +1,14 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#113_15_par
+assert forall (A B C A1 B1 C1 : point). ~col A B C => par_strict A B A1 B1 => par_strict A C A1 C1 => par A A1 B B1 => par A A1 C C1 => par B C B1 C1.
+
+#113_18_2
+assert forall (A B C A1 B1 C1 O : point). ~col A B C => par_strict A B A1 B1 => par_strict A C A1 C1 => (par_strict B C B1 C1 && col O A A1 && col O B B1 && col O C C1).
+
+#113_18_3
+assert forall (A B C A1 B1 C1 : point). ~col A B C => par_strict A B A1 B1 => par_strict A C A1 C1 => (par_strict B C B1 C1 && par A A1 B B1) => par C C1 A A1 && par C C1 B B1.
+
+goal forall (A B C A1 B1 C1 O : point). ~col A B C && par_strict A B A1 B1 && par_strict A C A1 C1 => (par_strict B C B1 C1 && col O A A1 && col O B B1 => col O C C1) && ((par_strict B C B1 C1 && par A A1 B B1) => (par C C1 A A1 && par C C1 B B1)) && (par A A1 B1 B1 && par A A1 C C1 => par B C B1 C1).

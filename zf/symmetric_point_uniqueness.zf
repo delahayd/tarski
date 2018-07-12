@@ -1,0 +1,9 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+
+#construction_uniqueness
+assert forall (Q A B C X Y : point). Q!=A => bet Q A X => cong A X B C => bet Q A Y => cong A Y B C => X=Y.
+
+goal forall (A P P1 P2 : point). midpoint P A P1 => midpoint P A P2 => P1=P2.

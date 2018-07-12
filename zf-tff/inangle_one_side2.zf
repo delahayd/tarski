@@ -1,0 +1,13 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#111_24
+assert forall (P A B C : point). inAngle P A B C => inAngle P C B A.
+
+#inangle_one_side
+assert forall (A B C P Q : point). ~col A B C => ~col A B P => ~col A B Q => inAngle P A B C => inAngle Q A B C => os A B P Q.
+
+goal forall (A B C P Q : point). ~col A B C => ~col A B P => ~col A B Q => ~col C B P => ~col C B Q => inAngle P A B C => inAngle Q A B C => os A B P Q && os C B P Q.

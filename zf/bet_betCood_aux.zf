@@ -1,0 +1,19 @@
+#  $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+
+#14_6
+assert forall (A B C A1 B1 C1 : point). bet A B C => cong_3 A B C A1 B1 C1 => bet A1 B1 C1.
+
+#14_13
+assert forall (A B C A1 B1 C1 : point). col A B C => cong_3 A B C A1 B1 C1 => col A1 B1 C1.
+
+#cong_3_3_cong_5
+assert forall (O E I J K S U X Y Z : point). O!=E => col O E I => col O E J => col O E K => cong_3 O E I S U X => cong_3 O E J S U Y => cong_3 O E K S U Z => cong_5 O E I J K S U X Y Z.
+
+#exists_projp
+assert forall (A B P : point). A!=B => (exists (P1 : point). projp P P1 A B).
+
+
+goal forall (O E E1 S U1 U2 A AX AY B BX BY C CX CY : point). cd O E S U1 U2 A AX AY => cd O E S U1 U2 B BX BY => cd O E S U1 U2 C CX CY => bet A B C => bet AX BX CX.

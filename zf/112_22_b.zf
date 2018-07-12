@@ -1,0 +1,19 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_conga.zf".
+include "tarski_side.zf".
+include "tarski_par.zf".
+
+#112_22_aux
+assert forall (A B C D P : point). P!=A => A!=C => bet P A C => os P A B D => congA B A P D C P => par A B C D.
+
+#col_one_side
+assert forall (A B C P Q : point). col A B C => A!=C => os A B P Q => os A C P Q.
+
+#conga_or_out_ts
+assert forall (A B C C1 : point). congA A B C A B C1 => out B C C1 || ts A B C C1.
+
+goal forall (A B C D P : point). out P A C => os P A B D => congA B A P D C P => par A B C D.

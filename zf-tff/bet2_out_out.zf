@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_prop_bet.zf".
+include "tarski_prop_out_lines.zf".
+include "tarski_bet.zf".
+
+goal forall (A B C B1 C1 : point). B!=A => B1!=A => out A C C1 => bet A B C => bet A B1 C1 => out A B B1.

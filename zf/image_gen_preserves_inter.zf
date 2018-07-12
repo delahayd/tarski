@@ -1,0 +1,22 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#16_21
+assert forall (A B C D P Q : point). ~col A B C => C!=D => col A B P => col A B Q => col C D P => col C D Q => P=Q.
+
+#110_2_uniqueness
+assert forall (A B P P1 P2 : point). reflect P1 P A B => reflect P2 P A B => P1=P2. 
+
+#110_6_existence
+assert forall (A B P1 : point). (exists (P : point). reflect P1 P A B).
+
+#image_gen_preserves_col
+assert forall (A B C A1 B1 C1 X Y : point). X!=Y => reflect A A1 X Y => reflect B B1 X Y => reflect C C1 X Y => col A B C => col A1 B1 C1.
+
+#image_gen_preserves_ncol
+assert forall (A B C A1 B1 C1 X Y : point). X!=Y => reflect A A1 X Y => reflect B B1 X Y => reflect C C1 X Y => ~col A B C => ~col A1 B1 C1.
+
+
+
+goal forall (A B C D I A1 B1 C1 D1 I1 X Y : point). X!=Y => reflect A A1 X Y => reflect B B1 X Y => reflect C C1 X Y => ~col A B C => C!=D => col A B I => col C D I => col A1 B1 I1 => col C1 D1 I1 => reflect I I1 X Y.

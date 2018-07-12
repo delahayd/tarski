@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#lea_total
+assert forall (A B C D E F : point). A!=B => B!=C => D!=E => E!=F => leA A B C D E F || leA D E F A B C.
+
+goal forall (A B C D E F : point). A!=B => B!=C => D!=E => E!=F => geA A B C D E F || geA D E F A B C.

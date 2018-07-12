@@ -1,0 +1,14 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_par.zf".
+
+#parallel_existence
+assert forall (A B P : point). A!=B => (exists (C D : point). C!=D && par A B C D && col P C D).
+
+#par_col_par
+assert forall (A B C D D1 : point). C!=D1 => par A B C D => col C D D1 => par A B C D1.
+
+goal forall (A B P : point). A!=B => (exists (Q : point). par A B P Q).

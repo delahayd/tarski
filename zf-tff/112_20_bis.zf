@@ -1,0 +1,53 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_par.zf".
+include "tarski_cong.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+
+#17_2
+assert forall (M A B : point). midpoint M A B => midpoint M B A.
+
+#17_13 
+assert forall (A P Q P1 Q1 : point). midpoint A P1 P => midpoint A Q1 Q => cong P Q P1 Q1.
+
+#17_20
+assert forall (M A B : point). col A M B => cong M A M B => A=B || midpoint M A B.
+
+#19_8_1
+assert forall (P Q A B C : point). ts P Q A C => ts P Q B C => os P Q A B.
+
+#19_9
+assert forall (P Q A B : point). ts P Q A B => ~os P Q A B.
+
+#112_17
+assert forall (A B C D P : point). A!=B => midpoint P A C => midpoint P B D => par A B C D.
+
+#midpoint_existence
+assert forall (A B : point). (exists (X : point). midpoint X A B).
+
+#not_strict_par1
+assert forall (A B C D X : point). par A B C D => col A B X => col C D X => col A B C.
+
+#par_id
+assert forall (A B C : point). par A B A C => col A B C.
+
+#par_not_col
+assert forall (A B C D X : point). par_strict A B C D => col X A B => ~col X C D.
+
+#par_not_col_strict
+assert forall (A B C D P : point). par A B C D => col C D P => ~col A B P => par_strict A B C D.
+
+#par_symmetry
+assert forall (A B C D : point). par A B C D => par C D A B.
+
+#par_trans
+assert forall (A1 A2 B1 B2 C1 C2 : point). par A1 A2 B1 B2 => par B1 B2 C1 C2 => par A1 A2 C1 C2.
+
+#par_two_sides_two_sides
+assert forall (A B C D : point). par A B C D => ts B D A C => ts A C B D.
+
+goal forall (A B C D : point). par A B C D => cong A B C D => ts B D A C => par B C D A && cong B C D A && ts A C B D.

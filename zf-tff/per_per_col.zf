@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#all_coplanar
+assert forall (A B C D : point). coplanar A B C D.
+
+#cop_per_per_col
+assert forall (A X Y Z : point). coplanar A X Y Z => A!=Z => per X Z A => per Y Z A => col X Y Z.
+
+goal forall (A B C X : point). per A X C => X!=C => per B X C => col A B X.

@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#not_and_lta
+assert forall (A B C D E F : point). ~(ltA A B C D E F && ltA D E F A B C).
+
+goal forall (A B C : point). ~ltA A B C A B C.

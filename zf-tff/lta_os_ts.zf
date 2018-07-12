@@ -1,0 +1,27 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_side.zf".
+include "tarski_out.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+include "tarski_conga.zf".
+
+#16_7
+assert forall (P A B C : point). out P A B => out P B C => out P A C. 
+
+#19_8_2
+assert forall (P Q A B C : point). ts P Q A C => os P Q A B => ts P Q B C.
+
+#out_conga
+assert forall (A B C A1 B1 C1 A0 C0 A2 C2 : point). congA A B C A1 B1 C1 => out B A A0 => out B C C0 => out B1 A1 A2 => out B1 C1 C2 => congA A0 B C0 A2 B1 C2.
+
+#one_side_transitivity
+assert forall (P Q A B C : point). os P Q A B => os P Q B C => os P Q A C.
+
+#out_one_side
+assert forall (A B X Y : point). (~col A B X || ~col A B Y) => out A X Y => os A B X Y.
+
+goal forall (A O B P : point). ~col A O P => ltA A O P A O B => os O A B P => ts O P A B.

@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#lta_left_comm
+assert forall (A B C D E F : point). ltA A B C D E F => ltA C B A D E F.
+
+goal forall (A B C : point). acute A B C => acute C B A.

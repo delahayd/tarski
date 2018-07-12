@@ -1,0 +1,16 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#19_31
+assert forall (A X Y Z : point). os A X Y Z => os A Z Y X => ts A Y X Z.
+
+#Col_dec
+assert forall (A B C : point). col A B C || ~col A B C.
+
+#one_side_symmetry
+assert forall (P Q A B : point). os P Q A B => os P Q B A.
+
+goal forall (A B C D : point). coplanar A B C D.

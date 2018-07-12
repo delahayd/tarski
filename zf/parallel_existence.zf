@@ -1,0 +1,26 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_perp.zf".
+
+#18_18_existence
+assert forall (A B C : point). ~col A B C => (exists (X : point). col A B X && perp A B C X).
+
+#112_9
+assert forall (A1 A2 B1 B2 C1 C2 : point). perp A1 A2 C1 C2 => perp B1 B2 C1 C2 =>perp A1 A2 B1 B2.
+
+#Col_dec
+assert forall (A B C : point). col A B C || ~col A B C.
+
+#ex_per_cong
+assert forall (A B C D X Y : point). A!=B => X!=Y => col A B C => ~col A B D => (exists (P : point). per P C A && cong P C X Y && os A B P D).
+
+#perp_distinct
+assert forall (A B C D : point). perp A B C D => A!=B && C!=D.
+
+#perp_in_perp_bis
+assert forall (A B C D X : point). perp_at X A B C D => perp X B C D || perp A X C D.
+
+goal forall (A B P : point). A!=B => (exists (C D : point). C!=D && par A B C D && col P C D).

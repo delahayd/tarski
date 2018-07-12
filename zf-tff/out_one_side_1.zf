@@ -1,0 +1,17 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#16_21
+assert forall (A B C D P Q : point). ~col A B C => C!=D => col A B P => col A B Q => col C D P => col C D Q => P=Q.
+
+#19_5
+assert forall (P Q A C R B : point). ts P Q A C => col R P Q => out R A B => ts P Q B C.
+
+#one_side_reflexivity
+assert forall (P Q A : point). ~col A P Q => os P Q A A. 
+
+
+goal forall (A B C D X : point). ~col A B C => col A B X => out X C D => os A B C D.

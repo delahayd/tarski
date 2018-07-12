@@ -1,0 +1,28 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#17_2
+assert forall (M A B : point). midpoint M A B => midpoint M B A.
+
+#17_3
+assert forall (M A : point). midpoint M A A => M=A.
+
+#18_2
+assert forall (A B C : point). per A B C => per C B A.
+
+#cong_commutativity
+assert forall (A B C D : point). cong A B C D => cong B A D C.
+
+#image_in_is_image_spec
+assert forall (M A B P P1 : point). reflectL_at M P P1 A B => reflectL P P1 A B.
+
+#is_image_spec_col_cong
+assert forall (A B P P1 X : point). reflectL P P1 A B => col A B X => cong P X P1 X.
+
+#per_per_col
+assert forall (A B C X : point). per A X C => X!=C => per B X C => col A B X.
+
+goal forall (A B P P1 Q Q1 M : point). reflectL_at M P P1 A B => reflectL_at M Q Q1 A B => col M P Q.

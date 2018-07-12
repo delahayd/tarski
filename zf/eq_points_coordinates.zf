@@ -1,0 +1,24 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_perp.zf".
+include "tarski_cong.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#14_13
+assert forall (A B C A1 B1 C1 : point). col A B C => cong_3 A B C A1 B1 C1 => col A1 B1 C1.
+
+#14_18
+assert forall (A B C C1 : point). A!=B => col A B C => cong A C A C1 => cong B C B C1 => C=C1.
+
+#112_9
+assert forall (A1 A2 B1 B2 C1 C2 : point). perp A1 A2 C1 C2 => perp B1 B2 C1 C2 =>perp A1 A2 B1 B2.
+
+#per_not_col
+assert forall (A B C : point). A!=B => B!=C => per A B C => ~col A B C.
+
+#perp_col0
+assert forall (A B C D X Y : point). perp A B C D => X!=Y => col A B X => col A B Y => perp C D X Y.
+
+goal forall (O E S U1 U2 P1 X1 Y1 P2 X2 Y2 : point). cd O E S U1 U2 P1 X1 Y1 => cd O E S U1 U2 P2 X2 Y2 => (P1=P2 <=> (X1=X2 && Y1=Y2)).

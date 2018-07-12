@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#113_10
+assert forall (A B C A1 B1 C1 O : point). ~col O A A1 => B!=O => C!=O => col O A B => col O B C => B1!=O => C1!=O => col O A1 B1 => col O B1 C1 => perp2 B C1 C B1 O => perp2 C A1 A C1 O => perp2 A B1 B A1 O.
+
+goal forall (A B C A1 B1 C1 O : point). ~col O A A1 => B!=O => C!=O => col O A B => col O B C => B1!=O => C1!=O => col O A1 B1 => col O B1 C1 => par B C1 C B1 => par C A1 A C1 => par A B1 B A1.

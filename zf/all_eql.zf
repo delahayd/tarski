@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#ex_eql
+assert forall (l1 l2 : point->point->prop). (exists (A B : point). len A B l1 && len A B l2) => eqL l1 l2.
+
+goal forall (A B : point) (l1 l2 : point->point->prop). len A B l1 => len A B l2 => eqL l1 l2.

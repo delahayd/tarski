@@ -1,0 +1,14 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#distr_1
+assert forall (O E E1 A B C D AB AC AD : point). sum O E E1 B C D => prod O E E1 A B AB =>prod O E E1 A C AC => (prod O E E1 A D AD => sum O E E1 AB AC AD).
+
+#diff_sum
+assert forall (O E E1 A B S : point). diff O E E1 S A B => sum O E E1 A B S.
+
+#sum_diff
+assert forall (O E E1 A B S : point). sum O E E1 A B S => diff O E E1 S A B.
+
+goal forall (O E E1 A B C BMC AB AC ABMC : point). diff O E E1 B C BMC => prod O E E1 A B AB => prod O E E1 A C AC => prod O E E1 A BMC ABMC => diff O E E1 AB AC ABMC.

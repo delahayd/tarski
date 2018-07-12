@@ -1,0 +1,12 @@
+# $Id$
+
+include "tarski_def.zf".
+
+
+#bet2_le2_le1346
+assert forall (A B C A1 B1 C1 : point). bet A B C => bet A1 B1 C1 => le A B A1 B1 => le B C B1 C1 => le A C A1 C1.
+
+#15_6
+assert forall (A B C D A1 B1 C1 D1 : point). le A B C D => cong A B A1 B1 => cong C D C1 D1 => le A1 B1 C1 D1.
+
+goal forall (A M B A1 M1 B1 : point). midpoint M A B => midpoint M1 A1 B1 => le A M A1 M1 => le A B A1 B1. 

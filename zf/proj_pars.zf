@@ -1,0 +1,17 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+val O : point.
+val E : point.
+val E1 : point.
+assert ~col O E E1.
+
+#all_coplanar
+assert forall (A B C D : point). coplanar A B C D.
+
+#par_distincts
+assert forall (A B C D : point). par A B C D => (par A B C D && A!=B && C!=D).
+
+goal forall (A A1 C1 : point). A!=O => col O E A => par O E A1 C1 => proj A A1 O E1 E E1 => par_strict O E A1 C1.

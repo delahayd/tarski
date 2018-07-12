@@ -1,0 +1,9 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_prop_out_lines.zf".
+
+#out2_out_1
+assert forall (B C D X : point). out B X C => out B X D => out B C D.
+
+goal forall (B C D X : point). out B C X => out B D X => out B C D.

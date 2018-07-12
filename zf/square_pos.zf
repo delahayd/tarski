@@ -1,0 +1,27 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+val O : point.
+val E : point.
+val E1 : point.
+#opp_comm
+assert forall (X Y : point). opp O E E1 X Y => opp O E E1 Y X.
+
+#opp_prod
+assert forall (O E E1 ME X MX : point). opp O E E1 E ME => opp O E E1 X MX => prod O E E1 X ME MX.
+
+#pos_null_neg
+assert forall (O E E1 A MA : point). opp O E E1 A MA => ps O E A || O=A || ps O E MA.
+
+#prod_assoc1
+assert forall (O E E1 A B C AB BC ABC : point). prod O E E1 A B AB => prod O E E1 B C BC => (prod O E E1 A BC ABC => prod O E E1 AB C ABC).
+
+#prod_comm
+assert forall (O E E1 A B C : point). prod O E E1 A B C => prod O E E1 B A C.
+
+#prod_pos_pos
+assert forall (O E E1 A B AB : point). ps O E A => ps O E B => prod O E E1 A B AB => ps O E AB.
+
+goal forall (O E E1 A A2 : point). O!=A => prod O E E1 A A A2 => ps O E A2.

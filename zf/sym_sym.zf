@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (A C A1 : point). reflectP A A1 C => reflectP A1 A C.

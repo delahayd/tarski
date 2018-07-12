@@ -1,0 +1,5 @@
+# $Id$
+
+ include "tarski_def.zf".
+
+goal forall (A B P : point). perp A B P A => ~col A B P.

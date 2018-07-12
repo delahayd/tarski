@@ -1,0 +1,50 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_perp.zf".
+include "tarski_par.zf".
+include "tarski_side.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#18_3
+assert forall (A B C A1 : point). per A B C => A!=B=> col B A A1 => per A1 B C. 
+
+#111_24
+assert forall (P A B C : point). inAngle P A B C => inAngle P C B A.
+
+#112_9
+assert forall (A1 A2 B1 B2 C1 C2 : point). perp A1 A2 C1 C2 => perp B1 B2 C1 C2 =>perp A1 A2 B1 B2.
+
+#acute_per_lta
+assert forall (A B C D E F : point). acute A B C => D!=E => E!=F => per D E F => ltA A B C D E F.
+
+#col_one_side_out
+assert forall (A B X Y : point). col A X Y => os A B X Y => out A X Y.
+
+#in_angle_one_side
+assert forall (A B C P : point). ~col A B C => ~col B A P => inAngle P A B C => os A B P C.
+
+#lea_in_angle
+assert forall (A B C P : point). leA A B P A B C => os A B C P => inAngle P A B C.
+
+#lta_comm
+assert forall (A B C D E F : point). ltA A B C D E F => ltA C B A F E D.
+
+#nlta
+assert forall (A B C : point). ~ltA A B C A B C.
+
+#one_side_trasnsitivity
+assert forall (P Q A B C : point). os P Q A B => os P Q B C => os P Q A C.
+
+#par_not_col_strict
+assert forall (A B C D P : point). par A B C D => col C D P => ~col A B P => par_strict A B C D.
+
+#par_strict_not_col_4
+assert forall (A B C D : point). par_strict A B C D => ~col A B D.
+
+#per_not_col
+assert forall (A B C : point). A!=B => B!=C => per A B C => ~col A B C.
+
+
+goal forall (A B C A1 : point). acute A B C => col B C A1 => perp B C A A1 => out B A1 C.

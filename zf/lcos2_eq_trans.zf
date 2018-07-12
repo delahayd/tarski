@@ -1,0 +1,14 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#lcos2_eql_lcos2
+assert forall (lla llb la lb : point->point->prop) (a b : point->point->point->prop). lcos2 lla llb a b => eqL lla llb => eqL la lb => lcos2 lb llb a b.
+
+#lcos2_lg_anga
+assert forall (lp l : point->point->prop) (a b : point->point->point->prop). lcos2 lp l a b => lcos2 lp l a b && q_cong lp && q_cong l && q_congA_acute a && q_congA_acute b.
+
+#lcos2_uniqueness
+assert forall (l l1 l2 : point->point->prop) (a b : point->point->point->prop). lcos2 l1 l a b => lcos2 l2 l a b => eqL l1 l2.
+
+goal forall (l1 l2 l3 : point->point->prop) (a b c d e f : point->point->point->prop). eq_lcos2 l1 a b l2 c d => eq_lcos2 l2 c d l3 e f => eq_lcos2 l1 a b l3 e f.

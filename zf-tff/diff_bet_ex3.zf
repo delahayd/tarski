@@ -1,0 +1,15 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_bet.zf".
+
+#diff_col_ex
+assert forall (A B : point). exists (C : point). A!=C && B!=C && col A B C.
+
+#outer_transitivity_between
+assert forall (A B C D : point). bet A B C=> bet B C D => B!=C => bet A B D.
+
+#point_construction_different
+assert forall (A B : point). (exists (C : point). bet A B C && B!=C).
+
+goal forall (A B C : point). bet A B C =>(exists (D : point). A!=D && B!=D && C!=D && col A B D).

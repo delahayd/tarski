@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#inter_left_comm
+assert forall (A B C D X : point). inter A B C D X => inter B A C D X.
+
+#inter_right_comm
+assert forall (A B C D X : point). inter A B C D X => inter A B D C X.
+
+goal forall (A B C D X : point). inter A B C D X => inter B A D C X.

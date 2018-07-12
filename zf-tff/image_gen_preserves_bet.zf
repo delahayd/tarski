@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#is_image_is_image_spec
+assert forall (P P1 A B : point). A!=B => (reflect P1 P A B <=> reflectL P1 P A B ).
+
+#image_preserves_bet
+assert forall (A B C A1 B1 C1 X Y : point). X!=Y => reflectL A A1 X Y => reflectL B B1 X Y => reflectL C C1 X Y => bet A B C => bet A1 B1 C1.
+
+goal forall (A B C A1 B1 C1 X Y : point). X!=Y => reflect A A1 X Y => reflect B B1 X Y => reflect C C1 X Y => bet A B C => bet A1 B1 C1.

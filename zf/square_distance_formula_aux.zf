@@ -1,0 +1,36 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_perp.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_cong.zf".
+
+#14_13
+assert forall (A B C A1 B1 C1 : point). col A B C => cong_3 A B C A1 B1 C1 => col A1 B1 C1.
+
+#16_21
+assert forall (A B C D P Q : point). ~col A B C => C!=D => col A B P => col A B Q => col C D P => col C D Q => P=Q.
+
+#112_9
+assert forall (A1 A2 B1 B2 C1 C2 : point). perp A1 A2 C1 C2 => perp B1 B2 C1 C2 =>perp A1 A2 B1 B2.
+
+#col_cong_3_cong_3_eq
+assert forall (A B C A1 B1 C1 C2 : point). A!=B => col A B C => cong_3 A B C A1 B1 C1 => cong_3 A B C A1 B1 C2 => C1=C2.
+
+#cong_3_2_cong_4
+assert forall (O E I J S U X Y : point). O!=E => col O E I => col O E J => cong_3 O E I S U X => cong_3 O E J S U Y => cong_4 O E I J S U X Y.
+
+#length_eq_cong_2
+assert forall (O E E1 A B C D AB : point). length O E E1 A B AB => cong A B C D => length O E E1 C D AB.
+
+#perp_col0
+assert forall (A B C D X Y : point). perp A B C D => X!=Y => col A B X => col A B Y => perp C D X Y.
+
+#perp_not_col
+assert forall (A B P : point). perp A B P A => ~col A B P.
+
+#perp_not_col_2
+assert forall (A B C D : point). perp A B C D => ~ col A B C || ~col A B D.
+
+goal forall (O E E1 S U1 U2 P PX PY Q QX PXQX : point). cd O E S U1 U2 P PX PY => cd O E S U1 U2 Q QX PY => P!=Q => ~col O E E1 => col O E PX => col O E QX => col O E PY => cs O E S U1 U2 => length O E E1 PX QX PXQX => length O E E1 Q P PXQX.

@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#lcos2_comm
+assert forall (lp l : point->point->prop) (a b : point->point->point->prop). lcos2 lp l a b => lcos2 lp l a b.
+
+#lcos3_lcos_2_1
+assert forall (lp l : point->point->prop) (a b c : point->point->point->prop). lcos3 lp l a b c <=> (exists (lab : point->point->prop). lcos2 lab l a b && lcos lp lab c).
+
+goal forall (lp l : point->point->prop) (a b c : point->point->point->prop). lcos3 lp l a b c => lcos3 lp l b a c.

@@ -1,0 +1,76 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#cong_commutativity
+assert forall (A B C D : point). cong A B C D => cong B A D C.
+
+#cong_3421
+assert forall (A B C D : point). cong A B C D => cong C D B A.
+
+#cong_4312
+assert forall (A B C D : point). cong A B C D => cong D C A B.
+
+#cong_4321
+assert forall (A B C D : point). cong A B C D => cong D C B A.
+
+#cong_trivial_identity
+assert forall (A B : point). cong A A B B.
+
+#cong_left_commutativity
+assert forall (A B C D : point). cong A B C D => cong B A C D.
+
+#cong_right_commutativity
+assert forall (A B C D : point). cong A B C D => cong A B D C.
+
+#cong_symmetry
+assert forall (A B C D : point). cong A B C D => cong C D A B.
+
+#cong_reflexivity
+assert forall (A B : point). cong A B A B.
+
+#cong_transitivity
+assert forall (A B C D E F : point). cong A B C D => cong C D E F => cong A B E F.
+
+#not_cong_2134
+assert forall (A B C D : point). ~cong A B C D => ~cong B A C D.
+
+#not_cong_1243
+assert forall (A B C D : point). ~cong A B C D => ~cong A B D C.
+
+#not_cong_2143
+assert forall (A B C D : point). ~cong A B C D => ~cong B A D C.
+
+#not_cong_3412
+assert forall (A B C D : point). ~cong A B C D => ~cong C D A B.
+
+#not_cong_4312
+assert forall (A B C D : point). ~cong A B C D => ~cong D C A B.
+
+#not_cong_3421
+assert forall (A B C D : point). ~cong A B C D => ~cong C D B A.
+
+#not_cong_4321
+assert forall (A B C D : point). ~cong A B C D => ~cong D C B A.
+
+
+#cong_3_sym
+assert forall (A B C A1 B1 C1 : point). cong_3 A B C A1 B1 C1 => cong_3 A1 B1 C1 A B C.
+
+#cong_3_swap
+assert forall (A B C A1 B1 C1 : point). cong_3 A B C A1 B1 C1 => cong_3 B A C B1 A1 C1.
+
+#cong_3_swap_2
+assert forall (A B C A1 B1 C1 : point). cong_3 A B C A1 B1 C1 => cong_3 A C B A1 C1 B1.
+
+#cong_3_transitivity
+assert forall (A0 B0 C0 A1 B1 C1 A2 B2 C2 : point). cong_3 A0 B0 C0 A1 B1 C1 => cong_3 A1 B1 C1 A2 B2 C2 => cong_3 A0 B0 C0 A2 B2 C2.
+
+#cong_stability
+assert forall (A B C D : point). ~(~cong A B C D) => cong A B C D.
+
+#midpoint_cong
+assert forall (A B C : point). midpoint B A C => cong A B B C.
+
+#cong_reverse_identity
+assert forall (A C D : point). cong A A C D => C=D.

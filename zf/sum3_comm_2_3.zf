@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#sum3_permut
+assert forall (O E E1 A B C S : point). sum3 O E E1 A B C S => sum3 O E E1 C A B S.
+
+#sum3_comm_1_2
+assert forall (O E E1 A B C S : point). sum3 O E E1 A B C S => sum3 O E E1 B A C S.
+
+goal forall (O E E1 A B C S : point). sum3 O E E1 A B C S => sum3 O E E1 A C B S.

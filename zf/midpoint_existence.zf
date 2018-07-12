@@ -1,0 +1,16 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_prop_orthogonality.zf".
+include"tarski_le.zf".
+include "tarski_perp.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+
+#18_21
+assert forall (A B C : point). A!=B => (exists (P T : point). perp A B P A && col A B T && bet C T P).
+
+#midpoint_existence_aux
+assert forall (A B P Q T : point). A!=B => perp A B Q B => perp A B P A => col A B T => bet Q T P => le A B P Q => (exists (X : point). midpoint X A B).
+
+goal forall (A B : point). (exists (X : point). midpoint X A B).

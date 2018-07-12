@@ -1,0 +1,7 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+goal forall (P A B X Y : point). A!=B => X!=Y => col A B P => ~par A B X Y => proj P P A B X Y.

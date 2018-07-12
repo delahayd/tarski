@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#acute_distincts
+assert forall (A B C : point). acute A B C => A!=B && C!=B.
+
+goal forall (a : point->point->point->prop). q_congA_acute a => q_congA a.

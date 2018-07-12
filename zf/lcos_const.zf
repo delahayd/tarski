@@ -1,0 +1,8 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#lg_sym
+assert forall (A B : point) (l : point->point->prop). q_cong l => l A B => l B A.
+
+goal forall (lp l : point->point->prop) (a : point->point->point->prop). lcos lp l a => (exists (A B C : point). lp A B && l B C && a A B C).

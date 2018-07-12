@@ -1,0 +1,19 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+
+#111_13
+assert  forall (A B C D E F A1 D1 : point). congA A B C D E F => bet A B A1 => A1!=B => bet D E D1 => D1!=E => congA A1 B C D1 E F.
+
+#111_36
+assert forall (A B C D E F A1 D1 : point). A!=B => A1!=B => D!=E => D1!=E => bet A B A1 => bet D E D1 => (leA A B C D E F <=> leA D1 E F A1 B C).
+
+#conga_sym
+assert forall (A B C A1 B1 C1 : point). congA A B C A1 B1 C1 => congA A1 B1 C1 A B C.
+
+#lta_diff
+assert forall (A B C D E F : point). ltA A B C D E F => ltA A B C D E F && A!=B && C!=B && D!=E && F!=E.
+
+goal forall (A B C D E F A1 D1 : point). ltA A B C D E F => bet A B A1 => A1!=B => bet D E D1 => D1 !=E => ltA D1 E F A1 B C. 

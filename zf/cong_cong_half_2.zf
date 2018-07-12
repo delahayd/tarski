@@ -1,0 +1,10 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+include "tarski_midpoint.zf".
+
+#cong_cong_half_1
+assert forall (A M B A1 M1 B1 : point). midpoint M A B => midpoint M1 A1 B1 => cong A B A1 B1 => cong A M A1 M1.
+
+goal forall (A M B A1 M1 B1 : point). midpoint M A B => midpoint M1 A1 B1 => cong A B A1 B1 => cong B M B1 M1.

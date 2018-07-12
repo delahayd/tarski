@@ -1,0 +1,63 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#bet_col
+assert forall (A B C : point). bet A B C => col A B C.
+
+#col_permutation_1
+assert forall (A B C : point). col A B C => col B C A.
+
+#col_permutation_2
+assert forall (A B C : point). col A B C => col C A B.
+
+#col_permutation_3
+assert forall (A B C : point). col A B C => col C B A.
+
+#col_permutation_4
+assert forall (A B C : point). col A B C => col B A C.
+
+#col_permutation_5
+assert forall (A B C : point). col A B C => col A C B.
+
+#not_col_permutation_1
+assert forall (A B C : point). ~col A B C => ~col B C A.
+
+#not_col_permutation_2
+assert forall (A B C : point). ~col A B C => ~col C A B.
+
+#not_col_permutation_3
+assert forall (A B C : point). ~col A B C => ~col C B A.
+
+#not_col_permutation_4
+assert forall (A B C : point). ~col A B C => ~col B A C.
+
+#not_col_permutation_5
+assert forall (A B C : point). ~col A B C => ~col A C B.
+
+#col_trivial_1
+assert forall (A B : point). col A A B.
+
+#col_trivial_2
+assert forall (A B : point). col A B B.
+
+#col_trivial_3
+assert forall (A B : point). col A B A.
+
+#out_col
+assert forall (A B C : point). out A B C => col A B C.
+
+#midpoint_col
+assert forall (A M B : point). midpoint M A B => col M A B.
+
+#par_strict_not_col_1
+assert forall (A B C D : point). par_strict A B C D => ~col A B C.
+
+#par_strict_not_col_2
+assert forall (A B C D : point). par_strict A B C D => ~col B C D.
+
+#par_strict_not_col_3
+assert forall (A B C D : point). par_strict A B C D => ~col C D A.
+
+#par_strict_not_col_4
+assert forall (A B C D : point). par_strict A B C D => ~col A B D.

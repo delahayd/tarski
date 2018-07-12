@@ -1,0 +1,71 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+val O : point.
+val E : point.
+val E1 : point.
+
+#17_15
+assert forall (P Q R P1 Q1 R1 A : point). midpoint A P P1 => midpoint A Q Q1 => midpoint A R R1 => bet P Q R => bet P1 Q1 R1.
+
+#bet_lt12_le23
+assert forall (O E E1 A B C : point). bet A B C => ltP O E E1 A B => leP O E E1 B C.
+
+#diff_O_A
+assert forall (O E E1 A mA : point). ~col O E E1 => opp O E E1 A mA => diff O E E1 O A mA.
+
+#diff_ar2
+assert forall (O E E1 A B AMB : point). diff O E E1 A B AMB => ar2 O E E1 A B AMB.
+
+#diff_null
+assert forall (O E E1 A : point). ~col O E E1 => col O E A => diff O E E1 A A O.
+
+#diff_null_eq
+assert forall (O E E1 A B : point). diff O E E1 A B O => A=B.
+
+#diff_opp
+assert forall (O E E1 A B AmB BmA : point). diff O E E1 A B AmB => diff O E E1 B A BmA => opp O E E1 AmB BmA.
+
+#diff_sum
+assert forall (O E E1 A B S : point). diff O E E1 S A B => sum O E E1 A B S.
+
+#diff_uniqueness
+assert forall (O E E1 A B D1 D2 : point). diff O E E1 A B D1 => diff O E E1 A B D2 => D1=D2.
+
+#lt_diff_ps
+assert forall (O E E1 X Y XMY : point). col O E X => col O E Y => ltP O E E1 Y X => diff O E E1 X Y XMY => ps O E XMY.
+
+#ltP_neq
+assert forall (O E E1 A B : point). ltP O E E1 A B => A!=B.
+
+#opp_comm
+assert forall (X Y : point). opp O E E1 X Y => opp O E E1 Y X.
+
+#opp_midpoint
+assert forall (O E E1 A MA : point). opp O E E1 A MA => midpoint O A MA.
+
+#opp_uniqueness
+assert forall (A MA1 MA2 : point). opp O E E1 A MA1 => opp O E E1 A MA2 => MA1=MA2.
+
+#sum_A_O
+assert forall (A : point). col O E A => sum O E E1 A O A.
+
+#sum_O_B
+assert forall (B : point). col O E B => sum O E E1 O B B.
+
+#sum_assoc_1
+assert forall (O E E1 A B C AB BC ABC : point). sum O E E1 A B AB => sum O E E1 B C BC => sum O E E1 A BC ABC => sum O E E1 AB C ABC.
+
+#sum_assoc_2
+assert forall (O E E1 A B C AB BC ABC : point). sum O E E1 A B AB => sum O E E1 B C BC => sum O E E1 AB C ABC => sum O E E1 A BC ABC.
+
+#sum_comm
+assert forall (A B C : point). sum O E E1 A B C => sum O E E1 B A C.
+
+#sum_opp
+assert forall (O E E1 X MX : point). sum O E E1 X MX O => opp O E E1 X MX.
+
+goal forall (O E E1 A B C : point). bet A B C => ltP O E E1 B A => leP O E E1 C B.

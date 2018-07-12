@@ -1,0 +1,9 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+
+#symmetric_point_uniqueness
+assert forall (A P P1 P2 : point). midpoint P A P1 => midpoint P A P2 => P1=P2.
+
+goal forall (A P B A1 P1 : point). per B P A => midpoint B A A1 => midpoint B P P1 => per B P1 A1.

@@ -1,0 +1,18 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_par.zf".
+val O : point.
+val E : point.
+val E1 : point.
+assert ~col O E E1.
+
+#project_trivial
+assert forall (P A B X Y : point). A!=B => X!=Y => col A B P => ~par A B X Y => proj P P A B X Y.
+
+#sump_to_sum
+assert forall (O E E1 A B C : point). sump O E E1 A B C => sum O E E1 A B C.
+
+goal opp O E E1 O O.

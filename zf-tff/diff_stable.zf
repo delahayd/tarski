@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (O E E1 A B C D1 D2 : point). A=B => diff O E E1 A C D1 => diff O E E1 B C D2 => D1=D2.

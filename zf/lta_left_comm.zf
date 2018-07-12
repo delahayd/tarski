@@ -1,0 +1,9 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_conga.zf".
+
+#lea_left_comm
+assert forall (A B C D E F : point). leA A B C D E F => leA C B A D E F.
+
+goal forall (A B C D E F : point). ltA A B C D E F => ltA C B A D E F.

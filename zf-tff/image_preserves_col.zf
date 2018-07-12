@@ -1,0 +1,12 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col_bis.zf".
+
+#bet_col
+assert  forall (A B C : point).  bet A B C => col A B C.
+
+#image_preserves_bet
+assert forall (A B C A1 B1 C1 X Y : point). X!=Y => reflectL A A1 X Y => reflectL B B1 X Y => reflectL C C1 X Y => bet A B C => bet A1 B1 C1.
+
+goal forall (A B C A1 B1 C1 X Y : point). X!=Y => reflectL A A1 X Y => reflectL B B1 X Y => reflectL C C1 X Y => col A B C => col A1 B1 C1.

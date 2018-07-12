@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#col_permutation_4
+assert forall (A B C : point). col A B C => col B A C.
+
+#perp_left_comm
+assert forall (A B C D : point). perp A B C D => perp B A C D.
+
+goal forall (P P1 A B : point). reflectL P P1 A B => reflectL P P1 B A.

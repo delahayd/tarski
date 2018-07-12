@@ -1,0 +1,35 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_perp.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+
+#16_21
+assert forall (A B C D P Q : point). ~col A B C => C!=D => col A B P => col A B Q => col C D P => col C D Q => P=Q.
+
+#18_7
+assert forall (A B C : point). per A B C => per A C B => B=C.
+
+#18_15_1
+assert forall (A B C X : point). A!=B => col A B X => perp A B C X => perp_at X A B C X.
+
+#18_18_existence
+assert forall (A B C : point). ~col A B C => (exists (X : point). col A B X && perp A B C X).
+
+#per13_preserves_bet
+assert forall (A B C A1 C1 : point). bet A B C => B!=A1 => B!=C1 => col A1 B C1 => per B A1 C1 => per B C1 C => bet A1 B C1.
+
+#per2_col_eq
+assert forall (A P P1 B : point). A!=P => A!=P1 => per A P B => per A P1 B => col P A P1 => P=P1.
+
+#perp_col
+assert forall (A B C D E : point). A!=E => perp A B C D => col A B E => perp A E C D.
+
+#perp_per_bet
+assert forall (A B C P : point). ~col A B C => col A P C => per A B C => perp_at P P B A C => bet A P C.
+
+
+goal forall (A B C D : point). ts A B C D => per B C A => per B D A => ts C D A B.

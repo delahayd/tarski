@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (A B M A1 B1 : point). A!=B => midpoint M A A1 => midpoint M B B1 => A1!=B1.

@@ -1,0 +1,12 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_out.zf".
+
+#111_21_b
+assert forall (A B C A1 B1 C1 : point). out B A C => out B1 A1 C1 => congA A B C A1 B1 C1.
+
+#in_angle_trivial_1
+assert forall (A B C : point). A!=B => C!=B => inAngle A A B C.
+
+goal forall (A B C D E F : point). out B A C => D!=E => F!=E => leA A B C D E F.

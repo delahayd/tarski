@@ -1,0 +1,16 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_side.zf".
+include "tarski_out.zf".
+
+#anga_out-anga
+assert forall (A B C A1 C1 : point) (a : point->point->point->prop). q_congA_acute a => a A B C => out B A A1 => out B C C1 => a A1 B C1.
+
+#one_side_transitivity
+assert forall (P Q A B C : point). os P Q A B => os P Q B C => os P Q A C.
+
+
+goal forall (P : point) (l lp : point->point->prop) (a : point->point->point->prop). lcos lp l a => ~q_congA_null_acute a => (exists (A B C : point). ~col A B P && os A B C P && l A B && lp B C && a A B C).

@@ -1,0 +1,16 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+
+#acute_not_bet
+assert forall (A B C : point). acute A B C => ~bet A B C.
+
+#anga_acute
+assert forall (A B C : point) (a : point->point->point->prop). q_congA_acute a => a A B C => acute A B C.
+
+#anga_distinct
+assert forall (A B C : point) (a : point->point->point->prop). q_congA_acute a => a A B C => A!=B && C!=B.
+
+goal forall (A B C : point) (a : point->point->point->prop). q_congA_acute a => a A B C => col A B C => out B A C.
