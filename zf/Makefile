@@ -374,7 +374,8 @@ CH12FST=$(CH02CONG) $(CH03BET) $(CH04CONGBET) $(CH04COL) $(CH05BETLE) \
   $(CH06OUTLINES) $(CH07MIDPOINT) $(CH08ORTHOGONALITY) $(CH09PLANES) \
   $(CH10LINEREFL2D) $(CH10LINEREFL) $(CH11ANGLES) $(CH12PARALLEL) \
   $(CH12PARALLELINTERDEC)
-CH12FSTR=$(CH12FST:%.zf=%.res.rew)
+CH12FSTR=$(CH12FST:%.zf=%.res)
+CH12FSTRW=$(CH12FST:%.zf=%.res.rew)
 CH12FSTNR=$(CH12FST:%.zf=%.res.norew)
 
 all: ch02cong ch03bet ch04congbet ch04col ch05betle ch06outlines ch07midpoint \
@@ -482,37 +483,74 @@ analyze:
 	grep -l 'Error' *.res.norew | sort -V > norew.error
 
 summary: analyze
-	-@echo "[`$(ZIPPER) --version` (rewrite)]"; \
+	-@uniqr=0; uniqnr=0; cover=0; \
+        for i in `ls *.res`; do resr=`grep 'Theorem' $$i.rew`; \
+        resnr=`grep 'Theorem' $$i.norew`; \
+        if [ "$$resr" != "" -a "$$resnr" = "" ]; then \
+        uniqr=`expr $$uniqr + 1`; fi; \
+        if [ "$$resr" = "" -a "$$resnr" != "" ]; then \
+        uniqnr=`expr $$uniqnr + 1`; fi; \
+        if [ "$$resr" != "" -o "$$resnr" != "" ]; then \
+        cover=`expr $$cover + 1`; fi; done; \
+        echo "[`$(ZIPPER) --version` (rewrite)]"; \
         wc -l rew.*; echo -n "Total time (valid): "; \
         grep "Valid time" *.res.rew | cut -d: -f3 | paste -s -d + - | bc; \
+        echo "Unique: $$uniqr"; \
         echo "[`$(ZIPPER) --version` (no rewrite)]"; \
-        wc -l norew.*; echo -n "Total time (valid): "; \
-        grep "Valid time" *.res.norew | cut -d: -f3 | paste -s -d + - | bc
+        wc -l norew.*; \
+        echo -n "Total time (valid): "; \
+        grep "Valid time" *.res.norew | cut -d: -f3 | paste -s -d + - | bc; \
+        echo "Unique: $$uniqnr"; echo "Cover rate: $$cover"
 
 analyze-ch12fst:
-	-@grep -l 'Counter' $(CH12FSTR) | sort -V > rew.fail; \
+	-@grep -l 'Counter' $(CH12FSTRW) | sort -V > rew.fail; \
 	grep -l 'Counter' $(CH12FSTNR) | sort -V > norew.fail; \
-	grep -l 'Theorem' $(CH12FSTR) | sort -V > rew.valid; \
+	grep -l 'Theorem' $(CH12FSTRW) | sort -V > rew.valid; \
 	grep -l 'Theorem' $(CH12FSTNR) | sort -V > norew.valid; \
-	egrep -l 'TimeOut|MemoryOut|ResourceOut' $(CH12FSTR) | \
+	egrep -l 'TimeOut|MemoryOut|ResourceOut' $(CH12FSTRW) | \
         sort -V > rew.limit; \
 	egrep -l 'TimeOut|MemoryOut|ResourceOut' $(CH12FSTNR) | \
         sort -V > norew.limit; \
-	egrep -l 'Unknown|GaveUp' $(CH12FSTR) | sort -V > rew.unkown; \
+	egrep -l 'Unknown|GaveUp' $(CH12FSTRW) | sort -V > rew.unkown; \
 	egrep -l 'Unknown|GaveUp' $(CH12FSTNR) | sort -V > norew.unkown; \
-	grep -l 'Error' $(CH12FSTR) | sort -V > rew.error; \
+	grep -l 'Error' $(CH12FSTRW) | sort -V > rew.error; \
 	grep -l 'Error' $(CH12FSTNR) | sort -V > norew.error
 
 summary-ch12fst: analyze-ch12fst
-	-@echo "[`$(ZIPPER) --version` (rewrite)]"; \
+	-@uniqr=0; uniqnr=0; cover=0; \
+        for i in $(CH12FSTR); do resr=`grep 'Theorem' $$i.rew`; \
+        resnr=`grep 'Theorem' $$i.norew`; \
+        if [ "$$resr" != "" -a "$$resnr" = "" ]; then \
+        uniqr=`expr $$uniqr + 1`; fi; \
+        if [ "$$resr" = "" -a "$$resnr" != "" ]; then \
+        uniqnr=`expr $$uniqnr + 1`; fi; \
+        if [ "$$resr" != "" -o "$$resnr" != "" ]; then \
+        cover=`expr $$cover + 1`; fi; done; \
+        uniqrb=0; uniqnrb=0; uniqe=0; coverb=0; \
+        for i in $(CH12FSTR); do resr=`grep 'Theorem' $$i.rew`; \
+        resnr=`grep 'Theorem' $$i.norew`; \
+        rese=`grep 'Theorem' ../tff/$$i`; \
+        if [ "$$resr" != "" -a "$$resnr" = "" -a "$$rese" = "" ]; then \
+        uniqrb=`expr $$uniqrb + 1`; fi; \
+        if [ "$$resr" = "" -a "$$resnr" != "" -a "$$rese" = "" ]; then \
+        uniqnrb=`expr $$uniqnrb + 1`; fi; \
+        if [ "$$resr" = "" -a "$$resnr" = "" -a "$$rese" != "" ]; then \
+        uniqe=`expr $$uniqe + 1`; fi; \
+        if [ "$$resr" != "" -o "$$resnr" != "" -o "$$rese" != "" ]; then \
+        coverb=`expr $$coverb + 1`; fi; done; \
+        echo "[`$(ZIPPER) --version` (rewrite)]"; \
         wc -l rew.*; echo -n "Total time (valid): "; \
-        grep "Valid time" $(CH12FSTR) | cut -d: -f3 | paste -s -d + - | bc; \
+        grep "Valid time" $(CH12FSTRW) | cut -d: -f3 | paste -s -d + - | bc; \
+        echo "Unique (1): $$uniqr"; echo "Unique (2): $$uniqrb"; \
+        echo -n "Total time (valid): "; \
         echo "[`$(ZIPPER) --version` (no rewrite)]"; \
         wc -l norew.*; echo -n "Total time (valid): "; \
-        grep "Valid time" $(CH12FSTNR) | cut -d: -f3 | paste -s -d + - | bc
+        grep "Valid time" $(CH12FSTNR) | cut -d: -f3 | paste -s -d + - | bc; \
+        echo "Unique (1): $$uniqnr"; echo "Unique (2): $$uniqnrb"; \
+        echo "Cover rate (1): $$cover"; echo "$$uniqe $$coverb" | tee e.stats
 
 clean:
-	rm -f *~ *.res* *.time rew.* norew.*
+	rm -f *~ *.res* *.time rew.* norew.* e.stats
 
 .SUFFIXES: .zf .res
 
