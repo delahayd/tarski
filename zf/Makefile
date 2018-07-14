@@ -547,7 +547,7 @@ summary-ch12fst: analyze-ch12fst
         wc -l norew.*; echo -n "Total time (valid): "; \
         grep "Valid time" $(CH12FSTNR) | cut -d: -f3 | paste -s -d + - | bc; \
         echo "Unique (1): $$uniqnr"; echo "Unique (2): $$uniqnrb"; \
-        echo "Cover rate (1): $$cover"; echo "$$uniqe $$coverb" | tee e.stats
+        echo "Cover rate (1): $$cover"; echo "$$uniqe $$coverb" > e.stats
 
 clean:
 	rm -f *~ *.res* *.time rew.* norew.* e.stats

@@ -3,12 +3,13 @@
 include config
 
 MAKEFLAGS += --silent
+NBPROC=`cat /proc/cpuinfo | grep processor | wc -l`
 BENCHS=zf tff
 RESDIR=results
 RES=results_`date +%d-%m-%y`_$(TIMEOUT)s_$(MEMLIMIT)Mo
 
 all:
-	for i in $(BENCHS); do cd $$i; make; cd ..; done
+	for i in $(BENCHS); do cd $$i; make -j $(NBPROC) ; cd ..; done
 
 summary:
 	echo "**** All Chapters ****" | tee $(RESDIR)/$(RES); \

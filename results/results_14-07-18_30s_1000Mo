@@ -3,49 +3,49 @@
 [zipperposition 1.5 (rewrite)]
     0 rew.error
     0 rew.fail
-  928 rew.limit
+  691 rew.limit
     0 rew.unkown
-  317 rew.valid
- 1245 total
-Total time (valid): 65.46
-Unique: 169
+  348 rew.valid
+ 1039 total
+Total time (valid): 463.27
+Unique: 179
 [zipperposition 1.5 (no rewrite)]
     0 norew.error
     0 norew.fail
-  997 norew.limit
+  984 norew.limit
     0 norew.unkown
-  248 norew.valid
+  261 norew.valid
  1245 total
-Total time (valid): 232.46
-Unique: 100
-Cover rate: 417
+Total time (valid): 321.40
+Unique: 92
+Cover rate: 440
 **** 12 First Chapters ****
 ==== zf ====
 [zipperposition 1.5 (rewrite)]
     0 rew.error
     0 rew.fail
-  533 rew.limit
+  490 rew.limit
     0 rew.unkown
-  258 rew.valid
-  791 total
-Total time (valid): 52.53
-Unique (1): 133
-Unique (2): 24
+  282 rew.valid
+  772 total
+Total time (valid): 383.10
+Unique (1): 142
+Unique (2): 22
 Total time (valid): [zipperposition 1.5 (no rewrite)]
     0 norew.error
     0 norew.fail
-  592 norew.limit
+  582 norew.limit
     0 norew.unkown
-  199 norew.valid
+  209 norew.valid
   791 total
-Total time (valid): 184.96
-Unique (1): 74
-Unique (2): 5
-Cover rate (1): 332
+Total time (valid): 239.84
+Unique (1): 69
+Unique (2): 4
+Cover rate (1): 351
 ==== tff ====
-  304 e.limit
-  442 e.valid
+  274 e.limit
+  472 e.valid
   746 total
-Total time (valid): 57.21
-Unique (2): 140
-Cover rate (2): 472
+Total time (valid): 344.71
+Unique (2): 149
+Cover rate (2): 500
