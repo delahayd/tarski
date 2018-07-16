@@ -3,16 +3,16 @@
 include config
 
 MAKEFLAGS += --silent
-NBPROC=`cat /proc/cpuinfo | grep processor | wc -l`
 BENCHS=zf tff
-RESDIR=results
-RES=results_`date +%d-%m-%y`_$(TIMEOUT)s_$(MEMLIMIT)Mo
+RESDIR=results/results_`date +%d-%m-%y`_$(TIMEOUT)s_$(MEMLIMIT)Mo
+RES=results
 
 all:
-	for i in $(BENCHS); do cd $$i; make -j $(NBPROC) ; cd ..; done
+	for i in $(BENCHS); do cd $$i; make; cd ..; done
 
 summary:
-	echo "**** All Chapters ****" | tee $(RESDIR)/$(RES); \
+	rm -rf $(RESDIR); mkdir $(RESDIR); \
+        echo "**** All Chapters ****" | tee $(RESDIR)/$(RES); \
         cd zf; echo "==== zf ====" | tee -a ../$(RESDIR)/$(RES); \
         make summary | tee -a ../$(RESDIR)/$(RES); cd ..;
 	echo "**** 12 First Chapters ****" | tee -a $(RESDIR)/$(RES); \
@@ -23,7 +23,9 @@ summary:
         echo "Unique (2): `cut -d" " -f1 zf/e.stats`" | \
         tee -a $(RESDIR)/$(RES); \
         echo "Cover rate (2): `cut -d" " -f2 zf/e.stats`" | \
-        tee -a $(RESDIR)/$(RES)
+        tee -a $(RESDIR)/$(RES); \
+        for i in $(BENCHS); do cd $$i; make "RESDIR=../$(RESDIR)" valid; \
+        cd ..; done
 
 clean:
 	rm -f *~ .*~; for i in $(BENCHS); do cd $$i; make clean; cd ..; done

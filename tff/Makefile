@@ -3,6 +3,7 @@
 include ../config
 
 SHELL:=/bin/bash
+NBPROC=`cat /proc/cpuinfo | grep processor | wc -l`
 E=eprover
 
 CH02CONG=cong_reflexivity.p cong_symmetry.p cong_transitivity.p \
@@ -231,7 +232,20 @@ CH12PARALLELINTERDEC=tarski_s_euclid.p inter_dec.p not_par_inter_exists.p \
   not_obtuse.p suma__sams.p
 CH12PARALLELINTERDECR=$(CH12PARALLELINTERDEC:%.p=%.res)
 
-all: ch02cong ch03bet ch04congbet ch04col ch05betle ch06outlines ch07midpoint \
+CH12FST=$(CH02CONG) $(CH03BET) $(CH04CONGBET) $(CH04COL) $(CH05BETLE) \
+  $(CH06OUTLINES) $(CH07MIDPOINT) $(CH08ORTHOGONALITY) $(CH09PLANES) \
+  $(CH10LINEREFL2D) $(CH10LINEREFL) $(CH11ANGLES) $(CH12PARALLEL) \
+  $(CH12PARALLELINTERDEC)
+CH12FSTR=$(CH12FST:%.p=%.res)
+
+all:
+	make -j $(NBPROC) all-ch
+
+all-ch: $(CH12FSTR)
+
+# Old (start)
+
+all-old: ch02cong ch03bet ch04congbet ch04col ch05betle ch06outlines ch07midpoint \
   ch08orthogonality ch09planes ch10linerefl2d ch10linerefl ch11angles \
   ch12parallel ch12parallelinterdec ch131 ch132length ch133angles ch134cos \
   ch135pappuspascal ch136desargueshessenberg ch14sum ch14prod ch14order \
@@ -319,6 +333,8 @@ step:
 	make ch15length; make summary > ch15length.summary; make clean; \
 	make ch16coordinates; make summary > ch16coordinates.summary; make clean
 
+# Old (end)
+
 analyze:
 	-@grep -l 'SZS status Theorem' *.res | sort -V > e.valid; \
 	grep -l 'SZS status ResourceOut' *.res | sort -V > e.limit
@@ -326,6 +342,11 @@ analyze:
 summary: analyze
 	-@wc -l e.*; echo -n "Total time (valid): "; \
         grep "Valid time" *.res | cut -d: -f3 | paste -s -d + - | bc
+
+valid:
+	for i in $(CH12FSTR); do \
+        res=`grep 'Theorem' $$i`; if [ "$$res" != "" ]; then \
+        echo `basename $$i .res` >> $(RESDIR)/ch12fst.e; fi; done
 
 clean:
 	rm -f *~ *.res e.*

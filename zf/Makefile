@@ -3,6 +3,7 @@
 include ../config
 
 SHELL:=/bin/bash
+NBPROC=`cat /proc/cpuinfo | grep processor | wc -l`
 ZIPPER=zipperposition
 BFILES=lg_exists.zf
 BRESFILES=$(BFILES:%.zf=%.res)
@@ -370,6 +371,16 @@ CH16COORDINATES=grid_exchange_axes.zf Cs_not_Col.zf exists_grid.zf \
   characterization_of_collinearity.zf
 CH16COORDINATESR=$(CH16COORDINATES:%.zf=%.res)
 
+ALLCH=$(CH02CONG) $(CH03BET) $(CH04CONGBET) $(CH04COL) $(CH05BETLE) \
+  $(CH06OUTLINES) $(CH07MIDPOINT) $(CH08ORTHOGONALITY) $(CH09PLANES) \
+  $(CH10LINEREFL2D) $(CH10LINEREFL) $(CH11ANGLES) $(CH12PARALLEL) \
+  $(CH12PARALLELINTERDEC) $(CH131) $(CH132LENGTH) $(CH133ANGLES) $(CH134COS) \
+  $(CH135PAPPUSPASCAL) $(CH136DESARGUESHESSENBERG) $(CH14SUM) $(CH14PROD) \
+  $(CH14ORDER) $(CH15LENGTH) $(CH16COORDINATES)
+ALLCHR=$(ALLCH:%.zf=%.res)
+ALLCHRW=$(ALLCH:%.zf=%.res.rew)
+ALLCHNR=$(ALLCH:%.zf=%.res.norew)
+
 CH12FST=$(CH02CONG) $(CH03BET) $(CH04CONGBET) $(CH04COL) $(CH05BETLE) \
   $(CH06OUTLINES) $(CH07MIDPOINT) $(CH08ORTHOGONALITY) $(CH09PLANES) \
   $(CH10LINEREFL2D) $(CH10LINEREFL) $(CH11ANGLES) $(CH12PARALLEL) \
@@ -378,7 +389,23 @@ CH12FSTR=$(CH12FST:%.zf=%.res)
 CH12FSTRW=$(CH12FST:%.zf=%.res.rew)
 CH12FSTNR=$(CH12FST:%.zf=%.res.norew)
 
-all: ch02cong ch03bet ch04congbet ch04col ch05betle ch06outlines ch07midpoint \
+all: all-rew all-norew
+
+all-rew:
+	-@cp tarski_def-rew.zf tarski_def.zf; \
+        make -j $(NBPROC) rew
+
+all-norew:
+	-@cp tarski_def-norew.zf tarski_def.zf; \
+        make -j $(NBPROC) norew; \
+        cp tarski_def-rew.zf tarski_def.zf
+
+rew: $(ALLCHRW)
+norew: $(ALLCHNR)
+
+# Old (start)
+
+all-old: ch02cong ch03bet ch04congbet ch04col ch05betle ch06outlines ch07midpoint \
   ch08orthogonality ch09planes ch10linerefl2d ch10linerefl ch11angles \
   ch12parallel ch12parallelinterdec ch131 ch132length ch133angles ch134cos \
   ch135pappuspascal ch136desargueshessenberg ch14sum ch14prod ch14order \
@@ -468,6 +495,12 @@ step:
 	make ch15length; make summary > ch15length.summary; make clean; \
 	make ch16coordinates; make summary > ch16coordinates.summary; make clean
 
+# Old (end)
+
+toto:
+	-@for i in `ls *.res.norew`; do tmp=`grep status $$i`; \
+        if [ "$$tmp" = "" ]; then echo $$i; fi; done
+
 analyze:
 	-@grep -l 'Counter' *.res.rew | sort -V > rew.fail; \
 	grep -l 'Counter' *.res.norew | sort -V > norew.fail; \
@@ -484,7 +517,7 @@ analyze:
 
 summary: analyze
 	-@uniqr=0; uniqnr=0; cover=0; \
-        for i in `ls *.res`; do resr=`grep 'Theorem' $$i.rew`; \
+        for i in $(ALLCHR); do resr=`grep 'Theorem' $$i.rew`; \
         resnr=`grep 'Theorem' $$i.norew`; \
         if [ "$$resr" != "" -a "$$resnr" = "" ]; then \
         uniqr=`expr $$uniqr + 1`; fi; \
@@ -549,28 +582,41 @@ summary-ch12fst: analyze-ch12fst
         echo "Unique (1): $$uniqnr"; echo "Unique (2): $$uniqnrb"; \
         echo "Cover rate (1): $$cover"; echo "$$uniqe $$coverb" > e.stats
 
+valid:
+	for i in $(ALLCHR); do \
+        resr=`grep 'Theorem' $$i.rew`; resnr=`grep 'Theorem' $$i.norew`; \
+        if [ "$$resr" != "" ]; then \
+        echo `basename $$i .res` >> $(RESDIR)/allch.zipper.rew; fi; \
+        if [ "$$resnr" != "" ]; then \
+        echo `basename $$i .res` >> $(RESDIR)/allch.zipper.norew; fi; done; \
+	for i in $(CH12FSTR); do \
+        resr=`grep 'Theorem' $$i.rew`; resnr=`grep 'Theorem' $$i.norew`; \
+        if [ "$$resr" != "" ]; then \
+        echo `basename $$i .res` >> $(RESDIR)/ch12fst.zipper.rew; fi; \
+        if [ "$$resnr" != "" ]; then \
+        echo `basename $$i .res` >> $(RESDIR)/ch12fst.zipper.norew; fi; done
+
 clean:
-	rm -f *~ *.res* *.time rew.* norew.* e.stats
+	rm -f *~ *.res.* *.time rew.* norew.* e.stats
 
-.SUFFIXES: .zf .res
+.SUFFIXES: .zf .res.rew .res.norew
 
-%.res: %.zf
-	-@cp tarski_def-rew.zf tarski_def.zf; \
-        echo -n "[Zipper (rewrite)] **** Testing file $<: "; touch $@; \
+%.res.rew: %.zf
+	-@echo -n "[Zipper (rewrite)] **** Testing file $<: "; \
         { /usr/bin/time -f "%U + %S" bash -c \
         "$(ZIPPER) --timeout $(TIMEOUT) --mem-limit $(MEMLIMIT) $< \
-        > $@.rew"; } 2> $@.time; \
-        tmp=`cat $@.rew | grep "SZS status Theorem"`; \
+        > $@"; } 2> $@.time; \
+        tmp=`cat $@ | grep "SZS status Theorem"`; \
         if test -n "$$tmp"; then echo -e "\033[32mValid\033[39m"; \
-        echo "Valid time: `cat $@.time | bc`" >> $@.rew; \
-        else echo -e "\033[31mFail\033[39m"; fi; rm $@.time; \
-        cp tarski_def-norew.zf tarski_def.zf; \
-        echo -n "[Zipper (no rewrite)] **** Testing file $<: "; touch $@; \
+        echo "Valid time: `cat $@.time | bc`" >> $@; \
+        else echo -e "\033[31mFail\033[39m"; fi; rm $@.time
+
+%.res.norew: %.zf
+	-@echo -n "[Zipper (no rewrite)] **** Testing file $<: "; \
         { /usr/bin/time -f "%U + %S" bash -c \
         "$(ZIPPER) --timeout $(TIMEOUT) --mem-limit $(MEMLIMIT) $< \
-        > $@.norew"; } 2> $@.time; \
-        tmp=`cat $@.norew | grep "SZS status Theorem"`; \
+        > $@"; } 2> $@.time; \
+        tmp=`cat $@ | grep "SZS status Theorem"`; \
         if test -n "$$tmp"; then echo -e "\033[32mValid\033[39m"; \
-        echo "Valid time: `cat $@.time | bc`" >> $@.norew; \
-        else echo -e "\033[31mFail\033[39m"; fi; rm $@.time; \
-        cp tarski_def-rew.zf tarski_def.zf
+        echo "Valid time: `cat $@.time | bc`" >> $@; \
+        else echo -e "\033[31mFail\033[39m"; fi; rm $@.time
