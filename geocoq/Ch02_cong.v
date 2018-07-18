@@ -251,7 +251,9 @@ Section T1_4.
 Context `{TnEQD:Tarski_neutral_dimensionless_with_decidable_point_equality}.
 
 Lemma eq_dec_points : forall A B : Tpoint, A=B \/ ~ A=B.
-Proof. exact point_equality_decidability. Qed.
+Proof. 
+exact point_equality_decidability. 
+Qed.
 
 Lemma l2_11 : forall A B C A' B' C',
  Bet A B C -> Bet A' B' C' -> Cong A B A' B' -> Cong B C B' C' -> Cong A C A' C'.

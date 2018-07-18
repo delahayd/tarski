@@ -6,11 +6,7 @@ NR>=1
     print i
     print "nb = " i-i1-3
     i1=i
-    i++
-   # while ($1!="Qed.")
-    #{compt++
-#	i++
- #  } 
+    i++ 
 }  }
 END{print ""}
  

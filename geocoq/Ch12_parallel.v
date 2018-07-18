@@ -262,16 +262,24 @@ Proof.
 Qed.
 
 Lemma par_strict_neq1 : forall A B C D, Par_strict A B C D -> A <> B.
-Proof. unfold Par_strict; intros; spliter; auto. Qed.
+Proof. 
+unfold Par_strict; intros; spliter; auto. 
+Qed.
 
 Lemma par_strict_neq2 : forall A B C D, Par_strict A B C D -> C <> D.
-Proof. unfold Par_strict; intros; spliter; auto. Qed.
+Proof. 
+unfold Par_strict; intros; spliter; auto. 
+Qed.
 
 Lemma par_neq1 : forall A B C D, Par A B C D -> A <> B.
-Proof. unfold Par, Par_strict; intros; induction H; spliter; auto. Qed.
+Proof. 
+unfold Par, Par_strict; intros; induction H; spliter; auto. 
+Qed.
 
 Lemma par_neq2 : forall A B C D, Par A B C D -> C <> D.
-Proof. unfold Par, Par_strict; intros; induction H; spliter; auto. Qed.
+Proof. 
+unfold Par, Par_strict; intros; induction H; spliter; auto. 
+Qed.
 
 End T12_1.
 

@@ -158,7 +158,9 @@ Proof.
     repeat split; eapply cong_transitivity; eCong.
 Qed.
 eq_dec_points
-Proof. exact point_equality_decidability. Qed.
+Proof. 
+exact point_equality_decidability. 
+Qed.
 l2_11
 Proof.
     intros.
@@ -21433,13 +21435,21 @@ Proof.
     assumption.
 Qed.
 par_strict_neq1
-Proof. unfold Par_strict; intros; spliter; auto. Qed.
+Proof. 
+unfold Par_strict; intros; spliter; auto. 
+Qed.
 par_strict_neq2
-Proof. unfold Par_strict; intros; spliter; auto. Qed.
+Proof. 
+unfold Par_strict; intros; spliter; auto. 
+Qed.
 par_neq1
-Proof. unfold Par, Par_strict; intros; induction H; spliter; auto. Qed.
+Proof. 
+unfold Par, Par_strict; intros; induction H; spliter; auto. 
+Qed.
 par_neq2
-Proof. unfold Par, Par_strict; intros; induction H; spliter; auto. Qed.
+Proof. 
+unfold Par, Par_strict; intros; induction H; spliter; auto. 
+Qed.
 Par_cases
 Proof.
     intros.
@@ -23326,7 +23336,9 @@ Proof.
     apply (col3 A1 A2); Col.
 Qed.
 Par_dec
-Proof. exact (par_trans__par_dec par_trans). Qed.
+Proof. 
+exact (par_trans__par_dec par_trans). 
+Qed.
 par_not_par
 Proof.
 intros A B C D P Q HPar HNPar.
@@ -23804,7 +23816,9 @@ Proof.
     unfold alternate_interior_angles_postulate; apply l12_21_a.
 Qed.
 suma__sams
-Proof. exact (t22_20 not_obtuse). Qed.
+Proof. 
+exact (t22_20 not_obtuse). 
+Qed.
 per2_col_eq
 Proof.
 intros.
@@ -50517,4 +50531,7 @@ split; intro HCol; treat_equalities.
     }
   }
 Qed.
+
+Proof.
+End T16.
 

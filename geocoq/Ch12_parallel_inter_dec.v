@@ -117,7 +117,9 @@ Proof.
 Qed.
 
 Lemma Par_dec : forall A B C D, Par A B C D \/ ~ Par A B C D.
-Proof. exact (par_trans__par_dec par_trans). Qed.
+Proof. 
+exact (par_trans__par_dec par_trans). 
+Qed.
 
 Lemma par_not_par : forall A B C D P Q, Par A B C D -> ~Par A B P Q -> ~Par C D P Q.
 Proof.
@@ -644,6 +646,8 @@ Proof.
 Qed.
 
 Lemma suma__sams : forall A B C D E F, SumA A B C B C A D E F -> SAMS D E F C A B.
-Proof. exact (t22_20 not_obtuse). Qed.
+Proof. 
+exact (t22_20 not_obtuse). 
+Qed.
 
 End T13.

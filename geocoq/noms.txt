@@ -1244,3 +1244,4 @@ characterization_of_betweenness_aux
 characterization_of_betweenness
 same_abscissa_col
 characterization_of_collinearity
+

@@ -213,13 +213,15 @@ nb = 2
     repeat split; eapply cong_transitivity; eCong.
 Qed.
 eq_dec_points
-Proof. exact point_equality_decidability. Qed.
+Proof. 
 161
 nb = 4
+exact point_equality_decidability. 
+Qed.
 l2_11
 Proof.
-163
-nb = -1
+165
+nb = 1
     intros.
     induction (eq_dec_points A B).
       subst B.
@@ -230,7 +232,7 @@ nb = -1
 Qed.
 bet_cong3
 Proof.
-173
+175
 nb = 7
     intros.
     assert (exists x, Bet A' B' x /\ Cong B' x B C) by (apply segment_construction).
@@ -245,7 +247,7 @@ nb = 7
 Qed.
 construction_uniqueness
 Proof.
-186
+188
 nb = 10
     intros.
     assert (Cong A X A Y) by (apply cong_transitivity with B C; Cong).
@@ -256,27 +258,27 @@ nb = 10
 Qed.
 Cong_cases
 Proof.
-195
+197
 nb = 6
     intros.
     decompose [or] H;clear H; Cong.
 Qed.
 Cong_perm
 Proof.
-200
+202
 nb = 2
     intros.
     repeat split; Cong.
 Qed.
 bet_col
 Proof.
-205
+207
 nb = 2
     intros;unfold Col;auto.
 Qed.
 between_trivial
 Proof.
-209
+211
 nb = 1
     intros.
     prolong A B x B B.
@@ -285,7 +287,7 @@ nb = 1
 Qed.
 between_symmetry
 Proof.
-216
+218
 nb = 4
     intros.
     assert (Bet B C C) by (apply between_trivial).
@@ -295,21 +297,21 @@ nb = 4
 Qed.
 Bet_cases
 Proof.
-224
+226
 nb = 5
     intros.
     decompose [or] H; auto using between_symmetry.
 Qed.
 Bet_perm
 Proof.
-229
+231
 nb = 2
     intros.
     auto using between_symmetry.
 Qed.
 between_trivial2
 Proof.
-234
+236
 nb = 2
     intros.
     apply between_symmetry.
@@ -317,7 +319,7 @@ nb = 2
 Qed.
 between_equality
 Proof.
-240
+242
 nb = 3
     intros.
     assert (exists x, Bet B x B /\ Bet A x A) by (apply (inner_pasch A B C);assumption).
@@ -328,14 +330,14 @@ nb = 3
 Qed.
 between_equality_2
 Proof.
-249
+251
 nb = 6
     intros.
     apply between_equality with A; auto using between_symmetry.
 Qed.
 between_exchange3
 Proof.
-254
+256
 nb = 2
 intros.
 assert (exists x, Bet C x C /\ Bet B x D)
@@ -345,21 +347,21 @@ assert (C = x) by (apply between_identity; auto); subst; auto.
 Qed.
 bet_neq12__neq
 Proof.
-262
+264
 nb = 5
     intros A B C HBet HAB Heq.
     subst C; apply HAB, between_identity; trivial.
 Qed.
 bet_neq21__neq
 Proof.
-267
+269
 nb = 2
     intros A B C HBet HAB.
     apply bet_neq12__neq with B; auto.
 Qed.
 bet_neq23__neq
 Proof.
-272
+274
 nb = 2
     intros A B C HBet HBC Heq.
     subst C; apply HBC; symmetry.
@@ -367,14 +369,14 @@ nb = 2
 Qed.
 bet_neq32__neq
 Proof.
-278
+280
 nb = 3
     intros A B C HBet HAB.
     apply bet_neq23__neq with B; auto.
 Qed.
 not_bet_distincts
 Proof.
-283
+285
 nb = 2
     intros A B C HNBet.
     repeat split; intro; subst B; apply HNBet.
@@ -383,7 +385,7 @@ nb = 2
 Qed.
 between_inner_transitivity
 Proof.
-290
+292
 nb = 4
     intros.
     assert (exists x, Bet B x B /\ Bet C x A) by (apply inner_pasch with D;auto).
@@ -392,7 +394,7 @@ nb = 4
 Qed.
 outer_transitivity_between2
 Proof.
-297
+299
 nb = 4
     intros.
     prolong A C x C D.
@@ -401,35 +403,35 @@ nb = 4
 Qed.
 between_exchange2
 Proof.
-304
+306
 nb = 4
     intros.
     induction (eq_dec_points B C);eBetween.
 Qed.
 outer_transitivity_between
 Proof.
-309
+311
 nb = 2
     intros.
     eBetween.
 Qed.
 between_exchange4
 Proof.
-314
+316
 nb = 2
     intros.
     eBetween.
 Qed.
 l_3_9_4
 Proof.
-319
+321
 nb = 2
     unfold Bet_4.
     intros;spliter; auto with between.
 Qed.
 l3_17
 Proof.
-324
+326
 nb = 2
     intros.
     assert (exists Q', Bet B' Q' A /\ Bet P Q' C) by (eapply inner_pasch;eBetween).
@@ -440,7 +442,7 @@ nb = 2
 Qed.
 lower_dim_ex
 Proof.
-333
+335
 nb = 6
 exists PA.
 exists PB.
@@ -449,7 +451,7 @@ apply lower_dim.
 Qed.
 two_distinct_points
 Proof.
-340
+342
 nb = 4
     assert (ld:=lower_dim_ex).
     ex_elim ld A.
@@ -461,7 +463,7 @@ nb = 4
 Qed.
 point_construction_different
 Proof.
-350
+352
 nb = 7
     intros.
     assert (tdp := two_distinct_points).
@@ -475,7 +477,7 @@ nb = 7
 Qed.
 another_point
 Proof.
-362
+364
 nb = 9
     intros.
     assert (pcd := point_construction_different A A).
@@ -484,7 +486,7 @@ nb = 9
 Qed.
 l2_11_b
 Proof.
-369
+371
 nb = 4
     intros.
     apply Cong_stability; intro.
@@ -497,7 +499,7 @@ nb = 4
 Qed.
 cong_dec_eq_dec_b
 Proof.
-380
+382
 nb = 8
     intros A B HAB.
     apply cong_identity with A.
@@ -511,7 +513,7 @@ nb = 8
 Qed.
 bet_dec_eq_dec_b
 Proof.
-392
+394
 nb = 9
     intros A B HAB.
     apply between_identity.
@@ -525,14 +527,14 @@ nb = 9
 Qed.
 BetSEq
 Proof.
-404
+406
 nb = 9
 intros; unfold BetS; split; intro; spliter;
 repeat split; auto; intro; treat_equalities; auto.
 Qed.
 l4_2
 Proof.
-409
+411
 nb = 2
 unfold IFSC.
 intros.
@@ -560,7 +562,7 @@ auto.
 Qed.
 l4_3
 Proof.
-435
+437
 nb = 23
 intros.
 apply cong_commutativity.
@@ -570,7 +572,7 @@ repeat split;Cong.
 Qed.
 l4_3_1
 Proof.
-443
+445
 nb = 5
     intros.
     apply cong_commutativity.
@@ -578,7 +580,7 @@ nb = 5
 Qed.
 l4_5
 Proof.
-449
+451
 nb = 3
 intros.
 unfold Cong_3.
@@ -608,7 +610,7 @@ repeat split;Cong.
 Qed.
 l4_6
 Proof.
-477
+479
 nb = 25
 unfold Cong_3.
 intros.
@@ -631,7 +633,7 @@ Between.
 Qed.
 cong3_bet_eq
 Proof.
-498
+500
 nb = 18
 unfold Cong_3.
 intros.
@@ -644,7 +646,7 @@ Between.
 Qed.
 col_permutation_1
 Proof.
-509
+511
 nb = 8
     unfold Col.
     intros.
@@ -652,7 +654,7 @@ nb = 8
 Qed.
 col_permutation_2
 Proof.
-515
+517
 nb = 3
     unfold Col.
     intros.
@@ -660,7 +662,7 @@ nb = 3
 Qed.
 col_permutation_3
 Proof.
-521
+523
 nb = 3
     unfold Col.
     intros.
@@ -668,7 +670,7 @@ nb = 3
 Qed.
 col_permutation_4
 Proof.
-527
+529
 nb = 3
     unfold Col.
     intros.
@@ -676,7 +678,7 @@ nb = 3
 Qed.
 col_permutation_5
 Proof.
-533
+535
 nb = 3
     unfold Col.
     intros.
@@ -684,7 +686,7 @@ nb = 3
 Qed.
 not_col_permutation_1
 Proof.
-539
+541
 nb = 3
     intros.
     intro.
@@ -693,7 +695,7 @@ nb = 3
 Qed.
 not_col_permutation_2
 Proof.
-546
+548
 nb = 4
     intros.
     intro.
@@ -702,7 +704,7 @@ nb = 4
 Qed.
 not_col_permutation_3
 Proof.
-553
+555
 nb = 4
     intros.
     intro.
@@ -711,7 +713,7 @@ nb = 4
 Qed.
 not_col_permutation_4
 Proof.
-560
+562
 nb = 4
     intros.
     intro.
@@ -720,7 +722,7 @@ nb = 4
 Qed.
 not_col_permutation_5
 Proof.
-567
+569
 nb = 4
     intros.
     intro.
@@ -729,21 +731,21 @@ nb = 4
 Qed.
 Col_cases
 Proof.
-574
+576
 nb = 4
     intros.
     decompose [or] H; Col.
 Qed.
 Col_perm
 Proof.
-579
+581
 nb = 2
     intros.
     repeat split; Col.
 Qed.
 col_trivial_1
 Proof.
-584
+586
 nb = 2
     unfold Col.
     intros.
@@ -751,7 +753,7 @@ nb = 2
 Qed.
 col_trivial_2
 Proof.
-590
+592
 nb = 3
     unfold Col.
     intros.
@@ -759,7 +761,7 @@ nb = 3
 Qed.
 col_trivial_3
 Proof.
-596
+598
 nb = 3
     unfold Col.
     intros.
@@ -767,7 +769,7 @@ nb = 3
 Qed.
 l4_13
 Proof.
-602
+604
 nb = 3
     unfold Col.
     intros.
@@ -776,7 +778,7 @@ nb = 3
 Qed.
 l4_14
 Proof.
-609
+611
 nb = 4
     unfold Col.
     intros.
@@ -796,7 +798,7 @@ nb = 4
 Qed.
 l4_16
 Proof.
-627
+629
 nb = 15
     unfold FSC.
     unfold Col.
@@ -814,7 +816,7 @@ nb = 15
 Qed.
 l4_17
 Proof.
-643
+645
 nb = 13
     intros.
     assert (FSC A B C P A B C Q) by (unfold FSC; unfold Cong_3;repeat split; Cong).
@@ -822,7 +824,7 @@ nb = 13
 Qed.
 l4_18
 Proof.
-649
+651
 nb = 3
     intros.
     apply cong_identity with C.
@@ -830,7 +832,7 @@ nb = 3
 Qed.
 l4_19
 Proof.
-655
+657
 nb = 3
     intros.
     induction (eq_dec_points A B).
@@ -840,28 +842,28 @@ nb = 3
 Qed.
 not_col_distincts
 Proof.
-663
+665
 nb = 5
     intros.
     repeat split;(auto;intro); subst; apply H; Col.
 Qed.
 NCol_cases
 Proof.
-668
+670
 nb = 2
     intros.
     decompose [or] H; Col.
 Qed.
 NCol_perm
 Proof.
-673
+675
 nb = 2
     intros.
     repeat split; Col.
 Qed.
 col_cong_3_cong_3_eq
 Proof.
-678
+680
 nb = 2
 intros A B C A' B' C1 C2 HAB HCol HCong1 HCong2.
 apply l4_18 with A' B'; try apply l4_13 with A B C; Col;
@@ -872,25 +874,25 @@ unfold Cong_3 in *; spliter.
 Qed.
 l5_1
 Proof.
-687
+689
 nb = 6
 apply eq_dec_implies_l5_1; apply eq_dec_points.
 Qed.
 l5_2
 Proof.
-691
+693
 nb = 1
 apply eq_dec_implies_l5_2; apply eq_dec_points.
 Qed.
 segment_construction_2
 Proof.
-695
+697
 nb = 1
 apply eq_dec_implies_segment_construction_2; apply eq_dec_points.
 Qed.
 l5_3
 Proof.
-699
+701
 nb = 1
     intros.
     assert (exists P, Bet D A P /\ A<>P) by  (apply point_construction_different).
@@ -901,7 +903,7 @@ nb = 1
 Qed.
 le_bet
 Proof.
-708
+710
 nb = 6
     intros.
     unfold Le in H.
@@ -910,7 +912,7 @@ nb = 6
 Qed.
 l5_5_1
 Proof.
-715
+717
 nb = 4
     unfold Le.
     intros.
@@ -923,7 +925,7 @@ nb = 4
 Qed.
 l5_5_2
 Proof.
-726
+728
 nb = 8
     intros.
     ex_and H P.
@@ -935,7 +937,7 @@ nb = 8
 Qed.
 l5_6
 Proof.
-736
+738
 nb = 7
     unfold Le.
     intros.
@@ -952,7 +954,7 @@ nb = 7
 Qed.
 le_reflexivity
 Proof.
-751
+753
 nb = 12
     unfold Le.
     intros.
@@ -961,7 +963,7 @@ nb = 12
 Qed.
 le_transitivity
 Proof.
-758
+760
 nb = 4
     unfold Le.
     intros.
@@ -976,13 +978,13 @@ nb = 4
 Qed.
 between_cong
 Proof.
-771
+773
 nb = 10
 apply eq_dec_implies_between_cong; apply eq_dec_points.
 Qed.
 cong3_symmetry
 Proof.
-775
+777
 nb = 1
     unfold Cong_3.
     intros.
@@ -990,7 +992,7 @@ nb = 1
 Qed.
 between_cong_2
 Proof.
-781
+783
 nb = 3
     intros.
     apply cong3_bet_eq with A B; unfold Cong_3; repeat split; Cong.
@@ -999,13 +1001,13 @@ nb = 3
 Qed.
 between_cong_3
 Proof.
-788
+790
 nb = 4
 apply eq_dec_implies_between_cong_3; apply eq_dec_points.
 Qed.
 le_anti_symmetry
 Proof.
-792
+794
 nb = 1
     intros.
     assert (exists T, Bet C D T /\ Cong C T A B) by (apply l5_5_1;assumption).
@@ -1022,19 +1024,19 @@ nb = 1
 Qed.
 Cong_dec
 Proof.
-807
+809
 nb = 12
 apply eq_dec_cong_dec; apply eq_dec_points.
 Qed.
 bet_dec
 Proof.
-811
+813
 nb = 1
 apply eq_dec_bet_dec; apply eq_dec_points.
 Qed.
 Col_dec
 Proof.
-815
+817
 nb = 1
     intros.
     unfold Col.
@@ -1042,7 +1044,7 @@ nb = 1
 Qed.
 le_trivial
 Proof.
-821
+823
 nb = 3
     intros.
     unfold Le.
@@ -1051,7 +1053,7 @@ nb = 3
 Qed.
 le_cases
 Proof.
-828
+830
 nb = 4
     intros.
     induction(eq_dec_points A B).
@@ -1064,7 +1066,7 @@ nb = 4
 Qed.
 le_zero
 Proof.
-839
+841
 nb = 8
     intros.
     assert (Le C C A B) by apply le_trivial.
@@ -1073,14 +1075,14 @@ nb = 8
 Qed.
 le_diff
 Proof.
-846
+848
 nb = 4
   intros A B C D HAB HLe Heq.
   subst D; apply HAB, le_zero with C; assumption.
 Qed.
 lt_diff
 Proof.
-851
+853
 nb = 2
   intros A B C D HLt Heq.
   subst D.
@@ -1090,7 +1092,7 @@ nb = 2
 Qed.
 bet_cong_eq
 Proof.
-859
+861
 nb = 5
     intros.
     assert(C = D).
@@ -1104,7 +1106,7 @@ nb = 5
 Qed.
 cong__le
 Proof.
-871
+873
 nb = 9
   intros A B C D H.
   exists D.
@@ -1114,7 +1116,7 @@ nb = 9
 Qed.
 cong__le3412
 Proof.
-879
+881
 nb = 5
   intros A B C D HCong.
   apply cong__le.
@@ -1122,14 +1124,14 @@ nb = 5
 Qed.
 le1221
 Proof.
-885
+887
 nb = 3
   intros A B.
   apply cong__le; Cong.
 Qed.
 le_left_comm
 Proof.
-890
+892
 nb = 2
   intros A B C D Hle.
   apply (le_transitivity _ _ A B); auto.
@@ -1137,7 +1139,7 @@ nb = 2
 Qed.
 le_right_comm
 Proof.
-896
+898
 nb = 3
   intros A B C D Hle.
   apply (le_transitivity _ _ C D); auto.
@@ -1145,7 +1147,7 @@ nb = 3
 Qed.
 le_comm
 Proof.
-902
+904
 nb = 3
   intros.
   apply le_left_comm.
@@ -1154,7 +1156,7 @@ nb = 3
 Qed.
 ge_left_comm
 Proof.
-909
+911
 nb = 4
     intros.
     unfold Ge in *.
@@ -1163,7 +1165,7 @@ nb = 4
 Qed.
 ge_right_comm
 Proof.
-916
+918
 nb = 4
     intros.
     unfold Ge in *.
@@ -1172,7 +1174,7 @@ nb = 4
 Qed.
 ge_comm
 Proof.
-923
+925
 nb = 4
     intros.
     apply ge_left_comm.
@@ -1181,7 +1183,7 @@ nb = 4
 Qed.
 lt_right_comm
 Proof.
-930
+932
 nb = 4
     intros.
     unfold Lt in *.
@@ -1196,7 +1198,7 @@ nb = 4
 Qed.
 lt_left_comm
 Proof.
-943
+945
 nb = 10
     intros.
     unfold Lt in *.
@@ -1214,7 +1216,7 @@ nb = 10
 Qed.
 lt_comm
 Proof.
-959
+961
 nb = 13
     intros.
     apply lt_left_comm.
@@ -1223,7 +1225,7 @@ nb = 13
 Qed.
 gt_left_comm
 Proof.
-966
+968
 nb = 4
     intros.
     unfold Gt in *.
@@ -1232,7 +1234,7 @@ nb = 4
 Qed.
 gt_right_comm
 Proof.
-973
+975
 nb = 4
     intros.
     unfold Gt in *.
@@ -1241,7 +1243,7 @@ nb = 4
 Qed.
 gt_comm
 Proof.
-980
+982
 nb = 4
     intros.
     apply gt_left_comm.
@@ -1250,7 +1252,7 @@ nb = 4
 Qed.
 cong2_lt__lt
 Proof.
-987
+989
 nb = 4
   intros A B C D A' B' C' D' Hlt HCong1 HCong2.
   destruct Hlt as [Hle HNCong].
@@ -1263,7 +1265,7 @@ nb = 4
 Qed.
 fourth_point
 Proof.
-998
+1000
 nb = 8
     intros.
     induction H1.
@@ -1279,7 +1281,7 @@ nb = 8
 Qed.
 third_point
 Proof.
-1012
+1014
 nb = 11
     intros.
     induction H.
@@ -1293,7 +1295,7 @@ nb = 11
 Qed.
 l5_12_a
 Proof.
-1024
+1026
 nb = 9
     intros.
     split.
@@ -1311,21 +1313,21 @@ nb = 9
 Qed.
 bet__le1213
 Proof.
-1040
+1042
 nb = 13
     intros A B C HBet.
     destruct (l5_12_a A B C HBet); trivial.
 Qed.
 bet__le2313
 Proof.
-1045
+1047
 nb = 2
     intros A B C HBet.
     destruct (l5_12_a A B C HBet); trivial.
 Qed.
 bet__lt1213
 Proof.
-1050
+1052
 nb = 2
     intros A B C HBC HBet.
     split.
@@ -1335,13 +1337,13 @@ nb = 2
 Qed.
 bet__lt2313
 Proof.
-1058
+1060
 nb = 5
     intros; apply lt_comm, bet__lt1213; Between.
 Qed.
 l5_12_b
 Proof.
-1062
+1064
 nb = 1
     intros.
     unfold Col in H.
@@ -1386,7 +1388,7 @@ nb = 1
 Qed.
 bet_le_eq
 Proof.
-1105
+1107
 nb = 40
     intros.
     assert(Le C B C A).
@@ -1411,7 +1413,7 @@ nb = 40
 Qed.
 or_lt_cong_gt
 Proof.
-1128
+1130
 nb = 20
     intros.
     assert(HH:= le_cases A B C D).
@@ -1437,7 +1439,7 @@ nb = 20
 Qed.
 lt__le
 Proof.
-1152
+1154
 nb = 21
     intros A B C D Hlt.
     destruct Hlt.
@@ -1445,7 +1447,7 @@ nb = 21
 Qed.
 le1234_lt__lt
 Proof.
-1158
+1160
 nb = 3
     intros A B C D E F Hle Hlt.
     destruct Hlt as [Hle' HNCong].
@@ -1458,7 +1460,7 @@ nb = 3
 Qed.
 le3456_lt__lt
 Proof.
-1169
+1171
 nb = 8
     intros A B C D E F Hlt Hle.
     destruct Hlt as [Hle' HNCong].
@@ -1471,14 +1473,14 @@ nb = 8
 Qed.
 lt_transitivity
 Proof.
-1180
+1182
 nb = 8
     intros A B C D E F HLt1 HLt2.
     apply le1234_lt__lt with C D; try (apply lt__le); assumption.
 Qed.
 not_and_lt
 Proof.
-1185
+1187
 nb = 2
     intros A B C D.
     intro HInter.
@@ -1488,7 +1490,7 @@ nb = 2
 Qed.
 nlt
 Proof.
-1193
+1195
 nb = 5
     intros A B Hlt.
     apply (not_and_lt A B A B).
@@ -1496,7 +1498,7 @@ nb = 5
 Qed.
 le__nlt
 Proof.
-1199
+1201
 nb = 3
     intros A B C D HLe HLt.
     apply (not_and_lt A B C D); split; auto.
@@ -1505,7 +1507,7 @@ nb = 3
 Qed.
 cong__nlt
 Proof.
-1206
+1208
 nb = 4
     intros P Q R S H.
     apply le__nlt.
@@ -1514,7 +1516,7 @@ nb = 4
 Qed.
 nlt__le
 Proof.
-1213
+1215
 nb = 4
     intros A B C D HNLt.
     destruct (le_cases A B C D); trivial.
@@ -1526,7 +1528,7 @@ nb = 4
 Qed.
 lt__nle
 Proof.
-1223
+1225
 nb = 7
   intros A B C D HLt HLe.
   generalize HLt.
@@ -1534,7 +1536,7 @@ nb = 7
 Qed.
 nle__lt
 Proof.
-1229
+1231
 nb = 3
     intros A B C D HNLe.
     destruct (le_cases A B C D).
@@ -1546,7 +1548,7 @@ nb = 3
 Qed.
 lt1123
 Proof.
-1239
+1241
 nb = 7
 intros.
 split.
@@ -1557,7 +1559,7 @@ intuition.
 Qed.
 bet2_le2__le
 Proof.
-1248
+1250
 nb = 6
 intros.
 induction(eq_dec_points A O).
@@ -1625,7 +1627,7 @@ eBetween; Cong.
 Qed.
 bet_out
 Proof.
-1314
+1316
 nb = 63
     intros.
     unfold Out.
@@ -1634,7 +1636,7 @@ nb = 63
 Qed.
 out_dec
 Proof.
-1321
+1323
 nb = 4
     intros.
     unfold Out.
@@ -1642,7 +1644,7 @@ nb = 4
 Qed.
 out_diff1
 Proof.
-1327
+1329
 nb = 3
     intros.
     unfold Out in H.
@@ -1651,7 +1653,7 @@ nb = 3
 Qed.
 out_diff2
 Proof.
-1334
+1336
 nb = 4
     intros.
     unfold Out in H.
@@ -1660,7 +1662,7 @@ nb = 4
 Qed.
 out_distinct
 Proof.
-1341
+1343
 nb = 4
     intros.
     split.
@@ -1669,7 +1671,7 @@ nb = 4
 Qed.
 out_col
 Proof.
-1348
+1350
 nb = 4
     intros.
     unfold Col.
@@ -1679,7 +1681,7 @@ nb = 4
 Qed.
 l6_2
 Proof.
-1356
+1358
 nb = 5
     intros.
     unfold Out.
@@ -1690,7 +1692,7 @@ nb = 5
 Qed.
 bet_out__bet
 Proof.
-1365
+1367
 nb = 6
     intros A B C P HBet HOut.
     destruct (eq_dec_points C P).
@@ -1699,7 +1701,7 @@ nb = 6
 Qed.
 l6_3_1
 Proof.
-1372
+1374
 nb = 4
     unfold Out.
     intros.
@@ -1717,7 +1719,7 @@ nb = 4
 Qed.
 l6_3_2
 Proof.
-1388
+1390
 nb = 13
     intros.
     spliter.
@@ -1727,7 +1729,7 @@ nb = 13
 Qed.
 l6_4_1
 Proof.
-1396
+1398
 nb = 5
     unfold Out.
     intros.
@@ -1741,7 +1743,7 @@ nb = 5
 Qed.
 l6_4_2
 Proof.
-1408
+1410
 nb = 9
     unfold Col.
     intros.
@@ -1757,7 +1759,7 @@ nb = 9
 Qed.
 out_trivial
 Proof.
-1422
+1424
 nb = 11
     intros.
     unfold Out.
@@ -1765,14 +1767,14 @@ nb = 11
 Qed.
 l6_6
 Proof.
-1428
+1430
 nb = 3
     unfold Out.
     intuition.
 Qed.
 l6_7
 Proof.
-1433
+1435
 nb = 2
     unfold Out.
     intros.
@@ -1786,7 +1788,7 @@ nb = 2
 Qed.
 bet_out_out_bet
 Proof.
-1445
+1447
 nb = 9
     intros.
     unfold Out in *.
@@ -1803,7 +1805,7 @@ nb = 9
 Qed.
 out2_bet_out
 Proof.
-1460
+1462
 nb = 12
     intros.
     unfold Out in *.
@@ -1832,7 +1834,7 @@ nb = 12
 Qed.
 l6_11_uniqueness
 Proof.
-1487
+1489
 nb = 24
     unfold Out.
     intros.
@@ -1852,7 +1854,7 @@ nb = 24
 Qed.
 l6_11_existence
 Proof.
-1505
+1507
 nb = 15
     intros.
     assert (exists X : Tpoint, (Bet A R X \/ Bet A X R) /\ Cong A X B C) by (apply (segment_construction_2);assumption).
@@ -1862,7 +1864,7 @@ nb = 15
 Qed.
 segment_construction_3
 Proof.
-1513
+1515
 nb = 5
     intros.
     destruct (l6_11_existence A X Y B) as [C [HC1 HC2]]; auto.
@@ -1871,7 +1873,7 @@ nb = 5
 Qed.
 l6_13_1
 Proof.
-1520
+1522
 nb = 4
     unfold Out.
     intros.
@@ -1889,7 +1891,7 @@ nb = 4
 Qed.
 l6_13_2
 Proof.
-1536
+1538
 nb = 13
     intros.
     unfold Le.
@@ -1898,7 +1900,7 @@ nb = 13
 Qed.
 l6_16_1
 Proof.
-1543
+1545
 nb = 4
     intros.
     assert((Bet P S X \/ Bet P X S) -> (Bet P S X \/ Bet S X P)) by (intro; induction H3; Between).
@@ -1915,7 +1917,7 @@ nb = 4
 Qed.
 col_transitivity_1
 Proof.
-1558
+1560
 nb = 12
     intros.
     induction (eq_dec_points A P).
@@ -1925,14 +1927,14 @@ nb = 12
 Qed.
 col_transitivity_2
 Proof.
-1566
+1568
 nb = 5
     intros.
     apply (col_transitivity_1 Q P A B);Col.
 Qed.
 l6_21
 Proof.
-1571
+1573
 nb = 2
     intros.
     elim (eq_dec_points P Q); intro; try assumption.
@@ -1955,7 +1957,7 @@ nb = 2
 Qed.
 not_col_exists
 Proof.
-1592
+1594
 nb = 18
     intros.
     assert (T:=lower_dim_ex).
@@ -1979,7 +1981,7 @@ nb = 18
 Qed.
 t2_8
 Proof.
-1614
+1616
 nb = 19
     intros.
     induction (eq_dec_points A B); try (treat_equalities; Cong).
@@ -1991,7 +1993,7 @@ nb = 19
 Qed.
 col3
 Proof.
-1624
+1626
 nb = 7
     intros.
     assert (Col X A B) by (apply col_transitivity_1 with Y; assumption).
@@ -2006,7 +2008,7 @@ nb = 7
 Qed.
 out2__bet
 Proof.
-1637
+1639
 nb = 10
     intros A B C Hout1 Hout2.
     apply l6_4_1 in Hout2.
@@ -2019,7 +2021,7 @@ nb = 10
 Qed.
 bet2_le2__le1346
 Proof.
-1648
+1650
 nb = 8
   intros A B C A' B' C' HBet HBet' HleAB HleBC.
 
@@ -2070,7 +2072,7 @@ nb = 8
 Qed.
 bet2_le2__le2356
 Proof.
-1697
+1699
 nb = 46
   intros A B C A' B' C' HBet HBet' HLe1 HLe2.
   elim(eq_dec_points A B).
@@ -2097,7 +2099,7 @@ nb = 46
 Qed.
 bet2_le2__le1245
 Proof.
-1722
+1724
 nb = 22
   intros A B C A' B' C'; intros.
   apply le_comm.
@@ -2105,7 +2107,7 @@ nb = 22
 Qed.
 cong_preserves_bet
 Proof.
-1728
+1730
 nb = 3
     intros.
     unfold Out in H2.
@@ -2143,7 +2145,7 @@ nb = 3
 Qed.
 out_cong_cong
 Proof.
-1764
+1766
 nb = 33
     intros.
     unfold Out in H.
@@ -2174,7 +2176,7 @@ nb = 33
 Qed.
 not_out_bet
 Proof.
-1793
+1795
 nb = 26
     intros.
     unfold Out in H0.
@@ -2196,7 +2198,7 @@ nb = 26
 Qed.
 or_bet_out
 Proof.
-1813
+1815
 nb = 17
     intros.
     destruct (Col_dec A B C); auto.
@@ -2205,14 +2207,14 @@ nb = 17
 Qed.
 not_bet_out
 Proof.
-1820
+1822
 nb = 4
     intros.
     destruct (or_bet_out A B C) as [HBet|[HOut|HNCol]]; trivial; contradiction.
 Qed.
 not_bet_and_out
 Proof.
-1825
+1827
 nb = 2
     intros.
     intro.
@@ -2234,7 +2236,7 @@ nb = 2
 Qed.
 out_to_bet
 Proof.
-1845
+1847
 nb = 17
     intros.
     induction(out_dec B A C).
@@ -2266,7 +2268,7 @@ nb = 17
 Qed.
 col_out2_col
 Proof.
-1875
+1877
 nb = 27
     intros.
     induction H.
@@ -2320,7 +2322,7 @@ nb = 27
 Qed.
 bet2_out_out
 Proof.
-1927
+1929
 nb = 49
     intros.
     induction(eq_dec_points B' C').
@@ -2364,7 +2366,7 @@ nb = 49
 Qed.
 out2_out_1
 Proof.
-1969
+1971
 nb = 39
     intros.
     unfold Out in *.
@@ -2391,7 +2393,7 @@ nb = 39
 Qed.
 out2_out_2
 Proof.
-1994
+1996
 nb = 22
     intros.
     eapply out2_out_1.
@@ -2402,7 +2404,7 @@ nb = 22
 Qed.
 out_bet_out_1
 Proof.
-2003
+2005
 nb = 6
     intros.
     induction (eq_dec_points B P).
@@ -2428,7 +2430,7 @@ nb = 6
 Qed.
 out_bet_out_2
 Proof.
-2027
+2029
 nb = 21
     intros.
     apply l6_6.
@@ -2440,7 +2442,7 @@ nb = 21
 Qed.
 out_bet__out
 Proof.
-2037
+2039
 nb = 7
     intros A B P Q HBet Hout.
     destruct Hout as [HAQ [HBQ [HQAB|HQBA]]]; [|apply l6_6];
@@ -2449,7 +2451,7 @@ nb = 7
 Qed.
 is_midpoint_dec
 Proof.
-2044
+2046
 nb = 4
     intros.
     unfold Midpoint.
@@ -2457,7 +2459,7 @@ nb = 4
 Qed.
 is_midpoint_id
 Proof.
-2050
+2052
 nb = 3
     intros.
     unfold Midpoint in H.
@@ -2466,7 +2468,7 @@ nb = 3
 Qed.
 is_midpoint_id_2
 Proof.
-2057
+2059
 nb = 4
     intros.
     unfold Midpoint in *.
@@ -2476,28 +2478,28 @@ nb = 4
 Qed.
 l7_2
 Proof.
-2065
+2067
 nb = 5
     unfold Midpoint.
     intuition.
 Qed.
 l7_3
 Proof.
-2070
+2072
 nb = 2
     unfold Midpoint.
     intros;spliter;repeat split;Between;Cong.
 Qed.
 l7_3_2
 Proof.
-2075
+2077
 nb = 2
     unfold Midpoint.
     intros;repeat split;Between;Cong.
 Qed.
 symmetric_point_construction
 Proof.
-2080
+2082
 nb = 2
     unfold Midpoint.
     intros.
@@ -2507,7 +2509,7 @@ nb = 2
 Qed.
 symmetric_point_uniqueness
 Proof.
-2088
+2090
 nb = 5
     unfold Midpoint.
     intros.
@@ -2518,7 +2520,7 @@ nb = 5
 Qed.
 l7_9
 Proof.
-2097
+2099
 nb = 6
     unfold Midpoint.
     intros.
@@ -2529,13 +2531,13 @@ nb = 6
 Qed.
 l7_9_bis
 Proof.
-2106
+2108
 nb = 6
 intros; apply l7_9 with A X; unfold Midpoint in *; split; spliter; Cong; Between.
 Qed.
 l7_13
 Proof.
-2110
+2112
 nb = 1
     unfold Midpoint.
     intros.
@@ -2581,7 +2583,7 @@ nb = 1
 Qed.
 l7_15
 Proof.
-2154
+2156
 nb = 41
     intros.
     spliter.
@@ -2607,7 +2609,7 @@ nb = 41
 Qed.
 l7_16
 Proof.
-2178
+2180
 nb = 21
     intros.
     assert (Cong P Q P' Q').
@@ -2627,7 +2629,7 @@ nb = 21
 Qed.
 symmetry_preserves_midpoint
 Proof.
-2196
+2198
 nb = 15
     intros.
     unfold Midpoint.
@@ -2639,14 +2641,14 @@ nb = 15
 Qed.
 Mid_cases
 Proof.
-2206
+2208
 nb = 7
     intros.
     decompose [or] H; Midpoint.
 Qed.
 Mid_perm
 Proof.
-2211
+2213
 nb = 2
     unfold Midpoint.
     intros.
@@ -2655,7 +2657,7 @@ nb = 2
 Qed.
 l7_17
 Proof.
-2218
+2220
 nb = 4
     intros.
     assert (Cong P B P' B).
@@ -2676,14 +2678,14 @@ nb = 4
 Qed.
 l7_17_bis
 Proof.
-2237
+2239
 nb = 16
     intros.
     apply l7_17 with P P'; Midpoint.
 Qed.
 l7_20
 Proof.
-2242
+2244
 nb = 2
     unfold Col.
     intros.
@@ -2701,14 +2703,14 @@ nb = 2
 Qed.
 l7_20_bis
 Proof.
-2258
+2260
 nb = 13
    intros.
    induction (l7_20 M A B H0 H1);intuition.
 Qed.
 cong_col_mid
 Proof.
-2263
+2265
 nb = 2
     intros.
     apply l7_20 in H0.
@@ -2717,7 +2719,7 @@ nb = 2
 Qed.
 l7_21
 Proof.
-2270
+2272
 nb = 4
     intros.
     assert_diffs.
@@ -2752,7 +2754,7 @@ nb = 4
 Qed.
 l7_22_aux
 Proof.
-2303
+2305
 nb = 30
     intros.
     induction (eq_dec_points A2 C).
@@ -2947,7 +2949,7 @@ nb = 30
 Qed.
 l7_22
 Proof.
-2496
+2498
 nb = 190
     intros.
     assert (Le C A1 C A2 \/ Le C A2 C A1).
@@ -2975,7 +2977,7 @@ nb = 190
 Qed.
 bet_col1
 Proof.
-2522
+2524
 nb = 23
     intros.
     assert(Bet A B C \/ Bet A C B).
@@ -2992,7 +2994,7 @@ nb = 23
 Qed.
 l7_25
 Proof.
-2537
+2539
 nb = 12
     intros.
     induction(Col_dec A B C).
@@ -3258,7 +3260,7 @@ nb = 12
 Qed.
 midpoint_distinct_1
 Proof.
-2801
+2803
 nb = 261
     intros.
     split.
@@ -3276,7 +3278,7 @@ nb = 261
 Qed.
 midpoint_distinct_2
 Proof.
-2817
+2819
 nb = 13
     intros.
     assert (A<>B).
@@ -3292,7 +3294,7 @@ nb = 13
 Qed.
 midpoint_distinct_3
 Proof.
-2831
+2833
 nb = 11
     intros.
     assert (A<>B).
@@ -3308,7 +3310,7 @@ nb = 11
 Qed.
 midpoint_def
 Proof.
-2845
+2847
 nb = 11
     intros.
     unfold Midpoint.
@@ -3316,7 +3318,7 @@ nb = 11
 Qed.
 midpoint_bet
 Proof.
-2851
+2853
 nb = 3
     unfold Midpoint.
     intros.
@@ -3326,7 +3328,7 @@ nb = 3
 Qed.
 midpoint_col
 Proof.
-2859
+2861
 nb = 5
     intros.
     unfold Col.
@@ -3337,7 +3339,7 @@ nb = 5
 Qed.
 midpoint_cong
 Proof.
-2868
+2870
 nb = 6
     unfold Midpoint.
     intros.
@@ -3347,7 +3349,7 @@ nb = 6
 Qed.
 midpoint_not_midpoint
 Proof.
-2876
+2878
 nb = 5
     intros.
     assert (I<>B).
@@ -3367,13 +3369,13 @@ nb = 5
 Qed.
 swap_diff
 Proof.
-2894
+2896
 nb = 15
     intuition.
 Qed.
 cong_cong_half_1
 Proof.
-2898
+2900
 nb = 1
     intros.
     unfold Midpoint in *.
@@ -3410,7 +3412,7 @@ nb = 1
 Qed.
 cong_cong_half_2
 Proof.
-2933
+2935
 nb = 32
     intros.
     apply cong_cong_half_1 with A A'.
@@ -3420,7 +3422,7 @@ nb = 32
 Qed.
 cong_mid2__cong
 Proof.
-2941
+2943
 nb = 5
     intros A M B A' M' B' HM HM' HCong.
     destruct HM.
@@ -3431,7 +3433,7 @@ nb = 5
 Qed.
 mid__lt
 Proof.
-2950
+2952
 nb = 6
     intros A M B HAB HM.
     destruct (midpoint_distinct_1 M A B HAB HM) as [HMA HMB].
@@ -3443,7 +3445,7 @@ nb = 6
 Qed.
 le_mid2__le13
 Proof.
-2960
+2962
 nb = 7
     intros A M B A' M' B' HM HM' Hle.
     destruct HM.
@@ -3453,7 +3455,7 @@ nb = 7
 Qed.
 le_mid2__le12
 Proof.
-2968
+2970
 nb = 5
     intros A M B A' M' B' HM HM' Hle.
     elim(le_cases A M A' M'); auto.
@@ -3465,7 +3467,7 @@ nb = 5
 Qed.
 lt_mid2__lt13
 Proof.
-2978
+2980
 nb = 7
     intros A M B A' M' B' HM HM' [HLe HNcong].
     split.
@@ -3475,7 +3477,7 @@ nb = 7
 Qed.
 lt_mid2__lt12
 Proof.
-2986
+2988
 nb = 5
     intros A M B A' M' B' HM HM' [HLe HNcong].
     split.
@@ -3485,7 +3487,7 @@ nb = 5
 Qed.
 midpoint_preserves_out
 Proof.
-2994
+2996
 nb = 5
     intros.
     unfold Out in H.
@@ -3518,7 +3520,7 @@ nb = 5
 Qed.
 col_cong_bet
 Proof.
-3025
+3027
 nb = 28
 intros.
 
@@ -3618,7 +3620,7 @@ assumption.
 Qed.
 col_cong2_bet1
 Proof.
-3123
+3125
 nb = 95
 intros.
 induction(eq_dec_points A C).
@@ -3643,7 +3645,7 @@ assumption.
 Qed.
 col_cong2_bet2
 Proof.
-3146
+3148
 nb = 20
 intros.
 
@@ -3669,7 +3671,7 @@ Between.
 Qed.
 col_cong2_bet3
 Proof.
-3170
+3172
 nb = 21
 intros.
 
@@ -3690,7 +3692,7 @@ Cong.
 Qed.
 col_cong2_bet4
 Proof.
-3189
+3191
 nb = 16
 intros.
 induction(eq_dec_points A B).
@@ -3708,21 +3710,21 @@ Cong.
 Qed.
 col_bet2_cong1
 Proof.
-3205
+3207
 nb = 13
 intros.
 apply (l4_3 A C B D B C); Between;  Cong.
 Qed.
 col_bet2_cong2
 Proof.
-3210
+3212
 nb = 2
 intros.
 apply (l4_3 D A C B C A); Between; Cong.
 Qed.
 bet2_lt2__lt
 Proof.
-3215
+3217
 nb = 2
 intros.
 unfold Lt.
@@ -3835,7 +3837,7 @@ treat_equalities; tauto.
 Qed.
 bet2_lt_le__lt
 Proof.
-3326
+3328
 nb = 108
 intros.
 unfold Lt.
@@ -3862,7 +3864,7 @@ apply(l4_3_1 a o b A O B H H0 ); Cong.
 Qed.
 Per_dec
 Proof.
-3351
+3353
 nb = 22
     intros.
     unfold Per.
@@ -3880,7 +3882,7 @@ nb = 22
 Qed.
 l8_2
 Proof.
-3367
+3369
 nb = 13
     unfold Per.
     intros.
@@ -3901,21 +3903,21 @@ nb = 13
 Qed.
 Per_cases
 Proof.
-3386
+3388
 nb = 16
     intros.
     decompose [or]  H;Perp.
 Qed.
 Per_perm
 Proof.
-3391
+3393
 nb = 2
     intros.
     split; Perp.
 Qed.
 l8_3
 Proof.
-3396
+3398
 nb = 2
     unfold Per.
     intros.
@@ -3928,7 +3930,7 @@ nb = 2
 Qed.
 l8_4
 Proof.
-3407
+3409
 nb = 8
     unfold Per.
     intros.
@@ -3943,7 +3945,7 @@ nb = 8
 Qed.
 l8_5
 Proof.
-3420
+3422
 nb = 10
     unfold Per.
     intros.
@@ -3954,7 +3956,7 @@ nb = 10
 Qed.
 l8_6
 Proof.
-3429
+3431
 nb = 6
     unfold Per.
     intros.
@@ -3969,7 +3971,7 @@ nb = 6
 Qed.
 l8_7
 Proof.
-3442
+3444
 nb = 10
     intros.
     unfold Per in H.
@@ -4021,7 +4023,7 @@ nb = 10
 Qed.
 l8_8
 Proof.
-3492
+3494
 nb = 47
     intros.
     apply l8_7 with A.
@@ -4031,7 +4033,7 @@ nb = 47
 Qed.
 l8_9
 Proof.
-3500
+3502
 nb = 5
     intros.
     elim (eq_dec_points A B);intro.
@@ -4044,7 +4046,7 @@ nb = 5
 Qed.
 l8_10
 Proof.
-3511
+3513
 nb = 8
     unfold Per.
     intros.
@@ -4088,7 +4090,7 @@ nb = 8
 Qed.
 col_col_per_per
 Proof.
-3553
+3555
 nb = 39
     intros.
     assert (Per U X C) by (apply (l8_3 A X C U);Col).
@@ -4098,7 +4100,7 @@ nb = 39
 Qed.
 Perp_in_dec
 Proof.
-3561
+3563
 nb = 5
     intros.
     unfold Perp_at.
@@ -4119,7 +4121,7 @@ nb = 5
 Qed.
 perp_distinct
 Proof.
-3580
+3582
 nb = 16
     intros.
     unfold Perp in H.
@@ -4129,7 +4131,7 @@ nb = 16
 Qed.
 l8_12
 Proof.
-3588
+3590
 nb = 5
     unfold Perp_at.
     intros.
@@ -4139,7 +4141,7 @@ nb = 5
 Qed.
 per_col
 Proof.
-3596
+3598
 nb = 5
     unfold Per.
     intros.
@@ -4197,7 +4199,7 @@ nb = 5
 Qed.
 l8_13_2
 Proof.
-3652
+3654
 nb = 53
     intros.
     ex_and H3 U.
@@ -4227,7 +4229,7 @@ nb = 53
 Qed.
 l8_14_1
 Proof.
-3680
+3682
 nb = 25
     intros.
     unfold Perp.
@@ -4255,7 +4257,7 @@ nb = 25
 Qed.
 l8_14_2_1a
 Proof.
-3706
+3708
 nb = 23
     intros.
     unfold Perp.
@@ -4264,7 +4266,7 @@ nb = 23
 Qed.
 perp_in_distinct
 Proof.
-3713
+3715
 nb = 4
     intros.
     apply l8_14_2_1a in H.
@@ -4273,7 +4275,7 @@ nb = 4
 Qed.
 l8_14_2_1b
 Proof.
-3720
+3722
 nb = 4
     intros.
     unfold Perp_at in H.
@@ -4284,7 +4286,7 @@ nb = 4
 Qed.
 l8_14_2_1b_bis
 Proof.
-3729
+3731
 nb = 6
     intros.
     unfold Perp in H.
@@ -4295,7 +4297,7 @@ nb = 6
 Qed.
 l8_14_2_2
 Proof.
-3738
+3740
 nb = 6
     intros.
     eapply l8_14_2_1b_bis.
@@ -4320,7 +4322,7 @@ nb = 6
 Qed.
 l8_14_3
 Proof.
-3761
+3763
 nb = 20
     intros.
     eapply l8_14_2_1b.
@@ -4333,14 +4335,14 @@ nb = 20
 Qed.
 l8_15_1
 Proof.
-3772
+3774
 nb = 8
     intros.
     eapply l8_14_2_1b_bis;Col.
 Qed.
 l8_15_2
 Proof.
-3777
+3779
 nb = 2
     intros.
     eapply l8_14_2_1a.
@@ -4348,7 +4350,7 @@ nb = 2
 Qed.
 perp_in_per
 Proof.
-3783
+3785
 nb = 3
     intros.
     unfold Perp_at in H.
@@ -4357,7 +4359,7 @@ nb = 3
 Qed.
 perp_sym
 Proof.
-3790
+3792
 nb = 4
     unfold Perp.
     intros.
@@ -4368,7 +4370,7 @@ nb = 4
 Qed.
 perp_col0
 Proof.
-3799
+3801
 nb = 6
     unfold Perp.
     intros.
@@ -4397,7 +4399,7 @@ nb = 6
 Qed.
 l8_16_1
 Proof.
-3826
+3828
 nb = 24
     intros.
     split.
@@ -4420,7 +4422,7 @@ nb = 24
 Qed.
 per_perp_in
 Proof.
-3847
+3849
 nb = 18
     intros.
     unfold Perp.
@@ -4445,7 +4447,7 @@ nb = 18
 Qed.
 per_perp
 Proof.
-3870
+3872
 nb = 20
     intros.
     apply per_perp_in in H1.
@@ -4455,7 +4457,7 @@ nb = 20
 Qed.
 perp_left_comm
 Proof.
-3878
+3880
 nb = 5
     unfold Perp.
     intros.
@@ -4466,7 +4468,7 @@ nb = 5
 Qed.
 perp_right_comm
 Proof.
-3887
+3889
 nb = 6
     unfold Perp.
     intros.
@@ -4477,7 +4479,7 @@ nb = 6
 Qed.
 perp_comm
 Proof.
-3896
+3898
 nb = 6
     intros.
     apply perp_left_comm.
@@ -4486,7 +4488,7 @@ nb = 6
 Qed.
 perp_in_sym
 Proof.
-3903
+3905
 nb = 4
     unfold Perp_at.
     intros.
@@ -4502,14 +4504,14 @@ nb = 4
 Qed.
 perp_in_left_comm
 Proof.
-3917
+3919
 nb = 11
     unfold Perp_at.
     intuition.
 Qed.
 perp_in_right_comm
 Proof.
-3922
+3924
 nb = 2
     intros.
     apply perp_in_sym.
@@ -4519,7 +4521,7 @@ nb = 2
 Qed.
 perp_in_comm
 Proof.
-3930
+3932
 nb = 5
     intros.
     apply perp_in_left_comm.
@@ -4528,35 +4530,35 @@ nb = 5
 Qed.
 Perp_cases
 Proof.
-3937
+3939
 nb = 4
     intros.
     decompose [or] H; Perp.
 Qed.
 Perp_perm
 Proof.
-3942
+3944
 nb = 2
     intros.
     repeat split; Perp.
 Qed.
 Perp_in_cases
 Proof.
-3947
+3949
 nb = 2
     intros.
     decompose [or]  H; Perp.
 Qed.
 Perp_in_perm
 Proof.
-3952
+3954
 nb = 2
     intros.
     do 7 (split; Perp).
 Qed.
 l8_16_2
 Proof.
-3957
+3959
 nb = 2
     intros.
     assert (C <> X).
@@ -4579,7 +4581,7 @@ nb = 2
 Qed.
 l8_18_uniqueness
 Proof.
-3978
+3980
 nb = 18
     intros.
     show_distinct A B.
@@ -4592,7 +4594,7 @@ nb = 18
 Qed.
 midpoint_distinct
 Proof.
-3989
+3991
 nb = 8
     intros.
     intro.
@@ -4605,7 +4607,7 @@ nb = 8
 Qed.
 l8_20_1
 Proof.
-4000
+4002
 nb = 8
     intros.
     double B A B'.
@@ -4733,7 +4735,7 @@ nb = 8
 Qed.
 l8_20_2
 Proof.
-4126
+4128
 nb = 123
     intros.
     intro.
@@ -4751,7 +4753,7 @@ nb = 123
 Qed.
 perp_col1
 Proof.
-4142
+4144
 nb = 13
     intros.
     assert (T:=perp_distinct A B C D H0).
@@ -4788,7 +4790,7 @@ nb = 13
 Qed.
 l8_18_existence
 Proof.
-4177
+4179
 nb = 32
     intros.
     prolong B A Y A C.
@@ -4952,7 +4954,7 @@ nb = 32
 Qed.
 l8_21_aux
 Proof.
-4339
+4341
 nb = 159
     intros.
     assert (exists X : Tpoint, Col A B X /\ Perp A B C X).
@@ -5061,7 +5063,7 @@ nb = 159
 Qed.
 l8_21
 Proof.
-4446
+4448
 nb = 104
     intros.
     induction(Col_dec A B C).
@@ -5085,14 +5087,14 @@ nb = 104
 Qed.
 perp_in_col
 Proof.
-4468
+4470
 nb = 19
     unfold Perp_at.
     intuition.
 Qed.
 perp_perp_in
 Proof.
-4473
+4475
 nb = 2
     intros.
     apply l8_15_1.
@@ -5105,7 +5107,7 @@ nb = 2
 Qed.
 perp_per_1
 Proof.
-4484
+4486
 nb = 8
     intros.
     assert (Perp_at A A B C A).
@@ -5119,7 +5121,7 @@ nb = 8
 Qed.
 perp_per_2
 Proof.
-4496
+4498
 nb = 9
     intros.
     apply perp_right_comm in H.
@@ -5127,7 +5129,7 @@ nb = 9
 Qed.
 perp_col
 Proof.
-4502
+4504
 nb = 3
     intros.
     apply perp_sym.
@@ -5135,7 +5137,7 @@ nb = 3
 Qed.
 perp_col2
 Proof.
-4508
+4510
 nb = 3
     intros.
     assert(HH:=H).
@@ -5151,7 +5153,7 @@ nb = 3
 Qed.
 perp_not_eq_1
 Proof.
-4522
+4524
 nb = 11
     intros.
     unfold Perp in H.
@@ -5161,7 +5163,7 @@ nb = 11
 Qed.
 perp_not_eq_2
 Proof.
-4530
+4532
 nb = 5
     intros.
     apply perp_sym in H.
@@ -5170,7 +5172,7 @@ nb = 5
 Qed.
 diff_per_diff
 Proof.
-4537
+4539
 nb = 4
     intros.
     intro.
@@ -5185,7 +5187,7 @@ nb = 4
 Qed.
 per_not_colp
 Proof.
-4550
+4552
 nb = 10
     intros.
     intro.
@@ -5209,7 +5211,7 @@ nb = 10
 Qed.
 per_not_col
 Proof.
-4572
+4574
 nb = 19
     intros.
     intro.
@@ -5223,7 +5225,7 @@ nb = 19
 Qed.
 per_cong
 Proof.
-4584
+4586
 nb = 9
     intros.
     assert (Per P A B).
@@ -5505,7 +5507,7 @@ nb = 9
 Qed.
 perp_cong
 Proof.
-4864
+4866
 nb = 277
     intros.
     apply (per_cong A B P R X).
@@ -5522,7 +5524,7 @@ nb = 277
 Qed.
 midpoint_existence_aux
 Proof.
-4879
+4881
 nb = 12
     intros.
     unfold Le in H4.
@@ -5610,7 +5612,7 @@ nb = 12
 Qed.
 midpoint_existence
 Proof.
-4965
+4967
 nb = 83
     intros.
     induction (eq_dec_points A B).
@@ -5642,7 +5644,7 @@ nb = 83
 Qed.
 perp_in_id
 Proof.
-4995
+4997
 nb = 27
     intros.
     assert (Perp A B C A).
@@ -5670,7 +5672,7 @@ nb = 27
 Qed.
 l8_22
 Proof.
-5021
+5023
 nb = 23
     intros.
     assert (Cong A R P B).
@@ -5687,7 +5689,7 @@ nb = 23
 Qed.
 l8_22_bis
 Proof.
-5036
+5038
 nb = 12
     intros.
     apply l8_22;finish.
@@ -5696,7 +5698,7 @@ nb = 12
 Qed.
 perp_in_perp
 Proof.
-5043
+5045
 nb = 4
     intros.
     unfold Perp.
@@ -5705,7 +5707,7 @@ nb = 4
 Qed.
 perp_proj
 Proof.
-5050
+5052
 nb = 4
     intros.
     unfold Perp in H.
@@ -5732,7 +5734,7 @@ nb = 4
 Qed.
 l8_24
 Proof.
-5075
+5077
 nb = 22
     intros.
     unfold Le in H4.
@@ -5879,7 +5881,7 @@ nb = 22
 Qed.
 perp_not_col2
 Proof.
-5220
+5222
 nb = 142
     intros.
     induction (Col_dec A B C).
@@ -5900,7 +5902,7 @@ nb = 142
 Qed.
 perp_not_col
 Proof.
-5239
+5241
 nb = 16
     intros.
     assert (Perp_at A A B P A).
@@ -5929,7 +5931,7 @@ nb = 16
 Qed.
 perp_in_col_perp_in
 Proof.
-5266
+5268
 nb = 24
     intros.
     unfold Perp_at in *.
@@ -5943,7 +5945,7 @@ nb = 24
 Qed.
 perp_col2_bis
 Proof.
-5278
+5280
 nb = 9
 intros A B C D P Q HPerp HCol1 HCol2 HCD.
 apply perp_sym.
@@ -5951,7 +5953,7 @@ apply perp_col2 with P Q; Perp; ColR.
 Qed.
 perp_in_perp_bis
 Proof.
-5284
+5286
 nb = 3
     intros.
     induction (eq_dec_points X A).
@@ -5987,7 +5989,7 @@ nb = 3
 Qed.
 col_per_perp
 Proof.
-5318
+5320
 nb = 31
     intros.
     apply per_perp_in in H4.
@@ -6008,7 +6010,7 @@ nb = 31
 Qed.
 per_cong_mid
 Proof.
-5337
+5339
 nb = 16
     intros.
     induction (eq_dec_points H B).
@@ -6078,7 +6080,7 @@ nb = 16
 Qed.
 per_double_cong
 Proof.
-5405
+5407
 nb = 65
     intros.
     unfold Per in H.
@@ -6094,7 +6096,7 @@ nb = 65
 Qed.
 cong_perp_or_mid
 Proof.
-5419
+5421
 nb = 11
 intros.
 induction(Col_dec A B X).
@@ -6124,7 +6126,7 @@ auto.
 Qed.
 col_per2_cases
 Proof.
-5447
+5449
 nb = 25
 intros.
 induction(eq_dec_points B B').
@@ -6142,7 +6144,7 @@ apply (l8_7 A); auto.
 Qed.
 ts_distincts
 Proof.
-5463
+5465
 nb = 13
   intros A B P Q HTS.
   destruct HTS as [HNCol1 [HNCol2 [T [HCol HBet]]]].
@@ -6152,7 +6154,7 @@ nb = 13
 Qed.
 l9_2
 Proof.
-5471
+5473
 nb = 5
     unfold TS.
     intros.
@@ -6163,7 +6165,7 @@ nb = 5
 Qed.
 invert_two_sides
 Proof.
-5480
+5482
 nb = 6
     unfold TS.
     intros.
@@ -6174,7 +6176,7 @@ nb = 6
 Qed.
 l9_3
 Proof.
-5489
+5491
 nb = 6
     intros.
     unfold TS in *.
@@ -6332,7 +6334,7 @@ nb = 6
 Qed.
 sym_sym
 Proof.
-5645
+5647
 nb = 153
     unfold ReflectP.
     intros.
@@ -6341,7 +6343,7 @@ nb = 153
 Qed.
 distinct
 Proof.
-5652
+5654
 nb = 4
     intros.
     assert (~ (R = P /\ R = Q) -> (R <> P \/ R <> Q)).
@@ -6369,7 +6371,7 @@ nb = 4
 Qed.
 diff_col_ex
 Proof.
-5678
+5680
 nb = 23
     intros.
     assert (exists C, Bet A B C /\ B <> C).
@@ -6389,7 +6391,7 @@ nb = 23
 Qed.
 diff_bet_ex3
 Proof.
-5696
+5698
 nb = 15
     intros.
     induction (eq_dec_points A B).
@@ -6479,7 +6481,7 @@ nb = 15
 Qed.
 diff_col_ex3
 Proof.
-5784
+5786
 nb = 85
     intros.
     assert(cas1 := diff_bet_ex3 A B C).
@@ -6533,7 +6535,7 @@ nb = 85
 Qed.
 mid_preserves_col
 Proof.
-5836
+5838
 nb = 49
     intros.
     induction H.
@@ -6550,7 +6552,7 @@ nb = 49
 Qed.
 per_mid_per
 Proof.
-5851
+5853
 nb = 12
     intros.
     assert (Cong A X B Y).
@@ -6608,7 +6610,7 @@ nb = 12
 Qed.
 sym_preserve_diff
 Proof.
-5907
+5909
 nb = 53
     intros.
     intro.
@@ -6621,7 +6623,7 @@ nb = 53
 Qed.
 l9_4_1_aux
 Proof.
-5918
+5920
 nb = 8
     intros.
     induction (eq_dec_points R S).
@@ -6896,7 +6898,7 @@ nb = 8
 Qed.
 per_col_eq
 Proof.
-6191
+6193
 nb = 270
     intros.
     unfold Per in H.
@@ -6912,7 +6914,7 @@ nb = 270
 Qed.
 l9_4_1
 Proof.
-6205
+6207
 nb = 11
     intros.
     assert (Le S C R A \/ Le R A S C).
@@ -6960,7 +6962,7 @@ nb = 11
 Qed.
 mid_two_sides
 Proof.
-6251
+6253
 nb = 43
     intros A B M X Y HM1 HNCol HM2.
     repeat split; Col.
@@ -6971,7 +6973,7 @@ nb = 43
 Qed.
 col_preserves_two_sides
 Proof.
-6260
+6262
 nb = 6
     intros A B C D X Y.
     assert (H := A).
@@ -7044,7 +7046,7 @@ nb = 6
 Qed.
 out_out_two_sides
 Proof.
-6331
+6333
 nb = 68
     intros.
     unfold TS in *.
@@ -7084,7 +7086,7 @@ nb = 68
 Qed.
 l9_4_2_aux
 Proof.
-6369
+6371
 nb = 35
     intros.
     induction (eq_dec_points R S).
@@ -7251,7 +7253,7 @@ nb = 35
 Qed.
 l9_4_2
 Proof.
-6534
+6536
 nb = 162
     intros.
     assert(Le S C R A \/ Le R A S C) by (apply le_cases).
@@ -7263,7 +7265,7 @@ nb = 162
 Qed.
 l9_5
 Proof.
-6544
+6546
 nb = 7
     intros.
     assert (P <> Q).
@@ -7423,7 +7425,7 @@ nb = 7
 Qed.
 outer_pasch
 Proof.
-6702
+6704
 nb = 155
     intros.
     induction(Col_dec P Q C).
@@ -7484,7 +7486,7 @@ nb = 155
 Qed.
 os_distincts
 Proof.
-6761
+6763
 nb = 56
   intros A B P Q HOS.
   destruct HOS as [Z [HTS1 HTS2]].
@@ -7495,7 +7497,7 @@ nb = 56
 Qed.
 invert_one_side
 Proof.
-6770
+6772
 nb = 6
     unfold OS.
     intros.
@@ -7505,7 +7507,7 @@ nb = 6
 Qed.
 l9_8_1
 Proof.
-6778
+6780
 nb = 5
     intros.
     unfold OS.
@@ -7514,7 +7516,7 @@ nb = 5
 Qed.
 not_two_sides_id
 Proof.
-6785
+6787
 nb = 4
     intros.
     intro.
@@ -7528,7 +7530,7 @@ nb = 4
 Qed.
 l9_8_2
 Proof.
-6797
+6799
 nb = 9
     intros.
     unfold OS in H0.
@@ -7757,7 +7759,7 @@ nb = 9
 Qed.
 l9_9
 Proof.
-7024
+7026
 nb = 224
     intros.
     intro.
@@ -7768,7 +7770,7 @@ nb = 224
 Qed.
 l9_9_bis
 Proof.
-7033
+7035
 nb = 6
     intros.
     intro.
@@ -7785,7 +7787,7 @@ nb = 6
 Qed.
 one_side_chara
 Proof.
-7048
+7050
 nb = 12
     intros.
     intros.
@@ -7801,7 +7803,7 @@ nb = 12
 Qed.
 l9_10
 Proof.
-7062
+7064
 nb = 11
     intros.
     double A P A'.
@@ -7834,7 +7836,7 @@ nb = 11
 Qed.
 one_side_reflexivity
 Proof.
-7093
+7095
 nb = 28
     intros.
     unfold OS.
@@ -7869,7 +7871,7 @@ nb = 28
 Qed.
 one_side_symmetry
 Proof.
-7126
+7128
 nb = 30
     unfold OS.
     intros.
@@ -7879,7 +7881,7 @@ nb = 30
 Qed.
 one_side_transitivity
 Proof.
-7134
+7136
 nb = 5
     intros.
     unfold OS in *.
@@ -7900,7 +7902,7 @@ nb = 5
 Qed.
 col_eq
 Proof.
-7153
+7155
 nb = 16
     intros.
     apply eq_sym.
@@ -7908,7 +7910,7 @@ nb = 16
 Qed.
 l9_17
 Proof.
-7159
+7161
 nb = 3
     intros.
     induction (eq_dec_points A C).
@@ -8033,7 +8035,7 @@ nb = 3
 Qed.
 l9_18
 Proof.
-7282
+7284
 nb = 120
     intros.
     split.
@@ -8088,7 +8090,7 @@ nb = 120
 Qed.
 l9_19
 Proof.
-7335
+7337
 nb = 50
     intros.
     split.
@@ -8182,7 +8184,7 @@ nb = 50
 Qed.
 one_side_not_col123
 Proof.
-7427
+7429
 nb = 89
     intros.
     unfold OS in H.
@@ -8196,7 +8198,7 @@ nb = 89
 Qed.
 one_side_not_col124
 Proof.
-7439
+7441
 nb = 9
   intros A B X Y HOS.
   apply one_side_not_col123 with X.
@@ -8204,7 +8206,7 @@ nb = 9
 Qed.
 col_two_sides
 Proof.
-7445
+7447
 nb = 3
     intros.
     unfold TS in *.
@@ -8243,7 +8245,7 @@ nb = 3
 Qed.
 col_one_side
 Proof.
-7482
+7484
 nb = 34
     unfold OS.
     intros.
@@ -8253,7 +8255,7 @@ nb = 34
 Qed.
 out_out_one_side
 Proof.
-7490
+7492
 nb = 5
     intros.
     assert (A <> B).
@@ -8358,7 +8360,7 @@ nb = 5
 Qed.
 out_one_side
 Proof.
-7593
+7595
 nb = 100
     intros.
     induction H.
@@ -8382,7 +8384,7 @@ nb = 100
 Qed.
 bet_ts__ts
 Proof.
-7615
+7617
 nb = 19
   intros A B X Y Z [HNCol1 [HNCol2 [T [HT1 HT2]]]] HBet.
   repeat split; trivial.
@@ -8391,7 +8393,7 @@ nb = 19
 Qed.
 l9_31
 Proof.
-7622
+7624
 nb = 4
     intros.
     assert(A <> X /\ A <> Z /\ ~ Col Y A X  /\ ~ Col Z A X /\ ~Col Y A Z).
@@ -8611,7 +8613,7 @@ nb = 4
 Qed.
 col123__nos
 Proof.
-7840
+7842
 nb = 215
   intros A B P Q HCol.
   intro HOne.
@@ -8620,7 +8622,7 @@ nb = 215
 Qed.
 col124__nos
 Proof.
-7847
+7849
 nb = 4
   intros A B P Q HCol.
   intro HOne.
@@ -8629,7 +8631,7 @@ nb = 4
 Qed.
 col2_os__os
 Proof.
-7854
+7856
 nb = 4
   intros A B C D X Y HCD HColC HColD Hos.
   destruct Hos as [Z [Hts1 Hts2]].
@@ -8638,7 +8640,7 @@ nb = 4
 Qed.
 os_out_os
 Proof.
-7861
+7863
 nb = 4
     intros.
     assert(A <> B /\ ~ Col C A B).
@@ -8682,7 +8684,7 @@ nb = 4
 Qed.
 ts_ts_os
 Proof.
-7903
+7905
 nb = 39
     intros.
     unfold TS in *.
@@ -8737,7 +8739,7 @@ assumption.
 Qed.
 two_sides_not_col
 Proof.
-7956
+7958
 nb = 50
     intros.
     unfold TS in H.
@@ -8749,7 +8751,7 @@ nb = 50
 Qed.
 col_one_side_out
 Proof.
-7966
+7968
 nb = 7
     intros.
     assert(X <> A /\ Y <> A).
@@ -8799,7 +8801,7 @@ nb = 7
 Qed.
 col_two_sides_bet
 Proof.
-8014
+8016
 nb = 45
     intros.
     unfold Col in H.
@@ -8876,7 +8878,7 @@ nb = 45
 Qed.
 os_ts1324__os
 Proof.
-8089
+8091
 nb = 72
   intros A X Y Z Hos Hts.
   destruct Hts as [HNColXY [HNColYZ [P [HColP HPBet]]]].
@@ -8900,7 +8902,7 @@ nb = 72
 Qed.
 ts2__ex_bet2
 Proof.
-8111
+8113
 nb = 19
   intros A B C D HTS HTS'.
   destruct HTS as [HNCol [HNCol1 [X [HCol HBet]]]].
@@ -8912,7 +8914,7 @@ nb = 19
 Qed.
 ts2__inangle
 Proof.
-8121
+8123
 nb = 7
   intros A B C P HTS1 HTS2.
   destruct (ts2__ex_bet2 A B C P) as [X [HBet1 HBet2]]; trivial.
@@ -8925,7 +8927,7 @@ nb = 7
 Qed.
 out_one_side_1
 Proof.
-8132
+8134
 nb = 8
     intros.
     induction (eq_dec_points C D).
@@ -8971,7 +8973,7 @@ nb = 8
 Qed.
 TS__ncol
 Proof.
-8176
+8178
 nb = 41
 intros.
 unfold TS in H.
@@ -8995,20 +8997,20 @@ ColR.
 Qed.
 all_coplanar
 Proof.
-8198
+8200
 nb = 19
 apply upper_dim_implies_all_coplanar;
 unfold upper_dim_axiom; apply upper_dim.
 Qed.
 per_per_col
 Proof.
-8203
+8205
 nb = 2
 intros. apply cop_per_per_col with C; auto; apply all_coplanar.
 Qed.
 perp_perp_col
 Proof.
-8207
+8209
 nb = 1
     intros.
     induction(Col_dec A B X).
@@ -9108,7 +9110,7 @@ nb = 1
 Qed.
 cong_on_bissect
 Proof.
-8305
+8307
 nb = 95
 intros.
 assert(X = M \/ ~ Col A B X /\ Perp_at M X M A B).
@@ -9122,7 +9124,7 @@ apply(perp_perp_col _ _ _ A B); Perp.
 Qed.
 cong_mid_perp__col
 Proof.
-8317
+8319
 nb = 9
 intros.
 assert_diffs.
@@ -9138,7 +9140,7 @@ apply (perp_perp_col _ _ _ A B); Perp.
 Qed.
 image_in_col
 Proof.
-8331
+8333
 nb = 11
     intros.
     assert(ReflectL P P' A B).
@@ -9217,7 +9219,7 @@ nb = 11
 Qed.
 l10_10_spec
 Proof.
-8408
+8410
 nb = 74
     intros.
     assert(HH0 := H0).
@@ -9410,7 +9412,7 @@ nb = 74
 Qed.
 l10_10
 Proof.
-8599
+8601
 nb = 188
     intros.
     induction (eq_dec_points A B).
@@ -9426,7 +9428,7 @@ nb = 188
 Qed.
 image_preserves_bet
 Proof.
-8613
+8615
 nb = 11
     intros.
     eapply l4_6.
@@ -9450,14 +9452,14 @@ nb = 11
 Qed.
 image_gen_preserves_bet
 Proof.
-8635
+8637
 nb = 19
     intros.
     eapply image_preserves_bet;try apply is_image_is_image_spec; eauto.
 Qed.
 image_preserves_col
 Proof.
-8640
+8642
 nb = 2
     intros.
     destruct H3 as [HBet|[HBet|HBet]]; [|apply col_permutation_2|apply col_permutation_1];
@@ -9465,14 +9467,14 @@ nb = 2
 Qed.
 image_gen_preserves_col
 Proof.
-8646
+8648
 nb = 3
     intros.
     apply image_preserves_col with A B C X Y; try (apply is_image_is_image_spec); auto.
 Qed.
 image_gen_preserves_ncol
 Proof.
-8651
+8653
 nb = 2
     intros.
     intro.
@@ -9480,7 +9482,7 @@ nb = 2
 Qed.
 image_gen_preserves_inter
 Proof.
-8657
+8659
 nb = 3
     intros.
     destruct (l10_6_existence X Y I) as [I0 HI0]; trivial.
@@ -9493,7 +9495,7 @@ nb = 3
 Qed.
 intersection_with_image_gen
 Proof.
-8668
+8670
 nb = 8
     intros.
     apply l10_8.
@@ -9505,7 +9507,7 @@ nb = 8
 Qed.
 image_preserves_midpoint
 Proof.
-8678
+8680
 nb = 7
     intros.
     unfold Midpoint in *.
@@ -9533,7 +9535,7 @@ nb = 7
 Qed.
 image_preserves_per
 Proof.
-8704
+8706
 nb = 23
     intros.
     double C B C1.
@@ -9573,7 +9575,7 @@ nb = 23
 Qed.
 l10_12
 Proof.
-8742
+8744
 nb = 35
     intros.
     induction (eq_dec_points B C).
@@ -9742,7 +9744,7 @@ nb = 35
 Qed.
 l10_16
 Proof.
-8909
+8911
 nb = 164
     intros.
     induction (eq_dec_points A B).
@@ -9926,7 +9928,7 @@ nb = 164
 Qed.
 image_cong_col
 Proof.
-9091
+9093
 nb = 179
     intros.
     unfold Reflect in *.
@@ -10030,7 +10032,7 @@ nb = 179
 Qed.
 per_per_cong_1
 Proof.
-9193
+9195
 nb = 99
     intros.
     (* eauto 6 using l7_20, per_per_col, l8_2, col_permutation_5.
@@ -10047,7 +10049,7 @@ nb = 99
 Qed.
 per_per_cong
 Proof.
-9208
+9210
 nb = 12
     intros.
     assert (Col X Y B).
@@ -10096,7 +10098,7 @@ nb = 12
 Qed.
 per_per_cong_gen
 Proof.
-9255
+9257
 nb = 44
     intros.
     assert (X = Y \/ ReflectL X Y A B) by (apply per_per_cong;auto).
@@ -10108,7 +10110,7 @@ nb = 44
 Qed.
 two_sides_dec
 Proof.
-9265
+9267
 nb = 7
 apply upper_dim_implies_two_sides_dec.
 apply all_coplanar_implies_upper_dim; unfold all_coplanar_axiom;
@@ -10116,7 +10118,7 @@ apply all_coplanar.
 Qed.
 one_side_dec
 Proof.
-9271
+9273
 nb = 3
     intros.
     elim (Col_dec C A B); intro HCol1.
@@ -10269,7 +10271,7 @@ apply(l9_8_1 A B C D P);auto.
 Qed.
 ex_sym
 Proof.
-9422
+9424
 nb = 148
     intros.
     induction (Col_dec A B X).
@@ -10311,7 +10313,7 @@ nb = 148
 Qed.
 is_image_is_image_spec
 Proof.
-9462
+9464
 nb = 37
     intros.
     unfold Reflect.
@@ -10319,7 +10321,7 @@ nb = 37
 Qed.
 ex_sym1
 Proof.
-9468
+9470
 nb = 3
     intros.
     induction (Col_dec A B X).
@@ -10397,7 +10399,7 @@ nb = 3
 Qed.
 l10_2_uniqueness
 Proof.
-9544
+9546
 nb = 73
     intros.
     induction (eq_dec_points A B).
@@ -10593,7 +10595,7 @@ nb = 73
 Qed.
 l10_2_uniqueness_spec
 Proof.
-9738
+9740
 nb = 191
     intros A B P P1 P2 HP1 HP2.
     assert (HR1 := HP1).
@@ -10606,7 +10608,7 @@ nb = 191
 Qed.
 l10_2_existence_spec
 Proof.
-9749
+9751
 nb = 8
     intros.
     induction (Col_dec A B P).
@@ -10648,7 +10650,7 @@ nb = 8
 Qed.
 l10_2_existence
 Proof.
-9789
+9791
 nb = 37
     intros.
     induction (eq_dec_points A B).
@@ -10666,7 +10668,7 @@ nb = 37
 Qed.
 l10_4_spec
 Proof.
-9805
+9807
 nb = 13
     intros.
     unfold ReflectL in *.
@@ -10686,7 +10688,7 @@ nb = 13
 Qed.
 l10_4
 Proof.
-9823
+9825
 nb = 15
     intros.
     induction (eq_dec_points A B).
@@ -10705,7 +10707,7 @@ nb = 15
 Qed.
 l10_5
 Proof.
-9840
+9842
 nb = 14
     intros.
     induction (eq_dec_points A B).
@@ -10732,7 +10734,7 @@ nb = 14
 Qed.
 l10_6_uniqueness
 Proof.
-9865
+9867
 nb = 22
     intros.
     induction (eq_dec_points A B).
@@ -10756,7 +10758,7 @@ nb = 22
 Qed.
 l10_6_uniqueness_spec
 Proof.
-9887
+9889
 nb = 19
     intros A B P P1 P2 HP1 HP2.
     assert (HR1 := HP1).
@@ -10769,7 +10771,7 @@ nb = 19
 Qed.
 l10_6_existence_spec
 Proof.
-9898
+9900
 nb = 8
     intros.
     assert (exists P, ReflectL P P' A B).
@@ -10781,7 +10783,7 @@ nb = 8
 Qed.
 l10_6_existence
 Proof.
-9908
+9910
 nb = 7
     intros.
     assert (exists P, Reflect P P' A B).
@@ -10793,7 +10795,7 @@ nb = 7
 Qed.
 l10_7
 Proof.
-9918
+9920
 nb = 7
     intros.
     subst Q'.
@@ -10805,7 +10807,7 @@ nb = 7
 Qed.
 l10_8
 Proof.
-9928
+9930
 nb = 7
     intros.
     induction (eq_dec_points A B).
@@ -10822,7 +10824,7 @@ nb = 7
 Qed.
 col__refl
 Proof.
-9943
+9945
 nb = 12
     intros A B P HCol.
     split.
@@ -10831,7 +10833,7 @@ nb = 12
 Qed.
 is_image_col_cong
 Proof.
-9950
+9952
 nb = 4
     intros.
     rewrite is_image_is_image_spec in H0 by apply H.
@@ -10887,7 +10889,7 @@ nb = 4
 Qed.
 is_image_spec_col_cong
 Proof.
-10004
+10006
 nb = 51
     intros.
     unfold ReflectL in *.
@@ -10940,7 +10942,7 @@ nb = 51
 Qed.
 image_id
 Proof.
-10055
+10057
 nb = 48
     intros.
     rewrite is_image_is_image_spec in H1 by apply H.
@@ -11065,7 +11067,7 @@ nb = 48
 Qed.
 osym_not_col
 Proof.
-10178
+10180
 nb = 120
     intros.
     unfold Reflect in *.
@@ -11096,7 +11098,7 @@ nb = 120
 Qed.
 midpoint_preserves_image
 Proof.
-10207
+10209
 nb = 26
     intros.
     rewrite is_image_is_image_spec in * by apply H.
@@ -11351,7 +11353,7 @@ nb = 26
 Qed.
 image_in_is_image_spec
 Proof.
-10460
+10462
 nb = 250
     intros.
     unfold ReflectL_at in H.
@@ -11364,7 +11366,7 @@ nb = 250
 Qed.
 image_in_gen_is_image
 Proof.
-10471
+10473
 nb = 8
     intros.
     unfold Reflect_at in H.
@@ -11382,7 +11384,7 @@ nb = 8
 Qed.
 image_image_in
 Proof.
-10487
+10489
 nb = 13
     intros.
     unfold ReflectL_at.
@@ -11472,7 +11474,7 @@ nb = 13
 Qed.
 image_in_col0
 Proof.
-10575
+10577
 nb = 85
     intros.
     unfold ReflectL_at in *.
@@ -11482,7 +11484,7 @@ nb = 85
 Qed.
 is_image_spec_rev
 Proof.
-10583
+10585
 nb = 5
     unfold ReflectL.
     intros.
@@ -11503,7 +11505,7 @@ nb = 5
 Qed.
 is_image_rev
 Proof.
-10602
+10604
 nb = 16
     intros.
     unfold Reflect in *.
@@ -11519,7 +11521,7 @@ nb = 16
 Qed.
 midpoint_preserves_per
 Proof.
-10616
+10618
 nb = 11
     intros.
     unfold Per in *.
@@ -11541,7 +11543,7 @@ nb = 11
 Qed.
 image_col
 Proof.
-10636
+10638
 nb = 17
     intros.
     unfold ReflectL.
@@ -11555,7 +11557,7 @@ nb = 17
 Qed.
 is_image_spec_triv
 Proof.
-10648
+10650
 nb = 9
     intros.
     apply image_col.
@@ -11563,7 +11565,7 @@ nb = 9
 Qed.
 is_image_spec_dec
 Proof.
-10654
+10656
 nb = 3
     intros.
     elim (eq_dec_points C D); intro HCD.
@@ -11595,7 +11597,7 @@ nb = 3
 Qed.
 l10_14
 Proof.
-10684
+10686
 nb = 27
     intros.
     rewrite is_image_is_image_spec in H1 by apply H0.
@@ -11801,7 +11803,7 @@ nb = 27
 Qed.
 l10_15
 Proof.
-10888
+10890
 nb = 201
     intros.
     assert (A<>B).
@@ -11886,7 +11888,7 @@ nb = 201
 Qed.
 perp_exists
 Proof.
-10971
+10973
 nb = 80
     intros.
     assert(HH:=not_col_exists A B H).
@@ -11913,7 +11915,7 @@ nb = 80
 Qed.
 perp_vector
 Proof.
-10996
+10998
 nb = 22
 intros.
 exists A.
@@ -11922,7 +11924,7 @@ exists Y; Perp.
 Qed.
 ex_per_cong
 Proof.
-11003
+11005
 nb = 4
     intros A B C D X Y HAB HXY HCol HNCol.
     destruct (l10_15 A B C D) as [Q [HQ1 HQ2]]; trivial.
@@ -11938,7 +11940,7 @@ nb = 4
 Qed.
 exists_cong_per
 Proof.
-11017
+11019
 nb = 11
 intros.
 destruct (eq_dec_points A B).
@@ -11954,7 +11956,7 @@ exists x;split;finish.
 Qed.
 l11_3
 Proof.
-11031
+11033
 nb = 11
     intros.
     unfold CongA in H.
@@ -11976,7 +11978,7 @@ nb = 11
 Qed.
 l11_aux
 Proof.
-11051
+11053
 nb = 17
     intros.
     assert (A <> B).
@@ -12088,7 +12090,7 @@ nb = 17
 Qed.
 l11_3_bis
 Proof.
-11161
+11163
 nb = 107
     intros.
     unfold CongA.
@@ -12135,7 +12137,7 @@ nb = 107
 Qed.
 l11_4_1
 Proof.
-11206
+11208
 nb = 42
     intros.
     assert (HH:=H).
@@ -12216,7 +12218,7 @@ nb = 42
 Qed.
 l11_4_2
 Proof.
-11285
+11287
 nb = 76
     intros.
     spliter.
@@ -12242,7 +12244,7 @@ nb = 76
 Qed.
 conga_refl
 Proof.
-11309
+11311
 nb = 21
     intros.
     apply l11_3_bis.
@@ -12254,7 +12256,7 @@ nb = 21
 Qed.
 conga_sym
 Proof.
-11319
+11321
 nb = 7
     unfold CongA.
     intros.
@@ -12272,7 +12274,7 @@ nb = 7
 Qed.
 out_conga
 Proof.
-11335
+11337
 nb = 13
     intros.
     apply l11_4_1 in H.
@@ -12292,7 +12294,7 @@ nb = 13
 Qed.
 cong3_diff
 Proof.
-11353
+11355
 nb = 15
 unfold Cong_3 in *.
 intros.
@@ -12302,7 +12304,7 @@ auto.
 Qed.
 cong3_diff2:
 Proof.
-11361
+11363
 nb = 5
 unfold Cong_3 in *.
 intros.
@@ -12312,7 +12314,7 @@ auto.
 Qed.
 cong3_conga
 Proof.
-11369
+11371
 nb = 5
     intros.
     assert (A' <> B') by (eauto using cong3_diff).
@@ -12323,7 +12325,7 @@ nb = 5
 Qed.
 cong3_conga2
 Proof.
-11378
+11380
 nb = 6
     intros.
     unfold CongA in H0.
@@ -12367,7 +12369,7 @@ nb = 6
 Qed.
 conga_diff1
 Proof.
-11420
+11422
 nb = 39
     intros.
     unfold CongA in H.
@@ -12376,7 +12378,7 @@ nb = 39
 Qed.
 conga_diff2
 Proof.
-11427
+11429
 nb = 4
     intros.
     unfold CongA in H.
@@ -12385,21 +12387,21 @@ nb = 4
 Qed.
 conga_diff45
 Proof.
-11434
+11436
 nb = 4
   intros A B C A' B' C' H.
   apply (conga_diff1 A' B' C' A B C); apply conga_sym; auto.
 Qed.
 conga_diff56
 Proof.
-11439
+11441
 nb = 2
   intros A B C A' B' C' H.
   apply (conga_diff2 A' B' C' A B C); apply conga_sym; auto.
 Qed.
 conga_trans
 Proof.
-11444
+11446
 nb = 2
     intros.
     assert (HH:=H).
@@ -12445,7 +12447,7 @@ nb = 2
 Qed.
 conga_pseudo_refl
 Proof.
-11488
+11490
 nb = 41
     intros.
     unfold CongA.
@@ -12467,7 +12469,7 @@ nb = 41
 Qed.
 conga_trivial_1
 Proof.
-11508
+11510
 nb = 17
     intros.
     unfold CongA.
@@ -12482,14 +12484,14 @@ nb = 17
 Qed.
 l11_10
 Proof.
-11521
+11523
 nb = 10
     intros.
     apply (out_conga A B C D E F); auto using l6_6.
 Qed.
 out2__conga
 Proof.
-11526
+11528
 nb = 2
   intros A B C A' C' HAOut HCOut.
   assert_diffs.
@@ -12498,7 +12500,7 @@ nb = 2
 Qed.
 l11_13
 Proof.
-11533
+11535
 nb = 4
     intros.
     unfold CongA in H.
@@ -12557,7 +12559,7 @@ nb = 4
 Qed.
 conga_right_comm
 Proof.
-11590
+11592
 nb = 54
     intros.
     apply conga_trans with D E F.
@@ -12568,7 +12570,7 @@ nb = 54
 Qed.
 conga_left_comm
 Proof.
-11599
+11601
 nb = 6
     intros.
     apply conga_sym.
@@ -12583,7 +12585,7 @@ nb = 6
 Qed.
 conga_comm
 Proof.
-11612
+11614
 nb = 10
     intros.
     apply conga_left_comm.
@@ -12592,7 +12594,7 @@ nb = 10
 Qed.
 conga_line
 Proof.
-11619
+11621
 nb = 4
     intros.
     assert_diffs.
@@ -12649,7 +12651,7 @@ nb = 4
 Qed.
 l11_14
 Proof.
-11674
+11676
 nb = 52
     intros.
     assert_diffs.
@@ -12664,7 +12666,7 @@ nb = 52
 Qed.
 l11_16
 Proof.
-11687
+11689
 nb = 10
     intros.
     prolong B C C0 B' C'.
@@ -12729,7 +12731,7 @@ nb = 10
 Qed.
 l11_17
 Proof.
-11750
+11752
 nb = 60
     intros.
     unfold CongA in H0.
@@ -12804,7 +12806,7 @@ nb = 60
 Qed.
 l11_18_1
 Proof.
-11823
+11825
 nb = 70
     intros.
     spliter.
@@ -12822,7 +12824,7 @@ nb = 70
 Qed.
 l11_18_2
 Proof.
-11839
+11841
 nb = 13
     intros.
     unfold CongA in H0.
@@ -12887,7 +12889,7 @@ nb = 13
 Qed.
 cong3_preserves_out
 Proof.
-11902
+11904
 nb = 60
     intros.
     unfold Out in *.
@@ -12923,7 +12925,7 @@ nb = 60
 Qed.
 l11_21_a
 Proof.
-11936
+11938
 nb = 31
     intros.
     unfold CongA in H0.
@@ -13018,7 +13020,7 @@ nb = 31
 Qed.
 l11_21_b
 Proof.
-12029
+12031
 nb = 90
     intros.
     prolong A B A0 A B.
@@ -13093,7 +13095,7 @@ nb = 90
 Qed.
 conga__or_out_ts
 Proof.
-12102
+12104
 nb = 70
     intros.
     unfold CongA in H.
@@ -13332,7 +13334,7 @@ nb = 70
 Qed.
 cong2_conga_cong
 Proof.
-12339
+12341
 nb = 234
     intros.
     unfold CongA in H.
@@ -13405,7 +13407,7 @@ nb = 234
 Qed.
 angle_construction_1
 Proof.
-12410
+12412
 nb = 68
     intros.
     assert (exists C0, Col B A C0 /\ Perp B A C C0).
@@ -13673,7 +13675,7 @@ nb = 68
 Qed.
 angle_construction_2
 Proof.
-12676
+12678
 nb = 263
     intros.
     spliter.
@@ -13731,7 +13733,7 @@ nb = 263
 Qed.
 ex_conga_ts
 Proof.
-12732
+12734
 nb = 53
   intros A B C A' B' P HNCol HNCol'.
   assert (HP' : exists P', Midpoint A' P P') by (apply symmetric_point_construction).
@@ -13756,7 +13758,7 @@ nb = 53
 Qed.
 l11_15
 Proof.
-12755
+12757
 nb = 20
     intros.
     assert(exists F, CongA A B C D E F /\  OS D E F P)
@@ -13789,7 +13791,7 @@ nb = 20
 Qed.
 l11_19
 Proof.
-12786
+12788
 nb = 28
     intros.
     induction (Col_dec A B P1).
@@ -13841,7 +13843,7 @@ nb = 28
 Qed.
 l11_22_bet
 Proof.
-12836
+12838
 nb = 47
     intros.
     spliter.
@@ -13928,7 +13930,7 @@ nb = 47
 Qed.
 l11_22a
 Proof.
-12921
+12923
 nb = 82
     intros.
     spliter.
@@ -14390,7 +14392,7 @@ nb = 82
 Qed.
 l11_22b
 Proof.
-13381
+13383
 nb = 457
     intros.
     spliter.
@@ -14497,7 +14499,7 @@ nb = 457
 Qed.
 l11_22
 Proof.
-13486
+13488
 nb = 102
     intros.
     spliter.
@@ -14507,7 +14509,7 @@ nb = 102
 Qed.
 l11_24
 Proof.
-13494
+13496
 nb = 5
     unfold InAngle.
     intros.
@@ -14522,7 +14524,7 @@ nb = 5
 Qed.
 out_in_angle
 Proof.
-13507
+13509
 nb = 10
     intros.
     unfold InAngle.
@@ -14711,7 +14713,7 @@ nb = 10
 Qed.
 col_in_angle
 Proof.
-13694
+13696
 nb = 184
     intros.
     induction H2.
@@ -14731,7 +14733,7 @@ nb = 184
 Qed.
 out321__inangle
 Proof.
-13712
+13714
 nb = 15
     intros.
     assert_diffs.
@@ -14739,7 +14741,7 @@ nb = 15
 Qed.
 inangle1123
 Proof.
-13718
+13720
 nb = 3
     intros.
     apply out321__inangle; auto.
@@ -14747,7 +14749,7 @@ nb = 3
 Qed.
 out341__inangle
 Proof.
-13724
+13726
 nb = 3
     intros.
     assert_diffs.
@@ -14755,7 +14757,7 @@ nb = 3
 Qed.
 inangle3123
 Proof.
-13730
+13732
 nb = 3
     intros.
     apply out341__inangle; auto.
@@ -14763,7 +14765,7 @@ nb = 3
 Qed.
 in_angle_two_sides
 Proof.
-13736
+13738
 nb = 3
     intros.
     unfold InAngle in H1.
@@ -14803,7 +14805,7 @@ nb = 3
 Qed.
 in_angle_out
 Proof.
-13774
+13776
 nb = 35
     intros.
     unfold InAngle in H0.
@@ -14858,7 +14860,7 @@ nb = 35
 Qed.
 col_in_angle_out
 Proof.
-13827
+13829
 nb = 50
     intros.
     unfold InAngle in H1.
@@ -14897,7 +14899,7 @@ nb = 50
 Qed.
 l11_25_aux
 Proof.
-13864
+13866
 nb = 34
     intros.
     unfold Out in H1.
@@ -14978,7 +14980,7 @@ nb = 34
 Qed.
 l11_25
 Proof.
-13943
+13945
 nb = 76
     intros.
     induction (bet_dec A B C).
@@ -15053,13 +15055,13 @@ nb = 76
 Qed.
 inangle_distincts
 Proof.
-14016
+14018
 nb = 70
   intros; unfold InAngle in *; spliter; repeat split; assumption.
 Qed.
 segment_construction_0
 Proof.
-14020
+14022
 nb = 1
     intros.
     induction (eq_dec_points A B).
@@ -15076,7 +15078,7 @@ nb = 1
 Qed.
 angle_construction_3
 Proof.
-14035
+14037
 nb = 12
     intros.
     assert(exists P, ~Col A' B' P).
@@ -15100,7 +15102,7 @@ nb = 12
 Qed.
 l11_28
 Proof.
-14057
+14059
 nb = 19
     intros.
     induction (eq_dec_points A C).
@@ -15248,7 +15250,7 @@ nb = 19
 Qed.
 bet_conga_bet
 Proof.
-14203
+14205
 nb = 143
     intros.
     unfold CongA in H0.
@@ -15303,7 +15305,7 @@ nb = 143
 Qed.
 out_in_angle_out
 Proof.
-14256
+14258
 nb = 50
     intros.
     unfold InAngle in H0.
@@ -15370,7 +15372,7 @@ nb = 50
 Qed.
 in_angle_one_side
 Proof.
-14321
+14323
 nb = 62
     intros.
     unfold InAngle in H1.
@@ -15456,7 +15458,7 @@ nb = 62
 Qed.
 inangle_one_side
 Proof.
-14405
+14407
 nb = 81
     intros.
     unfold InAngle in *.
@@ -15556,7 +15558,7 @@ nb = 81
 Qed.
 inangle_one_side2
 Proof.
-14503
+14505
 nb = 95
     intros.
     split.
@@ -15569,7 +15571,7 @@ nb = 95
 Qed.
 in_angle_trivial_1
 Proof.
-14514
+14516
 nb = 8
     intros.
     repeat split.
@@ -15586,7 +15588,7 @@ nb = 8
 Qed.
 in_angle_trivial_2
 Proof.
-14529
+14531
 nb = 12
     intros.
     apply l11_24.
@@ -15594,7 +15596,7 @@ nb = 12
 Qed.
 col_conga_col
 Proof.
-14535
+14537
 nb = 3
     intros.
     induction H.
@@ -15645,7 +15647,7 @@ nb = 3
 Qed.
 ncol_conga_ncol
 Proof.
-14584
+14586
 nb = 46
     intros.
     intro.
@@ -15657,7 +15659,7 @@ nb = 46
 Qed.
 l11_29_a
 Proof.
-14594
+14596
 nb = 7
     intros.
     unfold LeA in H.
@@ -16014,7 +16016,7 @@ nb = 7
 Qed.
 in_angle_line
 Proof.
-14949
+14951
 nb = 352
     intros.
     repeat split; try assumption.
@@ -16026,7 +16028,7 @@ nb = 352
 Qed.
 l11_29_b
 Proof.
-14959
+14961
 nb = 7
     intros.
     ex_and H Q.
@@ -16319,7 +16321,7 @@ nb = 7
 Qed.
 bet_in_angle_bet
 Proof.
-15250
+15252
 nb = 288
     intros.
     unfold InAngle in H0.
@@ -16368,7 +16370,7 @@ nb = 288
 Qed.
 lea_line
 Proof.
-15297
+15299
 nb = 44
     intros.
     unfold LeA in H0.
@@ -16390,7 +16392,7 @@ nb = 44
 Qed.
 eq_conga_out
 Proof.
-15317
+15319
 nb = 17
     intros.
     assert(HH:=H).
@@ -16451,7 +16453,7 @@ nb = 17
 Qed.
 out_conga_out
 Proof.
-15376
+15378
 nb = 56
     intros.
     assert(HH:=H).
@@ -16483,7 +16485,7 @@ nb = 56
 Qed.
 conga_ex_cong3
 Proof.
-15406
+15408
 nb = 27
     intros.
     assert(B <> A /\ B <> C /\ B' <> A' /\ B' <> C').
@@ -16520,7 +16522,7 @@ nb = 27
 Qed.
 conga_preserves_in_angle
 Proof.
-15441
+15443
 nb = 32
     intros.
     assert(A <> B /\ C <> B /\ A' <> B' /\ C' <> B' /\ I <> B /\ I' <> B').
@@ -16834,7 +16836,7 @@ nb = 32
 Qed.
 l11_30
 Proof.
-15753
+15755
 nb = 309
     intros.
     assert(HH:=H).
@@ -16983,7 +16985,7 @@ nb = 309
 Qed.
 l11_31_1
 Proof.
-15900
+15902
 nb = 144
     intros.
     unfold LeA.
@@ -16997,14 +16999,14 @@ nb = 144
 Qed.
 l11_31_2
 Proof.
-15912
+15914
 nb = 9
 intros; destruct (angle_construction_3 A B C D E) as [P HCongA]; auto.
 exists P; split; try apply in_angle_line; unfold CongA in *; spliter; auto.
 Qed.
 lea_refl
 Proof.
-15917
+15919
 nb = 2
     intros.
     unfold LeA.
@@ -17015,7 +17017,7 @@ nb = 2
 Qed.
 conga__lea
 Proof.
-15926
+15928
 nb = 6
     intros.
     unfold LeA.
@@ -17028,20 +17030,20 @@ nb = 6
 Qed.
 conga__lea456123
 Proof.
-15937
+15939
 nb = 8
     intros; apply conga__lea, conga_sym; trivial.
 Qed.
 lea121345
 Proof.
-15941
+15943
 nb = 1
   intros A B C D E HAB HCD HDE.
   apply l11_31_1; try (apply out_trivial); auto.
 Qed.
 inangle__lea
 Proof.
-15946
+15948
 nb = 2
   intros A B C P HIn.
   exists P; split; trivial.
@@ -17050,7 +17052,7 @@ nb = 2
 Qed.
 in_angle_trans
 Proof.
-15953
+15955
 nb = 4
     intros.
     assert(HA1 :=H).
@@ -17115,7 +17117,7 @@ nb = 4
 Qed.
 lea_trans
 Proof.
-16016
+16018
 nb = 60
     intros.
     assert(Hlea1 := H).
@@ -17263,7 +17265,7 @@ nb = 60
 Qed.
 in_angle_asym
 Proof.
-16162
+16164
 nb = 143
     intros.
     unfold InAngle in *.
@@ -17351,7 +17353,7 @@ nb = 143
 Qed.
 lea_asym
 Proof.
-16248
+16250
 nb = 83
     intros.
     apply l11_29_a in H.
@@ -17507,7 +17509,7 @@ nb = 83
 Qed.
 two_sides_in_angle
 Proof.
-16402
+16404
 nb = 151
     intros.
     unfold TS in H0.
@@ -17580,7 +17582,7 @@ nb = 151
 Qed.
 col_perp_perp_col
 Proof.
-16473
+16475
 nb = 68
 apply upper_dim_implies_col_perp_perp_col;
 apply all_coplanar_implies_upper_dim; unfold all_coplanar_axiom;
@@ -17588,7 +17590,7 @@ apply all_coplanar.
 Qed.
 not_two_sides_one_side
 Proof.
-16479
+16481
 nb = 3
 apply upper_dim_implies_not_two_sides_one_side;
 apply all_coplanar_implies_upper_dim; unfold all_coplanar_axiom;
@@ -17596,7 +17598,7 @@ apply all_coplanar.
 Qed.
 in_angle_reverse
 Proof.
-16485
+16487
 nb = 3
     intros.
     assert (Hd := H1).
@@ -17918,7 +17920,7 @@ nb = 3
 Qed.
 in_angle_trans2
 Proof.
-16805
+16807
 nb = 317
   intros A B C D E HC HD.
   destruct (segment_construction E B E B) as [E' [HE1 HE2]].
@@ -17932,7 +17934,7 @@ nb = 317
 Qed.
 l11_36
 Proof.
-16817
+16819
 nb = 9
     intros.
     split.
@@ -17973,7 +17975,7 @@ nb = 9
 Qed.
 l11_41_aux
 Proof.
-16856
+16858
 nb = 36
     intros.
     assert(exists M , Midpoint M A C).
@@ -18207,7 +18209,7 @@ nb = 36
 Qed.
 l11_41
 Proof.
-17088
+17090
 nb = 229
     intros.
     split.
@@ -18249,7 +18251,7 @@ nb = 229
 Qed.
 not_conga
 Proof.
-17128
+17130
 nb = 37
     intros.
     intro.
@@ -18260,7 +18262,7 @@ nb = 37
 Qed.
 not_conga_sym
 Proof.
-17137
+17139
 nb = 6
     intros.
     intro.
@@ -18270,7 +18272,7 @@ nb = 6
 Qed.
 not_and_lta
 Proof.
-17145
+17147
 nb = 5
     intros.
     intro.
@@ -18284,7 +18286,7 @@ nb = 5
 Qed.
 conga_preserves_lta
 Proof.
-17157
+17159
 nb = 9
     intros.
     unfold LtA in *.
@@ -18305,7 +18307,7 @@ nb = 9
 Qed.
 conga_preserves_gta
 Proof.
-17176
+17178
 nb = 16
     intros.
     unfold GtA in *.
@@ -18316,7 +18318,7 @@ nb = 16
 Qed.
 lta_trans
 Proof.
-17185
+17187
 nb = 6
     intros.
     assert(HH1:= H).
@@ -18351,7 +18353,7 @@ nb = 6
 Qed.
 gta_trans
 Proof.
-17218
+17220
 nb = 30
     intros.
     unfold GtA in *.
@@ -18361,7 +18363,7 @@ nb = 30
 Qed.
 lea_left_comm
 Proof.
-17226
+17228
 nb = 5
     intros.
     unfold LeA in *.
@@ -18374,7 +18376,7 @@ nb = 5
 Qed.
 lea_right_comm
 Proof.
-17237
+17239
 nb = 8
     intros.
     apply l11_29_b.
@@ -18388,7 +18390,7 @@ nb = 8
 Qed.
 lea_comm
 Proof.
-17249
+17251
 nb = 9
     intros.
     apply lea_left_comm.
@@ -18397,7 +18399,7 @@ nb = 9
 Qed.
 lta_left_comm
 Proof.
-17256
+17258
 nb = 4
     unfold LtA.
     intros.
@@ -18412,7 +18414,7 @@ nb = 4
 Qed.
 lta_right_comm
 Proof.
-17269
+17271
 nb = 10
     unfold LtA.
     intros.
@@ -18427,7 +18429,7 @@ nb = 10
 Qed.
 lta_comm
 Proof.
-17282
+17284
 nb = 10
     intros.
     apply lta_left_comm.
@@ -18436,7 +18438,7 @@ nb = 10
 Qed.
 l11_43_aux
 Proof.
-17289
+17291
 nb = 4
     intros.
     apply not_col_distincts in H.
@@ -18616,7 +18618,7 @@ nb = 4
 Qed.
 obtuse_sym
 Proof.
-17467
+17469
 nb = 175
     unfold Obtuse.
     intros.
@@ -18634,7 +18636,7 @@ nb = 175
 Qed.
 acute_sym
 Proof.
-17483
+17485
 nb = 13
     unfold Acute.
     intros.
@@ -18648,7 +18650,7 @@ nb = 13
 Qed.
 l11_43
 Proof.
-17495
+17497
 nb = 9
     intros.
     split.
@@ -18660,7 +18662,7 @@ nb = 9
 Qed.
 acute_lea_acute
 Proof.
-17505
+17507
 nb = 7
     intros.
     unfold Acute in *.
@@ -18709,7 +18711,7 @@ nb = 7
 Qed.
 obtuse_gea_obtuse
 Proof.
-17552
+17554
 nb = 44
     intros.
     ex_and H A'.
@@ -18762,7 +18764,7 @@ nb = 44
 Qed.
 lea_acute_obtuse
 Proof.
-17603
+17605
 nb = 48
     intros.
     unfold Acute in H.
@@ -18807,7 +18809,7 @@ nb = 48
 Qed.
 l11_44_1_a
 Proof.
-17646
+17648
 nb = 40
     intros.
     destruct (midpoint_existence A C) as [P HP].
@@ -18819,7 +18821,7 @@ nb = 40
 Qed.	
 l11_44_2_a
 Proof.
-17656
+17658
 nb = 7
     intros.
     apply not_col_distincts in H.
@@ -18951,7 +18953,7 @@ nb = 7
 Qed.
 not_lta_and_conga
 Proof.
-17786
+17788
 nb = 127
     intros.
     intro.
@@ -18962,7 +18964,7 @@ nb = 127
 Qed.
 not_gta_and_conga
 Proof.
-17795
+17797
 nb = 6
     intros.
     intro.
@@ -18975,7 +18977,7 @@ nb = 6
 Qed.
 not_lta_and_gta
 Proof.
-17806
+17808
 nb = 8
     intros.
     intro.
@@ -18990,14 +18992,14 @@ nb = 8
 Qed.
 conga_sym_equiv
 Proof.
-17819
+17821
 nb = 10
     intros.
     split; apply conga_sym.
 Qed.
 conga_dec
 Proof.
-17824
+17826
 nb = 2
     intros.
     induction (eq_dec_points A B).
@@ -19035,7 +19037,7 @@ nb = 2
 Qed.
 lta_not_conga
 Proof.
-17860
+17862
 nb = 33
     intros.
     intro.
@@ -19045,7 +19047,7 @@ nb = 33
 Qed.
 l11_44_1_b
 Proof.
-17868
+17870
 nb = 5
     intros.
     apply not_col_distincts in H.
@@ -19078,7 +19080,7 @@ nb = 5
 Qed.
 l11_44_2_b
 Proof.
-17899
+17901
 nb = 28
     intros.
     apply not_col_distincts in H.
@@ -19105,20 +19107,20 @@ nb = 28
 Qed.
 l11_44_1
 Proof.
-17924
+17926
 nb = 22
     intros;split;intro; auto using l11_44_1_b, l11_44_1_a.
 Qed.
 l11_44_2
 Proof.
-17928
+17930
 nb = 1
     intros;split;intro;
     auto using l11_44_2_b, l11_44_2_a with col. 
 Qed.
 lta_diff
 Proof.
-17933
+17935
 nb = 2
     intros.
     split.
@@ -19134,7 +19136,7 @@ nb = 2
 Qed.
 l11_46
 Proof.
-17947
+17949
 nb = 11
     intros.
     apply not_col_distincts in H.
@@ -19237,7 +19239,7 @@ nb = 11
 Qed.
 l11_47
 Proof.
-18048
+18050
 nb = 98
     intros.
     assert(HH1:= H1).
@@ -19345,7 +19347,7 @@ nb = 98
 Qed.
 l11_49
 Proof.
-18154
+18156
 nb = 103
     intros.
     assert(Cong A C A' C').
@@ -19412,7 +19414,7 @@ nb = 103
 Qed.
 l11_50_1
 Proof.
-18219
+18221
 nb = 62
     intros.
     assert(A <> B /\ C <> B /\ A' <> B'  /\ C' <> B') by (unfold CongA in *;intuition).
@@ -19520,7 +19522,7 @@ nb = 62
 Qed.
 l11_50_2
 Proof.
-18325
+18327
 nb = 103
     intros.
     assert(A <> B /\ C <> B /\ A' <> B'  /\ C' <> B').
@@ -19701,7 +19703,7 @@ nb = 103
 Qed.
 l11_51
 Proof.
-18504
+18506
 nb = 176
     intros.
     assert(Cong_3 B A C B' A' C' /\ Cong_3 A B C A' B' C' /\ Cong_3 B C A B' C' A').
@@ -19724,7 +19726,7 @@ nb = 176
 Qed.
 conga_distinct
 Proof.
-18525
+18527
 nb = 18
     intros.
     split.
@@ -19735,7 +19737,7 @@ nb = 18
 Qed.
 l11_52
 Proof.
-18534
+18536
 nb = 6
     intros.
     apply conga_distinct in H.
@@ -20109,7 +20111,7 @@ nb = 6
 Qed.
 l11_53
 Proof.
-18906
+18908
 nb = 369
     intros.
     assert(A<>C) by (intro; Between).
@@ -20330,7 +20332,7 @@ nb = 369
 Qed.
 per2_cong2__cong_conga2
 Proof.
-19125
+19127
 nb = 216
 intros.
 apply (l11_52 A B C A' B' C');auto.
@@ -20339,7 +20341,7 @@ apply (l11_46 A B C);auto using per_not_col.
 Qed.
 per2_cong2__cong_3
 Proof.
-19132
+19134
 nb = 4
 intros.
 unfold Cong_3.
@@ -20349,7 +20351,7 @@ repeat split;Cong.
 Qed.
 hilbert_s_version_of_pasch_aux
 Proof.
-19140
+19142
 nb = 5
 intros A B C I P HNC HNC' HBet HBI HIC HBC.
 assert (HTS : TS I P B C).
@@ -20385,7 +20387,7 @@ elim (two_sides_dec I P A B); intro HTS'.
 Qed.
 not_one_side_two_sides
 Proof.
-19174
+19176
 nb = 31
 apply upper_dim_implies_not_one_side_two_sides.
 apply all_coplanar_implies_upper_dim; unfold all_coplanar_axiom;
@@ -20393,7 +20395,7 @@ apply all_coplanar.
 Qed.
 one_or_two_sides
 Proof.
-19180
+19182
 nb = 3
 apply upper_dim_implies_one_or_two_sides.
 apply all_coplanar_implies_upper_dim; unfold all_coplanar_axiom;
@@ -20401,7 +20403,7 @@ apply all_coplanar.
 Qed.
 two_sides_cases
 Proof.
-19186
+19188
 nb = 3
 intros.
 assert(TS O A P B \/ OS O A P B).
@@ -20437,7 +20439,7 @@ contradiction.
 Qed.
 not_par_two_sides
 Proof.
-19220
+19222
 nb = 31
 intros A B C D I HCD HCol1 HCol2 HNC.
 assert (HX : exists X, Col C D X /\ I <> X) by (exists C; split; try intro; treat_equalities; Col).
@@ -20451,7 +20453,7 @@ exists I; unfold Midpoint in HMid; spliter; split; Col; Between.
 Qed.
 not_par_other_side
 Proof.
-19232
+19234
 nb = 9
 intros A B C D I P HCD HCol1 HCol2 HNC1 HNC2.
 destruct (not_par_two_sides A B C D I HCD HCol1 HCol2 HNC1) as [X [Y [HCol3 [HCol4 HTS]]]].
@@ -20462,7 +20464,7 @@ apply l9_8_2 with X; [|apply one_side_symmetry]; Col.
 Qed.
 not_par_same_side
 Proof.
-19241
+19243
 nb = 6
 intros A B C D I P HCD HCol1 HCol2 HNC1 HNC2.
 destruct (not_par_two_sides A B C D I HCD HCol1 HCol2 HNC1) as [X [Y [HCol3 [HCol4 HTS]]]].
@@ -20473,7 +20475,7 @@ exists X; split; Side.
 Qed.
 os_ts__inangle
 Proof.
-19250
+19252
 nb = 6
   intros A B C P Hts Hos.
   assert(HNCol : ~ Col A B P) by (destruct Hts as []; Col).
@@ -20494,7 +20496,7 @@ nb = 6
 Qed.
 os2__inangle
 Proof.
-19269
+19271
 nb = 16
   intros A B C P Hos1 Hos2.
   apply os_ts__inangle; auto.
@@ -20502,7 +20504,7 @@ nb = 16
 Qed.
 lea_distincts
 Proof.
-19275
+19277
 nb = 3
   intros A B C D E F Hlea.
   destruct Hlea as [X [HInAngle HConga]].
@@ -20513,7 +20515,7 @@ nb = 3
 Qed.
 gea_distincts
 Proof.
-19284
+19286
 nb = 6
   intros A B C D E F Hgea.
   apply lea_distincts in Hgea.
@@ -20522,7 +20524,7 @@ nb = 6
 Qed.
 lta_distincts
 Proof.
-19291
+19293
 nb = 4
   intros A B C D E F Hlta.
   destruct Hlta as [Hlea HConga].
@@ -20532,7 +20534,7 @@ nb = 4
 Qed.
 gta_distincts
 Proof.
-19299
+19301
 nb = 5
   intros A B C D E F Hgta.
   apply lta_distincts in Hgta.
@@ -20541,7 +20543,7 @@ nb = 5
 Qed.
 acute_distincts
 Proof.
-19306
+19308
 nb = 4
   intros A B C Hacute.
   destruct Hacute as [x [y [z [HPer Hlta]]]].
@@ -20551,7 +20553,7 @@ nb = 4
 Qed.
 obtuse_distincts
 Proof.
-19314
+19316
 nb = 5
   intros A B C Hobtuse.
   destruct Hobtuse as [x [y [z [HPer Hgta]]]].
@@ -20561,7 +20563,7 @@ nb = 5
 Qed.
 acute_conga__acute
 Proof.
-19322
+19324
 nb = 5
   intros A B C D E F Hacute HConga.
   apply (acute_lea_acute _ _ _ A B C); auto.
@@ -20570,7 +20572,7 @@ nb = 5
 Qed.
 obtuse_conga__obtuse
 Proof.
-19329
+19331
 nb = 4
   intros A B C D E F Hobtuse HConga.
   apply (obtuse_gea_obtuse _ _ _ A B C); auto.
@@ -20578,7 +20580,7 @@ nb = 4
 Qed.
 bet_lea__bet
 Proof.
-19335
+19337
 nb = 3
   intros A B C D E F HBet Hlea.
   apply (bet_conga_bet A B C); auto.
@@ -20589,7 +20591,7 @@ nb = 3
 Qed.
 out_lea__out
 Proof.
-19344
+19346
 nb = 6
   intros A B C D E F Hout Hlea.
   apply (out_conga_out D E F); auto.
@@ -20600,7 +20602,7 @@ nb = 6
 Qed.
 bet2_lta__lta
 Proof.
-19353
+19355
 nb = 6
   intros A B C D E F A' D' Hlta.
   intros.
@@ -20615,7 +20617,7 @@ nb = 6
 Qed.
 lta__lea
 Proof.
-19366
+19368
 nb = 10
   intros.
   destruct H.
@@ -20623,7 +20625,7 @@ nb = 10
 Qed.
 lea123456_lta__lta
 Proof.
-19372
+19374
 nb = 3
   intros A B C D E F G H I Hlea Hlta.
   split.
@@ -20642,7 +20644,7 @@ nb = 3
 Qed.
 lea456789_lta__lta
 Proof.
-19389
+19391
 nb = 14
   intros A B C D E F G H I Hlta Hlea.
   split.
@@ -20662,7 +20664,7 @@ nb = 14
 Qed.
 acute_per__lta
 Proof.
-19407
+19409
 nb = 15
   intros A B C D E F Hacute HDE HEF HPer.
   intros.
@@ -20674,7 +20676,7 @@ nb = 15
 Qed.
 obtuse_per__lta
 Proof.
-19417
+19419
 nb = 7
   intros A B C D E F Hobtuse HDE HEF HPer.
   intros.
@@ -20686,7 +20688,7 @@ nb = 7
 Qed.
 acute_obtuse__lta
 Proof.
-19427
+19429
 nb = 7
   intros A B C D E F Hacute Hobtuse.
   destruct Hacute as [G [H [I [HPer Hlta]]]].
@@ -20697,7 +20699,7 @@ nb = 7
 Qed.
 out__acute
 Proof.
-19436
+19438
 nb = 6
   intros A B C Hout.
   assert_diffs.
@@ -20719,7 +20721,7 @@ nb = 6
 Qed.
 bet__obtuse
 Proof.
-19456
+19458
 nb = 17
   intros A B C HBet HAB HBC.
   assert(HD := perp_exists B A B).
@@ -20739,7 +20741,7 @@ nb = 17
 Qed.
 lea_in_angle
 Proof.
-19474
+19476
 nb = 15
     intros.
     assert(H1 := H0).
@@ -20775,7 +20777,7 @@ nb = 15
 Qed.
 bet_acute__obtuse
 Proof.
-19508
+19510
 nb = 31
   intros A B C A' HBet HA'B Hacute.
   assert(Hd := acute_distincts A B C Hacute).
@@ -20841,7 +20843,7 @@ nb = 31
 Qed.
 bet_obtuse__acute
 Proof.
-19572
+19574
 nb = 61
   intros A B C A' HBet HA'B Hobtuse.
   assert(Hd := obtuse_distincts A B C Hobtuse).
@@ -20905,7 +20907,7 @@ nb = 61
 Qed.
 inangle_dec
 Proof.
-19634
+19636
 nb = 59
   intros A B C P.
   elim(eq_dec_points A B).
@@ -21010,7 +21012,7 @@ nb = 59
 Qed.
 lea_dec
 Proof.
-19737
+19739
 nb = 100
   intros A B C D E F.
   elim(eq_dec_points A B).
@@ -21067,7 +21069,7 @@ nb = 100
 Qed.
 gea_dec
 Proof.
-19792
+19794
 nb = 52
   intros A B C D E F.
   unfold GeA.
@@ -21075,7 +21077,7 @@ nb = 52
 Qed.
 lta_dec
 Proof.
-19798
+19800
 nb = 3
   intros A B C D E F.
   elim(conga_dec A B C D E F).
@@ -21101,7 +21103,7 @@ nb = 3
 Qed.
 gta_dec
 Proof.
-19822
+19824
 nb = 21
   intros A B C D E F.
   unfold GtA.
@@ -21109,7 +21111,7 @@ nb = 21
 Qed.
 lea_total
 Proof.
-19828
+19830
 nb = 3
   intros A B C D E F HAB HBC HDE HEF.
   elim(Col_dec A B C).
@@ -21151,14 +21153,14 @@ nb = 3
 Qed.
 gea_total
 Proof.
-19868
+19870
 nb = 37
   intros A B C D E F HAB HBC HDE HEF.
   elim(lea_total A B C D E F); auto.
 Qed.
 or_lta_conga_gta
 Proof.
-19873
+19875
 nb = 2
     intros.
     assert(HH:=lea_total A B C D E F).
@@ -21184,7 +21186,7 @@ nb = 2
 Qed.
 angle_partition
 Proof.
-19897
+19899
 nb = 21
   intros A B C HAB HBC.
   assert(Hl := lower_dim_ex).
@@ -21205,7 +21207,7 @@ nb = 21
 Qed.
 acute_chara
 Proof.
-19916
+19918
 nb = 16
   intros A B C A' HBet HBA'.
   split.
@@ -21235,7 +21237,7 @@ nb = 16
 Qed.
 obtuse_chara
 Proof.
-19944
+19946
 nb = 25
   intros A B C A' HBet HBA'.
   split.
@@ -21269,7 +21271,7 @@ nb = 25
 Qed.
 conga__acute
 Proof.
-19976
+19978
 nb = 29
   intros A B C HCongA.
   destruct (Col_dec A B C).
@@ -21291,7 +21293,7 @@ nb = 29
 Qed.
 cong__acute
 Proof.
-19996
+19998
 nb = 17
   intros A B C HAB HBC HCong.
   apply conga__acute.
@@ -21300,7 +21302,7 @@ nb = 17
 Qed.
 nlta
 Proof.
-20003
+20005
 nb = 4
   intros A B C.
   intro.
@@ -21309,7 +21311,7 @@ nb = 4
 Qed.
 lea__nlta
 Proof.
-20010
+20012
 nb = 4
   intros.
   intro Hlta.
@@ -21319,7 +21321,7 @@ nb = 4
 Qed.
 lta__nlea
 Proof.
-20018
+20020
 nb = 5
   intros A B C D E F Hlta.
   destruct Hlta as [Hlea HNConga].
@@ -21329,7 +21331,7 @@ nb = 5
 Qed.
 nlta__lea
 Proof.
-20026
+20028
 nb = 5
   intros A B C D E F HNlta.
   intros.
@@ -21345,7 +21347,7 @@ nb = 5
 Qed.
 nlea__lta
 Proof.
-20040
+20042
 nb = 11
   intros A B C D E F HNlea.
   intros.
@@ -21359,7 +21361,7 @@ nb = 11
 Qed.
 triangle_strict_inequality
 Proof.
-20052
+20054
 nb = 9
   intros A B C D HBet HCong HNBet.
   elim(Col_dec A B C).
@@ -21423,7 +21425,7 @@ nb = 9
 Qed.
 triangle_inequality
 Proof.
-20114
+20116
 nb = 59
   intros A B C D HCong HBet.
   elim(bet_dec A B C).
@@ -21441,7 +21443,7 @@ nb = 59
 Qed.
 triangle_strict_inequality_2
 Proof.
-20130
+20132
 nb = 13
   intros A B C A' B' C' HBet HCongA HCongB HNBet.
   destruct (segment_construction A B B C) as [D [HBetD HCongD]].
@@ -21452,7 +21454,7 @@ nb = 13
 Qed.
 triangle_inequality_2
 Proof.
-20139
+20141
 nb = 6
   intros A B C A' B' C' HBet HCongA HCongB.
   destruct (segment_construction A B B C) as [D [HBetD HCongD]].
@@ -21463,7 +21465,7 @@ nb = 6
 Qed.
 triangle_strict_reverse_inequality
 Proof.
-20148
+20150
 nb = 6
   intros A B C D HABD HCong HNout.
   elim(Col_dec A B C).
@@ -21552,7 +21554,7 @@ nb = 6
 Qed.
 triangle_reverse_inequality
 Proof.
-20235
+20237
 nb = 84
   intros A B C D HABD HCong.
   elim(out_dec A B C).
@@ -21564,7 +21566,7 @@ nb = 84
 Qed.
 os3__lta
 Proof.
-20245
+20247
 nb = 7
   intros A B C D HosC HosA HosB.
   assert(HE : InAngle D A B C) by (apply os2__inangle; Side).
@@ -21594,7 +21596,7 @@ nb = 7
 Qed.
 bet_le__lt
 Proof.
-20273
+20275
 nb = 25
   intros A B C D HBet HAD HBD Hle.
   assert(HAB : B <> A) by (intro; treat_equalities; auto).
@@ -21662,7 +21664,7 @@ nb = 25
 Qed.
 t18_18_aux
 Proof.
-20339
+20341
 nb = 63
   intros A B C D E F HCongAB HCongAC Hlta HNCol1 HNCol2 Hle.
   assert(H:=A).
@@ -21766,7 +21768,7 @@ nb = 63
 Qed.
 t18_18
 Proof.
-20441
+20443
 nb = 99
   intros A B C D E F HCongAB HCongAC Hlta.
   apply lta_diff in Hlta.
@@ -21826,7 +21828,7 @@ nb = 99
 Qed.
 t18_19
 Proof.
-20499
+20501
 nb = 55
   intros A B C D E F HAB HAC HCongAB HCongAC Hlt.
   assert_diffs.
@@ -21848,7 +21850,7 @@ nb = 55
 Qed.
 acute_trivial
 Proof.
-20519
+20521
 nb = 17
     intros.
     assert(HH:= not_col_exists A B H).
@@ -21890,7 +21892,7 @@ nb = 17
 Qed.
 acute_not_per
 Proof.
-20559
+20561
 nb = 37
     intros.
     unfold Acute in H.
@@ -21914,7 +21916,7 @@ nb = 37
 Qed.
 angle_bisector
 Proof.
-20581
+20583
 nb = 19
   intros A B C HAB HCB.
   elim (Col_dec A B C).
@@ -21953,7 +21955,7 @@ nb = 19
 Qed.
 reflectl__conga
 Proof.
-20618
+20620
 nb = 34
   intros A B P P' HAB HBP HRefl.
   destruct HRefl as [[A' [HMid HCol]] [HPerp|Heq]]; [|subst; apply conga_refl; auto].
@@ -21975,7 +21977,7 @@ nb = 34
 Qed.
 out_conga_reflect__out
 Proof.
-20638
+20640
 nb = 17
   intros A B C P T T' HNOut HConga HOut HRefl.
   apply conga_distinct in HConga; spliter; clean.
@@ -22005,7 +22007,7 @@ nb = 17
 Qed.
 col_conga_reflectl__col
 Proof.
-20666
+20668
 nb = 25
   intros A B C P T T' HNOut HConga HCol HRefl.
   destruct (eq_dec_points B T).
@@ -22027,7 +22029,7 @@ nb = 25
 Qed.
 conga2__col
 Proof.
-20686
+20688
 nb = 17
   intros A B C P P' HNOut HP HP'.
   apply conga_distinct in HP; apply conga_distinct in HP'; spliter; clean.
@@ -22041,7 +22043,7 @@ nb = 17
 Qed.
 col_conga__conga
 Proof.
-20698
+20700
 nb = 9
   intros A B C P P' HConga HCol HBP'.
   destruct (bet_dec P B P') as [HBet|HNBet].
@@ -22052,7 +22054,7 @@ nb = 9
 Qed.
 inangle__ex_col_inangle
 Proof.
-20707
+20709
 nb = 6
   intros A B C P Q HNOut HIn.
   assert (h := inangle_distincts A B C P HIn); spliter.
@@ -22128,7 +22130,7 @@ nb = 6
 Qed.
 col_inangle2__out
 Proof.
-20781
+20783
 nb = 71
   intros A B C P Q HNBet HP HQ HCol.
   assert (Hd := inangle_distincts A B C P HP);
@@ -22146,7 +22148,7 @@ nb = 71
 Qed.
 inangle2__lea
 Proof.
-20797
+20799
 nb = 13
   intros A B C P Q HP HQ.
   assert (HP' := l11_24 P A B C HP).
@@ -22206,7 +22208,7 @@ nb = 13
 Qed.
 conga_inangle_per__acute
 Proof.
-20855
+20857
 nb = 55
   intros A B C P HPer HP1 HP2.
   assert (Hd := inangle_distincts A B C P HP1); spliter; clean.
@@ -22222,7 +22224,7 @@ nb = 55
 Qed.
 conga_inangle2_per__acute
 Proof.
-20869
+20871
 nb = 11
   intros A B C P Q HPer HP1 HP2 HQ.
   assert (HP' := l11_24 P A B C HP1).
@@ -22267,7 +22269,7 @@ nb = 11
 Qed.
 lta_os__ts
 Proof.
-20912
+20914
 nb = 40
 intros.
 unfold LtA in *.
@@ -22353,7 +22355,7 @@ contradiction.
 Qed.
 conga_os__out
 Proof.
-20996
+20998
 nb = 81
 intros.
 assert(HH:= conga__or_out_ts A O B C H).
@@ -22364,7 +22366,7 @@ contradiction.
 Qed.
 acute_one_side_aux
 Proof.
-21005
+21007
 nb = 6
 intros P A O B HOS.
 intros.
@@ -22494,7 +22496,7 @@ assumption.
 Qed.
 acute_one_side_aux0
 Proof.
-21133
+21135
 nb = 125
 intros.
 assert(LtA A O P A O B).
@@ -22530,7 +22532,7 @@ Col.
 Qed.
 acute_one_side
 Proof.
-21167
+21169
 nb = 31
 intros.
 induction(Col_dec A O P).
@@ -22586,7 +22588,7 @@ apply(acute_one_side_aux P A O B); auto.
 Qed.
 par_reflexivity
 Proof.
-21221
+21223
 nb = 51
     intros.
     unfold Par.
@@ -22600,7 +22602,7 @@ nb = 51
 Qed.
 par_strict_irreflexivity
 Proof.
-21233
+21235
 nb = 9
     intros.
     intro.
@@ -22612,7 +22614,7 @@ nb = 9
 Qed.
 not_par_strict_id
 Proof.
-21243
+21245
 nb = 7
     intros.
     intro.
@@ -22624,7 +22626,7 @@ nb = 7
 Qed.
 par_id
 Proof.
-21253
+21255
 nb = 7
     intros.
     unfold Par in H.
@@ -22639,7 +22641,7 @@ nb = 7
 Qed.
 par_strict_not_col_1
 Proof.
-21266
+21268
 nb = 10
     intros.
     unfold Par_strict in *.
@@ -22651,7 +22653,7 @@ nb = 10
 Qed.
 par_strict_not_col_2
 Proof.
-21276
+21278
 nb = 7
     intros.
     unfold Par_strict in *.
@@ -22663,7 +22665,7 @@ nb = 7
 Qed.
 par_strict_not_col_3
 Proof.
-21286
+21288
 nb = 7
     intros.
     unfold Par_strict in *.
@@ -22675,7 +22677,7 @@ nb = 7
 Qed.
 par_strict_not_col_4
 Proof.
-21296
+21298
 nb = 7
     intros.
     unfold Par_strict in *.
@@ -22687,7 +22689,7 @@ nb = 7
 Qed.
 par_id_1
 Proof.
-21306
+21308
 nb = 7
     intros.
     assert (H1 := par_id A B C H).
@@ -22695,7 +22697,7 @@ nb = 7
 Qed.
 par_id_2
 Proof.
-21312
+21314
 nb = 3
     intros.
     assert (H1 := par_id A B C H).
@@ -22703,7 +22705,7 @@ nb = 3
 Qed.
 par_id_3
 Proof.
-21318
+21320
 nb = 3
     intros.
     assert (H1 := par_id A B C H).
@@ -22711,7 +22713,7 @@ nb = 3
 Qed.
 par_id_4
 Proof.
-21324
+21326
 nb = 3
     intros.
     assert (H1 := par_id A B C H).
@@ -22719,7 +22721,7 @@ nb = 3
 Qed.
 par_id_5
 Proof.
-21330
+21332
 nb = 3
     intros.
     assert (H1 := par_id A B C H).
@@ -22727,7 +22729,7 @@ nb = 3
 Qed.
 par_strict_symmetry
 Proof.
-21336
+21338
 nb = 3
     unfold Par_strict.
     intros.
@@ -22744,7 +22746,7 @@ nb = 3
 Qed.
 par_symmetry
 Proof.
-21351
+21353
 nb = 12
     unfold Par.
     intros.
@@ -22760,7 +22762,7 @@ nb = 12
 Qed.
 par_left_comm
 Proof.
-21365
+21367
 nb = 11
     unfold Par.
     intros.
@@ -22783,7 +22785,7 @@ nb = 11
 Qed.
 par_right_comm
 Proof.
-21386
+21388
 nb = 18
     intros.
     apply par_symmetry in H.
@@ -22793,7 +22795,7 @@ nb = 18
 Qed.
 par_comm
 Proof.
-21394
+21396
 nb = 5
     intros.
     apply par_left_comm.
@@ -22802,7 +22804,7 @@ nb = 5
 Qed.
 par_strict_left_comm
 Proof.
-21401
+21403
 nb = 4
     unfold Par_strict.
     intros.
@@ -22818,7 +22820,7 @@ nb = 4
 Qed.
 par_strict_right_comm
 Proof.
-21415
+21417
 nb = 11
     unfold Par_strict.
     intros.
@@ -22834,7 +22836,7 @@ nb = 11
 Qed.
 par_strict_comm
 Proof.
-21429
+21431
 nb = 11
     intros.
     apply par_strict_left_comm in H.
@@ -22842,52 +22844,60 @@ nb = 11
     assumption.
 Qed.
 par_strict_neq1
-Proof. unfold Par_strict; intros; spliter; auto. Qed.
-21436
-nb = 4
-par_strict_neq2
-Proof. unfold Par_strict; intros; spliter; auto. Qed.
+Proof. 
 21438
-nb = -1
-par_neq1
-Proof. unfold Par, Par_strict; intros; induction H; spliter; auto. Qed.
-21440
-nb = -1
-par_neq2
-Proof. unfold Par, Par_strict; intros; induction H; spliter; auto. Qed.
+nb = 4
+unfold Par_strict; intros; spliter; auto. 
+Qed.
+par_strict_neq2
+Proof. 
 21442
-nb = -1
+nb = 1
+unfold Par_strict; intros; spliter; auto. 
+Qed.
+par_neq1
+Proof. 
+21446
+nb = 1
+unfold Par, Par_strict; intros; induction H; spliter; auto. 
+Qed.
+par_neq2
+Proof. 
+21450
+nb = 1
+unfold Par, Par_strict; intros; induction H; spliter; auto. 
+Qed.
 Par_cases
 Proof.
-21444
-nb = -1
+21454
+nb = 1
     intros.
     decompose [or]  H;Par.
 Qed.
 Par_perm
-Proof.
-21449
-nb = 2
-    intros.
-    do 7 (split; Par).
-Qed.
-Par_strict_cases
-Proof.
-21454
-nb = 2
-    intros.
-    decompose [or]  H; eauto with par.
-Qed.
-Par_strict_perm
 Proof.
 21459
 nb = 2
     intros.
     do 7 (split; Par).
 Qed.
-l12_6
+Par_strict_cases
 Proof.
 21464
+nb = 2
+    intros.
+    decompose [or]  H; eauto with par.
+Qed.
+Par_strict_perm
+Proof.
+21469
+nb = 2
+    intros.
+    do 7 (split; Par).
+Qed.
+l12_6
+Proof.
+21474
 nb = 2
     intros.
     unfold Par_strict in H.
@@ -22910,7 +22920,7 @@ nb = 2
 Qed.
 pars__os3412
 Proof.
-21485
+21495
 nb = 18
     intros.
     apply l12_6.
@@ -22919,7 +22929,7 @@ nb = 18
 Qed.
 Perp_dec
 Proof.
-21492
+21502
 nb = 4
     intros.
     induction (Col_dec A B C).
@@ -22955,7 +22965,7 @@ nb = 4
 Qed.
 perp_perp_col_col
 Proof.
-21526
+21536
 nb = 31
     intros.
     assert(HH0:= H).
@@ -23010,7 +23020,7 @@ nb = 31
 Qed.
 l12_9
 Proof.
-21579
+21589
 nb = 50
     intros A1 A2 B1 B2 C1 C2.
     assert(H := all_coplanar A1 A2 B1 B2).
@@ -23040,7 +23050,7 @@ nb = 50
 Qed.
 parallel_existence
 Proof.
-21607
+21617
 nb = 25
     intros.
     induction(Col_dec A B P).
@@ -23126,7 +23136,7 @@ nb = 25
 Qed.
 par_col_par
 Proof.
-21691
+21701
 nb = 81
     intros.
     unfold Par in *.
@@ -23167,7 +23177,7 @@ nb = 81
 Qed.
 parallel_existence1
 Proof.
-21730
+21740
 nb = 36
     intros.
     assert (T:= parallel_existence A B P H).
@@ -23183,7 +23193,7 @@ nb = 36
 Qed.
 par_not_col
 Proof.
-21744
+21754
 nb = 11
     intros.
     unfold Par_strict in H.
@@ -23194,7 +23204,7 @@ nb = 11
 Qed.
 not_strict_par1
 Proof.
-21753
+21763
 nb = 6
     intros.
     unfold Par in H.
@@ -23214,7 +23224,7 @@ nb = 6
 Qed.
 not_strict_par2
 Proof.
-21771
+21781
 nb = 15
     intros.
     eapply not_strict_par1.
@@ -23225,7 +23235,7 @@ nb = 15
 Qed.
 not_strict_par
 Proof.
-21780
+21790
 nb = 6
     intros.
     split.
@@ -23240,7 +23250,7 @@ nb = 6
 Qed.
 not_par_not_col
 Proof.
-21793
+21803
 nb = 10
     intros.
     intro.
@@ -23255,7 +23265,7 @@ nb = 10
 Qed.
 not_par_inter_uniqueness
 Proof.
-21806
+21816
 nb = 10
     intros.
     induction(eq_dec_points C Y).
@@ -23288,7 +23298,7 @@ nb = 10
 Qed.
 inter_uniqueness_not_par
 Proof.
-21837
+21847
 nb = 28
     intros.
     intro.
@@ -23305,7 +23315,7 @@ nb = 28
 Qed.
 col_not_col_not_par
 Proof.
-21852
+21862
 nb = 12
     intros.
     ex_and H P.
@@ -23328,7 +23338,7 @@ nb = 12
 Qed.
 par_distincts
 Proof.
-21873
+21883
 nb = 18
     intros.
     split.
@@ -23343,7 +23353,7 @@ nb = 18
 Qed.
 par_not_col_strict
 Proof.
-21886
+21896
 nb = 10
     intros.
     apply par_symmetry in H.
@@ -23375,7 +23385,7 @@ nb = 10
 Qed.
 all_one_side_par_strict
 Proof.
-21916
+21926
 nb = 27
     intros.
     unfold Par_strict.
@@ -23401,7 +23411,7 @@ nb = 27
 Qed.
 par_col_par_2
 Proof.
-21940
+21950
 nb = 21
     intros.
     unfold Par in *.
@@ -23432,7 +23442,7 @@ nb = 21
 Qed.
 par_col2_par
 Proof.
-21969
+21979
 nb = 26
     intros.
     induction (eq_dec_points C E).
@@ -23458,14 +23468,14 @@ nb = 26
 Qed.
 par_col2_par_bis
 Proof.
-21993
+22003
 nb = 21
 intros.
 apply par_col2_par with C D; Col; ColR.
 Qed.
 par_strict_col_par_strict
 Proof.
-21998
+22008
 nb = 2
     intros.
     assert(Par C E A B).
@@ -23487,7 +23497,7 @@ nb = 2
 Qed.
 par_strict_col2_par_strict
 Proof.
-22018
+22028
 nb = 17
     intros.
     unfold Par_strict in *.
@@ -23520,14 +23530,14 @@ nb = 17
 Qed.
 line_dec
 Proof.
-22049
+22059
 nb = 28
     intros.
     induction (Col_dec C1 B1 B2); induction (Col_dec C2 B1 B2);tauto.
 Qed.
 par_distinct
 Proof.
-22054
+22064
 nb = 2
     intros.
     induction H.
@@ -23536,7 +23546,7 @@ nb = 2
 Qed.
 par_col4__par
 Proof.
-22061
+22071
 nb = 4
     intros A B C D E F G H.
     intros.
@@ -23547,7 +23557,7 @@ nb = 4
 Qed.
 par_strict_col4__par_strict
 Proof.
-22070
+22080
 nb = 6
     intros A B C D E F G H.
     intros.
@@ -23558,7 +23568,7 @@ nb = 6
 Qed.
 par_strict_one_side
 Proof.
-22079
+22089
 nb = 6
   intros A B C D P HPar HCol.
   destruct (eq_dec_points C P).
@@ -23567,7 +23577,7 @@ nb = 6
 Qed.
 par_strict_all_one_side
 Proof.
-22086
+22096
 nb = 4
     intros.
     eapply par_strict_one_side.
@@ -23576,7 +23586,7 @@ nb = 4
 Qed.
 inter_trivial
 Proof.
-22093
+22103
 nb = 4
     intros.
     unfold Inter.
@@ -23591,7 +23601,7 @@ nb = 4
 Qed.
 inter_sym
 Proof.
-22106
+22116
 nb = 10
     intros.
     unfold Inter in *.
@@ -23631,7 +23641,7 @@ nb = 10
 Qed.
 inter_left_comm
 Proof.
-22144
+22154
 nb = 35
     intros.
     unfold Inter in *.
@@ -23648,7 +23658,7 @@ nb = 35
 Qed.
 inter_right_comm
 Proof.
-22159
+22169
 nb = 12
     intros.
     unfold Inter in *.
@@ -23663,7 +23673,7 @@ nb = 12
 Qed.
 inter_comm
 Proof.
-22172
+22182
 nb = 10
     intros.
     apply inter_left_comm.
@@ -23672,7 +23682,7 @@ nb = 10
 Qed.
 l12_17
 Proof.
-22179
+22189
 nb = 4
     intros.
     induction(Col_dec A B P).
@@ -23957,7 +23967,7 @@ nb = 4
 Qed.
 l12_18_a
 Proof.
-22462
+22472
 nb = 280
     intros.
     assert(Midpoint P A C /\ Midpoint P B D) by (apply l7_21; assumption).
@@ -23972,7 +23982,7 @@ nb = 280
 Qed.
 l12_18_b
 Proof.
-22475
+22485
 nb = 10
     intros.
     assert(Midpoint P A C /\ Midpoint P B D) by (apply l7_21; assumption).
@@ -24007,7 +24017,7 @@ nb = 10
 Qed.
 l12_18_c
 Proof.
-22508
+22518
 nb = 30
     intros.
     assert(Midpoint P A C /\ Midpoint P B D) by (apply l7_21; assumption).
@@ -24059,7 +24069,7 @@ nb = 30
 Qed.
 l12_18_d
 Proof.
-22558
+22568
 nb = 47
     intros.
     assert(Midpoint P A C /\ Midpoint P B D) by (apply l7_21; assumption).
@@ -24092,7 +24102,7 @@ nb = 47
 Qed.
 l12_18
 Proof.
-22589
+22599
 nb = 28
     intros.
     split.
@@ -24105,7 +24115,7 @@ nb = 28
 Qed.
 par_two_sides_two_sides
 Proof.
-22600
+22610
 nb = 8
     intros.
     apply par_distincts in H.
@@ -24212,7 +24222,7 @@ nb = 8
 Qed.
 par_one_or_two_sides
 Proof.
-22705
+22715
 nb = 102
     intros.
     induction(two_sides_dec A C B D).
@@ -24272,7 +24282,7 @@ nb = 102
 Qed.
 l12_21_b
 Proof.
-22763
+22773
 nb = 55
     intros.
     apply conga_distinct in H0.
@@ -24345,7 +24355,7 @@ nb = 55
 Qed.
 l12_22_aux
 Proof.
-22834
+22844
 nb = 68
     intros.
     assert (P<>C) by (intro; Between).
@@ -24443,7 +24453,7 @@ nb = 68
 Qed.
 l12_22_b
 Proof.
-22930
+22940
 nb = 93
     intros.
     induction(eq_dec_points A C).
@@ -24490,7 +24500,7 @@ nb = 93
 Qed.
 par_strict_par
 Proof.
-22975
+22985
 nb = 42
     intros.
     unfold Par.
@@ -24498,7 +24508,7 @@ nb = 42
 Qed.
 par_strict_distinct
 Proof.
-22981
+22991
 nb = 3
     intros.
     apply par_strict_par in H.
@@ -24507,7 +24517,7 @@ nb = 3
 Qed.
 col_par
 Proof.
-22988
+22998
 nb = 4
     intros.
     unfold Par.
@@ -24516,7 +24526,7 @@ nb = 4
 Qed.
 acute_col_perp__out
 Proof.
-22995
+23005
 nb = 4
   intros A B C A' HacuteB HBCA' HPerp.
   assert(HUn := perp_not_col2 B C A A' HPerp).
@@ -24546,7 +24556,7 @@ nb = 4
 Qed.
 acute_col_perp__out_1
 Proof.
-23023
+23033
 nb = 25
   intros A B C A' HAcute HCol HPerp.
   destruct (segment_construction A B A B) as [A0 [HA1 HA2]].
@@ -24568,7 +24578,7 @@ nb = 25
 Qed.
 conga_inangle_per2__inangle
 Proof.
-23043
+23053
 nb = 17
   intros A B C P T HPer HInangle HConga HPerP.
   destruct (eq_dec_points P T).
@@ -24619,7 +24629,7 @@ nb = 17
 Qed.
 perp_not_par
 Proof.
-23092
+23102
 nb = 46
     intros.
     assert(HH:=H).
@@ -24653,7 +24663,7 @@ nb = 46
 Qed.
 cong_conga_perp
 Proof.
-23124
+23134
 nb = 29
     intros.
     assert(HH:=H).
@@ -24745,7 +24755,7 @@ nb = 29
 Qed.
 perp_inter_exists
 Proof.
-23214
+23224
 nb = 87
     intros A B C D HPerp.
     destruct HPerp as [P [_ [_ [HCol1 [HCol2]]]]].
@@ -24753,7 +24763,7 @@ nb = 87
 Qed.
 perp_inter_perp_in
 Proof.
-23220
+23230
 nb = 3
     intros.
     assert(HH:=perp_inter_exists A B C D H).
@@ -24767,14 +24777,14 @@ nb = 3
 Qed.
 tarski_s_euclid
 Proof.
-23232
+23242
 nb = 9
 unfold tarski_s_parallel_postulate.
 apply euclid.
 Qed.
 inter_dec
 Proof.
-23237
+23247
 nb = 2
 apply strong_parallel_postulate_implies_inter_dec.
 apply strong_parallel_postulate_SPP.
@@ -24784,7 +24794,7 @@ apply tarski_s_euclid.
 Qed.
 not_par_inter_exists
 Proof.
-23245
+23255
 nb = 5
     intros.
 induction (eq_dec_points A1 B1).
@@ -24804,7 +24814,7 @@ induction (inter_dec A1 B1 A2 B2).
 Qed.
 parallel_uniqueness
 Proof.
-23263
+23273
 nb = 15
     intros.
     apply tarski_s_euclid_implies_playfair with A1 A2 P; try assumption.
@@ -24812,7 +24822,7 @@ nb = 15
 Qed.
 par_trans
 Proof.
-23269
+23279
 nb = 3
     intros.
     apply playfair_implies_par_trans with B1 B2; try assumption.
@@ -24821,7 +24831,7 @@ nb = 3
 Qed.
 l12_16
 Proof.
-23276
+23286
 nb = 4
     intros.
     assert(HH:= H).
@@ -24875,13 +24885,15 @@ nb = 4
     apply (col3 A1 A2); Col.
 Qed.
 Par_dec
-Proof. exact (par_trans__par_dec par_trans). Qed.
-23329
+Proof. 
+23339
 nb = 50
+exact (par_trans__par_dec par_trans). 
+Qed.
 par_not_par
 Proof.
-23331
-nb = -1
+23343
+nb = 1
 intros A B C D P Q HPar HNPar.
 intro HNPar'.
 apply HNPar.
@@ -24889,7 +24901,7 @@ apply par_trans with C D; Par.
 Qed.
 par_inter
 Proof.
-23338
+23350
 nb = 4
     intros A B C D P Q X HPar HNPar HCol1 HCol2.
     elim (eq_dec_points P Q); intro HDiff; treat_equalities.
@@ -24948,7 +24960,7 @@ nb = 4
 Qed.
 l12_19
 Proof.
-23395
+23407
 nb = 54
     intros.
     assert(exists P, Midpoint P A C) by (eapply midpoint_existence).
@@ -25005,7 +25017,7 @@ nb = 54
 Qed.
 l12_20_bis
 Proof.
-23450
+23462
 nb = 52
     intros.
     assert(B <> C) by (assert_diffs; auto).
@@ -25081,7 +25093,7 @@ nb = 52
 Qed.
 l12_20
 Proof.
-23524
+23536
 nb = 71
     intros.
     assert(TS B D A C).
@@ -25099,7 +25111,7 @@ nb = 71
 Qed.
 l12_21_a
 Proof.
-23540
+23552
 nb = 13
     assert (aia : alternate_interior_angles_postulate).
     { cut tarski_s_parallel_postulate.
@@ -25110,7 +25122,7 @@ nb = 13
 Qed.
 l12_21
 Proof.
-23549
+23561
 nb = 6
     intros.
     split.
@@ -25121,7 +25133,7 @@ nb = 6
 Qed.
 l12_22_a
 Proof.
-23558
+23570
 nb = 6
     cut (forall A B C D P,
          A <> P -> Bet P A C -> OS P A B D -> Par A B C D ->
@@ -25154,7 +25166,7 @@ nb = 6
 Qed.
 l12_22
 Proof.
-23589
+23601
 nb = 28
     intros.
     split; intro.
@@ -25163,7 +25175,7 @@ nb = 28
 Qed.
 l12_23
 Proof.
-23596
+23608
 nb = 4
     intros.
     assert(exists B0, Midpoint B0 A B) by (apply midpoint_existence).
@@ -25274,7 +25286,7 @@ nb = 4
 Qed.
 not_par_strict_inter_exists
 Proof.
-23705
+23717
 nb = 106
     intros.
     induction (eq_dec_points A1 B1).
@@ -25294,7 +25306,7 @@ nb = 106
 Qed.
 not_par_inter
 Proof.
-23723
+23735
 nb = 15
     intros.
     induction(Par_dec A B X Y).
@@ -25319,7 +25331,7 @@ nb = 15
 Qed.
 not_par_one_not_par
 Proof.
-23746
+23758
 nb = 20
     intros.
     assert(HH:=not_par_inter A B A' B' X Y H).
@@ -25334,7 +25346,7 @@ nb = 20
 Qed.
 col_par_par_col
 Proof.
-23759
+23771
 nb = 10
     intros.
     apply par_distincts in H0.
@@ -25359,7 +25371,7 @@ nb = 10
 Qed.
 trisuma__bet
 Proof.
-23782
+23794
 nb = 20
     apply alternate_interior__triangle.
     unfold alternate_interior_angles_postulate.
@@ -25367,7 +25379,7 @@ nb = 20
 Qed.
 bet__trisuma
 Proof.
-23788
+23800
 nb = 3
     intros A B C D E F HBet; intros.
     destruct (ex_trisuma A B C) as [P [Q [R HTri]]]; auto.
@@ -25379,7 +25391,7 @@ nb = 3
 Qed.
 not_obtuse
 Proof.
-23798
+23810
 nb = 7
     apply not_oah.
     right.
@@ -25389,13 +25401,15 @@ nb = 7
     unfold alternate_interior_angles_postulate; apply l12_21_a.
 Qed.
 suma__sams
-Proof. exact (t22_20 not_obtuse). Qed.
-23807
+Proof. 
+23819
 nb = 6
+exact (t22_20 not_obtuse). 
+Qed.
 per2_col_eq
 Proof.
-23809
-nb = -1
+23823
+nb = 1
 intros.
 induction(eq_dec_points P B).
 subst B.
@@ -25433,7 +25447,7 @@ tauto.
 Qed.
 per_distinct
 Proof.
-23846
+23860
 nb = 34
 intros.
 intro.
@@ -25444,7 +25458,7 @@ assumption.
 Qed.
 per2_preserves_diff
 Proof.
-23855
+23869
 nb = 6
 intros.
 intro.
@@ -25454,7 +25468,7 @@ apply(per2_col_eq O A' B' A);Col.
 Qed.
 per23_preserves_bet
 Proof.
-23863
+23877
 nb = 5
 intros.
 assert(HC:Col A B C).
@@ -25570,7 +25584,7 @@ ColR.
 Qed.
 per23_preserves_bet_inv
 Proof.
-23977
+23991
 nb = 111
 intros.
 
@@ -25703,7 +25717,7 @@ induction H15;contradiction.
 Qed.
 per13_preserves_bet
 Proof.
-24108
+24122
 nb = 128
 intros.
 assert(Col A B C).
@@ -25852,7 +25866,7 @@ contradiction.
 Qed.
 per13_preserves_bet_inv
 Proof.
-24255
+24269
 nb = 144
 intros.
 assert(Col A' B C').
@@ -26009,7 +26023,7 @@ ColR.
 Qed.
 per3_preserves_bet1
 Proof.
-24410
+24424
 nb = 152
 intros O A B C A' B' C'.
 intro HC.
@@ -26516,7 +26530,7 @@ ColR.
 Qed.
 per3_preserves_bet2_aux
 Proof.
-24915
+24929
 nb = 502
 intros O A B C B' C'.
 intro HX.
@@ -26639,7 +26653,7 @@ Col.
 Qed.
 per3_preserves_bet2
 Proof.
-25036
+25050
 nb = 118
 intros O A B C A' B' C'.
 intro HX.
@@ -26842,7 +26856,7 @@ Col.
 Qed.
 symmetry_preserves_per
 Proof.
-25237
+25251
 nb = 198
 intros.
 assert(HS:=symmetric_point_construction A P).
@@ -26870,7 +26884,7 @@ Cong.
 Qed.
 l13_1
 Proof.
-25263
+25277
 nb = 23
 intros A B C P Q R HC MBC MAC MAB.
 assert(Q <> C).
@@ -27345,7 +27359,7 @@ contradiction.
 Qed.
 per_lt
   Proof.
-25736
+25750
 nb = 470
     intros.
     assert(Lt B A A C /\ Lt B C A C).
@@ -27358,7 +27372,7 @@ nb = 470
   Qed.
 cong_perp_conga
 Proof.
-25747
+25761
 nb = 8
     intros.
     assert(A <> C /\ B <> P).
@@ -27559,7 +27573,7 @@ nb = 8
 Qed.
 perp_per_bet
 Proof.
-25946
+25960
 nb = 196
 intros.
 assert( A <> C).
@@ -27574,7 +27588,7 @@ tauto.
 Qed.
 ts_per_per_ts
 Proof.
-25959
+25973
 nb = 10
 intros.
 assert(HTS:= H).
@@ -27712,7 +27726,7 @@ eBetween.
 Qed.
 l13_2_1
 Proof.
-26095
+26109
 nb = 133
     intros.
     intros.
@@ -27801,7 +27815,7 @@ nb = 133
 Qed.
 triangle_mid_par
 Proof.
-26182
+26196
 nb = 84
   intros.
    assert(HM:= midpoint_existence A B).
@@ -27877,7 +27891,7 @@ contradiction.
 Qed.
 perp_in_perp_in_col
 Proof.
-26256
+26270
 nb = 71
 intros.
 assert(HP1:= H).
@@ -27942,7 +27956,7 @@ ColR.
 Qed.
 l13_2
 Proof.
-26319
+26333
 nb = 60
     intros.
     assert(HH:= H).
@@ -28627,7 +28641,7 @@ Perp.
 Qed.
 perp2_refl
 Proof.
-27002
+27016
 nb = 680
     intros.
     induction(Col_dec A B P).
@@ -28650,7 +28664,7 @@ nb = 680
 Qed.
 perp2_sym
 Proof.
-27023
+27037
 nb = 18
     unfold Perp2.
     intros.
@@ -28662,7 +28676,7 @@ nb = 18
 Qed.
 perp2_left_comm
 Proof.
-27033
+27047
 nb = 7
     unfold Perp2.
     intros.
@@ -28674,7 +28688,7 @@ nb = 7
 Qed.
 perp2_right_comm
 Proof.
-27043
+27057
 nb = 7
     unfold Perp2.
     intros.
@@ -28686,7 +28700,7 @@ nb = 7
 Qed.
 perp2_comm
 Proof.
-27053
+27067
 nb = 7
     unfold Perp2.
     intros.
@@ -28698,7 +28712,7 @@ nb = 7
 Qed.
 perp2_trans
 Proof.
-27063
+27077
 nb = 7
     intros.
     unfold Perp2 in *.
@@ -28763,7 +28777,7 @@ nb = 7
 Qed.
 perp2_par
 Proof.
-27126
+27140
 nb = 60
     intros.
     unfold Perp2 in H.
@@ -28775,7 +28789,7 @@ nb = 60
 Qed.
 perp2_preserves_bet23
 Proof.
-27136
+27150
 nb = 7
 intros.
 
@@ -28839,7 +28853,7 @@ ColR.
 Qed.
 perp2_preserves_bet13
 Proof.
-27198
+27212
 nb = 59
 intros.
 
@@ -29125,7 +29139,7 @@ Perp.
 Qed.
 is_image_perp_in
 Proof.
-27482
+27496
 nb = 281
 intros.
 unfold Reflect in H.
@@ -29149,7 +29163,7 @@ contradiction.
 Qed.
 perp_inter_perp_in_n
 Proof.
-27504
+27518
 nb = 19
 intros.
 assert(A <> B /\ C <> D).
@@ -29173,7 +29187,7 @@ apply(l8_14_2_1b_bis A B C D P); Col.
 Qed.
 perp2_perp_in
 Proof.
-27526
+27540
 nb = 19
     intros.
     unfold Perp2 in H.
@@ -29246,7 +29260,7 @@ nb = 19
 Qed.
 l13_8
 Proof.
-27597
+27611
 nb = 68
     intros.
     induction(eq_dec_points P U).
@@ -29305,7 +29319,7 @@ Col.
 Qed.
 perp_in_rewrite
 Proof.
-27654
+27668
 nb = 54
 intros.
 assert(HH:= perp_in_col A B C D P H).
@@ -29335,7 +29349,7 @@ Perp.
 Qed.
 gta_to_lta
 Proof.
-27682
+27696
 nb = 25
 intros.
 unfold GtA in H.
@@ -29343,7 +29357,7 @@ assumption.
 Qed.
 lta_to_gta
 Proof.
-27688
+27702
 nb = 3
 intros.
 unfold GtA.
@@ -29351,7 +29365,7 @@ assumption.
 Qed.
 conga_preserves_obtuse
 Proof.
-27694
+27708
 nb = 3
 intros.
 unfold Obtuse in *.
@@ -29381,7 +29395,7 @@ apply conga_refl; auto.
 Qed.
 perp_out_acute
 Proof.
-27722
+27736
 nb = 25
 intros.
 assert(A <> B /\ C' <> B).
@@ -29431,7 +29445,7 @@ apply (acute_conga__acute C' B C); auto.
 Qed.
 flat_all_lea
 Proof.
-27770
+27784
 nb = 45
 intros.
 unfold LeA.
@@ -29446,7 +29460,7 @@ apply conga_refl; auto.
 Qed.
 acute_bet_obtuse
 Proof.
-27783
+27797
 nb = 10
 intros.
 
@@ -29850,7 +29864,7 @@ apply(l11_13 C B Q C B P A A H16); Between.
 Qed.
 perp_bet_obtuse
 Proof.
-28185
+28199
 nb = 399
 intros.
 assert(HPO:=perp_out_acute).
@@ -29874,7 +29888,7 @@ assumption.
 Qed.
 lg_exists
 Proof.
-28207
+28221
 nb = 19
     intros.
     unfold Q_Cong.
@@ -29888,7 +29902,7 @@ nb = 19
 Qed.
 lg_cong
 Proof.
-28219
+28233
 nb = 9
     intros.
     unfold Q_Cong in H.
@@ -29904,7 +29918,7 @@ nb = 9
 Qed.
 lg_cong_lg
 Proof.
-28233
+28247
 nb = 11
     intros.
     unfold Q_Cong in H.
@@ -29922,14 +29936,14 @@ nb = 11
 Qed.
 lg_sym
 Proof.
-28249
+28263
 nb = 13
     intros.
     apply (lg_cong_lg l A B); Cong.
 Qed.
 ex_points_lg
 Proof.
-28254
+28268
 nb = 2
     intros.
     unfold Q_Cong in H.
@@ -29944,7 +29958,7 @@ nb = 2
 Qed.
 is_len_cong
 Proof.
-28267
+28281
 nb = 10
     intros.
     unfold Len in *.
@@ -29953,7 +29967,7 @@ nb = 10
 Qed.
 is_len_cong_is_len
 Proof.
-28274
+28288
 nb = 4
     intros.
     unfold Len in *.
@@ -29973,7 +29987,7 @@ nb = 4
 Qed.
 not_cong_is_len
 Proof.
-28292
+28306
 nb = 15
     intros.
     unfold Len in H0.
@@ -29984,7 +29998,7 @@ nb = 15
 Qed.
 not_cong_is_len1
 Proof.
-28301
+28315
 nb = 6
     intros.
     intro.
@@ -29995,7 +30009,7 @@ nb = 6
 Qed.
 lg_null_instance
 Proof.
-28310
+28324
 nb = 6
     intros.
     unfold Q_Cong_Null in H.
@@ -30017,7 +30031,7 @@ nb = 6
 Qed.
 lg_null_trivial
 Proof.
-28330
+28344
 nb = 17
     intros.
     unfold Q_Cong_Null.
@@ -30028,7 +30042,7 @@ nb = 17
 Qed.
 lg_null_dec
 Proof.
-28339
+28353
 nb = 6
     intros.
     assert(HH:=H).
@@ -30057,7 +30071,7 @@ nb = 6
 Qed.
 ex_point_lg
 Proof.
-28366
+28380
 nb = 24
     intros.
     induction(lg_null_dec l).
@@ -30095,7 +30109,7 @@ nb = 24
 Qed.
 ex_point_lg_out
 Proof.
-28402
+28416
 nb = 33
     intros.
     assert(HH:= H0).
@@ -30129,7 +30143,7 @@ nb = 33
 Qed.
 ex_point_lg_bet
 Proof.
-28434
+28448
 nb = 29
     intros.
     assert(HH:= H).
@@ -30148,7 +30162,7 @@ nb = 29
 Qed.
 ex_points_lg_not_col
 Proof.
-28451
+28465
 nb = 14
     intros.
     assert(HH:=another_point P).
@@ -30177,7 +30191,7 @@ nb = 14
 Qed.
 ex_eql
 Proof.
-28478
+28492
 nb = 24
     intros.
     ex_and H A.
@@ -30218,7 +30232,7 @@ nb = 24
 Qed.
 all_eql
 Proof.
-28517
+28531
 nb = 36
     intros.
     apply ex_eql.
@@ -30228,7 +30242,7 @@ nb = 36
 Qed.
 null_len
 Proof.
-28525
+28539
 nb = 5
     intros.
     eapply (all_eql A A).
@@ -30237,7 +30251,7 @@ nb = 5
 Qed.
 eqL_equivalence
 Proof.
-28532
+28546
 nb = 4
 split.
 - unfold Reflexive.
@@ -30257,7 +30271,7 @@ split.
 Qed.
 ex_lg
 Proof.
-28550
+28564
 nb = 15
     intros.
     exists (fun C D => Cong A B C D).
@@ -30269,7 +30283,7 @@ nb = 15
 Qed.
 lg_eql_lg
 Proof.
-28560
+28574
 nb = 7
     intros.
     unfold EqL in *.
@@ -30282,7 +30296,7 @@ nb = 7
 Qed.
 ex_eqL
 Proof.
-28571
+28585
 nb = 8
 intros.
 ex_and H1 A.
@@ -30333,7 +30347,7 @@ apply cong_transitivity with A B; Cong.
 Qed.
 ang_exists
 Proof.
-28620
+28634
 nb = 46
     intros.
     exists (fun D E F => CongA A B C D E F).
@@ -30352,7 +30366,7 @@ nb = 46
 Qed.
 ex_points_ang
 Proof.
-28637
+28651
 nb = 14
     intros.
     unfold Q_CongA in H.
@@ -30369,7 +30383,7 @@ nb = 14
 Qed.
 ang_conga
 Proof.
-28652
+28666
 nb = 12
     intros.
     unfold Q_CongA in H.
@@ -30389,7 +30403,7 @@ nb = 12
 Qed.
 is_ang_conga
 Proof.
-28670
+28684
 nb = 15
     intros.
     unfold Ang in *.
@@ -30398,7 +30412,7 @@ nb = 15
 Qed.
 is_ang_conga_is_ang
 Proof.
-28677
+28691
 nb = 4
     intros.
     unfold Ang in *.
@@ -30421,7 +30435,7 @@ nb = 4
 Qed.
 not_conga_not_ang
 Proof.
-28698
+28712
 nb = 18
     intros.
     intro.
@@ -30430,7 +30444,7 @@ nb = 18
 Qed.
 not_conga_is_ang
 Proof.
-28705
+28719
 nb = 4
     intros.
     unfold Ang in H0.
@@ -30441,7 +30455,7 @@ nb = 4
 Qed.
 not_cong_is_ang1
 Proof.
-28714
+28728
 nb = 6
     intros.
     intro.
@@ -30452,7 +30466,7 @@ nb = 6
 Qed.
 ex_eqa
 Proof.
-28723
+28737
 nb = 6
     intros.
     ex_and H A.
@@ -30482,7 +30496,7 @@ nb = 6
 Qed.
 all_eqa
 Proof.
-28751
+28765
 nb = 25
     intros.
     apply ex_eqa.
@@ -30493,7 +30507,7 @@ nb = 25
 Qed.
 is_ang_distinct
 Proof.
-28760
+28774
 nb = 6
     intros.
     unfold Ang in H.
@@ -30511,7 +30525,7 @@ nb = 6
 Qed.
 null_ang
 Proof.
-28776
+28790
 nb = 13
     intros.
     eapply (all_eqa A B A).
@@ -30528,7 +30542,7 @@ nb = 13
 Qed.
 flat_ang
 Proof.
-28791
+28805
 nb = 12
     intros.
     eapply (all_eqa A B C).
@@ -30542,7 +30556,7 @@ nb = 12
 Qed.
 ang_distinct:
 Proof.
-28803
+28817
 nb = 9
     intros.
     assert(Ang A B C a).
@@ -30551,7 +30565,7 @@ nb = 9
 Qed.
 ex_ang
 Proof.
-28810
+28824
 nb = 4
     intros.
     exists (fun X Y Z => CongA A B C X Y Z).
@@ -30574,7 +30588,7 @@ nb = 4
 Qed.
 anga_exists
 Proof.
-28831
+28845
 nb = 18
     intros.
     exists (fun D E F => CongA A B C D E F).
@@ -30591,7 +30605,7 @@ nb = 18
 Qed.
 anga_is_ang
 Proof.
-28846
+28860
 nb = 12
     intros.
     unfold Q_CongA_Acute in H.
@@ -30635,7 +30649,7 @@ nb = 12
 Qed.
 ex_points_anga
 Proof.
-28888
+28902
 nb = 39
     intros.
     assert(HH:=H).
@@ -30648,7 +30662,7 @@ nb = 39
 Qed.
 anga_conga
 Proof.
-28899
+28913
 nb = 8
     intros.
     apply (ang_conga a); auto.
@@ -30657,7 +30671,7 @@ nb = 8
 Qed.
 is_anga_to_is_ang
 Proof.
-28906
+28920
 nb = 4
     intros.
     unfold Ang_Acute in H.
@@ -30670,7 +30684,7 @@ nb = 4
 Qed.
 is_anga_conga
 Proof.
-28917
+28931
 nb = 8
     intros.
     unfold Ang_Acute in *.
@@ -30679,7 +30693,7 @@ nb = 8
 Qed.
 is_anga_conga_is_anga
 Proof.
-28924
+28938
 nb = 4
     intros.
     unfold Ang_Acute in *.
@@ -30703,7 +30717,7 @@ nb = 4
 Qed.
 not_conga_is_anga
 Proof.
-28946
+28960
 nb = 19
     intros.
     unfold Ang_Acute in H0.
@@ -30714,7 +30728,7 @@ nb = 19
 Qed.
 not_cong_is_anga1
 Proof.
-28955
+28969
 nb = 6
     intros.
     intro.
@@ -30725,7 +30739,7 @@ nb = 6
 Qed.
 ex_eqaa
 Proof.
-28964
+28978
 nb = 6
     intros.
     apply ex_eqa.
@@ -30739,7 +30753,7 @@ nb = 6
 Qed.
 all_eqaa
 Proof.
-28976
+28990
 nb = 9
     intros.
     apply ex_eqaa.
@@ -30750,7 +30764,7 @@ nb = 9
 Qed.
 is_anga_distinct
 Proof.
-28985
+28999
 nb = 6
     intros.
     apply (is_ang_distinct A B C a).
@@ -30759,7 +30773,7 @@ nb = 6
 Qed.
 eqA_equivalence
 Proof.
-28992
+29006
 nb = 4
 split.
 unfold Reflexive.
@@ -30776,7 +30790,7 @@ apply H0.
 Qed.
 null_anga
 Proof.
-29007
+29021
 nb = 12
     intros.
     eapply (all_eqaa A B A).
@@ -30793,7 +30807,7 @@ nb = 12
 Qed.
 anga_distinct:
 Proof.
-29022
+29036
 nb = 12
     intros.
     assert(Ang_Acute A B C a).
@@ -30802,7 +30816,7 @@ nb = 12
 Qed.
 out_is_len_eq
 Proof.
-29029
+29043
 nb = 4
     intros.
     assert(Cong A B A C).
@@ -30817,7 +30831,7 @@ nb = 4
 Qed.
 out_len_eq
 Proof.
-29042
+29056
 nb = 10
     intros.
     apply (out_is_len_eq A _ _ l).
@@ -30827,7 +30841,7 @@ nb = 10
 Qed.
 ex_anga
 Proof.
-29050
+29064
 nb = 5
     intros.
     exists (fun X Y Z => CongA A B C X Y Z).
@@ -30850,7 +30864,7 @@ nb = 5
 Qed.
 not_null_ang_ang
 Proof.
-29071
+29085
 nb = 18
     intros.
     unfold Q_CongA_nNull  in H.
@@ -30858,7 +30872,7 @@ nb = 18
 Qed.
 not_null_ang_def_equiv
 Proof.
-29077
+29091
 nb = 3
     intros.
     split.
@@ -30900,7 +30914,7 @@ nb = 3
 Qed.
 not_flat_ang_def_equiv
 Proof.
-29117
+29131
 nb = 37
     intros.
     split.
@@ -30942,7 +30956,7 @@ nb = 37
 Qed.
 ang_const
 Proof.
-29157
+29171
 nb = 37
     intros.
     unfold Q_CongA in H.
@@ -30972,7 +30986,7 @@ nb = 37
 Qed.
 ang_sym
 Proof.
-29185
+29199
 nb = 25
     intros.
     unfold Q_CongA in H.
@@ -30990,7 +31004,7 @@ nb = 25
 Qed.
 ang_not_null_lg
 Proof.
-29201
+29215
 nb = 13
     intros.
     intro.
@@ -31031,7 +31045,7 @@ nb = 13
 Qed.
 ang_distincts
 Proof.
-29240
+29254
 nb = 36
     intros.
     assert(HH:= ex_lg A B).
@@ -31058,7 +31072,7 @@ nb = 36
 Qed.
 anga_sym
 Proof.
-29265
+29279
 nb = 22
     intros.
     unfold Q_CongA_Acute in H.
@@ -31076,7 +31090,7 @@ nb = 22
 Qed.
 anga_not_null_lg
 Proof.
-29281
+29295
 nb = 13
     intros.
     intro.
@@ -31115,7 +31129,7 @@ nb = 13
 Qed.
 anga_distincts
 Proof.
-29318
+29332
 nb = 34
     intros.
     assert(HH:= ex_lg A B).
@@ -31142,7 +31156,7 @@ nb = 34
 Qed.
 ang_const_o
 Proof.
-29343
+29357
 nb = 22
     intros.
     assert(HH:= H0).
@@ -31201,7 +31215,7 @@ nb = 22
 Qed.
 anga_const
 Proof.
-29400
+29414
 nb = 54
     intros.
     apply anga_is_ang in H.
@@ -31209,7 +31223,7 @@ nb = 54
 Qed.
 null_anga_null_anga'
 Proof.
-29406
+29420
 nb = 3
     intro.
     split.
@@ -31240,7 +31254,7 @@ nb = 3
 Qed.
 is_null_anga_out
 Proof.
-29435
+29449
 nb = 26
     intros.
     unfold Q_CongA_Null_Acute in H1.
@@ -31251,7 +31265,7 @@ nb = 26
 Qed.
 acute_not_bet
 Proof.
-29444
+29458
 nb = 6
     intros.
     unfold Acute in H.
@@ -31286,7 +31300,7 @@ nb = 6
 Qed.
 anga_acute
 Proof.
-29477
+29491
 nb = 30
     intros.
     unfold Q_CongA_Acute in H.
@@ -31317,7 +31331,7 @@ nb = 30
 Qed.
 acute_col_out
 Proof.
-29506
+29520
 nb = 26
     intros.
     assert(HH:= acute_not_bet A B C H).
@@ -31335,7 +31349,7 @@ nb = 26
 Qed.
 not_null_not_col
 Proof.
-29522
+29536
 nb = 13
     intros.
     intro.
@@ -31353,7 +31367,7 @@ nb = 13
 Qed.
 ang_cong_ang
 Proof.
-29538
+29552
 nb = 13
     intros.
     assert(Ang A B C a).
@@ -31366,7 +31380,7 @@ nb = 13
 Qed.
 is_null_ang_out
 Proof.
-29549
+29563
 nb = 8
     intros.
     unfold Q_CongA_Null in H1.
@@ -31377,7 +31391,7 @@ nb = 8
 Qed.
 out_null_ang
 Proof.
-29558
+29572
 nb = 6
     intros.
     unfold Q_CongA_Null.
@@ -31390,7 +31404,7 @@ nb = 6
 Qed.
 bet_flat_ang
 Proof.
-29569
+29583
 nb = 8
     intros.
     unfold Ang_Flat.
@@ -31403,7 +31417,7 @@ nb = 8
 Qed.
 out_null_anga
 Proof.
-29580
+29594
 nb = 8
     intros.
     unfold Q_CongA_Null_Acute.
@@ -31416,7 +31430,7 @@ nb = 8
 Qed.
 anga_not_flat
 Proof.
-29591
+29605
 nb = 8
     intros.
     unfold Q_CongA_nFlat.
@@ -31435,7 +31449,7 @@ nb = 8
 Qed.
 anga_const_o
 Proof.
-29608
+29622
 nb = 14
     intros.
     assert(Q_CongA a).
@@ -31456,7 +31470,7 @@ nb = 14
 Qed.
 anga_conga_anga
 Proof.
-29627
+29641
 nb = 16
     intros.
     unfold Q_CongA_Acute in H.
@@ -31477,7 +31491,7 @@ nb = 16
 Qed.
 anga_out_anga
 Proof.
-29646
+29660
 nb = 16
     intros.
     assert(HH:= H).
@@ -31506,7 +31520,7 @@ nb = 16
 Qed.
 out_out_anga
 Proof.
-29673
+29687
 nb = 24
     intros.
     assert(CongA A B C A' B' C').
@@ -31515,7 +31529,7 @@ nb = 24
 Qed.
 is_null_all
 Proof.
-29680
+29694
 nb = 4
     intros.
     unfold Q_CongA_Null_Acute in H0.
@@ -31538,7 +31552,7 @@ nb = 4
 Qed.
 anga_col_out
 Proof.
-29701
+29715
 nb = 18
     intros.
     assert(Acute A B C).
@@ -31560,7 +31574,7 @@ nb = 18
 Qed.
 ang_not_lg_null
 Proof.
-29721
+29735
 nb = 17
     intros.
     assert(HH:=ang_distincts a A B C H1 H4).
@@ -31583,7 +31597,7 @@ nb = 17
 Qed.
 anga_not_lg_null
 Proof.
-29742
+29756
 nb = 18
     intros.
     apply anga_is_ang in H1.
@@ -31591,7 +31605,7 @@ nb = 18
 Qed.
 anga_col_null
 Proof.
-29748
+29762
 nb = 3
     intros.
     assert(HH:= anga_distincts a A B C H H0).
@@ -31614,7 +31628,7 @@ nb = 3
 Qed.
 eqA_preserves_ang:
 Proof.
-29769
+29783
 nb = 18
 intros.
 unfold Q_CongA in *.
@@ -31631,7 +31645,7 @@ apply H0.
 Qed.
 eqA_preserves_anga
 Proof.
-29784
+29798
 nb = 12
     intros.
     assert (Q_CongA a).
@@ -31700,7 +31714,7 @@ nb = 12
 Qed.
 l13_6
 Proof.
-29851
+29865
 nb = 64
     intros.
     unfold Lcos in *.
@@ -31807,7 +31821,7 @@ nb = 64
 Qed.
 null_lcos_eql
 Proof.
-29956
+29970
 nb = 102
     intros.
     unfold Lcos in H.
@@ -31833,7 +31847,7 @@ nb = 102
 Qed.
 eql_lcos_null
 Proof.
-29980
+29994
 nb = 21
     intros.
     unfold Lcos in H.
@@ -31891,7 +31905,7 @@ nb = 21
 Qed.
 lcos_lg_not_null:
 Proof.
-30036
+30050
 nb = 53
     intros.
     unfold Lcos in H.
@@ -31910,7 +31924,7 @@ nb = 53
 Qed.
 perp_acute_out
 Proof.
-30053
+30067
 nb = 14
     intros.
     assert (HH:= H).
@@ -32077,7 +32091,7 @@ nb = 14
 Qed.
 perp_out__acute
 Proof.
-30218
+30232
 nb = 162
     intros.
     split.
@@ -32088,7 +32102,7 @@ nb = 162
 Qed.
 obtuse_not_acute
 Proof.
-30227
+30241
 nb = 6
     intros.
     intro.
@@ -32126,7 +32140,7 @@ nb = 6
 Qed.
 acute_not_obtuse
 Proof.
-30263
+30277
 nb = 33
     intros.
     intro.
@@ -32135,7 +32149,7 @@ nb = 33
 Qed.
 perp_obtuse_bet
 Proof.
-30270
+30284
 nb = 4
     intros.
     assert(HH:= H1).
@@ -32191,7 +32205,7 @@ nb = 4
 Qed.
 lcos_const0
 Proof.
-30324
+30338
 nb = 51
     intros.
     assert(HH:=H).
@@ -32210,7 +32224,7 @@ nb = 51
 Qed.
 lcos_const1
 Proof.
-30341
+30355
 nb = 14
     intros.
     assert(HH:=H).
@@ -32256,7 +32270,7 @@ nb = 14
 Qed.
 lcos_const
 Proof.
-30385
+30399
 nb = 41
     intros.
     unfold Lcos in H.
@@ -32272,7 +32286,7 @@ nb = 41
 Qed.
 lcos_lg_distincts
 Proof.
-30399
+30413
 nb = 11
     intros.
     assert(HH:= lcos_lg_not_null lp l a H).
@@ -32298,7 +32312,7 @@ nb = 11
 Qed.
 lcos_const_a
 Proof.
-30423
+30437
 nb = 21
     intros.
     assert(HH:=H).
@@ -32338,7 +32352,7 @@ nb = 21
 Qed.
 lcos_const_ab
 Proof.
-30461
+30475
 nb = 35
     intros.
     assert(HH:=H).
@@ -32373,7 +32387,7 @@ nb = 35
 Qed.
 lcos_const_cb
 Proof.
-30494
+30508
 nb = 30
     intros.
     assert(HH:=H).
@@ -32410,7 +32424,7 @@ nb = 30
 Qed.
 lcos_lg_anga
 Proof.
-30529
+30543
 nb = 32
     intros.
     split.
@@ -32420,7 +32434,7 @@ nb = 32
 Qed.
 lcos_eql_lcos
 Proof.
-30537
+30551
 nb = 5
     intros.
     unfold Lcos in *.
@@ -32444,7 +32458,7 @@ nb = 5
 Qed.
 lcos_morphism
 Proof.
-30559
+30573
 nb = 19
 unfold Proper.
 split.
@@ -32458,7 +32472,7 @@ split.
 Qed.
 lcos_not_lg_null
 Proof.
-30571
+30585
 nb = 9
     intros.
     intro.
@@ -32490,7 +32504,7 @@ nb = 9
 Qed.
 lcos_const_o
 Proof.
-30601
+30615
 nb = 27
     intros.
     assert(HH:= anga_const_o a A B P H H0 H3).
@@ -32529,7 +32543,7 @@ nb = 27
 Qed.
 flat_not_acute
 Proof.
-30638
+30652
 nb = 34
     intros.
     intro.
@@ -32571,7 +32585,7 @@ nb = 34
 Qed.
 acute_comp_not_acute
 Proof.
-30678
+30692
 nb = 37
     intros.
     intro.
@@ -32677,7 +32691,7 @@ nb = 37
 Qed.
 lcos_per
 Proof.
-30782
+30796
 nb = 101
     intros.
     induction(eq_dec_points B C).
@@ -32711,7 +32725,7 @@ nb = 101
 Qed.
 is_null_anga_dec
 Proof.
-30814
+30828
 nb = 29
     intros a H.
     assert (H' := H).
@@ -32738,7 +32752,7 @@ nb = 29
 Qed.
 lcos_lg
 Proof.
-30839
+30853
 nb = 22
     intros.
     assert(HH:=H).
@@ -32805,7 +32819,7 @@ nb = 22
 Qed.
 l13_7
 Proof.
-30904
+30918
 nb = 62
     intros.
     apply lcos_lg_anga in H.
@@ -32986,7 +33000,7 @@ nb = 62
 Qed.
 out_acute
 Proof.
-31083
+31097
 nb = 176
     intros.
     assert( A <> B /\ C <> B).
@@ -33032,7 +33046,7 @@ nb = 176
 Qed.
 perp_acute
 Proof.
-31127
+31141
 nb = 41
     intros.
     assert(HH0:=H0).
@@ -33098,7 +33112,7 @@ nb = 41
 Qed.
 null_lcos
 Proof.
-31191
+31205
 nb = 61
     intros.
     unfold Q_CongA_Null_Acute in H1.
@@ -33133,7 +33147,7 @@ nb = 61
 Qed.
 lcos_exists
 Proof.
-31224
+31238
 nb = 30
     intros.
     lg_instance l A B.
@@ -33220,7 +33234,7 @@ nb = 30
 Qed.
 lcos_uniqueness
 Proof.
-31309
+31323
 nb = 82
 intros.
 unfold Lcos in *.
@@ -33324,7 +33338,7 @@ Cong.
 Qed.
 lcos_eqa_lcos
 Proof.
-31411
+31425
 nb = 99
     intros.
     assert(HH:=lcos_lg_anga l lp a H).
@@ -33350,7 +33364,7 @@ nb = 99
 Qed.
 lcos_eq_refl
 Proof.
-31435
+31449
 nb = 21
     intros.
     unfold Eq_Lcos.
@@ -33361,7 +33375,7 @@ nb = 21
 Qed.
 lcos_eq_sym
 Proof.
-31444
+31458
 nb = 6
     intros.
     unfold Eq_Lcos in *.
@@ -33371,7 +33385,7 @@ nb = 6
 Qed.
 lcos_eq_trans
 Proof.
-31452
+31466
 nb = 5
     intros.
     unfold Eq_Lcos in *.
@@ -33387,7 +33401,7 @@ nb = 5
 Qed.
 lcos2_comm
 Proof.
-31466
+31480
 nb = 11
     intros.
     unfold lcos2 in *.
@@ -33417,7 +33431,7 @@ nb = 11
 Qed.
 lcos2_exists
 Proof.
-31494
+31508
 nb = 25
     intros.
     assert(HH:= lcos_exists l a H1 H H0).
@@ -33438,7 +33452,7 @@ nb = 25
 Qed.
 lcos2_exists'
 Proof.
-31513
+31527
 nb = 16
     intros.
     assert(HH:=lcos_exists l a H1 H H0).
@@ -33454,7 +33468,7 @@ nb = 16
 Qed.
 lcos2_eq_refl
 Proof.
-31527
+31541
 nb = 11
     intros.
     assert(HH:= lcos2_exists l a b H H0 H1 H2).
@@ -33465,7 +33479,7 @@ nb = 11
 Qed.
 lcos2_eq_sym
 Proof.
-31536
+31550
 nb = 6
     intros.
     unfold Eq_Lcos2 in *.
@@ -33475,7 +33489,7 @@ nb = 6
 Qed.
 lcos2_uniqueness:
 Proof.
-31544
+31558
 nb = 5
     intros.
     unfold lcos2 in *.
@@ -33492,7 +33506,7 @@ nb = 5
 Qed.
 lcos2_eql_lcos2
 Proof.
-31559
+31573
 nb = 12
     intros.
     unfold lcos2 in *.
@@ -33507,7 +33521,7 @@ nb = 12
 Qed.
 lcos2_lg_anga
 Proof.
-31572
+31586
 nb = 10
     intros.
     split; auto.
@@ -33520,7 +33534,7 @@ nb = 10
 Qed.
 lcos2_eq_trans
 Proof.
-31583
+31597
 nb = 8
     intros.
     unfold Eq_Lcos2 in *.
@@ -33539,7 +33553,7 @@ nb = 8
 Qed.
 lcos_eq_lcos2_eq
 Proof.
-31600
+31614
 nb = 14
     intros.
     assert(HH0:=H0).
@@ -33567,7 +33581,7 @@ nb = 14
 Qed.
 lcos2_lg_not_null:
 Proof.
-31626
+31640
 nb = 23
     intros.
     unfold lcos2 in H.
@@ -33579,7 +33593,7 @@ nb = 23
 Qed.
 lcos3_lcos_1_2
 Proof.
-31636
+31650
 nb = 7
     intros.
     split.
@@ -33606,7 +33620,7 @@ nb = 7
 Qed.
 lcos3_lcos_2_1
 Proof.
-31661
+31675
 nb = 22
     intros.
     split.
@@ -33631,7 +33645,7 @@ nb = 22
 Qed.
 lcos3_permut3
 Proof.
-31684
+31698
 nb = 20
     intros.
     assert(HH:= lcos3_lcos_2_1 lp l a b c).
@@ -33646,7 +33660,7 @@ nb = 20
 Qed.
 lcos3_permut1
 Proof.
-31697
+31711
 nb = 10
     intros.
     assert(HH:= lcos3_lcos_1_2 lp l a b c).
@@ -33661,7 +33675,7 @@ nb = 10
 Qed.
 lcos3_permut2
 Proof.
-31710
+31724
 nb = 10
     intros.
     apply lcos3_permut3.
@@ -33671,7 +33685,7 @@ nb = 10
 Qed.
 lcos3_exists
 Proof.
-31718
+31732
 nb = 5
     intros.
     assert(HH:= lcos_exists l a H1 H H0).
@@ -33702,7 +33716,7 @@ nb = 5
 Qed.
 lcos3_eq_refl
 Proof.
-31747
+31761
 nb = 26
     intros.
     assert(HH:= lcos3_exists l a b c H H0 H1 H2 H3).
@@ -33713,7 +33727,7 @@ nb = 26
 Qed.
 lcos3_eq_sym
 Proof.
-31756
+31770
 nb = 6
     intros.
     unfold Eq_Lcos3 in *.
@@ -33723,7 +33737,7 @@ nb = 6
 Qed.
 lcos3_uniqueness:
 Proof.
-31764
+31778
 nb = 5
     intros.
     unfold Lcos3 in *.
@@ -33748,7 +33762,7 @@ nb = 5
 Qed.
 lcos3_eql_lcos3
 Proof.
-31787
+31801
 nb = 20
     intros.
     unfold Lcos3 in *.
@@ -33768,7 +33782,7 @@ nb = 20
 Qed.
 lcos3_lg_anga
 Proof.
-31805
+31819
 nb = 15
     intros.
     split; auto.
@@ -33783,7 +33797,7 @@ nb = 15
 Qed.
 lcos3_lg_not_null:
 Proof.
-31818
+31832
 nb = 10
     intros.
     unfold Lcos3 in H.
@@ -33796,7 +33810,7 @@ nb = 10
 Qed.
 lcos3_eq_trans
 Proof.
-31829
+31843
 nb = 8
     intros.
     unfold Eq_Lcos3 in *.
@@ -33815,7 +33829,7 @@ nb = 8
 Qed.
 lcos_eq_lcos3_eq
 Proof.
-31846
+31860
 nb = 14
     intros.
     assert(HH1:=H1).
@@ -33849,7 +33863,7 @@ nb = 14
 Qed.
 lcos2_eq_lcos3_eq
 Proof.
-31878
+31892
 nb = 29
     intros.
     assert(HH0:=H0).
@@ -33875,7 +33889,7 @@ nb = 29
 Qed.
 l13_10_aux1
 Proof.
-31902
+31916
 nb = 21
     intros.
     assert(Acute A O P).
@@ -34029,7 +34043,7 @@ Perp.
 Qed.
 l13_10_aux2
 Proof.
-32054
+32068
 nb = 149
     intros.
     assert(HH:=anga_exists A O A H8 H8 (acute_trivial A O H8)).
@@ -34078,7 +34092,7 @@ nb = 149
 Qed.
 l13_6_bis
 Proof.
-32101
+32115
 nb = 44
     intros.
     induction(is_null_anga_dec a).
@@ -34140,7 +34154,7 @@ nb = 44
 Qed.
 lcos3_lcos2
 Proof.
-32161
+32175
 nb = 57
     intros.
     unfold Eq_Lcos3 in H.
@@ -34163,7 +34177,7 @@ nb = 57
 Qed.
 lcos2_lcos
 Proof.
-32182
+32196
 nb = 18
     intros.
     unfold Eq_Lcos2 in H.
@@ -34184,7 +34198,7 @@ nb = 18
 Qed.
 lcos_per_anga
 Proof.
-32201
+32215
 nb = 16
     intros.
     assert(HH:= H).
@@ -34301,7 +34315,7 @@ nb = 16
 Qed.
 lcos_lcos_col
 Proof.
-32316
+32330
 nb = 112
     intros.
     apply lcos_lg_anga in H.
@@ -34326,7 +34340,7 @@ nb = 112
 Qed.
 per13_preserves_bet_inv
 Proof.
-32339
+32353
 nb = 20
 intros.
 assert(Col A' B C').
@@ -34483,7 +34497,7 @@ ColR.
 Qed.
 l13_10_aux3
 Proof.
-32494
+32508
 nb = 152
     intros.
     assert(A <> O).
@@ -34570,7 +34584,7 @@ ColR.
 Qed.
 l13_10_aux4
 Proof.
-32579
+32593
 nb = 82
     intros.
     assert(A <> O).
@@ -34707,7 +34721,7 @@ ColR.
 Qed.
 l13_10_aux5
 Proof.
-32714
+32728
 nb = 132
     intros.
     assert(A' <> O).
@@ -34735,7 +34749,7 @@ nb = 132
 Qed.
 per_per_perp
 Proof.
-32740
+32754
 nb = 23
     intros.
     induction H1.
@@ -34765,7 +34779,7 @@ nb = 23
 Qed.
 l13_10
 Proof.
-32768
+32782
 nb = 25
     intros.
     assert(HH8:= H8).
@@ -35416,7 +35430,7 @@ nb = 25
 Qed.
 par_perp2
 Proof.
-33417
+33431
 nb = 646
     intros.
     apply par_distincts in H.
@@ -35435,7 +35449,7 @@ nb = 646
 Qed.
 l13_11
 Proof.
-33434
+33448
 nb = 14
     intros.
     assert(HH:=par_perp2 B C' C B' O H8).
@@ -35446,7 +35460,7 @@ nb = 14
 Qed.
 l13_14
 Proof.
-33443
+33457
 nb = 6
     intros.
     assert(HP:= H).
@@ -35621,7 +35635,7 @@ nb = 6
 Qed.
 l13_15_1
 Proof.
-33616
+33630
 nb = 170
     intros.
     assert(~Col B A' B').
@@ -36244,7 +36258,7 @@ nb = 170
               Qed.
 l13_15_2_aux
 Proof.
-34237
+34251
 nb = 618
     intros.
     assert(~Col O A B /\ ~Col O B C /\ ~Col O A C).
@@ -36431,7 +36445,7 @@ nb = 618
 Qed.
 l13_15_2
 Proof.
-34422
+34436
 nb = 182
     intros.
     induction(Par_dec B C B' C').
@@ -36527,7 +36541,7 @@ nb = 182
 Qed.
 l13_15
 Proof.
-34516
+34530
 nb = 91
     intros.
     induction(Par_dec O B A C).
@@ -36536,7 +36550,7 @@ nb = 91
 Qed.
 l13_15_par
 Proof.
-34523
+34537
 nb = 4
     intros.
     assert(Plg B' A' A B).
@@ -36614,7 +36628,7 @@ nb = 4
 Qed.
 l13_18_2
 Proof.
-34599
+34613
 nb = 73
     intros.
     spliter.
@@ -36746,7 +36760,7 @@ nb = 73
 Qed.
 l13_18_3
 Proof.
-34729
+34743
 nb = 127
     intros.
     spliter.
@@ -36862,7 +36876,7 @@ nb = 127
 Qed.
 l13_18
 Proof.
-34843
+34857
 nb = 111
     intros.
     spliter.
@@ -36879,7 +36893,7 @@ nb = 111
 Qed.
 l13_19_aux
 Proof.
-34858
+34872
 nb = 12
     intros.
     assert(HH:= not_par_inter_exists A B C D H16).
@@ -37067,7 +37081,7 @@ nb = 12
 Qed.
 l13_19
 Proof.
-35044
+35058
 nb = 183
     intros.
     induction (eq_dec_points A A').
@@ -37178,7 +37192,7 @@ nb = 183
 Qed.
 l13_19_par_aux
 Proof.
-35153
+35167
 nb = 106
     intros.
     assert(HH := not_par_inter_exists A B C D H17).
@@ -37537,7 +37551,7 @@ nb = 106
 Qed.
 l13_19_par
 Proof.
-35510
+35524
 nb = 354
     intros.
     induction(eq_dec_points A C).
@@ -37688,7 +37702,7 @@ nb = 354
 Qed.
 Pj_exists
 Proof.
-35659
+35673
 nb = 146
     intros.
     unfold Pj in *.
@@ -37705,7 +37719,7 @@ nb = 146
 Qed.
 sum_to_sump
 Proof.
-35674
+35688
 nb = 12
     intros.
     unfold Sum in H.
@@ -37795,7 +37809,7 @@ nb = 12
 Qed.
 sump_to_sum
 Proof.
-35762
+35776
 nb = 85
     intros.
     unfold Sump in H.
@@ -37852,7 +37866,7 @@ nb = 85
 Qed.
 project_col_project
 Proof.
-35817
+35831
 nb = 52
     intros.
     unfold Proj in *.
@@ -37866,7 +37880,7 @@ nb = 52
 Qed.
 project_trivial
 Proof.
-35829
+35843
 nb = 9
     intros.
     unfold Proj.
@@ -37874,7 +37888,7 @@ nb = 9
 Qed.
 pj_col_project
 Proof.
-35835
+35849
 nb = 3
     intros.
     unfold Pj in H3.
@@ -37889,7 +37903,7 @@ nb = 3
 Qed.
 sum_exists
 Proof.
-35848
+35862
 nb = 10
     intros.
     assert(NC:= grid_ok).
@@ -38101,7 +38115,7 @@ nb = 10
 Qed.
 sum_uniqueness
 Proof.
-36058
+36072
 nb = 207
     intros.
     apply sum_to_sump in H.
@@ -38143,7 +38157,7 @@ nb = 207
 Qed.
 opp_exists
 Proof.
-36098
+36112
 nb = 37
     intros.
     assert(NC:= grid_ok).
@@ -38369,7 +38383,7 @@ nb = 37
 Qed.
 opp0
 Proof.
-36322
+36336
 nb = 221
     assert(NC:=grid_ok).
     assert(O <> E' /\ E <> E').
@@ -38418,7 +38432,7 @@ nb = 221
 Qed.
 pj_trivial
 Proof.
-36369
+36383
 nb = 44
     intros.
     unfold Pj.
@@ -38427,7 +38441,7 @@ nb = 44
 Qed.
 sum_O_O
 Proof.
-36376
+36390
 nb = 4
     unfold Sum.
     assert(O <> E' /\ E <> E').
@@ -38443,7 +38457,7 @@ nb = 4
 Qed.
 sum_A_O
 Proof.
-36390
+36404
 nb = 11
     intros.
     unfold Sum.
@@ -38506,7 +38520,7 @@ nb = 11
 Qed.
 sum_O_B
 Proof.
-36451
+36465
 nb = 58
     intros.
     induction(eq_dec_points B O).
@@ -38541,7 +38555,7 @@ nb = 58
 Qed.
 opp0_uniqueness
 Proof.
-36484
+36498
 nb = 30
     intros.
     assert(NC:= grid_ok).
@@ -38595,7 +38609,7 @@ nb = 30
 Qed.
 proj_pars
 Proof.
-36536
+36550
 nb = 49
     intros.
     unfold Par_strict.
@@ -38634,7 +38648,7 @@ nb = 49
 Qed.
 proj_col
 Proof.
-36573
+36587
 nb = 34
     intros.
     assert(HH:=grid_ok).
@@ -38652,7 +38666,7 @@ nb = 34
 Qed.
 grid_not_par
 Proof.
-36589
+36603
 nb = 13
     repeat split.
       intro.
@@ -38693,7 +38707,7 @@ nb = 13
 Qed.
 proj_id
 Proof.
-36628
+36642
 nb = 36
     intros.
     assert(HH:=grid_not_par).
@@ -38719,7 +38733,7 @@ nb = 36
 Qed.
 sum_O_B_eq
 Proof.
-36652
+36666
 nb = 21
     intros.
     assert (HS:=H).
@@ -38732,7 +38746,7 @@ nb = 21
 Qed.
 sum_A_O_eq
 Proof.
-36663
+36677
 nb = 8
     intros.
     assert (HS:=H).
@@ -38745,7 +38759,7 @@ nb = 8
 Qed.
 sum_par_strict
 Proof.
-36674
+36688
 nb = 8
     intros.
     assert(Sum O E E' A B C).
@@ -38829,7 +38843,7 @@ nb = 8
 Qed.
 sum_A_B_A
 Proof.
-36756
+36770
 nb = 79
     intros.
     unfold Sum in H.
@@ -38911,7 +38925,7 @@ nb = 79
 Qed.
 sum_A_B_B
 Proof.
-36836
+36850
 nb = 77
     intros.
     unfold Sum in H.
@@ -38961,7 +38975,7 @@ nb = 77
 Qed.
 sum_uniquenessB
 Proof.
-36884
+36898
 nb = 45
     intros.
     induction (eq_dec_points A O).
@@ -39126,7 +39140,7 @@ nb = 45
 Qed.
 sum_uniquenessA
 Proof.
-37047
+37061
 nb = 160
     intros.
     induction (eq_dec_points B O).
@@ -39338,7 +39352,7 @@ nb = 160
 Qed.
 sum_B_null
 Proof.
-37257
+37271
 nb = 207
     intros.
     assert(HS:=H).
@@ -39351,7 +39365,7 @@ nb = 207
 Qed.
 sum_A_null
 Proof.
-37268
+37282
 nb = 8
     intros.
     assert(HS:=H).
@@ -39364,7 +39378,7 @@ nb = 8
 Qed.
 sum_plg
 Proof.
-37279
+37293
 nb = 8
     intros.
     assert(HS:=H).
@@ -39519,7 +39533,7 @@ nb = 8
 Qed.
 sum_cong
 Proof.
-37432
+37446
 nb = 150
     intros.
     induction(eq_dec_points A O).
@@ -39565,7 +39579,7 @@ nb = 150
 Qed.
 sum_cong2
 Proof.
-37476
+37490
 nb = 41
 intros.
 apply sum_cong in H.
@@ -39575,7 +39589,7 @@ assumption.
 Qed.
 sum_comm
 Proof.
-37484
+37498
 nb = 5
     intros.
     induction (eq_dec_points B O).
@@ -39774,7 +39788,7 @@ nb = 5
 Qed.
 cong_sum
 Proof.
-37681
+37695
 nb = 194
     intros A B C.
     intro Hor.
@@ -39977,7 +39991,7 @@ nb = 194
 Qed.
 sum_iff_cong
 Proof.
-37882
+37896
 nb = 198
 intros.
 split.
@@ -40001,7 +40015,7 @@ intuition.
 Qed.
 opp_comm
 Proof.
-37904
+37918
 nb = 19
     intros.
     unfold Opp in *.
@@ -40010,7 +40024,7 @@ nb = 19
 Qed.
 opp_uniqueness
 Proof.
-37911
+37925
 nb = 4
     intros.
     unfold Opp in *.
@@ -40085,7 +40099,7 @@ nb = 4
 Qed.
 pj_uniqueness
 Proof.
-37984
+37998
 nb = 70
     intros.
     unfold Pj in *.
@@ -40132,7 +40146,7 @@ nb = 70
 Qed.
 pj_right_comm
 Proof.
-38029
+38043
 nb = 42
     intros.
     unfold Pj in *.
@@ -40144,7 +40158,7 @@ nb = 42
 Qed.
 pj_left_comm
 Proof.
-38039
+38053
 nb = 7
     intros.
     unfold Pj in *.
@@ -40156,7 +40170,7 @@ nb = 7
 Qed.
 pj_comm
 Proof.
-38049
+38063
 nb = 7
     intros.
     apply pj_left_comm.
@@ -40165,7 +40179,7 @@ nb = 7
 Qed.
 proj_preserves_sum
 Proof.
-38056
+38070
 nb = 4
     intros.
     assert(HH:= H).
@@ -40317,7 +40331,7 @@ nb = 4
 Qed.
 sum_assoc_1
 Proof.
-38206
+38220
 nb = 147
     intros.
     assert(HS1:=H).
@@ -40547,7 +40561,7 @@ nb = 147
 Qed.
 sum_assoc_2
 Proof.
-38434
+38448
 nb = 225
     intros.
     assert(HS1:=H).
@@ -40568,7 +40582,7 @@ nb = 225
 Qed.
 sum_assoc
 Proof.
-38453
+38467
 nb = 16
     intros.
     split; intro.
@@ -40577,7 +40591,7 @@ nb = 16
 Qed.
 sum_y_axis_change
 Proof.
-38460
+38474
 nb = 4
     intros.
     assert(HS:= H).
@@ -40704,7 +40718,7 @@ nb = 4
 Qed.
 sum_x_axis_unit_change
 Proof.
-38585
+38599
 nb = 122
     intros.
     induction (eq_dec_points U E).
@@ -40842,7 +40856,7 @@ nb = 122
 Qed.
 change_grid_sum_0
 Proof.
-38721
+38735
 nb = 133
     intros.
     assert(HS:= H6).
@@ -40915,7 +40929,7 @@ nb = 133
 Qed.
 change_grid_sum
 Proof.
-38792
+38806
 nb = 68
     intros.
     induction(eq_dec_points A O).
@@ -41077,7 +41091,7 @@ nb = 68
 Qed.
 double_null_null
 Proof.
-38952
+38966
 nb = 157
     intros.
     induction (eq_dec_points A O).
@@ -41095,7 +41109,7 @@ nb = 157
 Qed.
 not_null_double_not_null
 Proof.
-38968
+38982
 nb = 13
     intros.
     intro.
@@ -41105,7 +41119,7 @@ nb = 13
 Qed.
 double_not_null_not_nul
 Proof.
-38976
+38990
 nb = 5
     intros.
     intro.
@@ -41121,7 +41135,7 @@ nb = 5
 Qed.
 diff_ar2
 Proof.
-38990
+39004
 nb = 11
     intros.
     unfold Diff in H.
@@ -41135,7 +41149,7 @@ nb = 11
 Qed.
 diff_null
 Proof.
-39002
+39016
 nb = 9
     intros.
     unfold Diff.
@@ -41148,7 +41162,7 @@ nb = 9
 Qed.
 diff_exists
 Proof.
-39013
+39027
 nb = 8
     intros.
     assert(Hop:=opp_exists O E E' H B H1).
@@ -41168,7 +41182,7 @@ nb = 8
 Qed.
 diff_uniqueness
 Proof.
-39031
+39045
 nb = 15
     intros.
     assert(Ar2 O E E' A B D1).
@@ -41185,7 +41199,7 @@ nb = 15
 Qed.
 sum_ar2
 Proof.
-39046
+39060
 nb = 12
     intros.
     unfold Sum in H.
@@ -41193,7 +41207,7 @@ nb = 12
 Qed.
 diff_A_O
 Proof.
-39052
+39066
 nb = 3
     intros.
     unfold Diff.
@@ -41205,7 +41219,7 @@ nb = 3
 Qed.
 diff_O_A
 Proof.
-39062
+39076
 nb = 7
     intros.
     assert (Col O E A) by (unfold Opp, Sum, Ar2 in *; spliter; auto).
@@ -41219,7 +41233,7 @@ nb = 7
 Qed.
 diff_O_A_opp
 Proof.
-39074
+39088
 nb = 9
     intros.
     assert(Ar2 O E E' O A mA).
@@ -41240,7 +41254,7 @@ nb = 9
 Qed.
 diff_uniquenessA
 Proof.
-39093
+39107
 nb = 16
     intros.
     assert(Ar2 O E E' A B C).
@@ -41260,7 +41274,7 @@ nb = 16
 Qed.
 diff_uniquenessB
 Proof.
-39111
+39125
 nb = 15
     intros.
     assert(Ar2 O E E' A B C).
@@ -41280,7 +41294,7 @@ nb = 15
 Qed.
 diff_null_eq
 Proof.
-39129
+39143
 nb = 15
     intros.
     assert(Ar2 O E E' A B O).
@@ -41294,7 +41308,7 @@ nb = 15
 Qed.
 midpoint_opp:
 Proof.
-39141
+39155
 nb = 9
     intros.
     unfold Ar2.
@@ -41317,7 +41331,7 @@ nb = 9
 Qed.
 sum_diff
 Proof.
-39162
+39176
 nb = 18
     intros.
     assert(Ar2 O E E' A B S).
@@ -41387,7 +41401,7 @@ nb = 18
 Qed.
 diff_sum
 Proof.
-39230
+39244
 nb = 65
 intros.
 assert(Ar2 O E E' S A B).
@@ -41457,7 +41471,7 @@ tauto.
 Qed.
 diff_opp
 Proof.
-39298
+39312
 nb = 65
     intros.
     assert(Ar2 O E E' A B AmB).
@@ -41531,7 +41545,7 @@ nb = 65
 Qed.
 sum_stable
 Proof.
-39370
+39384
 nb = 69
     intros.
     subst B.
@@ -41539,7 +41553,7 @@ nb = 69
 Qed.
 diff_stable
 Proof.
-39376
+39390
 nb = 3
     intros.
     subst B.
@@ -41547,7 +41561,7 @@ nb = 3
 Qed.
 plg_to_sum
 Proof.
-39382
+39396
 nb = 3
     intros.
     induction(eq_dec_points A B).
@@ -41577,7 +41591,7 @@ nb = 3
 Qed.
 opp_midpoint
 Proof.
-39410
+39424
 nb = 25
     intros.
     unfold Opp in H.
@@ -41609,7 +41623,7 @@ nb = 25
 Qed.
 diff_to_plg
 Proof.
-39440
+39454
 nb = 27
     intros.
     assert(Ar2 O E E' B A dBA).
@@ -41646,7 +41660,7 @@ nb = 27
 Qed.
 sum3_col
 Proof.
-39475
+39489
 nb = 32
     intros.
     unfold sum3 in H.
@@ -41661,7 +41675,7 @@ nb = 32
 Qed.
 sum3_permut
 Proof.
-39488
+39502
 nb = 10
     intros.
     assert(~Col O E E' /\ Col O E A /\ Col O E B /\ Col O E C /\ Col O E S).
@@ -41683,7 +41697,7 @@ nb = 10
 Qed.
 sum3_comm_1_2
 Proof.
-39508
+39522
 nb = 17
     intros.
     assert(~Col O E E' /\ Col O E A /\ Col O E B /\ Col O E C /\ Col O E S).
@@ -41699,7 +41713,7 @@ nb = 17
 Qed.
 sum3_comm_2_3
 Proof.
-39522
+39536
 nb = 11
     intros.
     apply sum3_permut in H.
@@ -41708,7 +41722,7 @@ nb = 11
 Qed.
 sum3_exists
 Proof.
-39529
+39543
 nb = 4
     intros.
     unfold Ar2 in *.
@@ -41729,7 +41743,7 @@ nb = 4
 Qed.
 sum3_uniqueness
 Proof.
-39548
+39562
 nb = 16
     intros.
     unfold sum3 in H.
@@ -41743,7 +41757,7 @@ nb = 16
 Qed.
 sum4_col
 Proof.
-39560
+39574
 nb = 9
     intros.
     unfold Sum4 in H.
@@ -41757,7 +41771,7 @@ nb = 9
 Qed.
 sum22_col
 Proof.
-39572
+39586
 nb = 9
     intros.
     unfold sum22 in H.
@@ -41775,7 +41789,7 @@ nb = 9
 Qed.
 sum_to_sum3
 Proof.
-39588
+39602
 nb = 13
     intros.
     unfold sum3.
@@ -41784,7 +41798,7 @@ nb = 13
 Qed.
 sum3_to_sum4
 Proof.
-39595
+39609
 nb = 4
     intros.
     assert(~Col O E E' /\ Col O E A /\ Col O E B /\ Col O E C /\ Col O E ABC).
@@ -41800,7 +41814,7 @@ nb = 4
 Qed.
 sum_A_exists
 Proof.
-39609
+39623
 nb = 11
     intros.
     unfold Ar2 in *.
@@ -41813,7 +41827,7 @@ nb = 11
 Qed.
 sum_B_exists
 Proof.
-39620
+39634
 nb = 8
     intros.
     unfold Ar2 in *.
@@ -41826,7 +41840,7 @@ nb = 8
 Qed.
 sum4_equiv
 Proof.
-39631
+39645
 nb = 8
     intros.
     split.
@@ -41889,7 +41903,7 @@ nb = 8
 Qed.
 sum4_permut:
 Proof.
-39692
+39706
 nb = 58
     intros.
     assert( ~Col O E E' /\ Col O E A /\ Col O E B /\ Col O E C /\ Col O E D /\ Col O E S).
@@ -41948,7 +41962,7 @@ nb = 58
 Qed.
 sum22_permut
 Proof.
-39749
+39763
 nb = 54
     intros.
     assert(HH:= sum4_equiv O E E' A B C D S).
@@ -41964,7 +41978,7 @@ nb = 54
 Qed.
 sum4_comm
 Proof.
-39763
+39777
 nb = 11
     intros.
     assert(~Col O E E' /\ Col O E A /\ Col O E B /\ Col O E C /\ Col O E D /\ Col O E S).
@@ -41988,7 +42002,7 @@ nb = 11
 Qed.
 sum22_comm
 Proof.
-39785
+39799
 nb = 19
     intros.
     assert(~Col O E E' /\ Col O E A /\ Col O E B /\ Col O E C /\ Col O E D /\ Col O E S).
@@ -42005,7 +42019,7 @@ nb = 19
 Qed.
 sum_abcd
 Proof.
-39800
+39814
 nb = 12
     intros.
     assert(Ar2 O E E' A B AB).
@@ -42041,7 +42055,7 @@ nb = 12
 Qed.
 sum_diff_diff_a
 Proof.
-39834
+39848
 nb = 31
     intros.
     assert(Ar2 O E E' B A dBA).
@@ -42087,7 +42101,7 @@ nb = 31
 Qed.
 sum_diff_diff_b
 Proof.
-39878
+39892
 nb = 41
     intros.
     assert(Ar2 O E E' B A dBA).
@@ -42127,7 +42141,7 @@ nb = 41
 Qed.
 sum_diff2_diff_sum2_a
 Proof.
-39916
+39930
 nb = 35
     intros.
     assert(Ar2 O E E' A B C).
@@ -42169,7 +42183,7 @@ nb = 35
 Qed.
 sum_diff2_diff_sum2_b
 Proof.
-39956
+39970
 nb = 37
     intros.
     assert(Ar2 O E E' A B C).
@@ -42195,14 +42209,14 @@ nb = 37
 Qed.
 sum_opp
 Proof.
-39980
+39994
 nb = 21
 intros O E E' X MX HSum.
 apply diff_O_A_opp; apply sum_diff; auto.
 Qed.
 sum_diff_diff
 Proof.
-39985
+39999
 nb = 2
 intros O E E' AX BX CX AXMBX AXMCX BXMCX HAXMBX HAXMCX HBXMCX.
 assert (HNC : ~ Col O E E')
@@ -42245,7 +42259,7 @@ apply sum_assoc_1 with AX MBX MCX; auto.
 Qed.
 prod_to_prodp
 Proof.
-40026
+40040
 nb = 38
     intros.
     unfold Prod in H.
@@ -42301,7 +42315,7 @@ nb = 38
 Qed.
 project_pj
 Proof.
-40080
+40094
 nb = 51
     intros.
     unfold Proj in H.
@@ -42316,7 +42330,7 @@ nb = 51
 Qed.
 prodp_to_prod
 Proof.
-40093
+40107
 nb = 10
     intros.
     unfold Prodp in H.
@@ -42360,7 +42374,7 @@ nb = 10
 Qed.
 prod_exists
 Proof.
-40135
+40149
 nb = 39
     intros.
     assert(NC:=grid_ok).
@@ -42422,7 +42436,7 @@ nb = 39
 Qed.
 prod_uniqueness
 Proof.
-40195
+40209
 nb = 57
     intros.
     apply prod_to_prodp in H.
@@ -42438,7 +42452,7 @@ nb = 57
 Qed.
 prod_0_l
 Proof.
-40209
+40223
 nb = 11
     intros.
     unfold Prod.
@@ -42485,7 +42499,7 @@ nb = 11
 Qed.
 prod_0_r
 Proof.
-40254
+40268
 nb = 42
     intros.
     unfold Prod.
@@ -42496,7 +42510,7 @@ nb = 42
 Qed.
 prod_1_l
 Proof.
-40263
+40277
 nb = 6
     intros.
     unfold Prod.
@@ -42526,7 +42540,7 @@ nb = 6
 Qed.
 prod_1_r
 Proof.
-40291
+40305
 nb = 25
     intros.
     unfold Prod.
@@ -42549,7 +42563,7 @@ nb = 25
 Qed.
 inv_exists
 Proof.
-40312
+40326
 nb = 18
     intros.
     unfold Prod.
@@ -42622,7 +42636,7 @@ nb = 18
 Qed.
 prod_null
 Proof.
-40383
+40397
 nb = 68
     intros.
     unfold Prod in H.
@@ -42683,7 +42697,7 @@ nb = 68
 Qed.
 prod_y_axis_change
 Proof.
-40442
+40456
 nb = 56
     intros.
     assert(HP:=H).
@@ -42977,7 +42991,7 @@ nb = 56
 Qed.
 proj_preserves_prod
 Proof.
-40734
+40748
 nb = 289
     intros.
     assert(Ar2 O E E' A B C).
@@ -43123,7 +43137,7 @@ nb = 289
 Qed.
 prod_assoc1
 Proof.
-40878
+40892
 nb = 141
     intros.
     assert(Ar2 O E E' A B AB).
@@ -43293,7 +43307,7 @@ nb = 141
 Qed.
 prod_assoc2
 Proof.
-41046
+41060
 nb = 165
     intros.
     assert(Ar2 O E E' A B AB).
@@ -43479,7 +43493,7 @@ nb = 165
 Qed.
 prod_assoc
 Proof.
-41230
+41244
 nb = 181
     intros.
     split.
@@ -43490,7 +43504,7 @@ nb = 181
 Qed.
 prod_comm
 Proof.
-41239
+41253
 nb = 6
     intros.
     assert(Ar2 O E E' A B C).
@@ -43586,7 +43600,7 @@ nb = 6
 Qed.
 prod_O_l_eq
 Proof.
-41333
+41347
 nb = 91
     intros.
     assert(HH:=H).
@@ -43599,7 +43613,7 @@ nb = 91
 Qed.
 prod_O_r_eq
 Proof.
-41344
+41358
 nb = 8
     intros.
     assert(HH:=H).
@@ -43612,7 +43626,7 @@ nb = 8
 Qed.
 prod_uniquenessA
 Proof.
-41355
+41369
 nb = 8
     intros.
     assert(HP1:= H0).
@@ -43690,7 +43704,7 @@ nb = 8
 Qed.
 prod_uniquenessB
 Proof.
-41431
+41445
 nb = 73
     intros.
     apply prod_comm in H0.
@@ -43699,7 +43713,7 @@ nb = 73
 Qed.
 distr_l
 Proof.
-41438
+41452
 nb = 4
     intros.
     assert(HS:=H).
@@ -43765,7 +43779,7 @@ nb = 4
 Qed.
 distr_r
 Proof.
-41502
+41516
 nb = 61
     intros.
     apply prod_comm in H0.
@@ -43775,7 +43789,7 @@ nb = 61
 Qed.
 prod_1_l_eq
 Proof.
-41510
+41524
 nb = 5
     intros.
     assert(HP:=H).
@@ -43792,7 +43806,7 @@ nb = 5
 Qed.
 prod_1_r_eq
 Proof.
-41525
+41539
 nb = 12
     intros.
     apply prod_comm in H.
@@ -43801,7 +43815,7 @@ nb = 12
 Qed.
 change_grid_prod_l_O
 Proof.
-41532
+41546
 nb = 4
     intros.
     assert(HP:= H6).
@@ -43884,7 +43898,7 @@ nb = 4
 Qed.
 change_grid_prod1
 Proof.
-41613
+41627
 nb = 78
     intros.
     induction (eq_dec_points B O).
@@ -43990,7 +44004,7 @@ nb = 78
 Qed.
 change_grid_prod
 Proof.
-41717
+41731
 nb = 101
     intros.
     induction (eq_dec_points A O).
@@ -44579,7 +44593,7 @@ nb = 101
 Qed.
 prod_sym
 Proof.
-42304
+42318
 nb = 584
     intros.
     apply (prod_comm O E E').
@@ -44587,7 +44601,7 @@ nb = 584
 Qed.
 l14_31_1
 Proof.
-42310
+42324
 nb = 3
     intros.
     ex_and H1 X.
@@ -44804,7 +44818,7 @@ nb = 3
 Qed.
 l14_31_2
 Proof.
-42525
+42539
 nb = 212
     intros.
     unfold Ar2_4 in H.
@@ -45006,7 +45020,7 @@ nb = 212
 Qed.
 prod_x_axis_unit_change
 Proof.
-42725
+42739
 nb = 197
     intros.
     ex_and H2 X.
@@ -45349,7 +45363,7 @@ nb = 197
 Qed.
 opp_prod
 Proof.
-43066
+43080
 nb = 338
 intros O E E' ME X MX HOpp1 HOpp2.
 assert (HNC : ~ Col O E E')
@@ -45372,7 +45386,7 @@ treat_equalities; auto.
 Qed.
 distr_l_diff
 Proof.
-43087
+43101
 nb = 18
 intros O E E' A B C BMC AB AC ABMC HBMC HAB HAC HABMC.
 apply diff_sum in HBMC; apply sum_diff.
@@ -45380,7 +45394,7 @@ apply distr_l with A C BMC B; auto.
 Qed.
 diff_of_squares
 Proof.
-43093
+43107
 nb = 3
 intros O E E' A B A2 B2 A2MB2 APB AMB F HA2 HB2 HA2MB2 HAPB HAMB HF.
 assert (HNC : ~ Col O E E')
@@ -45426,7 +45440,7 @@ apply sum_diff_diff_b with AB BAMB2 A2MAB; auto.
 Qed.
 eq_squares_eq_or_opp
 Proof.
-43137
+43151
 nb = 41
 intros O E E' A B A2 HA2 HB2.
 assert (HNC : ~ Col O E E')
@@ -45450,14 +45464,14 @@ treat_equalities; apply prod_null in H; induction H; treat_equalities;
 Qed.
 diff_2_prod
 Proof.
-43159
+43173
 nb = 19
 intros O E E' A B AMB BMA ME HOpp HAMB HBMA.
 apply opp_prod; auto; apply diff_opp with A B; auto.
 Qed.
 l14_36_a
 Proof.
-43164
+43178
 nb = 2
     intros.
     assert(HS:=H).
@@ -45510,7 +45524,7 @@ nb = 2
 Qed.
 l14_36_b
 Proof.
-43215
+43229
 nb = 48
     intros.
     assert(HH:= l14_36_a O E E' A B C H H0).
@@ -45539,7 +45553,7 @@ nb = 48
 Qed.
 O_not_positive
 Proof.
-43242
+43256
 nb = 24
     intros.
     unfold Ps.
@@ -45548,7 +45562,7 @@ nb = 24
 Qed.
 pos_null_neg
 Proof.
-43249
+43263
 nb = 4
     intros.
     unfold Opp in H.
@@ -45606,7 +45620,7 @@ nb = 4
 Qed.
 sum_pos_pos
 Proof.
-43305
+43319
 nb = 53
     intros.
     unfold Ps in *.
@@ -45625,7 +45639,7 @@ nb = 53
 Qed.
 prod_pos_pos
 Proof.
-43322
+43336
 nb = 14
     intros.
     assert(HP:= H1).
@@ -45705,7 +45719,7 @@ nb = 14
 Qed.
 pos_not_neg
 Proof.
-43400
+43414
 nb = 75
     intros.
     intro.
@@ -45721,7 +45735,7 @@ nb = 75
 Qed.
 neg_not_pos
 Proof.
-43414
+43428
 nb = 11
     intros.
     intro.
@@ -45737,7 +45751,7 @@ nb = 11
 Qed.
 opp_pos_neg
 Proof.
-43428
+43442
 nb = 11
     intros.
     assert(HH:=opp_midpoint O E E' A MA H0).
@@ -45757,7 +45771,7 @@ nb = 11
 Qed.
 opp_neg_pos
 Proof.
-43446
+43460
 nb = 15
     intros.
     assert(HH:=opp_midpoint O E E' A MA H0).
@@ -45776,7 +45790,7 @@ nb = 15
 Qed.
 ltP_ar2
 Proof.
-43463
+43477
 nb = 14
     intros.
     unfold LtP in H.
@@ -45788,7 +45802,7 @@ nb = 14
 Qed.
 ltP_neq
 Proof.
-43473
+43487
 nb = 7
     intros.
     assert(HH:=ltP_ar2 O E E' A B H).
@@ -45809,7 +45823,7 @@ nb = 7
 Qed.
 leP_refl
 Proof.
-43492
+43506
 nb = 16
     intros.
     right.
@@ -45817,7 +45831,7 @@ nb = 16
 Qed.
 ltP_sum_pos
 Proof.
-43498
+43512
 nb = 3
     intros.
     unfold LtP.
@@ -45828,7 +45842,7 @@ nb = 3
 Qed.
 pos_opp_neg
 Proof.
-43507
+43521
 nb = 6
     intros.
     assert(Ar2 O E E' mA A O).
@@ -45855,7 +45869,7 @@ nb = 6
 Qed.
 diff_pos_diff_neg
 Proof.
-43532
+43546
 nb = 22
     intros.
     assert(Opp O E E' AmB BmA).
@@ -45864,7 +45878,7 @@ nb = 22
 Qed.
 not_pos_and_neg
 Proof.
-43539
+43553
 nb = 4
     intros.
     intro.
@@ -45882,7 +45896,7 @@ nb = 4
 Qed.
 leP_asym
 Proof.
-43555
+43569
 nb = 13
     intros.
     unfold LeP in *.
@@ -45902,7 +45916,7 @@ nb = 13
 Qed.
 leP_trans
 Proof.
-43573
+43587
 nb = 15
     intros.
     unfold LeP in *.
@@ -45936,7 +45950,7 @@ nb = 15
 Qed.
 leP_sum_leP
 Proof.
-43605
+43619
 nb = 29
     intros.
     unfold LeP in *.
@@ -45996,7 +46010,7 @@ nb = 29
 Qed.
 square_pos
 Proof.
-43663
+43677
 nb = 55
 intros O E E' A A2 HDiff HA2.
 assert (HNC : ~ Col O E E') by (unfold Prod, Ar2 in *; spliter; Col).
@@ -46012,7 +46026,7 @@ apply opp_comm; Col.
 Qed.
 col_pos_or_neg
 Proof.
-43677
+43691
 nb = 11
 intros O E X HOE HOX HCol.
 unfold Ps, Ng, Out.
@@ -46020,7 +46034,7 @@ unfold Col in HCol; intuition.
 Qed.
 ltP_neg
 Proof.
-43683
+43697
 nb = 3
 intros O E E' A HLt.
 destruct HLt as [MA [HDiff HPs]].
@@ -46030,7 +46044,7 @@ unfold Diff, Opp, Sum, Ar2 in HDiff; destruct HDiff as [MB HXMY]; spliter; Col.
 Qed.
 ps_le
 Proof.
-43691
+43705
 nb = 5
 intros O E E' X HNC HBet.
 elim (eq_dec_points O X); intro HOX; [right; auto|left].
@@ -46039,7 +46053,7 @@ assert_diffs; repeat (split; Col).
 Qed.
 lt_diff_ps
 Proof.
-43698
+43712
 nb = 4
 intros O E E' X Y XMY HCol1 HCol2 HLt HXMY.
 destruct HLt as [XMY' [HDiff HPs]].
@@ -46047,7 +46061,7 @@ apply (diff_uniqueness _ _ _ _ _ XMY) in HDiff; treat_equalities; auto.
 Qed.
 col_2_le_or_ge
 Proof.
-43704
+43718
 nb = 3
 intros O E E' A B HNC HColA HColB.
 assert (HDiff1 : O <> E) by (assert_diffs; auto).
@@ -46064,7 +46078,7 @@ apply diff_opp with B A; auto.
 Qed.
 compatibility_of_sum_with_order
 Proof.
-43719
+43733
 nb = 12
 intros O E E' A B C APC BPC HLe HAPC HBPC.
 elim HLe; clear HLe; intro HLe.
@@ -46086,7 +46100,7 @@ elim HLe; clear HLe; intro HLe.
 Qed.
 compatibility_of_prod_with_order
 Proof.
-43739
+43753
 nb = 17
 intros O E E' A B AB HLeA HLeB HAB.
 elim HLeA; clear HLeA; intro HLeA;
@@ -46107,7 +46121,7 @@ treat_equalities; apply prod_pos_pos with E' A B; auto.
 Qed.
 pos_inv_pos
 Proof.
-43758
+43772
 nb = 16
 intros O E E' A IA HOA HLe HIA.
 elim HLe; clear HLe; intro HLe; treat_equalities; [|intuition].
@@ -46147,7 +46161,7 @@ elim HElim; clear HElim; intro HPs2; treat_equalities.
 Qed.
 le_pos_prod_le
 Proof.
-43796
+43810
 nb = 35
 intros O E E' A B C AC BC HALeB HPsC HAC HBC.
 assert (HNC : ~ Col O E E') by (unfold Prod, Ar2 in *; spliter; Col).
@@ -46181,7 +46195,7 @@ apply sum_comm; auto.
 Qed.
 bet_lt12_le23
 Proof.
-43828
+43842
 nb = 29
 intros O E E' A B C HBet HLt.
 assert (HNC : ~ Col O E E')
@@ -47235,7 +47249,7 @@ elim (eq_dec_points O C); intro HDiff6; treat_equalities;
 Qed.
 bet_lt12_le13
 Proof.
-44880
+44894
 nb = 1049
 intros O E E' A B C HBet HLt.
 apply leP_trans with B; [left; auto|].
@@ -47243,7 +47257,7 @@ apply bet_lt12_le23 with A; auto.
 Qed.
 bet_lt21_le32
 Proof.
-44886
+44900
 nb = 3
 intros O E E' A B C HBet HLt.
 assert (HNC : ~ Col O E E')
@@ -47336,7 +47350,7 @@ treat_equalities; apply diff_null_eq in HBMC; treat_equalities; intuition.
 Qed.
 bet_lt21_le31
 Proof.
-44977
+44991
 nb = 88
 intros O E E' A B C HBet HLt.
 apply leP_trans with B; [|left; auto].
@@ -47344,7 +47358,7 @@ apply bet_lt21_le32 with A; auto.
 Qed.
 opp_2_le_le
 Proof.
-44983
+44997
 nb = 3
 intros O E E' A MA B MB HOppA HOppB HLe.
 assert (HNC : ~ Col O E E') by (unfold Opp, Sum, Ar2 in *; spliter; Col).
@@ -47361,7 +47375,7 @@ eapply compatibility_of_sum_with_order in HLe; [|apply HMB|apply HMA]; auto.
 Qed.
 diff_2_le_le
 Proof.
-44998
+45012
 nb = 12
 intros O E E' A B C AMC BMC HAMC HBMC HLe.
 assert (HNC : ~ Col O E E')
@@ -47387,7 +47401,7 @@ apply compatibility_of_sum_with_order with A B MC; auto.
 Qed.
 length_pos
 Proof.
-45022
+45036
 nb = 21
 intros.
 unfold Length in *.
@@ -47395,7 +47409,7 @@ tauto.
 Qed.
 length_id_1
 Proof.
-45028
+45042
 nb = 3
 intros.
 unfold Length in *.
@@ -47405,7 +47419,7 @@ reflexivity.
 Qed.
 length_id_2
 Proof.
-45036
+45050
 nb = 5
 intros.
 unfold Length.
@@ -47418,7 +47432,7 @@ Cong.
 Qed.
 length_id
 Proof.
-45047
+45061
 nb = 8
 intros.
 split.
@@ -47434,7 +47448,7 @@ assumption.
 Qed.
 length_eq_cong_1
 Proof.
-45061
+45075
 nb = 11
 intros.
 unfold Length in *.
@@ -47443,7 +47457,7 @@ apply cong_transitivity with O AB;Cong.
 Qed.
 length_eq_cong_2
 Proof.
-45068
+45082
 nb = 4
 intros.
 unfold Length in *.
@@ -47453,7 +47467,7 @@ apply cong_transitivity with A B;Cong.
 Qed.
 ltP_pos
 Proof.
-45076
+45090
 nb = 5
 intros.
 unfold LtP in H.
@@ -47476,7 +47490,7 @@ assumption.
 Qed.
 bet_leP
 Proof.
-45097
+45111
 nb = 18
 intros.
 unfold LeP in *.
@@ -47597,7 +47611,7 @@ right; auto.
 Qed.
 leP_bet
 Proof.
-45216
+45230
 nb = 116
 intros.
 unfold LeP in H.
@@ -47628,7 +47642,7 @@ apply between_trivial.
 Qed.
 length_Ar2
 Proof.
-45245
+45259
 nb = 26
 intros.
 unfold Length in H.
@@ -47651,7 +47665,7 @@ right; auto.
 Qed.
 length_leP_le_1
 Proof.
-45266
+45280
 nb = 18
 intros.
 unfold Length in *.
@@ -47683,7 +47697,7 @@ apply (cong_transitivity _ _ A B); Cong.
 Qed.
 length_leP_le_2
 Proof.
-45296
+45310
 nb = 27
 intros.
 
@@ -47813,7 +47827,7 @@ tauto.
 Qed.
 l15_3
 Proof.
-45424
+45438
 nb = 125
 intros.
 assert(Ar2 O E E' A B C).
@@ -47836,7 +47850,7 @@ Cong.
 Qed.
 length_uniqueness
 Proof.
-45445
+45459
 nb = 18
 intros.
 assert(Col O E AB /\ ~ Col O E E' \/ AB = O).
@@ -47916,7 +47930,7 @@ reflexivity.
 Qed.
 length_cong
 Proof.
-45523
+45537
 nb = 75
 intros.
 unfold Length in H.
@@ -47925,7 +47939,7 @@ Cong.
 Qed.
 length_Ps
 Proof.
-45530
+45544
 nb = 4
 intros.
 unfold Length in H0.
@@ -47957,7 +47971,7 @@ tauto.
 Qed.
 length_not_col_null
 Proof.
-45560
+45574
 nb = 27
 intros.
 unfold Length in H0.
@@ -47976,7 +47990,7 @@ auto.
 Qed.
 triangular_equality_equiv
 Proof.
-45577
+45591
 nb = 14
 split.
 intros.
@@ -47988,7 +48002,7 @@ assumption.
 Qed.
 not_triangular_equality1
 Proof.
-45587
+45601
 nb = 7
 intros.
 intro.
@@ -48008,7 +48022,7 @@ Col.
 Qed.
 triangular_equality
 Proof.
-45605
+45619
 nb = 15
 intros O E E' A B C AB BC AC H H0 Hl1 Hl2 Hl3.
 
@@ -48368,7 +48382,7 @@ auto.
 Qed.
 length_O
 Proof.
-45963
+45977
 nb = 355
 intros.
 unfold Length.
@@ -48379,7 +48393,7 @@ Cong.
 Qed.
 triangular_equality_bis
 Proof.
-45972
+45986
 nb = 6
 intros O E E' A B C AB BC AC.
 intro HH0.
@@ -48732,7 +48746,7 @@ induction HH0; tauto.
 Qed.
 length_out
 Proof.
-46323
+46337
 nb = 348
 intros.
 unfold Length in *.
@@ -48788,7 +48802,7 @@ contradiction.
 Qed.
 image_preserves_bet1
 Proof.
-46377
+46391
 nb = 51
 intros.
 induction(eq_dec_points X Y).
@@ -48828,7 +48842,7 @@ assumption.
 Qed.
 image_preserves_col
 Proof.
-46415
+46429
 nb = 35
 intros.
 induction H.
@@ -48845,7 +48859,7 @@ apply (image_preserves_bet1 X Y C A B C' A' B'); auto.
 Qed.
 image_preserves_out
 Proof.
-46430
+46444
 nb = 12
 intros.
 unfold Out in *.
@@ -48870,7 +48884,7 @@ apply (image_preserves_bet1 X Y A C B); auto.
 Qed.
 project_preserves_out
 Proof.
-46453
+46467
 nb = 20
 intros.
 repeat split.
@@ -48972,7 +48986,7 @@ apply (project_preserves_bet P Q X Y A C B A' C' B'); assumption.
 Qed.
 conga_bet_conga
 Proof.
-46553
+46567
 nb = 97
 intros.
 assert(HH:= l11_13 A B C D E F A' D' H H4 H0 H6 H2).
@@ -48983,7 +48997,7 @@ assumption.
 Qed.
 thales
 Proof.
-46562
+46576
 nb = 6
 intros.
 induction(Col_dec O E E').
@@ -50146,7 +50160,7 @@ assumption.
 Qed.
 length_existence
 Proof.
-47723
+47737
 nb = 1158
 intros.
 assert(NEO : E <> O).
@@ -50187,7 +50201,7 @@ left; assumption.
 Qed.
 l15_7
 Proof.
-47762
+47776
 nb = 36
 intros.
 
@@ -50467,7 +50481,7 @@ assumption.
 Qed.
 l15_7_1
 Proof.
-48040
+48054
 nb = 275
 intros.
 destruct(l15_7 O E E' A B C H AB AC AH AC2 H0 H1 H2 H3 H4 H5).
@@ -50476,7 +50490,7 @@ assumption.
 Qed.
 l15_7_2
 Proof.
-48047
+48061
 nb = 4
 intros.
 destruct(l15_7 O E E' A B C H AB AC AH AC2 H0 H1 H2 H3 H4 H5).
@@ -50485,7 +50499,7 @@ assumption.
 Qed.
 length_sym
 Proof.
-48054
+48068
 nb = 4
 intros.
 unfold Length in *.
@@ -50495,7 +50509,7 @@ Cong.
 Qed.
 pythagoras
 Proof.
-48062
+48076
 nb = 5
 intros.
 assert(~Col O E E' /\ Col O E AB2 /\ Col O E AC2 /\ Col O E BC).
@@ -50590,7 +50604,7 @@ assumption.
 Qed.
 is_length_exists
 Proof.
-48155
+48169
 nb = 90
 intros O E E' X Y HNC.
 elim (eq_dec_points X Y); intro HXY;
@@ -50599,7 +50613,7 @@ destruct (length_existence O E E' X Y) as [XY HLength]; Col; exists XY; left; au
 Qed.
 grid_exchange_axes
 Proof.
-48162
+48176
 nb = 4
 intros O E S U1 U2 HCs.
 destruct HCs as [HDiff [HCong1 [HCong2 HPer]]].
@@ -50607,14 +50621,14 @@ repeat (split; Perp).
 Qed.
 Cs_not_Col
 Proof.
-48168
+48182
 nb = 3
 unfold Cs; intros O E S U1 U2 HCs.
 spliter; assert_diffs; apply per_not_col; Perp.
 Qed.
 exists_grid
 Proof.
-48173
+48187
 nb = 2
 destruct lower_dim_ex as [O [I [X HNC]]].
 assert (H : ~ Col O I X) by auto; clear HNC; rename H into HNC.
@@ -50624,7 +50638,7 @@ repeat (split; finish).
 Qed.
 exists_grid_spec
 Proof.
-48181
+48195
 nb = 5
 assert (~ Col PA PB PC) by (apply lower_dim).
 assert_diffs.
@@ -50634,7 +50648,7 @@ repeat (split; finish).
 Qed.
 coord_exchange_axes
 Proof.
-48189
+48203
 nb = 5
 intros O E S U1 U2 P X Y HCd.
 destruct HCd as [HCs [H [HPX HPY]]]; clear H.
@@ -50644,7 +50658,7 @@ split; auto.
 Qed.
 Cd_Col
 Proof.
-48197
+48211
 nb = 5
 unfold Cd; unfold Projp; intros O E S U1 U2 P X Y HCd.
 destruct HCd as [HCs [HC [[PX HPX] [PY HPY]]]]; clear HC.
@@ -50654,7 +50668,7 @@ split; [apply l4_13 with S U1 PX|apply l4_13 with S U2 PY]; Cong;
 Qed.
 exists_projp
 Proof.
-48205
+48219
 nb = 5
 intros A B P HAB.
 elim (Col_dec A B P); intro HNC; [exists P; split; Col; right|].
@@ -50663,7 +50677,7 @@ exists P'; split; Col.
 Qed.
 exists_coord
 Proof.
-48212
+48226
 nb = 4
 intros O E S U P HSU HCong.
 destruct (exists_projp S U P HSU) as [PX Hprojp].
@@ -50674,7 +50688,7 @@ exists PX; exists X; auto with cong.
 Qed.
 coordinates_of_point
 Proof.
-48221
+48235
 nb = 6
 intros O E S U1 U2 P HCs.
 assert (H := HCs); destruct H as [HDiff [HCong1 [HCong2 H]]]; clear H.
@@ -50688,7 +50702,7 @@ split; [exists PX|exists PY]; auto.
 Qed.
 point_of_coordinates_origin
 Proof.
-48233
+48247
 nb = 9
 intros O E S U1 U2 HCs.
 split; auto.
@@ -50698,7 +50712,7 @@ assert_diffs; split; exists S; repeat (split; Col; Cong).
 Qed.
 point_of_coordinates_on_an_axis
 Proof.
-48241
+48255
 nb = 5
 intros O E S U1 U2 X HCs HCol HOX.
 assert (H := HCs); destruct H as [HDiff [HCong1 [HCong2 H]]]; clear H.
@@ -50715,7 +50729,7 @@ apply perp_col0 with S U1; Col; Perp;
 Qed.
 point_of_coordinates
 Proof.
-48256
+48270
 nb = 12
 intros O E S U1 U2 X Y HCs HCol1 HCol2.
 elim (eq_dec_points O X); intro HOX; elim (eq_dec_points O Y); intro HOY;
@@ -50776,7 +50790,7 @@ split; [exists PX|exists PY]; split; Cong.
 Qed.
 eq_points_coordinates
 Proof.
-48315
+48329
 nb = 56
 intros O E S U1 U2 P1 X1 Y1 P2 X2 Y2 HCd1 HCd2.
 split; intro; spliter; treat_equalities.
@@ -50874,7 +50888,7 @@ split; intro; spliter; treat_equalities.
 Qed.
 l16_9_1
 Proof.
-48411
+48425
 nb = 93
 intros O E E' X Y XY XMY HCol1 HCol2 HXY HLe1 HXMY.
 assert (HNC : ~ Col O E E')
@@ -50899,7 +50913,7 @@ apply midpoint_opp; repeat (Col; split).
 Qed.
 length_eq_or_opp
 Proof.
-48434
+48448
 nb = 20
 intros O E E' A B L1 L2 HL1 HL2.
 assert (HNC : ~ Col O E E') by (apply diff_ar2 in HL2; unfold Ar2 in *; spliter; Col).
@@ -50915,7 +50929,7 @@ treat_equalities; auto.
 Qed.
 l16_9_2
 Proof.
-48448
+48462
 nb = 11
 intros O E E' X Y XY XMY XY2 XMY2 HCol1 HCol2 HXY HXMY HXY2 HXMY2.
 assert (HNC : ~ Col O E E')
@@ -50929,7 +50943,7 @@ apply opp_prod;auto; apply opp_comm; Col.
 Qed.
 cong_3_2_cong_4
 Proof.
-48460
+48474
 nb = 9
 intros O E I J S U X Y HOE HCol1 HCol2 HCong1 HCong4.
 destruct HCong1 as [HCong1 [HCong2 HCong3]].
@@ -50940,7 +50954,7 @@ repeat (split; Cong).
 Qed.
 cong_3_3_cong_5:
 Proof.
-48469
+48483
 nb = 6
 intros O E I J K S U X Y Z HOE HCol1 HCol2 HCol3 HCong1 HCong4 HCong7.
 destruct HCong1 as [HCong1 [HCong2 HCong3]].
@@ -50951,7 +50965,7 @@ apply l4_16 with O E S U; Col; repeat (split; Cong).
 Qed.
 square_distance_formula_aux
 Proof.
-48478
+48492
 nb = 6
 intros O E E' S U1 U2 P PX PY Q QX PXQX.
 intros HCd1 HCd2 HDiff  HNC HCol1 HCol2 HCol3 HCs HPXQX.
@@ -51141,7 +51155,7 @@ destruct H1 as [HCol5 HPerp3]; destruct H2 as [HCol6 HPerp4]; treat_equalities.
 Qed.
 square_distance_formula
 Proof.
-48666
+48680
 nb = 185
 intros O E E' S U1 U2 P Q PX PY QX QY PQ PQ2 PXMQX PYMQY PXMQX2 PYMQY2 F.
 intros HCd1 HCd2 HPQ HPQ2 HPXMQX HPXMQX2 HPYMQY HPYMQY2 HF.
@@ -51257,7 +51271,7 @@ try clear HPX; try clear HPY; try clear HQX; try clear HQY.
 Qed.
 characterization_of_congruence
 Proof.
-48780
+48794
 nb = 111
 intros O E E' S U1 U2 A AX AY B BX BY C CX CY D DX DY.
 intros AXMBX AXMBX2 AYMBY AYMBY2 AB2' CXMDX CXMDX2 CYMDY CYMDY2 CD2'.
@@ -51344,7 +51358,7 @@ split; [intro HCong|intro; treat_equalities].
 Qed.
 bet_betCood_aux
 Proof.
-48865
+48879
 nb = 82
 intros O E S U1 U2 A AX AY B BX BY C CX CY HCdA HCdB HCdC HBet.
 destruct (parallel_existence S U1 A) as [A1 [A2 [HDiff4 [HPar HCol]]]];
@@ -51398,7 +51412,7 @@ apply l4_6 with AX' BX' CX'.
 Qed.
 bet_betCood
 Proof.
-48917
+48931
 nb = 49
 intros O E S U1 U2 A AX AY B BX BY C CX CY HCdA HCdB HCdC HBet.
 split; [apply bet_betCood_aux with O E S U1 U2 A AY B BY C CY|]; auto.
@@ -51407,7 +51421,7 @@ apply coord_exchange_axes; auto.
 Qed.
 characterization_of_betweenness_aux
 Proof.
-48924
+48938
 nb = 4
 intros O E E' S U1 U2 A AX AY B BX BY C CX CY BXMAX CXMAX AB AC IAC T.
 intros HCdA HCdB HCdC HNC HColAX HColBX HColCX HColBXMAX HColCXMAX HColT.
@@ -51920,7 +51934,7 @@ elim (Col_dec A B BX''); intro HABBX''.
 Qed.
 characterization_of_betweenness
 Proof.
-49435
+49449
 nb = 508
 intros O E E' S U1 U2 A AX AY B BX BY C CX CY BXMAX BYMAY CXMAX CYMAY.
 intros HCdA HCdB HCdC HBXMAX HBYMAY HCXMAX HCYMAY.
@@ -52168,7 +52182,7 @@ split; [intro HBet|intro HT].
 Qed.
 same_abscissa_col
 Proof.
-49681
+49695
 nb = 243
 intros O E S U1 U2 A AX AY B BY C CY HCdA HCdB HCdC.
 destruct HCdA as [HCs [H [[PXA [HProjpA HCongA]] H']]]; clear H; clear H'.
@@ -52187,7 +52201,7 @@ ColR.
 Qed.
 characterization_of_collinearity
 Proof.
-49698
+49712
 nb = 14
 intros O E E' S U1 U2 A AX AY B BX BY C CX CY AXMBX AYMBY BXMCX BYMCY XProd YProd.
 intros HCdA HCdB HCdC HAXMBX HAYMBY HBXMCX HBYMCY HXProd HYProd.
@@ -53010,5 +53024,10 @@ split; intro HCol; treat_equalities.
     }
   }
 Qed.
+
+Proof.
+50535
+nb = 820
+End T16.
 
 
