@@ -1,0 +1,39 @@
+#!/bin/bash
+#Renvoie le résumé de la répartition des lemmes valides en classe
+
+echo "Enter the name of the file to be processed : "
+read FILE
+
+echo "Enter the timeout used (in s) : "
+read TIMEOUT
+
+echo "Enter the memory limit used (in Mo) : "
+read MEM
+
+if [ ! -d "$PWD/summary_$TIMEOUT's'_$MEM'Mo'" ];then
+    mkdir summary_$TIMEOUT's'_$MEM'Mo'
+fi
+
+cp $FILE $PWD/summary_$TIMEOUT's'_$MEM'Mo'
+cp final_ourbench.txt $PWD/summary_$TIMEOUT's'_$MEM'Mo'
+cp compt_class.awk $PWD/summary_$TIMEOUT's'_$MEM'Mo'
+
+cd summary_$TIMEOUT's'_$MEM'Mo'
+
+awk 'NR == FNR { ligne[$1] = 1 }NR != FNR { if ( !($1 in ligne))print}' $FILE final_ourbench.txt > fail.txt
+
+awk 'NR == FNR { ligne[$1] = 1 }NR != FNR { if ( !($1 in ligne))print}' fail.txt final_ourbench.txt > valid.txt
+rm fail.txt
+rm final_ourbench.txt
+
+awk -f compt_class.awk valid.txt > compt.txt
+rm valid.txt
+rm compt_class.awk
+
+awk 'BEGIN{print "Number of lemmas per class"}  /^1 to/; /^6/;/^11 to/; /^26/; /^51/; /^101 to/; /^More/; /Total/ {print $0}' compt.txt > sum_$FILE.txt
+
+rm compt.txt
+
+echo "Read the results in summary_"$TIMEOUT"s_"$MEM"Mo (directory)  sum_"$FILE".txt (file)."
+
+rm $FILE

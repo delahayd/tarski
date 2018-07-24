@@ -1,0 +1,9 @@
+Number of lemmas per class
+1 to 5 : 172 (70%)
+6 to 10 : 40 (16%)
+11 to 25 : 25 (10%)
+26 to 50 : 6 (2%)
+51 to 100 : 1 (<1%)
+101 to 200 : 1 (<1%)
+More than 200 : - (-%)
+Total : 245

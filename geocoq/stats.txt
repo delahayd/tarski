@@ -1,0 +1,28 @@
+#! /bin/bash
+
+echo "Enter the name of the file to be processed : "
+read FILE
+
+echo "Enter the timeout used (in s) : "
+read TIMEOUT
+
+echo "Enter the memory limit used (in Mo) : "
+read MEM
+
+cd summary_$TIMEOUT's'_$MEM'Mo'
+
+sed -e '1 d; 9 d' sum_$FILE.txt  > temp.txt
+
+awk 'NR>=1{print $5}' temp.txt > temp1.txt
+awk 'NR>=1{if ($1=="-") $1=0; print $1 }' temp1.txt > temp2.txt
+rm temp.txt 
+
+
+awk '{if (NR ==1 ) {for (i=1;i<8;i++) print i}}' temp1.txt  > temp3.txt
+rm temp1.txt
+
+paste -d ' ' temp3.txt temp2.txt > stats_$FILE.txt
+rm temp2.txt
+rm temp3.txt
+
+echo "Use the file stats_"$FILE".txt in summary_"$TIMEOUT"s_"$MEM"Mo to make diagrams." 
