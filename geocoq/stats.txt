@@ -1,4 +1,5 @@
 #! /bin/bash
+#Renvoie un fichier exploitable (stats_FILE.txt) pour faire les diagrammes avec tikz
 
 echo "Enter the name of the file to be processed : "
 read FILE
@@ -11,16 +12,19 @@ read MEM
 
 cd summary_$TIMEOUT's'_$MEM'Mo'
 
+#Suppressions des lignes 1 et 9 du fichier résumé correspondant au fichier résultat donné en entrée 
 sed -e '1 d; 9 d' sum_$FILE.txt  > temp.txt
 
+#Récupère les valeurs numériques (et change "-" en 0 si besoin)
 awk 'NR>=1{print $5}' temp.txt > temp1.txt
 awk 'NR>=1{if ($1=="-") $1=0; print $1 }' temp1.txt > temp2.txt
 rm temp.txt 
 
-
+#Génère un fichier qui comporte 7 lignes et on affiche le numéro de ligne
 awk '{if (NR ==1 ) {for (i=1;i<8;i++) print i}}' temp1.txt  > temp3.txt
 rm temp1.txt
 
+#On fusionne le fichier avec les numéros de ligne et celui avec les valeurs numériques
 paste -d ' ' temp3.txt temp2.txt > stats_$FILE.txt
 rm temp2.txt
 rm temp3.txt

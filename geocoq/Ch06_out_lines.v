@@ -363,21 +363,7 @@ Proof.
       exists x0; assumption.
     exists x; assumption.
 Qed.
-
-(*
-Lemma t2_8 : forall A B C D E : Tpoint,
- Bet A B C -> Bet D B E -> Cong A B D B -> Cong B C B E -> Cong A E C D.
-Proof.
-    intros.
-    induction (eq_dec_points A B); try (treat_equalities; Cong).
-    assert (Cong A B D B -> Cong B C B E -> Cong A D D A -> Cong B D B A -> Bet A B C -> Bet D B E -> A <> B -> Cong C D E A).
-      apply five_segment.
-    apply cong_symmetry.
-    apply cong_right_commutativity.
-    apply H4; Cong; Between.
-Qed.
-*)
-
+  
 Lemma col3 : forall X Y A B C,
  X <> Y ->
  Col X Y A -> Col X Y B -> Col X Y C ->

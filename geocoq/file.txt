@@ -1,16 +1,40 @@
 #!/bin/bash
 
+#Renvoie noms des lemmes + nb de lignes dans dém dans final.txt
+
 #Récupère le nom des lemmes et les preuves de "Proof." à "Qed." > liste.txt
-awk -f prog.awk Ch02_cong.v Ch03_bet.v Ch04_cong_bet.v Ch04_col.v Ch05_bet_le.v Ch06_out_lines.v Ch07_midpoint.v Ch08_orthogonality.v Ch09_plane.v Ch10_line_reflexivity_2D.v Ch10_line_reflexivity.v Ch11_angles.v Ch12_parallel.v Ch12_parallel_inter_dec.v Ch13_1.v Ch13_2_length.v Ch13_3_angles.v Ch13_4_cos.v Ch13_5_Pappus_Pascal.v Ch13_6_Desargues_Hessenberg.v Ch14_sum.v Ch14_prod.v Ch14_order.v Ch15_lengths.v Ch16_coordinates.v > liste.txt
+awk 'BEGIN{print "Liste"}  /^Lemma/ { print  $2}
+		      /Global/ {print $3}
+		      /Proof./,/Qed./ {print $0} END{print ""}' Ch02_cong.v Ch03_bet.v Ch04_cong_bet.v Ch04_col.v Ch05_bet_le.v Ch06_out_lines.v Ch07_midpoint.v Ch08_orthogonality.v Ch09_plane.v Ch10_line_reflexivity_2D.v Ch10_line_reflexivity.v Ch11_angles.v Ch12_parallel.v Ch12_parallel_inter_dec.v Ch13_1.v Ch13_2_length.v Ch13_3_angles.v Ch13_4_cos.v Ch13_5_Pappus_Pascal.v Ch13_6_Desargues_Hessenberg.v Ch14_sum.v Ch14_prod.v Ch14_order.v Ch15_lengths.v Ch16_coordinates.v > liste.txt
 
 #Récupère le nom des lemmes >  noms.txt
-awk -f prog1.awk Ch02_cong.v Ch03_bet.v Ch04_cong_bet.v Ch04_col.v Ch05_bet_le.v Ch06_out_lines.v Ch07_midpoint.v Ch08_orthogonality.v Ch09_plane.v Ch10_line_reflexivity_2D.v Ch10_line_reflexivity.v Ch11_angles.v Ch12_parallel.v Ch12_parallel_inter_dec.v Ch13_1.v Ch13_2_length.v Ch13_3_angles.v Ch13_4_cos.v Ch13_5_Pappus_Pascal.v Ch13_6_Desargues_Hessenberg.v Ch14_sum.v Ch14_prod.v Ch14_order.v Ch15_lengths.v Ch16_coordinates.v  > noms.txt
+awk '/^Lemma/ {print $2}
+/Global/ {print $3}' Ch02_cong.v Ch03_bet.v Ch04_cong_bet.v Ch04_col.v Ch05_bet_le.v Ch06_out_lines.v Ch07_midpoint.v Ch08_orthogonality.v Ch09_plane.v Ch10_line_reflexivity_2D.v Ch10_line_reflexivity.v Ch11_angles.v Ch12_parallel.v Ch12_parallel_inter_dec.v Ch13_1.v Ch13_2_length.v Ch13_3_angles.v Ch13_4_cos.v Ch13_5_Pappus_Pascal.v Ch13_6_Desargues_Hessenberg.v Ch14_sum.v Ch14_prod.v Ch14_order.v Ch15_lengths.v Ch16_coordinates.v  > noms.txt
 
-#Calcule le nombre de lignes des preuves > res.txt
-awk -f exec.awk liste.txt > res.txt
+#Calcule le nombre de lignes dans les preuves > res.txt
+awk 'BEGIN{print "Test"}
+NR>=1
+{if ($1=="Proof.")
+{  
+    i=NR
+    print i
+    print "nb = " i-i1-3
+    i1=i
+    i++ 
+}  }
+END{print ""}' liste.txt > res.txt
+rm liste.txt
 
 #Récupère les valeurs calculées précédemment > nb.txt
-awk -f exec1.awk res.txt > nb.txt
+awk '/nb/ {print $0}' res.txt > nb.txt
+rm res.txt
 
 sed '1d' nb.txt > nbf.txt
-paste -d ' ' 'noms.txt' 'nbf.txt' > 'final.txt'
+rm nb.txt
+
+#Fusionne les fichiers noms.txt et nbf.txt
+paste -d ' ' 'noms.txt' 'nbf.txt' > 'finalb.txt'
+rm noms.txt
+
+sed '1246d' finalb.txt > final.txt
+rm finalb.txt

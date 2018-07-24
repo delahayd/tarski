@@ -1,4 +1,8 @@
 #! /bin/bash
+#Calcule le nombre de lemmes par classe (en fonction du nombre de lignes de preuve)
+
+#Pour toute les lignes, on regarde le nombre de lignes dans la preuve (dernier champ de la ligne) et on incrémente le bon compteur
+#On calcule le nombre total des lemmes étudiés et les pourcentages pour chaque classe
 NR>=1
 {
     if ($NF<=5)
@@ -45,6 +49,7 @@ NR>=1
     else
         p6=int(x6/T*100)   
 }
+#Permet de faire un affichage plus clair quand le pourcentage est <1
 {    if (p0<1)
        p0="<1"
     if (p1<1)

@@ -181,7 +181,6 @@ col_transitivity_1 nb = 5
 col_transitivity_2 nb = 2
 l6_21 nb = 18
 not_col_exists nb = 19
-t2_8 nb = 7
 col3 nb = 10
 out2__bet nb = 8
 bet2_le2__le1346 nb = 46
@@ -1244,4 +1243,3 @@ characterization_of_betweenness_aux nb = 508
 characterization_of_betweenness nb = 243
 same_abscissa_col nb = 14
 characterization_of_collinearity nb = 820
- 
