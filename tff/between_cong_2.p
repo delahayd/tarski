@@ -528,7 +528,6 @@ tff(hyp_52, axiom,
 %-- Implicitly declared
 tff(goal_1, conjecture,
     (! [A: point] :
-       point >
-       (! [D: point , E: point] :
+       (! [B: point , D: point , E: point] :
           (bet(A, D, E) => (bet(A, E, D) => (cong(A, D, A, E) => (D = E))))))).
 

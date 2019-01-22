@@ -23,7 +23,7 @@ assert forall (A B C : point). per A B C => per C B A.
 assert forall (A B C A1 : point). per A B C => A!=B=> col B A A1 => per A1 B C.
 
 #18_10
-assert forall (A B C A B C A1 B1 C1 : point). per A B C => cong_3 A B C A1 B1 C1 => per A1 B1 C1.
+assert forall (A B C A1 B1 C1 : point). per A B C => cong_3 A B C A1 B1 C1 => per A1 B1 C1.
 
 #110_4_spec
 assert forall (A B P P1 : point). reflectL P P1 A B => reflectL P1 P A B.

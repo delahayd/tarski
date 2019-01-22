@@ -1,5 +1,0 @@
-# $Id$
-
-include "tarski_def.zf".
-
-goal forall (X A B C D : point). perp_at X A B C D => perp A B C D.

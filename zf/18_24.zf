@@ -1,9 +1,0 @@
-# $Id$
-
-include "tarski_def.zf".
-include "tarski_col.zf".
-include "tarski_col_bis.zf".
-include "tarski_prop_orthogonality.zf".
-include "tarski_bet.zf".
-
-goal forall (A B P Q R T : point). perp P A A B => perp Q B A B => col A B T => bet P T Q => bet B R Q => cong A P B R => (exists (X : point). midpoint X A B && midpoint X P R).

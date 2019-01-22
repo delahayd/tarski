@@ -1,6 +1,0 @@
-# $Id$
-
-include "tarski_def.zf".
-include "tarski_prop_orthogonality.zf".
-
-goal forall (A B C A1 : point). per A B C => per A1 B C => bet A C A1 => B=C. 

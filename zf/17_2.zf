@@ -1,5 +1,0 @@
-# $Id$
-
-include "tarski_def.zf".
-
-goal forall (M A B : point). midpoint M A B => midpoint M B A.

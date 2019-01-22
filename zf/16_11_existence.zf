@@ -1,8 +1,0 @@
-# $Id$
-
-include "tarski_def.zf".
-
-#segment_construction_2
-assert forall (A Q B C : point). A!=Q => (exists (X : point). (bet Q A X || bet Q X A) && cong Q X B C).
-
-goal forall (A B C R : point). R!=A => B!=C => (exists (X : point). out A X R && cong A X B C).

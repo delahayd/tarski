@@ -1,9 +1,0 @@
-# $Id$
-
-include "tarski_def.zf".
-include "tarski_perp.zf".
-
-#18_22
-assert forall (A B P R X : point). A!=B => A!=P => per B A P => per A B R => cong A P B R => col A B X => bet P X R => cong A R P B && midpoint X A B && midpoint X P R.
-
-goal forall (A B P R X : point). A!=B => A!=P => perp A B P A => perp A B R B => cong A P B R => col A B X => bet P X R => cong A R P B && midpoint X A B && midpoint X P R. 

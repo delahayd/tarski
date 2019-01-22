@@ -1,8 +1,0 @@
-# $Id$
-
-include "tarski_def.zf".
-
-#cong3_conga
-assert forall (A B C A1 B1 C1 : point). A!=B => C!=B => cong_3 A B C A1 B1 C1 => congA A B C A1 B1 C1.
-
-goal forall (A B C A1 B1 C1 : point). A!=B => A!=C => B!=C => cong A B A1 B1 => cong A C A1 C1 => cong B C B1 C1 => congA B A C B1 A1 C1 && congA A B C A1 B1 C1 && congA B C A B1 C1 A1.

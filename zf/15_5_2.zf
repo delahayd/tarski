@@ -1,8 +1,0 @@
-# $Id$
-
-include "tarski_def.zf".
-
-#14_5
-assert forall (A B C A1 C1 : point). bet A B C => cong A C A1 C1 => (exists (B1 : point). bet A1 B1 C1 && cong_3 A B C A1 B1 C1).
-
-goal forall (A B C D : point). (exists (x : point). bet A B x && cong A x C D)=> le A B C D.

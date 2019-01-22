@@ -1,7 +1,0 @@
-# $Id$
-
-include "tarski_def.zf".
-include "tarski_cong.zf".
-include "tarski_prop_cong.zf".
-
-goal forall (A B C A B C A1 B1 C1 : point). per A B C => cong_3 A B C A1 B1 C1 => per A1 B1 C1.

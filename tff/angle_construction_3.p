@@ -1110,8 +1110,9 @@ tff(hyp_114, axiom,
 %-- Implicitly declared
 tff(goal_1, conjecture,
     (! [A: point , B: point , C: point , A1: point , B1: point] :
-       point >
-       ((~ (A = B))
-       => ((~ (C = B))
-          => ((~ (A1 = B1)) => (? [C1: point] : congA(A, B, C, A1, B1, C1))))))).
+       (! [C1: point] :
+          ((~ (A = B))
+          => ((~ (C = B))
+             => ((~ (A1 = B1))
+                => (? [C1: point] : congA(A, B, C, A1, B1, C1)))))))).
 

@@ -1,6 +1,0 @@
-# $Id$
-
-include "tarski_def.zf".
-include "tarski_prop_cong.zf".
-
-goal forall (A B C D : point). le A B C D => (exists (x : point). bet A B x && cong A x C D). 

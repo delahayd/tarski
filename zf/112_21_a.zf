@@ -1,8 +1,0 @@
-# $Id$
-
-include "tarski_def.zf".
-
-#tarski_s_euclid
-assert forall (A B C D T : point). bet A D T => bet B D C => A!=D => (exists (X Y : point). bet A B X && bet A C Y && bet X T Y).
-
-goal forall (A B C D : point). ts A C B D => (par A B C D => congA B A C D C A).

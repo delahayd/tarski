@@ -2374,8 +2374,8 @@ tff(hyp_263, axiom,
 
 %-- File './tarski_prop_orthogonality.zf', line 63, character 0-97
 tff(hyp_264, axiom,
-    ( point * point * point ) >
-    (! [A: point , B: point , C: point , A1: point , B1: point , C1: point] :
+    (! [A: point , B: point , C: point , A: point , B: point , C: point , A1:
+       point , B1: point , C1: point] :
        (per(A, B, C) => (cong_3(A, B, C, A1, B1, C1) => per(A1, B1, C1))))).
 
 %-- File './tarski_prop_orthogonality.zf', line 66, character 0-69

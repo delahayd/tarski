@@ -1,9 +1,0 @@
-# $Id$
-
-include "tarski_def.zf".
-include "tarski_cong.zf".
-include "tarski_midpoint.zf".
-include "tarski_col.zf".
-include "tarski_prop_midpoint.zf".
-
-goal forall (A B C D P : point). ~col A B C => B!=D => cong A B C D => cong B C D A => col A P C => col B P D => midpoint P A C && midpoint P B D.
