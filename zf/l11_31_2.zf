@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#angle_construction_3
+assert forall (A B C A1 B1 C1 : point). A!=B => C!=B => A1!=B1 => (exists (C1 : point). congA A B C A1 B1 C1).
+
+#in_angle_line
+assert forall (A B C P : point). P!=B => A!=B => C!=B => bet A B C => inAngle P A B C.
+
+goal forall (A B C D E F : point). A!=B => C!=B => D!=E => F!=E => bet D E F =>leA A B C D E F.

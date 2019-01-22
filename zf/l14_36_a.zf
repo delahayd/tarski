@@ -1,0 +1,20 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+val O : point.
+val E : point.
+val E1 : point.
+
+#17_20
+assert forall (M A B : point). col A M B => cong M A M B => A=B || midpoint M A B.
+
+#double_null_null
+assert forall (O E E1 A : point). sum O E E1 A A O => A=O.
+
+#sum_cong
+assert forall (A B C : point). sum O E E1 A B C => (A!=O || B!=O) => parallelogram_flat O A B C.
+
+goal forall (O E E1 A B C : point). sum O E E1 A B C => out O A B => bet O A C.

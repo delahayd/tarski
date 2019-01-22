@@ -1,0 +1,47 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_perp.zf".
+
+#16_6
+assert forall (P A B : point). out P A B => out P B A.
+
+#17_2
+assert forall (M A B : point). midpoint M A B => midpoint M B A.
+
+#17_3
+assert forall (M A : point). midpoint M A A => M=A.
+
+#18_18_existence
+assert forall (A B C : point). ~col A B C => (exists (X : point). col A B X && perp A B C X).
+
+#19_2
+assert forall (A B P Q : point). ts A B P Q => ts A B Q P.
+
+#19_3
+assert forall (P Q A C M R B : point). ts P Q A C => col M P Q => midpoint M A C => col R P Q => out R A B => ts P Q B C.
+
+#19_4_1
+assert forall (P Q A C R S M : point). ts P Q A C => col R P Q => perp P Q A R => col S P Q => perp P Q C S => midpoint M R S => (forall (U C1 : point). midpoint M U C1 => (out R U A <=> out S C C1)).
+
+#19_4_2
+assert forall (P Q A C R S U V : point). ts P Q A C => col R P Q => perp P Q A R => col S P Q => perp P Q C S => out R U A => out S V C => ts P Q U V.
+
+#between_trivial
+assert forall (A B : point). bet A B B.
+
+#midpoint_existence
+assert forall (A B : point). (exists (X : point). midpoint X A B).
+
+#out_trivial
+assert forall (P A : point). A!=P => out P A A.
+
+#perp_col
+assert forall (A B C D E : point). A!=E => perp A B C D => col A B E => perp A E C D.
+
+#perp_distinct
+assert forall (A B C D : point). perp A B C D => A!=B && C!=D.
+
+goal forall (P Q A C R B : point). ts P Q A C => col R P Q => out R A B => ts P Q B C.

@@ -1,0 +1,23 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_par.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#16_21
+assert forall (A B C D P Q : point). ~col A B C => C!=D => col A B P => col A B Q => col C D P => col C D Q => P=Q.
+
+#113_19_par_aux
+assert forall (A B C D A1 B1 C1 D1 X Y : point). X!=A => X!=A1 => X!=C => X!=C1 => Y!=B => Y!=B1 => Y!=D => Y!=D1 => col X A C => col X A A1 => col X A1 C1 => col Y B D => col Y B B1 => col Y B1 D1 => A!=C => B!=D => A!=A1 => par_strict X A Y B => ~par A B C D => par A B A1 B1 => par A D A1 D1 => par B C B1 C1 => par C D C1 D1.
+
+#all_coplanar
+assert forall (A B C D : point). coplanar A B C D.
+
+#par_distincts
+assert forall (A B C D : point). par A B C D => (par A B C D && A!=B && C!=D).
+
+#par_trans
+assert forall (A1 A2 B1 B2 C1 C2 : point). par A1 A2 B1 B2 => par B1 B2 C1 C2 => par A1 A2 C1 C2.
+
+goal forall (A B C D A1 B1 C1 D1 X Y : point). X!=A => X!=A1 => X!=C => X!=C1 => Y!=B => Y!=B1 => Y!=D => Y!=D1 => col X A C => col X A A1 => col X A1 C1 => col Y B D => col Y B B1 => col Y B1 D1 => A!=C => B!=D => A!=A1 => par_strict X A Y B => par A B A1 B1 => par A D A1 D1 => par B C B1 C1 => par C D C1 D1.

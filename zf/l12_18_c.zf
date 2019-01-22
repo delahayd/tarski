@@ -1,0 +1,16 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#17_2
+assert forall (M A B : point). midpoint M A B => midpoint M B A.
+
+#17_21
+assert forall (A B C D P : point). ~col A B C => B!=D => cong A B C D => cong B C D A => col A P C => col B P D => midpoint P A C && midpoint P B D.
+
+#is_midpoint_id
+assert forall (A B : point). midpoint A A B => A=B.
+
+goal forall (A B C D P : point). cong A B C D => cong B C D A => ~col A B C => B!=D => col A P C => col B D P => ts B D A C.

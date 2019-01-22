@@ -1,0 +1,69 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_cong.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+
+#12_11
+assert forall (A B C A1 B1 C1 : point). bet A B C => bet A1 B1 C1 => cong A B A1 B1 => cong B C B1 C1 => cong A C A1 C1.
+
+#14_3
+assert forall (A B C A1 B1 C1 : point). bet A B C => bet A1 B1 C1 => cong A C A1 C1 => cong B C B1 C1 => cong A B A1 B1.
+
+#14_16
+assert forall (A B C D A1 B1 C1 D1 : point). fsc A B C D A1 B1 C1 D1 => A!=B => cong C D C1 D1.
+
+#17_3
+assert forall (M A : point). midpoint M A A => M=A.
+
+#17_3_2
+assert forall (A : point). midpoint A A A.
+
+#17_9
+assert forall (P Q A X : point). midpoint A P X => midpoint A Q X => P=Q.
+
+#17_15
+assert forall (P Q R P1 Q1 R1 A : point). midpoint A P P1 => midpoint A Q Q1 => midpoint A R R1 => bet P Q R => bet P1 Q1 R1.
+
+
+#110_4
+assert forall (A B P P1 : point). reflect P P1 A B => reflect P1 P A B.
+
+#110_4_spec
+assert forall (A B P P1 : point). reflectL P P1 A B => reflectL P1 P A B.
+
+#between_symmetry
+assert forall (A B C : point). bet A B C => bet C B A.
+
+#cong_commutativity
+assert forall (A B C D : point). cong A B C D => cong B A D C.
+
+#image_image_in
+assert forall (A B P P1 M : point). P!=P1 => reflectL P P1 A B => col A B M => col P M P1 => reflectL_at M P P1 A B.
+
+#image_in_col
+assert forall (A B P P1 Q Q1 M : point). reflectL_at M P P1 A B => reflectL_at M Q Q1 A B => col M P Q.
+
+#is_image_is_image_spec
+assert forall (P P1 A B : point). A!=B => (reflect P1 P A B <=> reflectL P1 P A B ).
+
+#is_image_spec_col_cong
+assert forall (A B P P1 X : point). reflectL P P1 A B => col A B X => cong P X P1 X.
+
+#midpoint_bet
+assert forall (A B C : point). midpoint B A C => bet A B C.
+
+#midpoint_existence
+assert forall (A B : point). (exists (X : point). midpoint X A B).
+
+#midpoint_preserves_image
+assert forall (A B P P1 Q Q1 M : point). A!=B => col A B M => reflect P P1 A B => midpoint M P Q => midpoint M P1 Q1 => reflect Q Q1 A B.
+
+#perp_distinct
+assert forall (A B C D : point). perp A B C D => A!=B && C!=D.
+
+#symmetry_preserves_midpoint
+assert forall (A B C D E F Z : point). midpoint Z A D => midpoint Z B E => midpoint Z C F => midpoint B A C => midpoint E D F.
+
+goal forall (A B P Q P1 Q1 : point). A!=B => reflectL P1 P A B => reflectL Q1 Q A B => cong P Q P1 Q1.

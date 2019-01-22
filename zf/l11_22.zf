@@ -1,0 +1,9 @@
+# $Id$
+
+include "tarski_def.zf".
+#111_22a
+assert forall (A B C P A1 B1 C1 P1 : point). ts B P A C && ts B1 P1 A1 C1 && congA A B P A1 B1 P1 && congA P B C P1 B1 C1 => congA A B C A1 B1 C1.
+
+#111_22b
+assert forall (A B C P A1 B1 C1 P1 : point). os B P A C && os B1 P1 A1 C1 && congA A B P A1 B1 P1 && congA P B C P1 B1 C1 => congA A B C A1 B1 C1.
+goal forall (A B C P A1 B1 C1 P1 : point). ((ts B P A C && ts B1 P1 A1 C1) || (os B P A C && os B1 P1 A1 C1)) && congA A B P A1 B1 P1 && congA P B C P1 B1 C1 => congA A B C A1 B1 C1.

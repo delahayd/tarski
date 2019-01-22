@@ -1,0 +1,12 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_prop_orthogonality.zf".
+include "tarski_perp.zf".
+
+
+#per_col
+assert forall (A B C D : point). B!=C => per A B C =>  col B C D => per A B D.
+
+goal forall (A B C D X : point) . A!=B => C!=D => col X A B => col X C D => (exists (U V : point). col U A B && col V C D && U!=X && V!=X && per U X V) => perp_at X A B C D.

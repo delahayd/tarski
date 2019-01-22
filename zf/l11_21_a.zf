@@ -1,0 +1,21 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_bet.zf".
+include "tarski_prop_bet.zf".
+include "tarski_cong.zf".
+include "tarski_prop_cong.zf".
+
+#15_1
+assert forall (A B C D : point). A!=B => bet A B C => bet A B D => bet A C D || bet A D C.
+
+#16_6
+assert forall (P A B : point). out P A B => out P B A.
+
+#16_7
+assert forall (P A B C : point). out P A B => out P B C => out P A C. 
+
+#cong3_preserves_out
+assert  forall (A B C A1 B1 C1 : point). out A B C => cong_3 A B C A1 B1 C1 => out A1 B1 C1.
+
+goal forall (A B C A1 B1 C1 : point). out B A C => congA A B C A1 B1 C1 => out B1 A1 C1.

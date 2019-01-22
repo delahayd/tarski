@@ -1,0 +1,11 @@
+# $Id$
+
+include "tarski_def.zf".
+
+#110_2_existence_spec
+assert forall (A B P : point). (exists (P1 : point). reflectL P1 P A B).
+
+#110_4_spec
+assert forall (A B P P1 : point). reflectL P P1 A B => reflectL P1 P A B.
+
+goal forall (A B P1 : point). A!=B => (exists (P : point). reflectL P1 P A B).

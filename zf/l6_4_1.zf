@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (A B P : point). out P A B => col A P B && ~bet A P B.

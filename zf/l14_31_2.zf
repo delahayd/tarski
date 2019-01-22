@@ -1,0 +1,32 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_par.zf".
+
+#113_11
+assert forall (A B C A1 B1 C1 O : point). ~col O A A1 => B!=O => C!=O => col O A B => col O B C => B1!=O => C1!=O => col O A1 B1 => col O B1 C1 => par B C1 C B1 => par C A1 A C1 => par A B1 B A1.
+
+#par_distincts
+assert forall (A B C D : point). par A B C D => (par A B C D && A!=B && C!=D).
+
+#par_trans
+assert forall (A1 A2 B1 B2 C1 C2 : point). par A1 A2 B1 B2 => par B1 B2 C1 C2 => par A1 A2 C1 C2.
+
+#prod_0_1_eq
+assert forall (O E E1 B C : point). prod O E E1 O B C => C=O.
+
+#prod_0_1
+assert forall (O E E1 A : point). ~col O E E1 => col O E A => prod O E E1 O A O.
+
+#prod_O_r_eq
+assert forall (O E E1 A C : point). prod O E E1 A O C => C=O.
+
+#prod_0_r
+assert forall (O E E1 A : point). ~col O E E1 => col O E A => prod O E E1 A O O.
+
+#prod_null
+assert forall (O E E1 A B : point). prod O E E1 A B O => A=O || B=O.
+
+goal forall (O E E1 A B C D : point). ar2_4 O E E1 A B C D => C!=O => prod O C E1 A B D => (exists (X : point). prod O E E1 A B X && prod O E E1 C D X).

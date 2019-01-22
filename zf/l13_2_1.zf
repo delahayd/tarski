@@ -1,0 +1,32 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_col_bis.zf".
+include "tarski_cong.zf".
+include "tarski_conga.zf".
+include "tarski_perp.zf".
+include "tarski_out.zf".
+
+#16_21
+assert forall (A B C D P Q : point). ~col A B C => C!=D => col A B P => col A B Q => col C D P => col C D Q => P=Q.
+
+#111_16
+assert forall (A B C A1 B1 C1 : point). per A B C => A!=B => C!=B => per A1 B1 C1 => A1!=B1 => C1!=B1 => congA A B C A1 B1 C1.
+
+#111_50_2
+assert forall (A B C A1 B1 C1 : point). ~col A B C => congA B C A B1 C1 A1 => congA A B C A1 B1 C1 => cong A B A1 B1 => cong A C A1 C1 && cong B C B1 C1 && congA C A B C1 A1 B1.
+
+#cong_conga_perp
+assert forall (A B C P : point). ts B P A C => cong A B C B => congA A B P C B P => perp A C B P.
+
+#out_conga
+assert forall (A B C A1 B1 C1 A0 C0 A2 C2 : point). congA A B C A1 B1 C1 => out B A A0 => out B C C0 => out B1 A1 A2 => out B1 C1 C2 => congA A0 B C0 A2 B1 C2.
+
+#perp_perp_col
+assert forall (X Y Z A B : point). perp X Y A B => perp X Z A B => col X Y Z.
+
+#ts_per_per_ts
+assert forall (A B C D : point). ts A B C D => per B C A => per B D A => ts C D A B.
+
+goal forall (A B C D E : point). ts A B C D => per B C A => per B D A => col C D E => perp A E C D => congA C A B D A B => congA B A C D A E && congA B A D C A E && bet C E D.

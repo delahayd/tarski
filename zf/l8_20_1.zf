@@ -1,0 +1,10 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_perp.zf".
+include "tarski_prop_orthogonality.zf".
+include "tarski_bet.zf".
+include "tarski_cong.zf".
+include "tarski_midpoint.zf".
+
+goal forall (A B C C1 D P : point). per A B C => midpoint P C1 D => midpoint A C1 C => midpoint B D C => per B A P. 

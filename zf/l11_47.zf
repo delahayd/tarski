@@ -1,0 +1,36 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+include "tarski_perp.zf".
+include "tarski_le.zf".
+
+#15_12_b
+assert forall (A B C : point). col A B C => le A B A C => le B C A C => bet A B C.
+
+#18_7
+assert forall (A B C : point). per A B C => per A C B => B=C.
+
+#18_14_2_1a
+assert forall (X A B C D : point). perp_at X A B C D => perp A B C D.
+
+#18_14_3
+assert forall (A B C D X Y : point). perp_at X A B C D => perp_at Y A B C D => X=Y.
+
+#111_46
+assert forall (A B C : point). ~col A B C => (per A B C || obtuse A B C) => lt B A A C && lt B C A C.
+
+#le_transitivity
+assert forall (A B C D E F : point). le A B C D => le C D E F => le A B E F.
+
+#not_col_distincts
+assert forall (A B C : point). ~col A B C => ~col A B C && A!=B && B!=C && A!=C.
+
+#per_col
+assert forall (A B C D : point). B!=C => per A B C =>  col B C D => per A B D.
+
+#per_col_eq
+assert forall (A B C : point). per A B C => col A B C => B!=C => A=B.
+
+
+goal forall (A B C H : point). per A C B => perp_at H C H A B => bet A H B && A!=H && B!=H.

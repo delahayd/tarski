@@ -1,0 +1,41 @@
+# $Id$
+
+include "tarski_def.zf".
+include "tarski_col.zf".
+
+#17_2
+assert forall (M A B : point). midpoint M A B => midpoint M B A.
+
+#17_3
+assert forall (M A : point). midpoint M A A => M=A.
+
+#18_16_1
+assert forall (A B C U X : point). A!=B => col A B X => col A B U => U!=X=> perp A B C X => ~col A B C && per C X U.
+
+#18_18_uniqueness
+assert forall (A B C X Y : point). ~col A B C => col A B X => perp A B C X => col A B Y => perp A B C Y => X=Y.
+
+#is_image_is_image_spec
+assert forall (P P1 A B : point). A!=B => (reflect P1 P A B <=> reflectL P1 P A B ).
+
+#is_midpoint_id
+assert forall (A B : point). midpoint A A B => A=B.
+
+#midpoint_bet
+assert forall (A B C : point). midpoint B A C => bet A B C.
+
+#perp_col
+assert forall (A B C D E : point). A!=E => perp A B C D => col A B E => perp A E C D.
+
+#perp_distinct
+assert forall (A B C D : point). perp A B C D => A!=B && C!=D.
+
+#perp_sym
+assert forall (A B C D : point). perp A B C D => perp C D A B.
+
+#symmetric_point_uniqueness
+assert forall (A P P1 P2 : point). midpoint P A P1 => midpoint P A P2 => P1=P2.
+
+
+
+goal forall (A B P P2 P1 : point). reflect P1 P A B => reflect P2 P A B => P1=P2. 

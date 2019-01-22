@@ -1,0 +1,5 @@
+# $Id$
+
+include "tarski_def.zf".
+
+goal forall (A B C : point). ~col A B C => (ltA B A C B C A <=> lt B C B A).
