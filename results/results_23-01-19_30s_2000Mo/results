@@ -1,0 +1,51 @@
+**** All Chapters ****
+==== zf ====
+[zipperposition 1.5 (rewrite)]
+    0 rew.error
+    0 rew.fail
+  911 rew.limit
+    0 rew.unkown
+  334 rew.valid
+ 1245 total
+Total time (valid): 378.94
+Unique: 174
+[zipperposition 1.5 (no rewrite)]
+    0 norew.error
+    0 norew.fail
+  985 norew.limit
+    0 norew.unkown
+  260 norew.valid
+ 1245 total
+Total time (valid): 612.47
+Unique: 100
+Cover rate: 434
+**** 12 First Chapters ****
+==== zf ====
+[zipperposition 1.5 (rewrite)]
+    0 rew.error
+    0 rew.fail
+  520 rew.limit
+    0 rew.unkown
+  271 rew.valid
+  791 total
+Total time (valid): 308.10
+Unique (1): 137
+Unique (2): 18
+[zipperposition 1.5 (no rewrite)]
+    0 norew.error
+    0 norew.fail
+  582 norew.limit
+    0 norew.unkown
+  209 norew.valid
+  791 total
+Total time (valid): 494.16
+Unique (1): 75
+Unique (2): 0
+Cover rate (1): 346
+==== tff ====
+  306 e.limit
+  485 e.valid
+  791 total
+Total time (valid): 503.84
+Unique (2): 157
+Cover rate (2): 503

@@ -501,10 +501,6 @@ step:
 
 # Old (end)
 
-toto:
-	-@for i in `ls *.res.norew`; do tmp=`grep status $$i`; \
-        if [ "$$tmp" = "" ]; then echo $$i; fi; done
-
 analyze:
 	-@grep -l 'Counter' *.res.rew | sort -V > rew.fail; \
 	grep -l 'Counter' *.res.norew | sort -V > norew.fail; \
@@ -601,6 +597,15 @@ valid:
 
 clean:
 	rm -f *~ *.res.* *.time rew.* norew.* e.stats
+
+# To print Makefile variables (for debug)
+print-%  : ; @echo $($*)
+
+debug:
+	@echo $(ALLCH) | tr ' ' '\n' | xargs -I {} basename {} .zf | \
+        sort -d > all-zf; \
+        grep "SZS status" *.res.rew | cut -d: -f1 | \
+        xargs -I {} basename {} .res.rew | sort -d > all-res-rew
 
 .SUFFIXES: .zf .res.rew .res.norew
 
