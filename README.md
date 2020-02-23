@@ -1,4 +1,4 @@
-# Automating Tarski's Geometry Using Deduction Modulo Theory
+# Automating Tarski's Geometry<br>Using Deduction Modulo Theory
 
 ## The Benchmark
 
